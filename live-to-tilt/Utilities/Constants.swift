@@ -1,3 +1,3 @@
 struct Constants {
-    static let FramesPerSecond: Int = 60
+    static let framesPerSecond: Int = 60
 }

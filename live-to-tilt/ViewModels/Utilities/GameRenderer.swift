@@ -1,6 +1,6 @@
 import QuartzCore
 
-class GameLoop {
+class GameRenderer {
     private let gameEngine: GameEngine
     private var displayLink: CADisplayLink!
     private var hasStarted = false
@@ -11,7 +11,7 @@ class GameLoop {
 
     func start() {
         displayLink = CADisplayLink(target: self, selector: #selector(step))
-        displayLink.preferredFramesPerSecond = Constants.FramesPerSecond
+        displayLink.preferredFramesPerSecond = Constants.framesPerSecond
         displayLink.add(to: .main, forMode: .default)
         hasStarted = true
     }

@@ -19,7 +19,7 @@
 		72478E9D27D7363100B9140A /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9C27D7363100B9140A /* GameEngine.swift */; };
 		72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9E27D736F200B9140A /* RenderableComponent.swift */; };
 		72478EA327D739A500B9140A /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA227D739A500B9140A /* TestViewModel.swift */; };
-		72478EA527D73A8200B9140A /* GameLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA427D73A8200B9140A /* GameLoop.swift */; };
+		72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA427D73A8200B9140A /* GameRenderer.swift */; };
 		72478EA827D73B0500B9140A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA727D73B0500B9140A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,7 @@
 		72478E9C27D7363100B9140A /* GameEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		72478E9E27D736F200B9140A /* RenderableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableComponent.swift; sourceTree = "<group>"; };
 		72478EA227D739A500B9140A /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestViewModel.swift; path = "live-to-tilt/ViewModels/TestViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		72478EA427D73A8200B9140A /* GameLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameLoop.swift; path = "live-to-tilt/ViewModels/Utilities/GameLoop.swift"; sourceTree = SOURCE_ROOT; };
+		72478EA427D73A8200B9140A /* GameRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameRenderer.swift; path = "live-to-tilt/ViewModels/Utilities/GameRenderer.swift"; sourceTree = SOURCE_ROOT; };
 		72478EA727D73B0500B9140A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,7 +174,7 @@
 		72478EA927D73C8D00B9140A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				72478EA427D73A8200B9140A /* GameLoop.swift */,
+				72478EA427D73A8200B9140A /* GameRenderer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -274,7 +274,7 @@
 				3D12D9C927D61D8500D01489 /* ContentView.swift in Sources */,
 				72478EA327D739A500B9140A /* TestViewModel.swift in Sources */,
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
-				72478EA527D73A8200B9140A /* GameLoop.swift in Sources */,
+				72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */,
 				72478E9D27D7363100B9140A /* GameEngine.swift in Sources */,
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,

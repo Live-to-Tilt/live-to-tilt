@@ -4,14 +4,14 @@ class TestViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent] = []
 
     var gameEngine: GameEngine
-    var gameLoop: GameLoop
+    var gameRenderer: GameRenderer
 
     var cancellables = Set<AnyCancellable>()
 
     init() {
         gameEngine = GameEngine()
-        gameLoop = GameLoop(gameEngine: gameEngine)
-        gameLoop.start()
+        gameRenderer = GameRenderer(gameEngine: gameEngine)
+        gameRenderer.start()
 
         gameEngine.renderablePublisher.sink { renderableComponents in
             self.renderableComponents = renderableComponents
@@ -19,6 +19,6 @@ class TestViewModel: ObservableObject {
     }
 
     deinit {
-        gameLoop.stop()
+        gameRenderer.stop()
     }
 }
