@@ -1,3 +1,4 @@
+/// The Nexus manages all entities and components.
 final class Nexus {
     /// - Key: Entity
     /// - Value: Subdictionary where
@@ -46,8 +47,8 @@ final class Nexus {
     /// Removes the given entity from the nexus
     func removeEntity(_ entity: Entity) {
         entities.removeValue(forKey: entity)
-        for componentType in entitiesByComponent.keys {
-            entitiesByComponent[componentType, default: []].remove(entity)
+        for identifier in entitiesByComponent.keys {
+            entitiesByComponent[identifier]?.remove(entity)
         }
     }
 }
