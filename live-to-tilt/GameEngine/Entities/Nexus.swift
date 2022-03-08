@@ -10,6 +10,11 @@ final class Nexus {
     /// - Value: Set of entities which has components of that type
     private(set) var entitiesByComponent: [ComponentIdentifier: Set<Entity>] = [:]
 
+    /// Returns all entities with components of the given type
+    func getEntities<T: Component>(with type: T.Type) -> [Entity] {
+        Array(entitiesByComponent[T.identifier, default: []])
+    }
+
     /// Returns all components of a given type
     func getComponents<T: Component>(of type: T.Type) -> [T] {
         var components: [T] = []
