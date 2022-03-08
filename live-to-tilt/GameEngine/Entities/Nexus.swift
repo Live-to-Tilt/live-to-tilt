@@ -43,8 +43,8 @@ final class Nexus {
         getComponents(of: type, for: entity).first
     }
 
-    /// Assigns the given component to the given entity, and adds the entity to the nexus if it is new
-    func assignComponent<T: Component>(_ component: T, to entity: Entity) {
+    /// Adds the given component to the given entity, and adds the entity to the nexus if it is new
+    func addComponent<T: Component>(_ component: T, to entity: Entity) {
         entities[entity, default: [:]][T.identifier, default: []].append(component)
         entitiesByComponent[T.identifier, default: []].insert(entity)
     }
