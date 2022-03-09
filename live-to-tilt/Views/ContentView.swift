@@ -4,9 +4,6 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
-            .onAppear {
-                AudioController.instance.play(.theme)
-            }
     }
 }
 
