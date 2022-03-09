@@ -1,16 +1,12 @@
-//
-//  ContentView.swift
-//  live-to-tilt
-//
-//  Created by Wen Hao on 7/3/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear {
+                AudioController.instance.play(.theme)
+            }
     }
 }
 
