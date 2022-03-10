@@ -5,15 +5,15 @@ import Foundation
 class SettingsViewModel: ObservableObject {
     @Published var soundtrackVolume: CGFloat {
         didSet {
-            AudioController.instance.setSountrackVolume(to: Float(soundtrackVolume))
+            AudioController.shared.setSountrackVolume(to: Float(soundtrackVolume))
         }
     }
 
     init() {
-        soundtrackVolume = CGFloat(AudioController.instance.soundtrackVolume)
+        soundtrackVolume = CGFloat(AudioController.shared.soundtrackVolume)
     }
 
     func onAppear() {
-        AudioController.instance.play(.theme)
+        AudioController.shared.play(.theme)
     }
 }

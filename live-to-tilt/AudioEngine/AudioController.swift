@@ -2,14 +2,14 @@ import AVFoundation
 import UIKit
 
 final class AudioController {
-    static let instance = AudioController()
+    static let shared = AudioController()
     var soundtrackVolume: Float {
         defaults.float(forKey: .soundtrackVolume)
     }
     private let defaults: UserDefaults
-    private var soundtrackData: [Soundtracks: Data]
+    private var soundtrackData: [Soundtrack: Data]
     private var soundtrackPlayer: AVAudioPlayer?
-    private var currentSoundtrack: Soundtracks?
+    private var currentSoundtrack: Soundtrack?
 
     private init() {
         defaults = UserDefaults.standard
@@ -19,12 +19,12 @@ final class AudioController {
             .soundtrackVolume: Constants.defaultSoundtrackVolume
         ])
 
-        for soundtrack in Soundtracks.allCases {
+        for soundtrack in Soundtrack.allCases {
             load(soundtrack)
         }
     }
 
-    func play(_ soundtrack: Soundtracks) {
+    func play(_ soundtrack: Soundtrack) {
         if currentSoundtrack == soundtrack {
             return
         }
@@ -43,11 +43,11 @@ final class AudioController {
         defaults.setValue(volume, forKey: .soundtrackVolume)
     }
 
-    private func load(_ soundtrack: Soundtracks) {
+    private func load(_ soundtrack: Soundtrack) {
         soundtrackData[soundtrack] = NSDataAsset(name: soundtrack.rawValue)?.data
     }
 
-    private func createSoundtrackPlayer(with soundtrack: Soundtracks) {
+    private func createSoundtrackPlayer(with soundtrack: Soundtrack) {
         guard let data = soundtrackData[soundtrack] else {
             return
         }
@@ -63,7 +63,7 @@ final class AudioController {
         }
     }
 
-    private func fadeOutAndPlay(_ soundtrack: Soundtracks) {
+    private func fadeOutAndPlay(_ soundtrack: Soundtrack) {
         soundtrackPlayer?.setVolume(.zero, fadeDuration: Constants.audioFadeDuration)
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.audioFadeDuration) {
             self.createSoundtrackPlayer(with: soundtrack)
