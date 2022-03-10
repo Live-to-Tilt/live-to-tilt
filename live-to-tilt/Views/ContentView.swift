@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  live-to-tilt
-//
-//  Created by Wen Hao on 7/3/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
