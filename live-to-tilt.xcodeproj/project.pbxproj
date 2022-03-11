@@ -20,6 +20,8 @@
 		3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13481227D8D89100D46B84 /* SettingsViewModel.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
+		7215CD4727DB63D800A26752 /* GameControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4627DB63D800A26752 /* GameControl.swift */; };
+		7215CD4A27DB661C00A26752 /* AccelerometerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4927DB661C00A26752 /* AccelerometerControl.swift */; };
 		72478E9327D70C9800B9140A /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9227D70C9800B9140A /* Entity.swift */; };
 		72478E9527D70DFE00B9140A /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9427D70DFE00B9140A /* Component.swift */; };
 		72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9627D70E4200B9140A /* ComponentIdentifier.swift */; };
@@ -30,6 +32,7 @@
 		72478EA327D739A500B9140A /* TestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA227D739A500B9140A /* TestViewModel.swift */; };
 		72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA427D73A8200B9140A /* GameRenderer.swift */; };
 		72478EA827D73B0500B9140A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA727D73B0500B9140A /* Constants.swift */; };
+		72774A8D27DB808900B0E1DD /* CMAcceleration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8C27DB808900B0E1DD /* CMAcceleration+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,8 @@
 		3D13481227D8D89100D46B84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
+		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		72478E9227D70C9800B9140A /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		72478E9427D70DFE00B9140A /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		72478E9627D70E4200B9140A /* ComponentIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentIdentifier.swift; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 		72478EA227D739A500B9140A /* TestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestViewModel.swift; path = "live-to-tilt/ViewModels/TestViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		72478EA427D73A8200B9140A /* GameRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameRenderer.swift; path = "live-to-tilt/ViewModels/Utilities/GameRenderer.swift"; sourceTree = SOURCE_ROOT; };
 		72478EA727D73B0500B9140A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		72774A8C27DB808900B0E1DD /* CMAcceleration+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +164,15 @@
 			path = AudioEngine;
 			sourceTree = "<group>";
 		};
+		7215CD4827DB657D00A26752 /* GameControl */ = {
+			isa = PBXGroup;
+			children = (
+				7215CD4627DB63D800A26752 /* GameControl.swift */,
+				7215CD4927DB661C00A26752 /* AccelerometerControl.swift */,
+			);
+			path = GameControl;
+			sourceTree = "<group>";
+		};
 		72478E8F27D70C6300B9140A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +209,7 @@
 				3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */,
 				3DBBF53427DA25DC0039557D /* ImageAsset.swift */,
 				3D7AABB227DA4BD6007DAE9E /* Layer.swift */,
+				72774A8C27DB808900B0E1DD /* CMAcceleration+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -201,6 +217,7 @@
 		72478EA927D73C8D00B9140A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7215CD4827DB657D00A26752 /* GameControl */,
 				72478EA427D73A8200B9140A /* GameRenderer.swift */,
 			);
 			path = Utilities;
@@ -310,10 +327,13 @@
 				72478E9D27D7363100B9140A /* GameEngine.swift in Sources */,
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				3D02FD4E27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift in Sources */,
+				7215CD4727DB63D800A26752 /* GameControl.swift in Sources */,
+				72774A8D27DB808900B0E1DD /* CMAcceleration+Extensions.swift in Sources */,
 				3D13480F27D8CB7900D46B84 /* UserDefaults+Extensions.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				3D13480627D8BDA900D46B84 /* Soundtrack.swift in Sources */,
+				7215CD4A27DB661C00A26752 /* AccelerometerControl.swift in Sources */,
 				3D12D9C727D61D8500D01489 /* Main.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,
 				3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */,
@@ -446,7 +466,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"live-to-tilt/Preview Content\"";
-				DEVELOPMENT_TEAM = R6RNQ337X4;
+				DEVELOPMENT_TEAM = 7757FZR3M3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "live-to-tilt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -468,7 +488,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"live-to-tilt/Preview Content\"";
-				DEVELOPMENT_TEAM = R6RNQ337X4;
+				DEVELOPMENT_TEAM = 7757FZR3M3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "live-to-tilt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

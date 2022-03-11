@@ -4,13 +4,15 @@ class TestViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent] = []
 
     var gameEngine: GameEngine
+    var gameControl: GameControl
     var gameRenderer: GameRenderer
 
     var cancellables = Set<AnyCancellable>()
 
     init() {
         gameEngine = GameEngine()
-        gameRenderer = GameRenderer(gameEngine: gameEngine)
+        gameControl = AccelerometerControl()
+        gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         gameRenderer.start()
 
         gameEngine.renderablePublisher.sink { renderableComponents in
