@@ -20,6 +20,9 @@
 		3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13481227D8D89100D46B84 /* SettingsViewModel.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
+		7215CD3F27DB37CC00A26752 /* GyroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD3E27DB37CC00A26752 /* GyroView.swift */; };
+		7215CD4127DB37ED00A26752 /* GyroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4027DB37ED00A26752 /* GyroViewModel.swift */; };
+		7215CD4327DB48D400A26752 /* LTAcceleration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4227DB48D400A26752 /* LTAcceleration.swift */; };
 		72478E9327D70C9800B9140A /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9227D70C9800B9140A /* Entity.swift */; };
 		72478E9527D70DFE00B9140A /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9427D70DFE00B9140A /* Component.swift */; };
 		72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478E9627D70E4200B9140A /* ComponentIdentifier.swift */; };
@@ -48,6 +51,9 @@
 		3D13481227D8D89100D46B84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		7215CD3E27DB37CC00A26752 /* GyroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroView.swift; sourceTree = "<group>"; };
+		7215CD4027DB37ED00A26752 /* GyroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GyroViewModel.swift; sourceTree = "<group>"; };
+		7215CD4227DB48D400A26752 /* LTAcceleration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTAcceleration.swift; sourceTree = "<group>"; };
 		72478E9227D70C9800B9140A /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		72478E9427D70DFE00B9140A /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		72478E9627D70E4200B9140A /* ComponentIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentIdentifier.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 			children = (
 				3D12D9C827D61D8500D01489 /* ContentView.swift */,
 				3D13481027D8D86000D46B84 /* SettingsView.swift */,
+				7215CD3E27DB37CC00A26752 /* GyroView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 				72478EA927D73C8D00B9140A /* Utilities */,
 				72478EA227D739A500B9140A /* TestViewModel.swift */,
 				3D13481227D8D89100D46B84 /* SettingsViewModel.swift */,
+				7215CD4027DB37ED00A26752 /* GyroViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 				3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */,
 				3DBBF53427DA25DC0039557D /* ImageAsset.swift */,
 				3D7AABB227DA4BD6007DAE9E /* Layer.swift */,
+				7215CD4227DB48D400A26752 /* LTAcceleration.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 			files = (
 				3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
+				7215CD3F27DB37CC00A26752 /* GyroView.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
@@ -309,8 +319,10 @@
 				72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */,
 				72478E9D27D7363100B9140A /* GameEngine.swift in Sources */,
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
+				7215CD4127DB37ED00A26752 /* GyroViewModel.swift in Sources */,
 				3D02FD4E27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift in Sources */,
 				3D13480F27D8CB7900D46B84 /* UserDefaults+Extensions.swift in Sources */,
+				7215CD4327DB48D400A26752 /* LTAcceleration.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				3D13480627D8BDA900D46B84 /* Soundtrack.swift in Sources */,
@@ -446,7 +458,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"live-to-tilt/Preview Content\"";
-				DEVELOPMENT_TEAM = R6RNQ337X4;
+				DEVELOPMENT_TEAM = 7757FZR3M3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "live-to-tilt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -454,7 +466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cs3217.live-to-tilt";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs3217.ltt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -468,7 +480,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"live-to-tilt/Preview Content\"";
-				DEVELOPMENT_TEAM = R6RNQ337X4;
+				DEVELOPMENT_TEAM = 7757FZR3M3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "live-to-tilt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -476,7 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cs3217.live-to-tilt";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cs3217.ltt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
