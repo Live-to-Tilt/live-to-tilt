@@ -20,10 +20,26 @@ class KeyboardControl: GameControl {
         inputForce
     }
 
-    func setAcceleration(_ inputForce: CGVector) {
+    func setInputForce(_ inputForce: CGVector) {
         guard hasStarted else {
             return
         }
         self.inputForce = inputForce
+    }
+
+    // TODO: Improve this, currently a proof of concept
+    func handleDirection(_ key: String) {
+        switch key {
+        case "w":
+            setInputForce(CGVector(dx: 1, dy: 0))
+        case "s":
+            setInputForce(CGVector(dx: -1, dy: 0))
+        case "a":
+            setInputForce(CGVector(dx: 0, dy: 1))
+        case "d":
+            setInputForce(CGVector(dx: 0, dy: -1))
+        default:
+            return
+        }
     }
 }

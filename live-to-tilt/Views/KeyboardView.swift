@@ -4,25 +4,25 @@ struct KeyboardView: View {
     @StateObject var viewModel = KeyboardViewModel()
 
     var body: some View {
-        Text("x: \(viewModel.gameControl.getAcceleration().x)")
-        Text("y: \(viewModel.gameControl.getAcceleration().y)")
+        Text("x: \(viewModel.gameControl.getInputForce().dx)")
+        Text("y: \(viewModel.gameControl.getInputForce().dy)")
 
-        Button(action: { viewModel.handleDirection("w") }) {
+        Button(action: { viewModel.gameControl.handleDirection("w") }) {
             Text("↑")
         }
         .keyboardShortcut("w", modifiers: [])
 
-        Button(action: { viewModel.handleDirection("s") }) {
+        Button(action: { viewModel.gameControl.handleDirection("s") }) {
             Text("↓")
         }
         .keyboardShortcut("s", modifiers: [])
 
-        Button(action: { viewModel.handleDirection("a") }) {
+        Button(action: { viewModel.gameControl.handleDirection("a") }) {
             Text("←")
         }
         .keyboardShortcut("a", modifiers: [])
 
-        Button(action: { viewModel.handleDirection("d") }) {
+        Button(action: { viewModel.gameControl.handleDirection("d") }) {
             Text("→")
         }
         .keyboardShortcut("d", modifiers: [])

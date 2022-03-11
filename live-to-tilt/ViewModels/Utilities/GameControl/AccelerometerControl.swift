@@ -27,8 +27,4 @@ class AccelerometerControl: GameControl {
         }
         return data.acceleration.toCGVector()
     }
-
-    func setInputForce(_ inputForce: CGVector) {
-        fatalError("This should not be used")
-    }
 }

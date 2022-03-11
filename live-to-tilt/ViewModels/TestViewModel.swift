@@ -4,7 +4,7 @@ class TestViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent] = []
 
     var gameEngine: GameEngine
-    var gameControl: GameControl
+    var gameControl: AccelerometerControl
     var gameRenderer: GameRenderer
 
     var cancellables = Set<AnyCancellable>()
