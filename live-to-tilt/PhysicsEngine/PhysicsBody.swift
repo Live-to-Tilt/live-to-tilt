@@ -1,7 +1,7 @@
 import CoreGraphics
 
 final class PhysicsBody {
-    static let minimumSize: CGFloat = Constants.physicsBodyMinimumSize // TODO check if needed
+    static let minimumSize: CGFloat = Constants.physicsBodyMinimumSize
 
     // Physical Properties
     var mass: CGFloat
@@ -10,13 +10,11 @@ final class PhysicsBody {
     var size: CGSize
     var velocity: CGVector
     var restitution: CGFloat
-    var vertices: [CGPoint] // TODO change vertices to be calculated based on properties
-    private(set) var position: CGPoint
+    var position: CGPoint
 
-
-    // force related properties
+    // Force related properties
     var drag: CGFloat
-    var isCollidable: Bool
+    var isCollidable: Bool // if false, can only detect contact, will not resolve collision
     var isDynamic: Bool
     var forces: [CGVector]
     var netForce: CGVector {
@@ -33,9 +31,6 @@ final class PhysicsBody {
             return CircleCollider(center: position, radius: size.width / 2)
         case .rectangle:
             return RectangleCollider(center: position, size: size)
-        case .triangle:
-            let rotatedVertices = calculateRotatedVertices(vertices)
-            return TriangleCollider(vertices: rotatedVertices)
         }
     }
 
@@ -49,7 +44,6 @@ final class PhysicsBody {
          forces: [CGVector] = [],
          restitution: CGFloat = Constants.restitution,
          drag: CGFloat = Constants.drag,
-         vertices: [CGPoint] = [],
          isCollidable: Bool = false) {
         self.isDynamic = isDynamic
         self.shape = shape
@@ -61,7 +55,6 @@ final class PhysicsBody {
         self.forces = forces
         self.restitution = restitution
         self.drag = drag
-        self.vertices = vertices
         self.isCollidable = isCollidable
     }
 
@@ -78,7 +71,6 @@ final class PhysicsBody {
 
         let vector = velocity * deltaTime
         position += vector
-        vertices = vertices.map({ $0 + vector })
 
         // Reset forces
         forces = []
@@ -86,5 +78,15 @@ final class PhysicsBody {
 
     private func calculateRotatedVertices(_ vertices: [CGPoint]) -> [CGPoint] {
         vertices.map({ PhysicsUtils.rotate(point: $0, around: position, angle: rotation) })
+    }
+}
+
+extension PhysicsBody: Hashable {
+    static func == (lhs: PhysicsBody, rhs: PhysicsBody) -> Bool {
+        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }

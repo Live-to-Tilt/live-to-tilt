@@ -1,12 +1,9 @@
 import CoreGraphics
 
 protocol Collider {
-    func checkForCollision(with otherCollider: Collider) -> CollisionPoints
+    func checkCollision(with otherCollider: Collider) -> CollisionPoints
 
-    func checkForCollision(with otherCollider: CircleCollider) -> CollisionPoints
+    func checkCollision(with otherCollider: CircleCollider) -> CollisionPoints
 
-    func checkForCollision(with otherCollider: RectangleCollider) -> CollisionPoints
-
-    func checkForCollision(with otherCollider: TriangleCollider) -> CollisionPoints
-
+    func checkCollision(with otherCollider: RectangleCollider) -> CollisionPoints
 }

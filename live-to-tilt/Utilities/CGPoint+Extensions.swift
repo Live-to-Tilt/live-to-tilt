@@ -38,4 +38,8 @@ extension CGPoint {
                             - (y - pointOnVector.y) * (otherPoint.x - pointOnVector.x))
         return determinant > 0
     }
+
+    func distanceTo(_ point: CGPoint) -> CGFloat {
+        (self - point).magnitude
+    }
 }

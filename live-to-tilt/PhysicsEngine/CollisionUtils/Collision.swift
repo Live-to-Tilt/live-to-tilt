@@ -5,3 +5,5 @@ struct Collision {
     let bodyB: PhysicsBody
     let collisionPoints: CollisionPoints
 }
+
+extension Collision: Hashable { }

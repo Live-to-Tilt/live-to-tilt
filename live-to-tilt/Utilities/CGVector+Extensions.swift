@@ -90,7 +90,8 @@ extension CGVector {
     }
 
     var unitVector: CGVector {
-        self / self.magnitude
+        let len = self.magnitude
+        return len > 0 ? self / len : .zero
     }
 
     func isRight(of vector: CGVector) -> Bool {
