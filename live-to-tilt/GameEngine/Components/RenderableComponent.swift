@@ -15,7 +15,7 @@ class RenderableComponent: Component {
          size: CGSize,
          rotation: CGFloat = 0.0,
          opacity: Double = 1.0,
-         layer: Layer = .everything) {
+         layer: Layer = .base) {
         self.image = image
         self.position = position
         self.size = size
