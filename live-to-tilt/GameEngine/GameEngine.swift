@@ -14,7 +14,7 @@ class GameEngine {
         systems = []
     }
 
-    func update(deltaTime: CGFloat, acceleration: LTAcceleration) {
+    func update(deltaTime: CGFloat, inputForce: CGVector) {
         systems.forEach { $0.update(deltaTime: deltaTime) }
 
         // Publish updates

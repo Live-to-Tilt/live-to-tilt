@@ -1,7 +1,9 @@
+import CoreGraphics
+
 protocol GameControl {
     func start()
 
     func stop()
 
-    func getAcceleration() -> LTAcceleration
+    func getInputForce() -> CGVector
 }

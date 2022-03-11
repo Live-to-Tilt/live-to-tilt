@@ -1,3 +1,4 @@
+import CoreGraphics
 import CoreMotion
 
 class AccelerometerControl: GameControl {
@@ -9,7 +10,7 @@ class AccelerometerControl: GameControl {
 
     func start() {
         if motion.isAccelerometerAvailable {
-            motion.accelerometerUpdateInterval = Constants.accelerometerUpdateInterval
+            motion.accelerometerUpdateInterval = 1.0 / Double(Constants.framesPerSecond)
             motion.startAccelerometerUpdates()
         }
     }
@@ -20,10 +21,10 @@ class AccelerometerControl: GameControl {
         }
     }
 
-    func getAcceleration() -> LTAcceleration {
+    func getInputForce() -> CGVector {
         guard let data = motion.accelerometerData else {
-            return LTAcceleration.zero
+            return CGVector.zero
         }
-        return LTAcceleration(from: data.acceleration)
+        return data.acceleration.toCGVector()
     }
 }

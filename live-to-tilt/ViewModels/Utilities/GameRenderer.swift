@@ -37,8 +37,8 @@ class GameRenderer {
     @objc
     func step() {
         let elapsedTime = displayLink.targetTimestamp - displayLink.timestamp
-        let acceleration = gameControl.getAcceleration()
+        let inputForce = gameControl.getInputForce()
 
-        gameEngine.update(deltaTime: CGFloat(elapsedTime), acceleration: acceleration)
+        gameEngine.update(deltaTime: CGFloat(elapsedTime), inputForce: inputForce)
     }
 }
