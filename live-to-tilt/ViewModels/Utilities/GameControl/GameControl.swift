@@ -6,4 +6,6 @@ protocol GameControl {
     func stop()
 
     func getInputForce() -> CGVector
+
+    func setInputForce(_ inputForce: CGVector)
 }
