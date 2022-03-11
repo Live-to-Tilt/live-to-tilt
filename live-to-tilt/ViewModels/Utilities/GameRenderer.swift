@@ -1,14 +1,14 @@
 import QuartzCore
-import CoreMotion
 
 class GameRenderer {
     private let gameEngine: GameEngine
     private var displayLink: CADisplayLink!
-    private var motion: CMMotionManager!
+    private var gameControl: GameControl
     private var hasStarted = false
 
-    init(gameEngine: GameEngine) {
+    init(gameEngine: GameEngine, gameControl: GameControl) {
         self.gameEngine = gameEngine
+        self.gameControl = gameControl
     }
 
     func start() {
@@ -16,9 +16,7 @@ class GameRenderer {
         displayLink.preferredFramesPerSecond = Constants.framesPerSecond
         displayLink.add(to: .main, forMode: .default)
 
-        motion = CMMotionManager()
-        motion.accelerometerUpdateInterval = 1.0 / 60.0
-        motion.startAccelerometerUpdates()
+        gameControl.start()
 
         hasStarted = true
     }
@@ -29,8 +27,7 @@ class GameRenderer {
         }
         hasStarted = false
 
-        motion.stopAccelerometerUpdates()
-        motion = nil
+        gameControl.stop()
 
         displayLink.invalidate()
         displayLink.remove(from: .main, forMode: .default)
@@ -40,10 +37,7 @@ class GameRenderer {
     @objc
     func step() {
         let elapsedTime = displayLink.targetTimestamp - displayLink.timestamp
-        var acceleration = LTAcceleration.zero
-        if let data = motion.accelerometerData {
-            acceleration = LTAcceleration(from: data.acceleration)
-        }
+        let acceleration = gameControl.getAcceleration()
 
         gameEngine.update(deltaTime: CGFloat(elapsedTime), acceleration: acceleration)
     }
