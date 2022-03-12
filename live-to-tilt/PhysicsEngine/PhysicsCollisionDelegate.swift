@@ -1,6 +1,6 @@
 protocol PhysicsCollisionDelegate: AnyObject {
 
-    func didBegin(_ contact: Collision)
+    func didBegin(_ collision: Collision)
 
-    func didEnd(_ contact: Collision)
+    func didEnd(_ collision: Collision)
 }

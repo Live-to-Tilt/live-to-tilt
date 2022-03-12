@@ -14,9 +14,9 @@ final class CircleCollider: Collider {
     }
 
     func checkCollision(with otherCollider: CircleCollider) -> CollisionPoints {
-        let otherPosition = otherCollider.center
-        let normal = center - otherPosition
-        let pointB = otherPosition + normal.unitVector * otherCollider.radius
+        let otherCenter = otherCollider.center
+        let normal = center - otherCenter
+        let pointB = otherCenter + normal.unitVector * otherCollider.radius
         let pointA = center - normal.unitVector * radius
         let hasCollision = normal.magnitude < radius + otherCollider.radius
         return CollisionPoints(hasCollision: hasCollision, pointA: pointA, pointB: pointB)

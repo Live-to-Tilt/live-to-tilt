@@ -1,5 +1,3 @@
-import CoreGraphics
-
 struct Constants {
     // Rendering
     static let framesPerSecond: Int = 60
