@@ -1,4 +1,4 @@
-enum Shapes: String {
+enum Shape: String {
     case circle
     case rectangle
 }

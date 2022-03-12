@@ -6,7 +6,7 @@ final class PhysicsBody {
     // Physical Properties
     var mass: CGFloat
     var rotation: Double
-    var shape: Shapes
+    var shape: Shape
     var size: CGSize
     var velocity: CGVector
     var restitution: CGFloat
@@ -18,11 +18,7 @@ final class PhysicsBody {
     var isDynamic: Bool
     var forces: [CGVector]
     var netForce: CGVector {
-        var netForce = CGVector.zero
-        forces.forEach { force in
-            netForce += force
-        }
-        return netForce
+        forces.reduce(CGVector.zero, +)
     }
 
     var collider: Collider {
@@ -35,7 +31,7 @@ final class PhysicsBody {
     }
 
     init(isDynamic: Bool,
-         shape: Shapes,
+         shape: Shape,
          position: CGPoint,
          size: CGSize,
          rotation: CGFloat = .zero,
@@ -63,10 +59,10 @@ final class PhysicsBody {
     }
 
     func update(deltaTime: CGFloat) {
-        let maxVelocity = PhysicsBody.minimumSize / deltaTime
+        let maxSpeed = PhysicsBody.minimumSize / deltaTime
         velocity += netForce / mass * deltaTime
-        if velocity.magnitude > maxVelocity {
-            velocity = velocity.unitVector * maxVelocity
+        if velocity.magnitude > maxSpeed {
+            velocity = velocity.unitVector * maxSpeed
         }
 
         let vector = velocity * deltaTime

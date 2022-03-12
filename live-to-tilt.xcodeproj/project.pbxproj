@@ -38,7 +38,7 @@
 		DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DA27D7B8A300B0E750 /* PhysicsBody.swift */; };
 		DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DB27D7B8A300B0E750 /* Collision.swift */; };
 		DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DC27D7B8A300B0E750 /* CGSize+Extensions.swift */; };
-		DBEC91EC27D7B8A300B0E750 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DD27D7B8A300B0E750 /* Shapes.swift */; };
+		DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DD27D7B8A300B0E750 /* Shape.swift */; };
 		DBEC91ED27D7B8A300B0E750 /* RectangleCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DE27D7B8A300B0E750 /* RectangleCollider.swift */; };
 		DBEC91EE27D7B8A300B0E750 /* CollisionPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DF27D7B8A300B0E750 /* CollisionPoints.swift */; };
 		DBEC91EF27D7B8A300B0E750 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91E027D7B8A300B0E750 /* CGVector+Extensions.swift */; };
@@ -83,7 +83,7 @@
 		DBEC91DA27D7B8A300B0E750 /* PhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
 		DBEC91DB27D7B8A300B0E750 /* Collision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collision.swift; sourceTree = "<group>"; };
 		DBEC91DC27D7B8A300B0E750 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
-		DBEC91DD27D7B8A300B0E750 /* Shapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		DBEC91DD27D7B8A300B0E750 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 		DBEC91DE27D7B8A300B0E750 /* RectangleCollider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleCollider.swift; sourceTree = "<group>"; };
 		DBEC91DF27D7B8A300B0E750 /* CollisionPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionPoints.swift; sourceTree = "<group>"; };
 		DBEC91E027D7B8A300B0E750 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 				DBEC91DA27D7B8A300B0E750 /* PhysicsBody.swift */,
 				DBEC91E127D7B8A300B0E750 /* PhysicsWorld.swift */,
 				DBEC91F727D8F92200B0E750 /* PhysicsCollisionDelegate.swift */,
-				DBEC91DD27D7B8A300B0E750 /* Shapes.swift */,
+				DBEC91DD27D7B8A300B0E750 /* Shape.swift */,
 				DB88976627DC3D7500F72B9C /* Utilities */,
 				DBEC91FA27D9150300B0E750 /* CollisionUtils */,
 			);
@@ -402,7 +402,7 @@
 				72478E9D27D7363100B9140A /* GameEngine.swift in Sources */,
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
-				DBEC91EC27D7B8A300B0E750 /* Shapes.swift in Sources */,
+				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,

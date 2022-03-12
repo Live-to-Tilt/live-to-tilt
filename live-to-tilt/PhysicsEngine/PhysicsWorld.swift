@@ -9,25 +9,26 @@ final class PhysicsWorld {
         existingCollisions = []
     }
 
-    func updatePhysicsBodies(_ physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
-        for physicsBody in physicsBodies {
-            physicsBody.update(deltaTime: deltaTime)
-        }
+    func update(_ physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
+        updatePhysicsBodies(physicsBodies, deltaTime: deltaTime)
         resolveCollisions(for: physicsBodies, deltaTime: deltaTime)
     }
 
-    private func detectCollisions(for physicsBodies: [PhysicsBody]) -> Set<Collision> {
-        let physicsBodies = physicsBodies.filter({ $0.isTrigger })
+    private func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
+                                     deltaTime: CGFloat) {
+        for physicsBody in physicsBodies {
+            physicsBody.update(deltaTime: deltaTime)
+        }
+    }
 
+    private func detectCollisions(for physicsBodies: [PhysicsBody]) -> Set<Collision> {
         var currentCollisions: Set<Collision> = []
 
         for i in 0..<physicsBodies.count - 1 {
             let bodyA = physicsBodies[i]
-            let colliderA = bodyA.collider
-            for j in i + 1..<physicsBodies.count {
+            for j in (i + 1)..<physicsBodies.count {
                 let bodyB = physicsBodies[j]
-                let colliderB = bodyB.collider
-                let points = colliderA.checkCollision(with: colliderB)
+                let points = bodyA.collider.checkCollision(with: bodyB.collider)
 
                 guard points.hasCollision else {
                     continue
