@@ -94,8 +94,17 @@ extension CGVector {
         return len > 0 ? self / len : .zero
     }
 
+    var angle: CGFloat {
+        atan2(dy, dx)
+    }
+
     func isRight(of vector: CGVector) -> Bool {
         let dot = vector.dx * -dy + vector.dy * dx
         return dot < 0
     }
+
+    func dot(_ vector: CGVector) -> CGFloat {
+        dx * vector.dx + dy * vector.dy
+    }
+
 }

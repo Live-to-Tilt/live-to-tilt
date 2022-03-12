@@ -13,7 +13,6 @@ final class RectangleCollider: Collider {
         otherCollider.checkCollision(with: self)
     }
 
-    // Rect-circle
     func checkCollision(with otherCollider: CircleCollider) -> CollisionPoints {
         let collisionPoints = otherCollider.checkCollision(with: self)
 
@@ -22,7 +21,6 @@ final class RectangleCollider: Collider {
                                pointB: collisionPoints.pointA)
     }
 
-    // Rect-rect (not supported)
     func checkCollision(with otherCollider: RectangleCollider) -> CollisionPoints {
         CollisionPoints.noCollision
     }

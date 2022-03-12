@@ -13,7 +13,6 @@ final class CircleCollider: Collider {
         otherCollider.checkCollision(with: self)
     }
 
-    // circle-circle
     func checkCollision(with otherCollider: CircleCollider) -> CollisionPoints {
         let otherPosition = otherCollider.center
         let normal = center - otherPosition
@@ -23,16 +22,15 @@ final class CircleCollider: Collider {
         return CollisionPoints(hasCollision: hasCollision, pointA: pointA, pointB: pointB)
     }
 
-    // circle-rect
     func checkCollision(with otherCollider: RectangleCollider) -> CollisionPoints {
-        let otherPosition = otherCollider.center
-        let normal = center - otherPosition
+        let otherCenter = otherCollider.center
+        let normal = center - otherCenter
 
         let rectHalfWidth = otherCollider.size.width / 2
         let rectHalfHeight = otherCollider.size.height / 2
         let clampedX = normal.dx.clamped(-rectHalfWidth, rectHalfWidth)
         let clampedY = normal.dy.clamped(-rectHalfHeight, rectHalfHeight)
-        let closestRectPoint = otherCollider.center + CGVector(dx: clampedX, dy: clampedY)
+        let closestRectPoint = otherCenter + CGVector(dx: clampedX, dy: clampedY)
 
         let circleCentreToRect = closestRectPoint - center
         let pointA = center + circleCentreToRect.unitVector * radius

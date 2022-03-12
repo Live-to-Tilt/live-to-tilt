@@ -1,5 +1,3 @@
-import CoreGraphics
-
 protocol Collider {
     func checkCollision(with otherCollider: Collider) -> CollisionPoints
 

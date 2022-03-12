@@ -1,4 +1,4 @@
-protocol PhysicsContactDelegate {
+protocol PhysicsCollisionDelegate: AnyObject {
 
     func didBegin(_ contact: Collision)
 

@@ -1,4 +1,4 @@
-enum Shapes: String, Codable {
+enum Shapes: String {
     case circle
     case rectangle
 }

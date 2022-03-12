@@ -1,10 +1,8 @@
 import CoreGraphics
-import Combine
-import SpriteKit
 
 final class PhysicsWorld {
 
-    var contactDelegate: PhysicsContactDelegate?
+    weak var contactDelegate: PhysicsCollisionDelegate?
     var existingCollisions: Set<Collision>
 
     init() {
@@ -19,7 +17,7 @@ final class PhysicsWorld {
     }
 
     private func detectCollisions(for physicsBodies: [PhysicsBody]) -> Set<Collision> {
-        let physicsBodies = physicsBodies.filter({ $0.isCollidable })
+        let physicsBodies = physicsBodies.filter({ $0.isTrigger })
 
         var currentCollisions: Set<Collision> = []
 
@@ -35,7 +33,7 @@ final class PhysicsWorld {
                     continue
                 }
 
-                let collision: Collision = Collision(bodyA: bodyA, bodyB: bodyB, collisionPoints: points)
+                let collision = Collision(bodyA: bodyA, bodyB: bodyB, collisionPoints: points)
                 currentCollisions.insert(collision)
 
                 if !existingCollisions.contains(collision) {
@@ -57,19 +55,26 @@ final class PhysicsWorld {
         let collisions = detectCollisions(for: physicsBodies)
 
         for collision in collisions {
-            guard [collision.bodyA, collision.bodyB].allSatisfy({ $0.isCollidable == true }) else {
+            guard [collision.bodyA, collision.bodyB].allSatisfy({ $0.isTrigger == false }) else {
                 continue
             }
             let collisionPoints = collision.collisionPoints
             let bodyA = collision.bodyA
             let bodyB = collision.bodyB
 
-            if bodyA.isDynamic && bodyB.isDynamic {
-                resolveCollision(dynamicBodyA: bodyA, dynamicBodyB: bodyB, pointA: collisionPoints.pointA, pointB: collisionPoints.pointB, deltaTime: deltaTime)
-            } else if bodyA.isDynamic {
-                resolveCollision(dynamicBody: bodyA, staticBody: bodyB, normal: collisionPoints.normal, depth: collisionPoints.depth, deltaTime: deltaTime)
-            } else if bodyB.isDynamic {
-                resolveCollision(dynamicBody: bodyB, staticBody: bodyA, normal: -collisionPoints.normal, depth: collisionPoints.depth, deltaTime: deltaTime)
+            // only handle dynamic-static collision
+            if bodyA.isDynamic && !bodyB.isDynamic {
+                resolveCollision(dynamicBody: bodyA,
+                                 staticBody: bodyB,
+                                 normal: collisionPoints.normal,
+                                 depth: collisionPoints.depth,
+                                 deltaTime: deltaTime)
+            } else if bodyB.isDynamic && !bodyA.isDynamic {
+                resolveCollision(dynamicBody: bodyB,
+                                 staticBody: bodyA,
+                                 normal: -collisionPoints.normal,
+                                 depth: collisionPoints.depth,
+                                 deltaTime: deltaTime)
             }
         }
     }
@@ -81,21 +86,14 @@ final class PhysicsWorld {
                                   deltaTime: CGFloat) {
         // Decouple physics bodies
         dynamicBody.position += normal * depth
+
+        // Resolve velocity
+        let velocity = dynamicBody.velocity
+        let angle = normal.angle
+
+        dynamicBody.velocity = CGVector(
+            dx: -velocity.dx * cos(2 * angle) - velocity.dy * sin(2 * angle),
+            dy: -velocity.dx * sin(2 * angle) + velocity.dy * cos(2 * angle)
+        ) * (1 - dynamicBody.restitution)
     }
-
-    private func resolveCollision(dynamicBodyA: PhysicsBody,
-                                  dynamicBodyB: PhysicsBody,
-                                  pointA: CGPoint,
-                                  pointB: CGPoint,
-                                  deltaTime: CGFloat) {
-        // Decouple physics bodies
-        let normalA = pointB - pointA // normal used to resolve bodyA
-        let normalB = pointA - pointB // normal used to resolve bodyB
-
-        let oldPositionA = dynamicBodyA.position
-        let oldPositionB = dynamicBodyB.position
-        dynamicBodyA.position = oldPositionA + normalA / 2
-        dynamicBodyB.position = oldPositionB + normalB / 2
-    }
-
 }

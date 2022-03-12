@@ -1,7 +1,7 @@
 import CoreGraphics
 
 final class PhysicsBody {
-    static let minimumSize: CGFloat = Constants.physicsBodyMinimumSize
+    static let minimumSize: CGFloat = PhysicsConstants.physicsBodyMinimumSize
 
     // Physical Properties
     var mass: CGFloat
@@ -14,7 +14,7 @@ final class PhysicsBody {
 
     // Force related properties
     var drag: CGFloat
-    var isCollidable: Bool // if false, can only detect contact, will not resolve collision
+    var isTrigger: Bool
     var isDynamic: Bool
     var forces: [CGVector]
     var netForce: CGVector {
@@ -38,13 +38,13 @@ final class PhysicsBody {
          shape: Shapes,
          position: CGPoint,
          size: CGSize,
-         rotation: Double = 0,
+         rotation: CGFloat = .zero,
          mass: CGFloat = 1,
          velocity: CGVector = .zero,
          forces: [CGVector] = [],
-         restitution: CGFloat = Constants.restitution,
-         drag: CGFloat = Constants.drag,
-         isCollidable: Bool = false) {
+         restitution: CGFloat = PhysicsConstants.restitution,
+         drag: CGFloat = PhysicsConstants.drag,
+         isTrigger: Bool = false) {
         self.isDynamic = isDynamic
         self.shape = shape
         self.position = position
@@ -55,7 +55,7 @@ final class PhysicsBody {
         self.forces = forces
         self.restitution = restitution
         self.drag = drag
-        self.isCollidable = isCollidable
+        self.isTrigger = isTrigger
     }
 
     func applyForce(_ force: CGVector) {
@@ -72,18 +72,14 @@ final class PhysicsBody {
         let vector = velocity * deltaTime
         position += vector
 
-        // Reset forces
         forces = []
     }
 
-    private func calculateRotatedVertices(_ vertices: [CGPoint]) -> [CGPoint] {
-        vertices.map({ PhysicsUtils.rotate(point: $0, around: position, angle: rotation) })
-    }
 }
 
 extension PhysicsBody: Hashable {
     static func == (lhs: PhysicsBody, rhs: PhysicsBody) -> Bool {
-        return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
+        ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
     }
 
     func hash(into hasher: inout Hasher) {
