@@ -11,8 +11,8 @@ class TestViewModel: ObservableObject {
 
     init() {
         gameEngine = GameEngine()
-        gameControl = AccelerometerControl()
-//        gameControl = KeyboardControl()
+//        gameControl = AccelerometerControl()
+        gameControl = KeyboardControl()
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         gameRenderer.start()
 
