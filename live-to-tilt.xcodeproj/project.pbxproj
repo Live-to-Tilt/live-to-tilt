@@ -50,7 +50,10 @@
 		72774A8D27DB808900B0E1DD /* CMAcceleration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8C27DB808900B0E1DD /* CMAcceleration+Extensions.swift */; };
 		72774A8527DB6FC000B0E1DD /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8427DB6FC000B0E1DD /* KeyboardView.swift */; };
 		72774A8727DB73BF00B0E1DD /* KeyboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8627DB73BF00B0E1DD /* KeyboardViewModel.swift */; };
+		72742DC827DD954A0033F06B /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72742DC727DD954A0033F06B /* GameControlView.swift */; };
+		72774A8527DB6FC000B0E1DD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8427DB6FC000B0E1DD /* TestView.swift */; };
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
+		72774A8D27DB808900B0E1DD /* CMAcceleration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8C27DB808900B0E1DD /* CMAcceleration+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +101,10 @@
 		DBEC91F727D8F92200B0E750 /* PhysicsCollisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCollisionDelegate.swift; sourceTree = "<group>"; };
 		72774A8427DB6FC000B0E1DD /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		72774A8627DB73BF00B0E1DD /* KeyboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewModel.swift; sourceTree = "<group>"; };
+		72742DC727DD954A0033F06B /* GameControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
+		72774A8427DB6FC000B0E1DD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
+		72774A8C27DB808900B0E1DD /* CMAcceleration+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +164,8 @@
 			children = (
 				3D12D9C827D61D8500D01489 /* ContentView.swift */,
 				3D13481027D8D86000D46B84 /* SettingsView.swift */,
-				72774A8427DB6FC000B0E1DD /* KeyboardView.swift */,
+				72774A8427DB6FC000B0E1DD /* TestView.swift */,
+				72742DC727DD954A0033F06B /* GameControlView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -169,7 +176,6 @@
 				72478EA927D73C8D00B9140A /* Utilities */,
 				72478EA227D739A500B9140A /* TestViewModel.swift */,
 				3D13481227D8D89100D46B84 /* SettingsViewModel.swift */,
-				72774A8627DB73BF00B0E1DD /* KeyboardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -418,8 +424,13 @@
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72774A8527DB6FC000B0E1DD /* KeyboardView.swift in Sources */,
+				3D02FD4E27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift in Sources */,
+				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
+				7215CD4727DB63D800A26752 /* GameControl.swift in Sources */,
+				72774A8D27DB808900B0E1DD /* CMAcceleration+Extensions.swift in Sources */,
+				3D13480F27D8CB7900D46B84 /* UserDefaults+Extensions.swift in Sources */,
+				72774A8527DB6FC000B0E1DD /* TestView.swift in Sources */,
 				3D13480627D8BDA900D46B84 /* Soundtrack.swift in Sources */,
-				72774A8727DB73BF00B0E1DD /* KeyboardViewModel.swift in Sources */,
 				7215CD4A27DB661C00A26752 /* AccelerometerControl.swift in Sources */,
 				3D12D9C727D61D8500D01489 /* Main.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,

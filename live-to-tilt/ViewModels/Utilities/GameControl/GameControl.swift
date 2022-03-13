@@ -1,4 +1,5 @@
 import CoreGraphics
+import Foundation
 
 protocol GameControl {
     func start()
