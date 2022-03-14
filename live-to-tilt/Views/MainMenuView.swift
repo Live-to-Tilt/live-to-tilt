@@ -6,17 +6,14 @@ struct MainMenuView: View {
             Background()
 
             VStack {
-                Text("Live to Tilt")
-                    .styleAsTitle()
+                Text("Live to Tilt").modifier(TitleText())
 
                 NavigationLink(destination: GameArenaView()) {
-                    Text("Play")
-                        .styleAsCapsule()
+                    Text("Play").modifier(CapsuleText())
                 }
 
                 NavigationLink(destination: SettingsView()) {
-                    Text("Settings")
-                        .styleAsCapsule()
+                    Text("Settings").modifier(CapsuleText())
                 }
             }
         }

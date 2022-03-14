@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2106F83527DF3D0700FA25D2 /* Text+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83427DF3D0700FA25D2 /* Text+Styles.swift */; };
+		2106F83C27DF493E00FA25D2 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83B27DF493E00FA25D2 /* CapsuleText.swift */; };
+		2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83D27DF497400FA25D2 /* TitleText.swift */; };
+		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
+		2106F84227DF4B8D00FA25D2 /* ParagraphText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F84127DF4B8D00FA25D2 /* ParagraphText.swift */; };
 		21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20B27DE382900250CF1 /* GameArenaView.swift */; };
 		21AFD21027DE400800250CF1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20F27DE400700250CF1 /* Color+Extensions.swift */; };
 		21AFD21C27DE685A00250CF1 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD21B27DE685A00250CF1 /* Background.swift */; };
@@ -54,7 +57,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2106F83427DF3D0700FA25D2 /* Text+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Styles.swift"; sourceTree = "<group>"; };
+		2106F83B27DF493E00FA25D2 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
+		2106F83D27DF497400FA25D2 /* TitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
+		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
+		2106F84127DF4B8D00FA25D2 /* ParagraphText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParagraphText.swift; sourceTree = "<group>"; };
 		21AFD20B27DE382900250CF1 /* GameArenaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArenaView.swift; sourceTree = "<group>"; };
 		21AFD20F27DE400700250CF1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		21AFD21B27DE685A00250CF1 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
@@ -113,12 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2106F83627DF3F6300FA25D2 /* Styles */ = {
+		2106F83627DF3F6300FA25D2 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
-				2106F83427DF3D0700FA25D2 /* Text+Styles.swift */,
+				2106F83B27DF493E00FA25D2 /* CapsuleText.swift */,
+				2106F83D27DF497400FA25D2 /* TitleText.swift */,
+				2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */,
+				2106F84127DF4B8D00FA25D2 /* ParagraphText.swift */,
 			);
-			path = Styles;
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		21AFD21427DE624700250CF1 /* Elements */ = {
@@ -173,7 +182,7 @@
 		3D12D9D527D61EF600D01489 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2106F83627DF3F6300FA25D2 /* Styles */,
+				2106F83627DF3F6300FA25D2 /* ViewModifiers */,
 				21AFD21427DE624700250CF1 /* Elements */,
 				3D12D9C827D61D8500D01489 /* MainMenuView.swift */,
 				3D13481027D8D86000D46B84 /* SettingsView.swift */,
@@ -408,15 +417,17 @@
 				DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */,
 				3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */,
 				DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */,
-				2106F83527DF3D0700FA25D2 /* Text+Styles.swift in Sources */,
+				2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
+				2106F83C27DF493E00FA25D2 /* CapsuleText.swift in Sources */,
 				21AFD21C27DE685A00250CF1 /* Background.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
+				2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */,
 				3D12D9C927D61D8500D01489 /* MainMenuView.swift in Sources */,
 				72478EA327D739A500B9140A /* TestViewModel.swift in Sources */,
 				DBEC91F327D7B8A300B0E750 /* CGPoint+Extensions.swift in Sources */,
@@ -433,6 +444,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
+				2106F84227DF4B8D00FA25D2 /* ParagraphText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,

@@ -1,15 +1,8 @@
 import SwiftUI
 
-extension Text {
-    func styleAsTitle() -> some View {
-        self
-            .padding()
-            .font(.system(size: 70, weight: .bold))
-            .foregroundColor(.LTForeground)
-    }
-
-    func styleAsCapsule() -> some View {
-        self
+struct CapsuleText: ViewModifier {
+    func body(content: Content) -> some View {
+        content
             .padding(EdgeInsets(top: 10,
                                 leading: 80,
                                 bottom: 10,
