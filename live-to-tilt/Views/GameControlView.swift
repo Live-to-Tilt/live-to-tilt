@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameControlView: View {
-    @Binding var gameControl: GameControl
+    var gameControl = GameControlManager.shared.gameControl
 
     var body: some View {
         VStack {

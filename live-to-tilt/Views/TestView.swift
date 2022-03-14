@@ -1,19 +1,18 @@
 import SwiftUI
 
 struct TestView: View {
-    @StateObject var viewModel = TestViewModel()
-
     var body: some View {
         NavigationView {
             VStack {
-                Text("This is a test view")
+                Text("Main Menu")
+
+                NavigationLink(destination: TestGameView()) {
+                    Text("Start game")
+                }
 
                 NavigationLink(destination: SettingsView()) {
                     Text("Settings")
                 }
-
-                // Insert this view into any view to allow player controls
-                GameControlView(gameControl: $viewModel.gameControl)
             }
         }
         .navigationViewStyle(.stack)

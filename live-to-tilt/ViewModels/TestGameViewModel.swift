@@ -1,6 +1,6 @@
 import Combine
 
-class TestViewModel: ObservableObject {
+class TestGameViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent] = []
 
     var gameEngine: GameEngine
