@@ -12,9 +12,9 @@ struct SettingsView: View {
 
                 Slider(value: $viewModel.soundtrackVolume,
                        in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume),
-                       label: { Text("Volume").modifier(HeadingOneText()) },
-                       minimumValueLabel: { Text("0").modifier(ParagraphText()) },
-                       maximumValueLabel: { Text("100").modifier(ParagraphText()) })
+                       label: { Text("Volume") },
+                       minimumValueLabel: { Text("0") },
+                       maximumValueLabel: { Text("100") })
             }
             .frame(width: 500)
 

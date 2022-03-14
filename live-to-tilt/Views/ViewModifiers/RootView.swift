@@ -9,6 +9,8 @@ struct RootView: ViewModifier {
                 content
             }
         }
+        .font(.system(size: 24))
+        .foregroundColor(.LTForeground)
         .navigationViewStyle(.stack)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)

@@ -8,7 +8,6 @@ struct CapsuleText: ViewModifier {
                                 bottom: 10,
                                 trailing: 80))
             .font(.system(size: 50))
-            .foregroundColor(.LTForeground)
             .background(Color.LTSecondaryBackground)
             .clipShape(Capsule())
     }
