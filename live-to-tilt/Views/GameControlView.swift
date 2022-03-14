@@ -4,13 +4,15 @@ struct GameControlView: View {
     @Binding var gameControl: GameControl
 
     var body: some View {
-        Text("x: \(gameControl.getInputForce().dx)")
-        Text("y: \(gameControl.getInputForce().dy)")
+        VStack {
+            Text("x: \(gameControl.getInputForce().dx)")
+            Text("y: \(gameControl.getInputForce().dy)")
 
-        if let keyboardControl = gameControl as? KeyboardControl {
-            KeyboardControls(keyboardControl)
-        } else if let accelControl = gameControl as? AccelerometerControl {
-            AccelerometerControls(accelControl)
+            if let keyboardControl = gameControl as? KeyboardControl {
+                KeyboardControls(keyboardControl)
+            } else if let accelControl = gameControl as? AccelerometerControl {
+                AccelerometerControls(accelControl)
+            }
         }
     }
 
@@ -43,10 +45,3 @@ struct GameControlView: View {
         Text("Accelerometer control")
     }
 }
-//
-// struct GameControlView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let gameControl = AccelerometerControl()
-//        return GameControlView(gameControl: $gameControl)
-//    }
-// }

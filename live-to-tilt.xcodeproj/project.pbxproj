@@ -27,6 +27,7 @@
 		72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA427D73A8200B9140A /* GameRenderer.swift */; };
 		72478EA827D73B0500B9140A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA727D73B0500B9140A /* Constants.swift */; };
 		726EBD0527DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EBD0427DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift */; };
+		726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */; };
 		72742DC827DD954A0033F06B /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72742DC727DD954A0033F06B /* GameControlView.swift */; };
 		72774A8527DB6FC000B0E1DD /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8427DB6FC000B0E1DD /* TestView.swift */; };
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
@@ -81,6 +82,7 @@
 		72478EA427D73A8200B9140A /* GameRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameRenderer.swift; path = "live-to-tilt/ViewModels/Utilities/GameRenderer.swift"; sourceTree = SOURCE_ROOT; };
 		72478EA727D73B0500B9140A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		726EBD0427DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMAcceleration+Extensions.swift"; sourceTree = "<group>"; };
+		726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlManager.swift; sourceTree = "<group>"; };
 		72742DC727DD954A0033F06B /* GameControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
 		72774A8427DB6FC000B0E1DD /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				7215CD4627DB63D800A26752 /* GameControl.swift */,
 				7215CD4927DB661C00A26752 /* AccelerometerControl.swift */,
 				72774A8827DB797A00B0E1DD /* KeyboardControl.swift */,
+				726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */,
 			);
 			path = GameControl;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
 				3D12D9C927D61D8500D01489 /* ContentView.swift in Sources */,
+				726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */,
 				72478EA327D739A500B9140A /* TestViewModel.swift in Sources */,
 				DBEC91F327D7B8A300B0E750 /* CGPoint+Extensions.swift in Sources */,
 				DBEC91EE27D7B8A300B0E750 /* CollisionPoints.swift in Sources */,
