@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct TestView: View {
+struct TestMenuView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Main Menu")
+                Text("Main menu")
 
                 NavigationLink(destination: TestGameView()) {
                     Text("Start game")
@@ -19,8 +19,8 @@ struct TestView: View {
     }
 }
 
-struct TestView_Previews: PreviewProvider {
+struct TestMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        TestView()
+        TestMenuView()
     }
 }
