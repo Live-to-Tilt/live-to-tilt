@@ -4,30 +4,27 @@ struct SettingsView: View {
     @StateObject var viewModel = SettingsViewModel()
 
     var body: some View {
-        ZStack {
-            Background()
+        VStack {
+            Text("Settings").modifier(TitleText())
 
-            VStack {
-                Text("Settings").modifier(TitleText())
+            HStack {
+                Text("Volume").modifier(HeadingOneText())
 
-                HStack {
-                    Text("Volume").modifier(HeadingOneText())
+                Slider(value: $viewModel.soundtrackVolume,
+                       in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume),
+                       label: { Text("Volume").modifier(HeadingOneText()) },
+                       minimumValueLabel: { Text("0").modifier(ParagraphText()) },
+                       maximumValueLabel: { Text("100").modifier(ParagraphText()) })
+            }
+            .frame(width: 500)
 
-                    Slider(value: $viewModel.soundtrackVolume,
-                           in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume),
-                           label: { Text("Volume").modifier(HeadingOneText()) },
-                           minimumValueLabel: { Text("0").modifier(ParagraphText()) },
-                           maximumValueLabel: { Text("100").modifier(ParagraphText()) })
-                }
-                .frame(width: 500)
-
-                NavigationLink(destination: MainMenuView()) {
-                    Text("Back")
-                        .modifier(CapsuleText())
-                        .padding(.top, 40)
-                }
+            NavigationLink(destination: MainMenuView()) {
+                Text("Back")
+                    .modifier(CapsuleText())
+                    .padding(.top, 40)
             }
         }
+        .modifier(RootView())
         .onAppear {
             viewModel.onAppear()
         }
