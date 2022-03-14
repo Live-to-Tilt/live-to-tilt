@@ -2,18 +2,23 @@ import SwiftUI
 
 struct MainMenuView: View {
     var body: some View {
-        VStack {
-            Text("Live to Tilt").modifier(TitleText())
+        NavigationView {
+            VStack {
+                Text("Live to Tilt").modifier(TitleText())
 
-            NavigationLink(destination: GameArenaView()) {
-                Text("Play").modifier(CapsuleText())
-            }
+                let gameArenaView = GameArenaView(viewModel: GameArenaViewModel())
+                NavigationLink(destination: gameArenaView) {
+                    Text("Play").modifier(CapsuleText())
+                }
 
-            NavigationLink(destination: SettingsView()) {
-                Text("Settings").modifier(CapsuleText())
+                let settingsView = SettingsView()
+                NavigationLink(destination: settingsView) {
+                    Text("Settings").modifier(CapsuleText())
+                }
             }
+            .modifier(RootView())
         }
-        .modifier(RootView())
+        .navigationViewStyle(.stack)
     }
 }
 
