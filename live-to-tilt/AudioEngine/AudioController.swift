@@ -31,7 +31,7 @@ final class AudioController {
 
         if soundtrackPlayer == nil {
             createSoundtrackPlayer(with: soundtrack)
-            soundtrackPlayer?.play()
+            updateAndPlay(soundtrack)
             return
         }
 
@@ -63,11 +63,16 @@ final class AudioController {
         }
     }
 
+    private func updateAndPlay(_ soundtrack: Soundtrack) {
+        currentSoundtrack = soundtrack
+        soundtrackPlayer?.play()
+    }
+
     private func fadeOutAndPlay(_ soundtrack: Soundtrack) {
         soundtrackPlayer?.setVolume(.zero, fadeDuration: Constants.audioFadeDuration)
         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.audioFadeDuration) {
             self.createSoundtrackPlayer(with: soundtrack)
-            self.soundtrackPlayer?.play()
+            self.updateAndPlay(soundtrack)
         }
     }
 }
