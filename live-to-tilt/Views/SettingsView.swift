@@ -10,18 +10,7 @@ struct SettingsView: View {
         VStack {
             Text("Settings").modifier(TitleText())
 
-            HStack {
-                Text("Volume").modifier(HeadingOneText())
-
-                Slider(value: $viewModel.soundtrackVolume,
-                       in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume),
-                       label: { Text("Volume") },
-                       minimumValueLabel: { Text("0") },
-                       maximumValueLabel: { Text("100") })
-                    .padding()
-            }
-            .modifier(RoundedContainer())
-            .frame(width: 500)
+            VolumeSettingHStack()
 
             Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 Text("Back")
@@ -33,6 +22,29 @@ struct SettingsView: View {
         .onAppear {
             viewModel.onAppear()
         }
+    }
+
+    private func VolumeSettingHStack() -> some View {
+        HStack {
+            VStack {
+                Text("Volume")
+                    .modifier(HeadingOneText())
+                    .padding(.bottom, -25)
+
+                Text("\(Int(viewModel.soundtrackVolume))")
+                    .padding(.bottom, 10)
+            }
+
+            Slider(value: $viewModel.soundtrackVolume,
+                   in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume),
+                   step: 1,
+                   label: { Text("Volume") },
+                   minimumValueLabel: { Text("\(Int(Constants.minSoundtrackVolume))") },
+                   maximumValueLabel: { Text("\(Int(Constants.maxSoundtrackVolume))") })
+                .padding()
+        }
+        .modifier(RoundedContainer())
+        .frame(width: 500)
     }
 }
 

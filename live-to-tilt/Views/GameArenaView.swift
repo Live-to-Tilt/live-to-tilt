@@ -2,7 +2,9 @@ import SwiftUI
 
 struct GameArenaView: View {
     @ObservedObject var viewModel: GameArenaViewModel
-    private let aspectRatio: CGFloat = 81 / 106
+
+    // Navigation
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
@@ -15,6 +17,11 @@ struct GameArenaView: View {
 
     private func InfoHStack() -> some View {
         HStack {
+            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
+                Text("Quit")
+                    .modifier(CapsuleText())
+            }
+
             HStack {
                 Text("Score: 100").modifier(HeadingOneText())
             }
@@ -44,6 +51,12 @@ struct GameArenaView: View {
                 ForEach(viewModel.renderableComponents, id: \.self) { renderableComponent in
                     EntityView(from: renderableComponent, applying: denormalization)
                 }
+
+                EntityView(
+                    from: RenderableComponent(
+                        image: .enemy,
+                        position: CGPoint(x: 0.5, y: 0.5),
+                        size: CGSize(width: 0.025, height: 0.025)), applying: denormalization)
             }
             .background(Color.LTSecondaryBackground)
             .overlay(
@@ -52,7 +65,6 @@ struct GameArenaView: View {
             )
             .frame(width: geometry.size.height * Constants.aspectRatio, height: geometry.size.height)
             .position(x: frame.midX, y: frame.midY)
-            .padding(.top, 10)
         }
     }
 

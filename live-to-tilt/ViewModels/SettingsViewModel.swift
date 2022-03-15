@@ -9,6 +9,14 @@ class SettingsViewModel: ObservableObject {
         }
     }
 
+    var minSoundtrackVolume: CGFloat {
+        CGFloat(Constants.minSoundtrackVolume)
+    }
+
+    var maxSoundtrackVolume: CGFloat {
+        CGFloat(Constants.maxSoundtrackVolume)
+    }
+
     init() {
         soundtrackVolume = CGFloat(AudioController.shared.soundtrackVolume)
     }
