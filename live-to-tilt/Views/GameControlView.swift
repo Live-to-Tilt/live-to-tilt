@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameControlView: View {
-    var gameControl = GameControlManager.shared.gameControl
+    @Binding var gameControl: GameControl
 
     var body: some View {
         VStack {
@@ -19,25 +19,25 @@ struct GameControlView: View {
     private func KeyboardControls(_ keyboardControl: KeyboardControl) -> some View {
         VStack {
             Text("Keyboard control")
-            Button(action: { keyboardControl.handleDirection("w") }) {
+            Button(action: { keyboardControl.handleDirection(KeyBinding.up) }) {
                 Text("↑")
             }
-            .keyboardShortcut("w", modifiers: [])
+            .keyboardShortcut(KeyBinding.up, modifiers: [])
 
-            Button(action: { keyboardControl.handleDirection("s") }) {
+            Button(action: { keyboardControl.handleDirection(KeyBinding.down) }) {
                 Text("↓")
             }
-            .keyboardShortcut("s", modifiers: [])
+            .keyboardShortcut(KeyBinding.down, modifiers: [])
 
-            Button(action: { keyboardControl.handleDirection("a") }) {
+            Button(action: { keyboardControl.handleDirection(KeyBinding.left) }) {
                 Text("←")
             }
-            .keyboardShortcut("a", modifiers: [])
+            .keyboardShortcut(KeyBinding.left, modifiers: [])
 
-            Button(action: { keyboardControl.handleDirection("d") }) {
+            Button(action: { keyboardControl.handleDirection(KeyBinding.right) }) {
                 Text("→")
             }
-            .keyboardShortcut("d", modifiers: [])
+            .keyboardShortcut(KeyBinding.right, modifiers: [])
         }
     }
 

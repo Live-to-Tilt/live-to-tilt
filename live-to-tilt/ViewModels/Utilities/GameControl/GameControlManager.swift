@@ -10,7 +10,7 @@ final class GameControlManager {
             let defaultsValue: String = defaults.string(forKey: .gameControlType),
             let gameControlType = GameControlType(rawValue: defaultsValue)
         else {
-            return .accelerometer
+            return Constants.defaultGameControl
         }
         return gameControlType
     }
@@ -26,7 +26,7 @@ final class GameControlManager {
     private init() {
         defaults = UserDefaults.standard
         defaults.register(defaults: [
-            .gameControlType: GameControlType.accelerometer.rawValue
+            .gameControlType: Constants.defaultGameControl.rawValue
         ])
     }
 

@@ -8,7 +8,7 @@ struct TestGameView: View {
             Text("Test view of a running game")
 
             // Insert this view into any view to allow player controls
-            GameControlView()
+            GameControlView(gameControl: $viewModel.gameControl)
         }
     }
 }

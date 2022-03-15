@@ -1,4 +1,5 @@
 import CoreGraphics
+import SwiftUI
 
 class KeyboardControl: GameControl {
     private var inputForce: CGVector
@@ -28,16 +29,16 @@ class KeyboardControl: GameControl {
     }
 
     // TODO: Improve this, currently a proof of concept
-    func handleDirection(_ key: String) {
-        switch key {
-        case "w":
-            setInputForce(CGVector(dx: 1, dy: 0))
-        case "s":
-            setInputForce(CGVector(dx: -1, dy: 0))
-        case "a":
-            setInputForce(CGVector(dx: 0, dy: 1))
-        case "d":
-            setInputForce(CGVector(dx: 0, dy: -1))
+    func handleDirection(_ key: KeyEquivalent) {
+        switch key.character {
+        case KeyBinding.up.character:
+            setInputForce(CGVector.up)
+        case KeyBinding.down.character:
+            setInputForce(CGVector.down)
+        case KeyBinding.left.character:
+            setInputForce(CGVector.left)
+        case KeyBinding.right.character:
+            setInputForce(CGVector.right)
         default:
             return
         }
