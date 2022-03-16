@@ -6,7 +6,7 @@ struct MainMenuView: View {
             VStack {
                 Text("Live to Tilt").modifier(TitleText())
 
-                let gameArenaView = GameArenaView(viewModel: GameArenaViewModel())
+                let gameArenaView = GameArenaView(viewModel: TestGameViewModel())
                 NavigationLink(destination: gameArenaView) {
                     Text("Play").modifier(CapsuleText())
                 }
