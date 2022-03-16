@@ -12,6 +12,12 @@ class GameEngine {
 
     init() {
         systems = []
+
+        setUpEntities()
+    }
+
+    func setUpEntities() {
+        nexus.createPlayer()
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
