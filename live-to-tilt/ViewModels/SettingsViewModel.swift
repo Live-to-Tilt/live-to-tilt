@@ -9,8 +9,15 @@ class SettingsViewModel: ObservableObject {
         }
     }
 
+    @Published var gameControlType: GameControlManager.GameControlType {
+        didSet {
+            GameControlManager.shared.setGameControlType(to: gameControlType)
+        }
+    }
+
     init() {
         soundtrackVolume = CGFloat(AudioController.shared.soundtrackVolume)
+        gameControlType = GameControlManager.shared.gameControlType
     }
 
     func onAppear() {

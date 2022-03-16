@@ -1,6 +1,6 @@
 import Combine
 
-class TestViewModel: ObservableObject {
+class TestGameViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent] = []
 
     var gameEngine: GameEngine
@@ -11,7 +11,7 @@ class TestViewModel: ObservableObject {
 
     init() {
         gameEngine = GameEngine()
-        gameControl = AccelerometerControl()
+        gameControl = GameControlManager.shared.gameControl
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         gameRenderer.start()
 

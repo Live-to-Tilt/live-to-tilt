@@ -7,4 +7,7 @@ struct Constants {
     static let defaultSoundtrackVolume: Float = 1
     static let minSoundtrackVolume: Float = 0
     static let maxSoundtrackVolume: Float = 2
+
+    // Game Control
+    static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
 }
