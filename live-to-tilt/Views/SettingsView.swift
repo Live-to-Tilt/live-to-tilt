@@ -28,10 +28,7 @@ struct SettingsView: View {
 
     private func VolumeSettingHStack() -> some View {
         HStack {
-            VStack {
-                Text("Volume")
-                    .modifier(HeadingOneText())
-            }
+            Text("Volume").modifier(HeadingOneText())
 
             Slider(value: $viewModel.soundtrackVolume,
                    in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume))
