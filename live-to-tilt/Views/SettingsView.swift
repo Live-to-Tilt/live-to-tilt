@@ -31,18 +31,10 @@ struct SettingsView: View {
             VStack {
                 Text("Volume")
                     .modifier(HeadingOneText())
-                    .padding(.bottom, -25)
-
-                Text("\(Int(viewModel.soundtrackVolume))")
-                    .padding(.bottom, 10)
             }
 
             Slider(value: $viewModel.soundtrackVolume,
-                   in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume),
-                   step: 1,
-                   label: { Text("Volume") },
-                   minimumValueLabel: { Text("\(Int(Constants.minSoundtrackVolume))") },
-                   maximumValueLabel: { Text("\(Int(Constants.maxSoundtrackVolume))") })
+                   in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume))
                 .padding()
         }
         .modifier(RoundedContainer())
