@@ -19,10 +19,10 @@ struct SettingsView: View {
                     .modifier(CapsuleText())
                     .padding(.top, 40)
             }
-            .modifier(RootView())
-            .onAppear {
-                viewModel.onAppear()
-            }
+        }
+        .modifier(RootView())
+        .onAppear {
+            viewModel.onAppear()
         }
     }
 
@@ -52,8 +52,7 @@ struct SettingsView: View {
     private func ControlsSettingHStack() -> some View {
         HStack {
             VStack {
-                Text("Controls")
-                    .modifier(HeadingOneText())
+                Text("Controls").modifier(HeadingOneText())
             }
 
             Picker("Controls", selection: $viewModel.gameControlType) {
@@ -62,6 +61,7 @@ struct SettingsView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .padding(.trailing, 10)
         }
         .modifier(RoundedContainer())
         .frame(width: 500)

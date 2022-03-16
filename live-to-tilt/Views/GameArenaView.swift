@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameArenaView: View {
-    @ObservedObject var viewModel: TestGameViewModel
+    @ObservedObject var viewModel: GameArenaViewModel
 
     // Navigation
     @Environment(\.presentationMode) var presentationMode
@@ -88,8 +88,7 @@ struct GameArenaView: View {
 
 struct GameArenaView_Previews: PreviewProvider {
     static var previews: some View {
-        GameArenaView(viewModel: TestGameViewModel())
-            .previewDevice("iPad (9th generation)")
+        GameArenaView(viewModel: GameArenaViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
