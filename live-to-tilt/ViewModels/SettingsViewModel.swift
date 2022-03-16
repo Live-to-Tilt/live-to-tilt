@@ -9,16 +9,15 @@ class SettingsViewModel: ObservableObject {
         }
     }
 
-    var minSoundtrackVolume: CGFloat {
-        CGFloat(Constants.minSoundtrackVolume)
-    }
-
-    var maxSoundtrackVolume: CGFloat {
-        CGFloat(Constants.maxSoundtrackVolume)
+    @Published var gameControlType: GameControlManager.GameControlType {
+        didSet {
+            GameControlManager.shared.setGameControlType(to: gameControlType)
+        }
     }
 
     init() {
         soundtrackVolume = CGFloat(AudioController.shared.soundtrackVolume)
+        gameControlType = GameControlManager.shared.gameControlType
     }
 
     func onAppear() {

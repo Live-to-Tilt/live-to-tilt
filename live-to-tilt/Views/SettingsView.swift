@@ -12,15 +12,17 @@ struct SettingsView: View {
 
             VolumeSettingHStack()
 
+            ControlsSettingHStack()
+
             Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 Text("Back")
                     .modifier(CapsuleText())
                     .padding(.top, 40)
             }
-        }
-        .modifier(RootView())
-        .onAppear {
-            viewModel.onAppear()
+            .modifier(RootView())
+            .onAppear {
+                viewModel.onAppear()
+            }
         }
     }
 
@@ -42,6 +44,24 @@ struct SettingsView: View {
                    minimumValueLabel: { Text("\(Int(Constants.minSoundtrackVolume))") },
                    maximumValueLabel: { Text("\(Int(Constants.maxSoundtrackVolume))") })
                 .padding()
+        }
+        .modifier(RoundedContainer())
+        .frame(width: 500)
+    }
+
+    private func ControlsSettingHStack() -> some View {
+        HStack {
+            VStack {
+                Text("Controls")
+                    .modifier(HeadingOneText())
+            }
+
+            Picker("Controls", selection: $viewModel.gameControlType) {
+                ForEach(GameControlManager.GameControlType.allCases) { gameControlType in
+                    Text(gameControlType.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
         }
         .modifier(RoundedContainer())
         .frame(width: 500)

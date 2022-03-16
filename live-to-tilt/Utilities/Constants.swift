@@ -13,4 +13,7 @@ struct Constants {
     static let primaryBackgroundColorRGB: [Double] = [171 / 255, 196 / 255, 255 / 255]
     static let secondaryBackgroundColorRGB: [Double] = [182 / 255, 204 / 255, 254 / 255]
     static let foregroundColorRGB: [Double] = [237 / 255, 242 / 255, 251 / 255]
+
+    // Game Control
+    static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
 }
