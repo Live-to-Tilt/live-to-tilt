@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class RenderableComponent: Component {
+class RenderableComponent: Component, Identifiable {
     var image: ImageAsset
 
     var position: CGPoint
@@ -22,15 +22,5 @@ class RenderableComponent: Component {
         self.rotation = rotation
         self.opacity = opacity
         self.layer = layer
-    }
-}
-
-extension RenderableComponent: Hashable {
-    static func == (lhs: RenderableComponent, rhs: RenderableComponent) -> Bool {
-        lhs === rhs
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self)
     }
 }
