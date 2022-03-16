@@ -51,12 +51,6 @@ struct GameArenaView: View {
                 ForEach(viewModel.renderableComponents, id: \.id) { renderableComponent in
                     EntityView(from: renderableComponent, applying: denormalization)
                 }
-
-                EntityView(
-                    from: RenderableComponent(
-                        image: .enemy,
-                        position: CGPoint(x: 0.5, y: 0.5),
-                        size: CGSize(width: 0.025, height: 0.025)), applying: denormalization)
             }
             .background(Color.LTSecondaryBackground)
             .overlay(
@@ -81,6 +75,7 @@ struct GameArenaView: View {
             .rotationEffect(.radians(renderable.rotation))
             .position(actualPosition)
             .opacity(renderable.opacity)
+            .zIndex(renderable.layer.rawValue)
             .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.2)))
     }
 
