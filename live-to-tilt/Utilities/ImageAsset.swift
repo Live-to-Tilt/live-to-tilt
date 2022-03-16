@@ -1,4 +1,5 @@
 enum ImageAsset: String {
-    case enemy
+    case enemyFront
+    case enemyBack
     case player
 }

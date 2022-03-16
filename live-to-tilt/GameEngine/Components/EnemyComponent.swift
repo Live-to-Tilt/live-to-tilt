@@ -1,0 +1,3 @@
+class EnemyComponent: Component {
+
+}
