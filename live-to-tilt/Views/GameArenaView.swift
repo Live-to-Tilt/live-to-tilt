@@ -48,7 +48,7 @@ struct GameArenaView: View {
             let denormalization = normalization.inverted()
 
             ZStack {
-                ForEach(viewModel.renderableComponents, id: \.self) { renderableComponent in
+                ForEach(viewModel.renderableComponents, id: \.id) { renderableComponent in
                     EntityView(from: renderableComponent, applying: denormalization)
                 }
 
