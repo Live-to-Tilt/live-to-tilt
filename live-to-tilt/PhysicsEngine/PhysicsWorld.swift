@@ -25,6 +25,7 @@ final class PhysicsWorld {
         var currentCollisions: Set<Collision> = []
 
         guard physicsBodies.count >= 2 else {
+            existingCollisions = []
             return currentCollisions
         }
 
