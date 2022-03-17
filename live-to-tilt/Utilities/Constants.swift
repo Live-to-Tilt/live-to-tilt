@@ -23,4 +23,7 @@ struct Constants {
     static let playerSize = CGSize(width: 0.03, height: 0.045)
     static let enemySize = CGSize(width: 0.03, height: 0.03)
     static let enemyFrontToBackRatio: CGFloat = 0.8
+
+    // Wave
+    static let waveIntervalDuration: CGFloat = 10
 }
