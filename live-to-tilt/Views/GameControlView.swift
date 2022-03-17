@@ -38,6 +38,10 @@ struct GameControlView: View {
                 Text("→")
             }
             .keyboardShortcut(KeyBinding.right, modifiers: [])
+            Button(action: { keyboardControl.handleDirection(KeyBinding.brake) }) {
+                Text("Brake")
+            }
+            .keyboardShortcut(KeyBinding.brake, modifiers: [])
         }
     }
 

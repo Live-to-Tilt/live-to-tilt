@@ -5,4 +5,5 @@ struct KeyBinding {
     static let down: KeyEquivalent = "s"
     static let left: KeyEquivalent = "a"
     static let right: KeyEquivalent = "d"
+    static let brake: KeyEquivalent = "b"
 }

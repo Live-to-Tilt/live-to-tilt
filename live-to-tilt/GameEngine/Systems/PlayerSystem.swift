@@ -13,6 +13,7 @@ class PlayerSystem: System {
         }
 
         physicsComponent.physicsBody.applyForce(inputForce)
+        physicsComponent.physicsBody.rotation = physicsComponent.physicsBody.velocity.angle + .pi / 2
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
