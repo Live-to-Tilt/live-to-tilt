@@ -21,7 +21,6 @@ class RandomWave: Wave {
     private func spawnEnemy() {
         let spawnLocation = getEnemySpawnLocation()
         nexus.createEnemy(position: spawnLocation)
-        print(spawnLocation)
     }
 
     private func getEnemySpawnLocation() -> CGPoint {
