@@ -24,6 +24,11 @@ final class PhysicsWorld {
     private func detectCollisions(for physicsBodies: [PhysicsBody]) -> Set<Collision> {
         var currentCollisions: Set<Collision> = []
 
+        guard physicsBodies.count >= 2 else {
+            existingCollisions = []
+            return currentCollisions
+        }
+
         for i in 0..<physicsBodies.count - 1 {
             let bodyA = physicsBodies[i]
             for j in (i + 1)..<physicsBodies.count {
