@@ -26,8 +26,12 @@
 		3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480C27D8C87400D46B84 /* UserDefaultsKey.swift */; };
 		3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13481227D8D89100D46B84 /* SettingsViewModel.swift */; };
 		3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387527E2115D00DF45C2 /* EnemyComponent.swift */; };
+		3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveSystem.swift */; };
+		3D55387A27E230B600DF45C2 /* EnemySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* EnemySystem.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
+		3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5727E3062F008ADF6D /* Wave.swift */; };
+		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
 		7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7234864F27E1DC210041265C /* Nexus+Extensions.swift */; };
 		723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DEFD327E1DF9F00592922 /* LazyView.swift */; };
 		723DEFD627E1E27700592922 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DEFD527E1E27700592922 /* PlayerComponent.swift */; };
@@ -91,8 +95,12 @@
 		3D13481027D8D86000D46B84 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3D13481227D8D89100D46B84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
+		3D55387727E22FD800DF45C2 /* WaveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSystem.swift; sourceTree = "<group>"; };
+		3D55387927E230B600DF45C2 /* EnemySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemySystem.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		3DCEAA5727E3062F008ADF6D /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
+		3DCEAA5927E306A3008ADF6D /* RandomWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWave.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7234864F27E1DC210041265C /* Nexus+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nexus+Extensions.swift"; sourceTree = "<group>"; };
@@ -255,6 +263,16 @@
 			path = AudioEngine;
 			sourceTree = "<group>";
 		};
+		3DC7BC7627E32A1800994C18 /* WaveSystem */ = {
+			isa = PBXGroup;
+			children = (
+				3D55387727E22FD800DF45C2 /* WaveSystem.swift */,
+				3DCEAA5727E3062F008ADF6D /* Wave.swift */,
+				3DCEAA5927E306A3008ADF6D /* RandomWave.swift */,
+			);
+			path = WaveSystem;
+			sourceTree = "<group>";
+		};
 		7215CD4827DB657D00A26752 /* GameControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,7 +318,9 @@
 		72478E9127D70C6F00B9140A /* Systems */ = {
 			isa = PBXGroup;
 			children = (
+				3DC7BC7627E32A1800994C18 /* WaveSystem */,
 				72478E9A27D733DE00B9140A /* System.swift */,
+				3D55387927E230B600DF45C2 /* EnemySystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -462,6 +482,7 @@
 				2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */,
 				3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
+				3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
@@ -470,6 +491,8 @@
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
+				3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */,
+				3D55387A27E230B600DF45C2 /* EnemySystem.swift in Sources */,
 				2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */,
 				723DEFD627E1E27700592922 /* PlayerComponent.swift in Sources */,
 				2106F84427DF50A100FA25D2 /* RootView.swift in Sources */,
@@ -478,6 +501,7 @@
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
 				DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */,
+				3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */,
 				DBEC91F027D7B8A300B0E750 /* PhysicsWorld.swift in Sources */,
 				DBEC91F127D7B8A300B0E750 /* CircleCollider.swift in Sources */,
 				21CE5B7B27DF5DFB00FE42BE /* RoundedContainer.swift in Sources */,
