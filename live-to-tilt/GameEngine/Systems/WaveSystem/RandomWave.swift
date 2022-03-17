@@ -10,7 +10,7 @@ class RandomWave: Wave {
 
     func start() {
         let startTime: DispatchTime = .now()
-        var delay: Double = 0
+        var delay: Double = .zero
         for _ in 0..<Constants.randomWaveEnemyCount {
             DispatchQueue.main.asyncAfter(deadline: startTime + delay) {
                 self.spawnEnemy()
