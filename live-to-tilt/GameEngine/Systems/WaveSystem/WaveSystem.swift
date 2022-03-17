@@ -11,8 +11,8 @@ final class WaveSystem: System {
         self.waves = [
             RandomWave(nexus: nexus)
         ]
-        self.elapsedTime = 0
-        self.pointer = 0
+        self.elapsedTime = .zero
+        self.pointer = .zero
     }
 
     func update(deltaTime: CGFloat) {

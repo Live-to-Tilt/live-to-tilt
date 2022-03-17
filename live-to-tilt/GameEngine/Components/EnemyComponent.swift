@@ -1,5 +1,3 @@
-import CoreGraphics
-
 class EnemyComponent: Component {
     let entity: Entity
 
@@ -8,6 +6,6 @@ class EnemyComponent: Component {
     }
     
     func update(deltaTime: CGFloat) {
-
+        
     }
 }

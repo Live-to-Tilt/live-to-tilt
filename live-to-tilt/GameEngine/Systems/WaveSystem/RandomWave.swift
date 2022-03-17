@@ -32,7 +32,9 @@ class RandomWave: Wave {
         let minY = Constants.enemySize / 2
         let maxY = 1 - minY
         let y = CGFloat.random(in: minY...maxY)
+
         let position = CGPoint(x: x, y: y)
+        
         return position
     }
 }
