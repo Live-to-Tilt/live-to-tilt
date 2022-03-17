@@ -23,7 +23,7 @@ class GameEngine {
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
-        updatePhysicsWorld(deltaTime: deltaTime)
+        updatePhysicsBodies(deltaTime: deltaTime)
         updateSystems(deltaTime: deltaTime)
         publishRenderables()
     }
@@ -32,7 +32,7 @@ class GameEngine {
         nexus.createPlayer()
     }
 
-    private func updatePhysicsWorld(deltaTime: CGFloat) {
+    private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
         physicsWorld.update(physicsBodies, deltaTime: deltaTime)
     }
