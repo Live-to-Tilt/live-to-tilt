@@ -3,7 +3,7 @@ import CoreGraphics
 final class PhysicsBody {
     static let minimumSize: CGFloat = PhysicsConstants.physicsBodyMinimumSize
 
-    // Physical Properties
+    // Physical properties
     var mass: CGFloat
     var rotation: Double
     var shape: Shape
