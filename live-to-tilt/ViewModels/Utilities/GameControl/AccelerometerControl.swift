@@ -25,6 +25,13 @@ class AccelerometerControl: GameControl {
         guard let data = motion.accelerometerData else {
             return CGVector.zero
         }
-        return data.acceleration.toCGVector()
+
+        var force = data.acceleration.toCGVector()
+        force.dx *= 2
+        force.dx *= 2
+        force.dx = force.dx >= 0 ? max(1.0, force.dx) : min(-1.0, force.dx)
+        force.dy = force.dy >= 0 ? max(1.0, force.dy) : min(-1.0, force.dy)
+
+        return force
     }
 }

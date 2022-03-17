@@ -16,6 +16,8 @@ class GameEngine {
 
     init() {
         systems = [
+            PhysicsSystem(nexus: nexus),
+            PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus)
         ]
 
@@ -24,7 +26,7 @@ class GameEngine {
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
         updatePhysicsBodies(deltaTime: deltaTime)
-        updateSystems(deltaTime: deltaTime)
+        updateSystems(deltaTime: deltaTime, inputForce: inputForce)
         publishRenderables()
     }
 
@@ -37,8 +39,8 @@ class GameEngine {
         physicsWorld.update(physicsBodies, deltaTime: deltaTime)
     }
 
-    private func updateSystems(deltaTime: CGFloat) {
-        systems.forEach { $0.update(deltaTime: deltaTime) }
+    private func updateSystems(deltaTime: CGFloat, inputForce: CGVector) {
+        systems.forEach { $0.update(deltaTime: deltaTime, inputForce: inputForce) }
     }
 
     private func publishRenderables() {
