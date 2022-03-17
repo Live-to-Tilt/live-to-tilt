@@ -1,7 +1,7 @@
 import CoreGraphics
 
 final class EnemySystem: System {
-    var nexus: Nexus
+    let nexus: Nexus
 
     init(nexus: Nexus) {
         self.nexus = nexus

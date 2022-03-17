@@ -34,7 +34,7 @@ class RandomWave: Wave {
         let y = CGFloat.random(in: minY...maxY)
 
         let position = CGPoint(x: x, y: y)
-        
+
         return position
     }
 }

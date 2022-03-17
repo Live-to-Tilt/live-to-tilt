@@ -4,7 +4,7 @@ final class WaveSystem: System {
     let nexus: Nexus
     private let waves: [Wave]
     private var elapsedTime: CGFloat
-    private var pointer: Int
+    private var currentWavesIndex: Int
 
     init(nexus: Nexus) {
         self.nexus = nexus
@@ -12,7 +12,7 @@ final class WaveSystem: System {
             RandomWave(nexus: nexus)
         ]
         self.elapsedTime = .zero
-        self.pointer = .zero
+        self.currentWavesIndex = .zero
     }
 
     func update(deltaTime: CGFloat) {
@@ -34,7 +34,7 @@ final class WaveSystem: System {
             return
         }
 
-        let wave = waves[pointer]
+        let wave = waves[currentWavesIndex]
         wave.start()
     }
 
@@ -43,6 +43,6 @@ final class WaveSystem: System {
             return
         }
 
-        pointer = (pointer + 1) % waves.count
+        currentWavesIndex = (currentWavesIndex + 1) % waves.count
     }
 }
