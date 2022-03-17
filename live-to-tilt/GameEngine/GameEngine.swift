@@ -15,26 +15,33 @@ class GameEngine {
     }
 
     init() {
-        systems = []
+        systems = [
+            WaveSystem(nexus: nexus)
+        ]
 
         setUpEntities()
     }
 
-    func setUpEntities() {
+    func update(deltaTime: CGFloat, inputForce: CGVector) {
+        updatePhysicsBodies(deltaTime: deltaTime)
+        updateSystems(deltaTime: deltaTime)
+        publishRenderables()
+    }
+
+    private func setUpEntities() {
         nexus.createPlayer()
     }
 
-    func updatePhysicsWorld(deltaTime: CGFloat) {
+    private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
         physicsWorld.update(physicsBodies, deltaTime: deltaTime)
     }
 
-    func update(deltaTime: CGFloat, inputForce: CGVector) {
-        updatePhysicsWorld(deltaTime: deltaTime)
-
+    private func updateSystems(deltaTime: CGFloat) {
         systems.forEach { $0.update(deltaTime: deltaTime) }
+    }
 
-        // Publish updates
+    private func publishRenderables() {
         renderableSubject.send(nexus.getComponents(of: RenderableComponent.self))
     }
 }

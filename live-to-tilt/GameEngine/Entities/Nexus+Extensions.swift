@@ -15,7 +15,8 @@ extension Nexus {
     func createEnemy(position: CGPoint) {
         let entity = Entity()
         let transform = CGAffineTransform(scaleX: Constants.enemyFrontToBackRatio, y: Constants.enemyFrontToBackRatio)
-        let enemyFrontSize = Constants.enemySize.applying(transform)
+        let enemyBackSize = CGSize(width: Constants.enemyDiameter, height: Constants.enemyDiameter)
+        let enemyFrontSize = enemyBackSize.applying(transform)
 
         addComponent(EnemyComponent(entity: entity), to: entity)
         addComponent(RenderableComponent(entity: entity,
@@ -27,7 +28,7 @@ extension Nexus {
         addComponent(RenderableComponent(entity: entity,
                                          image: .enemyBack,
                                          position: position,
-                                         size: Constants.enemySize,
+                                         size: enemyBackSize,
                                          layer: .enemyBack),
                      to: entity)
     }
