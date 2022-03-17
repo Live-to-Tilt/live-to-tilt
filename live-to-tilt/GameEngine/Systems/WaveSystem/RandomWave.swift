@@ -24,11 +24,11 @@ class RandomWave: Wave {
     }
 
     private func getEnemySpawnLocation() -> CGPoint {
-        let minX = Constants.enemySize / 2
+        let minX = Constants.enemyDiameter / 2
         let maxX = Constants.aspectRatio - minX
         let x = CGFloat.random(in: minX...maxX)
 
-        let minY = Constants.enemySize / 2
+        let minY = Constants.enemyDiameter / 2
         let maxY = 1 - minY
         let y = CGFloat.random(in: minY...maxY)
 
