@@ -10,11 +10,6 @@ extension Nexus {
                                          position: Constants.playerSpawnPosition,
                                          size: Constants.playerSize),
                      to: entity)
-        addComponent(PhysicsComponent(entity: entity, physicsBody: PhysicsBody(isDynamic: true,
-                                                                               shape: .circle,
-                                                                               position: Constants.playerSpawnPosition,
-                                                                               size: Constants.playerSize)),
-                     to: entity)
     }
 
     func createEnemy(position: CGPoint, movement: Movement? = nil) {
