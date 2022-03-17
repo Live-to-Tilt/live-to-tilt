@@ -2,6 +2,7 @@
 protocol Component {
     static var identifier: ComponentIdentifier { get }
     var identifier: ComponentIdentifier { get }
+    var entity: Entity { get }
 }
 
 extension Component {
