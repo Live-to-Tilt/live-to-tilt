@@ -12,7 +12,7 @@ extension Nexus {
                      to: entity)
     }
 
-    func createEnemy(position: CGPoint, movement: Movement? = nil) {
+    func createEnemy(position: CGPoint, movement: Movement) {
         let entity = Entity()
         let transform = CGAffineTransform(scaleX: Constants.enemyFrontToBackRatio, y: Constants.enemyFrontToBackRatio)
         let enemyBackSize = CGSize(width: Constants.enemyDiameter, height: Constants.enemyDiameter)

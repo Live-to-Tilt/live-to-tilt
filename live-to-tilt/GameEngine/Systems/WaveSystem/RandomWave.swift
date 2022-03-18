@@ -25,7 +25,8 @@ class RandomWave: Wave {
 
     private func spawnEnemy(following playerEntity: Entity) {
         let spawnLocation = getEnemySpawnLocation()
-        let movement = HomingMovement(nexus: nexus, target: playerEntity)
+        var movement: Movement = NoMovement(nexus: nexus)
+        movement = HomingMovementDecorator(target: playerEntity, movement: movement)
         nexus.createEnemy(position: spawnLocation, movement: movement)
     }
 
