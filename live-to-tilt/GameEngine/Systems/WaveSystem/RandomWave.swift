@@ -8,20 +8,26 @@ class RandomWave: Wave {
         self.nexus = nexus
     }
 
-    func start() {
+    func coroutine() {
+        guard let playerEntity = nexus.getEntities(with: PlayerComponent.self).first else {
+            return
+        }
+
         let startTime: DispatchTime = .now()
         var delay: Double = .zero
         for _ in 0..<Constants.randomWaveEnemyCount {
             DispatchQueue.main.asyncAfter(deadline: startTime + delay) {
-                self.spawnEnemy()
+                self.spawnEnemy(target: playerEntity)
             }
             delay += Constants.randomWaveDelay
         }
     }
 
-    private func spawnEnemy() {
+    private func spawnEnemy(target playerEntity: Entity) {
         let spawnLocation = getEnemySpawnLocation()
-        nexus.createEnemy(position: spawnLocation)
+        var movement: Movement = BaseMovement(nexus: nexus)
+        movement = HomingMovementDecorator(target: playerEntity, movement: movement)
+        nexus.createEnemy(position: spawnLocation, movement: movement)
     }
 
     private func getEnemySpawnLocation() -> CGPoint {

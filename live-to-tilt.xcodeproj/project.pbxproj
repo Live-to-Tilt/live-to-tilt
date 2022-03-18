@@ -30,6 +30,9 @@
 		3D55387A27E230B600DF45C2 /* EnemySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* EnemySystem.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
+		3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7A27E3911F00994C18 /* Movement.swift */; };
+		3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7C27E3923C00994C18 /* HomingMovementDecorator.swift */; };
+		3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC8027E4356900994C18 /* BaseMovement.swift */; };
 		3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5727E3062F008ADF6D /* Wave.swift */; };
 		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
 		7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7234864F27E1DC210041265C /* Nexus+Extensions.swift */; };
@@ -101,6 +104,9 @@
 		3D55387927E230B600DF45C2 /* EnemySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemySystem.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		3DC7BC7A27E3911F00994C18 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
+		3DC7BC7C27E3923C00994C18 /* HomingMovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomingMovementDecorator.swift; sourceTree = "<group>"; };
+		3DC7BC8027E4356900994C18 /* BaseMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMovement.swift; sourceTree = "<group>"; };
 		3DCEAA5727E3062F008ADF6D /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		3DCEAA5927E306A3008ADF6D /* RandomWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWave.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
@@ -277,6 +283,17 @@
 			path = WaveSystem;
 			sourceTree = "<group>";
 		};
+		3DC7BC7927E3910E00994C18 /* EnemyComponent */ = {
+			isa = PBXGroup;
+			children = (
+				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
+				3DC7BC7A27E3911F00994C18 /* Movement.swift */,
+				3DC7BC7C27E3923C00994C18 /* HomingMovementDecorator.swift */,
+				3DC7BC8027E4356900994C18 /* BaseMovement.swift */,
+			);
+			path = EnemyComponent;
+			sourceTree = "<group>";
+		};
 		7215CD4827DB657D00A26752 /* GameControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,11 +326,11 @@
 		72478E9027D70C6A00B9140A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3DC7BC7927E3910E00994C18 /* EnemyComponent */,
 				72478E9427D70DFE00B9140A /* Component.swift */,
 				72478E9627D70E4200B9140A /* ComponentIdentifier.swift */,
 				72478E9E27D736F200B9140A /* RenderableComponent.swift */,
 				723DEFD527E1E27700592922 /* PlayerComponent.swift */,
-				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
 				72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */,
 			);
 			path = Components;
@@ -481,6 +498,7 @@
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				21BBC8FB27E1CBD800C4B5D5 /* TestGameViewModel.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
+				3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */,
 				DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */,
 				DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */,
 				3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */,
@@ -492,6 +510,7 @@
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
+				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
 				2106F83C27DF493E00FA25D2 /* CapsuleText.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
@@ -521,6 +540,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
+				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
