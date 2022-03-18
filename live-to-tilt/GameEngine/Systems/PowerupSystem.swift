@@ -2,24 +2,25 @@ import CoreGraphics
 
 final class PowerupSystem: System {
     let nexus: Nexus
-
-    init(nexus: Nexus) {
-        self.nexus = nexus
-    }
-
-    func update(deltaTime: CGFloat) {
-        managePowerupSpawning(for: deltaTime)
-        updateActivePowerups(for: deltaTime)
-    }
-
     private var elapsedTimeSincePreviousSpawn: CGFloat = 0
+
     private var numberOfPowerupsInArena: Int {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
 
         return powerupComponents.filter({ !$0.isActive }).count
     }
 
-    private func managePowerupSpawning(for deltaTime: CGFloat) {
+    init(nexus: Nexus) {
+        self.nexus = nexus
+    }
+
+    func update(deltaTime: CGFloat) {
+        manageSpawning(for: deltaTime)
+        updatePowerups(for: deltaTime)
+        updateActivePowerups(for: deltaTime)
+    }
+
+    private func manageSpawning(for deltaTime: CGFloat) {
         self.elapsedTimeSincePreviousSpawn += deltaTime
 
         if self.elapsedTimeSincePreviousSpawn > Constants.powerupSpawnInterval {
@@ -38,11 +39,11 @@ final class PowerupSystem: System {
             return
         }
 
-        let randomSpawnLocation = getRandomPowerupSpawnLocation()
+        let randomSpawnLocation = getRandomSpawnLocation()
         nexus.createPowerup(position: randomSpawnLocation, type: randomPowerupType)
     }
 
-    private func getRandomPowerupSpawnLocation() -> CGPoint {
+    private func getRandomSpawnLocation() -> CGPoint {
         let minX = Constants.powerupDiameter / 2
         let maxX = Constants.gameArenaWidth - minX
         let x = CGFloat.random(in: minX...maxX)
@@ -56,7 +57,16 @@ final class PowerupSystem: System {
         return position
     }
 
-    // Updates powerup components only if they are active
+    // Updates all powerups
+    private func updatePowerups(for deltaTime: CGFloat) {
+        let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
+
+        for powerupComponent in powerupComponents {
+            powerupComponent.elapsedTimeSinceSpawn += deltaTime
+        }
+    }
+
+    // Updates only active powerups
     private func updateActivePowerups(for deltaTime: CGFloat) {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
         let activePowerupComponents = powerupComponents.filter({ $0.isActive })

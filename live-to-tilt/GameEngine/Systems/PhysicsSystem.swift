@@ -104,6 +104,13 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
 
     private func respondToCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) {
         let enemyEntity = nexus.hasComponent(EnemyComponent.self, in: entityA) ? entityA : entityB
+        let nukeEntity = nexus.hasComponent(NukePowerupComponent.self, in: entityA) ? entityA : entityB
+
+        guard let powerupComponent = nexus.getComponent(of: PowerupComponent.self, for: nukeEntity),
+              powerupComponent.isActive else {
+            return
+        }
+
         nexus.removeEntity(enemyEntity)
     }
 }
