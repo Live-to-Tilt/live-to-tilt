@@ -19,10 +19,13 @@ class GameEngine {
             PhysicsSystem(nexus: nexus),
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
-            EnemySystem(nexus: nexus)
+            EnemySystem(nexus: nexus),
+            PowerupSystem(nexus: nexus)
         ]
 
         setUpEntities()
+
+        setUpPhysicsEngine()
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
@@ -34,6 +37,10 @@ class GameEngine {
 
     private func setUpEntities() {
         nexus.createPlayer()
+    }
+
+    private func setUpPhysicsEngine() {
+        physicsWorld.contactDelegate = self
     }
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {
