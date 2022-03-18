@@ -31,11 +31,12 @@ extension Nexus {
                                          size: enemyBackSize,
                                          layer: .enemyBack),
                      to: entity)
-        addComponent(PhysicsComponent(entity: entity, physicsBody: PhysicsBody(isDynamic: true,
-                                                                               shape: .circle,
-                                                                               position: position,
-                                                                               size: enemyBackSize,
-                                                                               isTrigger: true)),
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: true,
+                                                               shape: .circle,
+                                                               position: position,
+                                                               size: enemyFrontSize,
+                                                               isTrigger: true)),
                      to: entity)
     }
 }

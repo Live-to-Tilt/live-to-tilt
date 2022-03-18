@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class NoMovement: Movement {
+class BaseMovement: Movement {
     let nexus: Nexus
 
     init(nexus: Nexus) {

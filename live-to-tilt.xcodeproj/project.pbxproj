@@ -32,7 +32,7 @@
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
 		3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7A27E3911F00994C18 /* Movement.swift */; };
 		3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7C27E3923C00994C18 /* HomingMovementDecorator.swift */; };
-		3DC7BC8127E4356900994C18 /* NoMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC8027E4356900994C18 /* NoMovement.swift */; };
+		3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC8027E4356900994C18 /* BaseMovement.swift */; };
 		3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5727E3062F008ADF6D /* Wave.swift */; };
 		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
 		7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7234864F27E1DC210041265C /* Nexus+Extensions.swift */; };
@@ -106,7 +106,7 @@
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		3DC7BC7A27E3911F00994C18 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		3DC7BC7C27E3923C00994C18 /* HomingMovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomingMovementDecorator.swift; sourceTree = "<group>"; };
-		3DC7BC8027E4356900994C18 /* NoMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoMovement.swift; sourceTree = "<group>"; };
+		3DC7BC8027E4356900994C18 /* BaseMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMovement.swift; sourceTree = "<group>"; };
 		3DCEAA5727E3062F008ADF6D /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		3DCEAA5927E306A3008ADF6D /* RandomWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWave.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
 				3DC7BC7A27E3911F00994C18 /* Movement.swift */,
 				3DC7BC7C27E3923C00994C18 /* HomingMovementDecorator.swift */,
-				3DC7BC8027E4356900994C18 /* NoMovement.swift */,
+				3DC7BC8027E4356900994C18 /* BaseMovement.swift */,
 			);
 			path = EnemyComponent;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
-				3DC7BC8127E4356900994C18 /* NoMovement.swift in Sources */,
+				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
