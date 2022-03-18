@@ -4,7 +4,7 @@ struct GameControlView: View {
     @Binding var gameControl: GameControl
 
     var body: some View {
-        VStack {
+        HStack {
             Text("x: \(gameControl.getInputForce().dx)")
             Text("y: \(gameControl.getInputForce().dy)")
 
@@ -17,7 +17,7 @@ struct GameControlView: View {
     }
 
     private func KeyboardControls(_ keyboardControl: KeyboardControl) -> some View {
-        VStack {
+        HStack {
             Text("Keyboard control")
             Button(action: { keyboardControl.handleDirection(KeyBinding.up) }) {
                 Text("↑")
