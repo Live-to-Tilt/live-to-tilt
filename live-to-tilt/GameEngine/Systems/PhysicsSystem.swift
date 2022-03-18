@@ -2,29 +2,29 @@ import CoreGraphics
 
 class PhysicsSystem: System {
     let nexus: Nexus
-    
+
     let physicsWorld = PhysicsWorld()
 
     init(nexus: Nexus) {
         self.nexus = nexus
         self.physicsWorld.contactDelegate = self
     }
-    
+
     func update(deltaTime: CGFloat) {
         let entities = nexus.getEntities(with: PhysicsComponent.self)
 
         entities.forEach { entity in
             updateRenderable(entity)
         }
-        
+
         updatePhysicsBodies(deltaTime: deltaTime)
     }
-    
+
     private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
         physicsWorld.update(physicsBodies, deltaTime: deltaTime)
     }
-    
+
     private func updateRenderable(_ entity: Entity) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
@@ -55,7 +55,7 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
     }
 
     func didEnd(_ collision: Collision) {
-        }
+    }
 
     private func getEntity(from physicsBody: PhysicsBody) -> Entity? {
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)

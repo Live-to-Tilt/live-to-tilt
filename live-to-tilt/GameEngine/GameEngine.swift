@@ -32,7 +32,7 @@ class GameEngine {
     private func setUpEntities() {
         nexus.createPlayer()
     }
-    
+
     private func updateSystems(deltaTime: CGFloat) {
         systems.forEach { $0.update(deltaTime: deltaTime) }
     }
@@ -43,7 +43,7 @@ class GameEngine {
         }
         playerComponent.inputForce = inputForce
     }
-    
+
     private func publishRenderables() {
         renderableSubject.send(nexus.getComponents(of: RenderableComponent.self))
     }
