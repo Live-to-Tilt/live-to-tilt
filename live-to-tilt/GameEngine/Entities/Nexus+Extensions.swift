@@ -11,7 +11,8 @@ extension Nexus {
                                          size: Constants.playerSize),
                      to: entity)
         // TODO: Use a different shape later
-        addComponent(PhysicsComponent(physicsBody: PhysicsBody(isDynamic: true,
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: true,
                                                                shape: Shape.rectangle,
                                                                position: Constants.playerSpawnPosition,
                                                                size: Constants.playerSize)),

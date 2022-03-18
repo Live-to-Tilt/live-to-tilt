@@ -7,7 +7,7 @@ final class EnemySystem: System {
         self.nexus = nexus
     }
 
-    func update(deltaTime: CGFloat) {
+    func update(deltaTime: CGFloat, inputForce: CGVector) {
 
     }
 }
