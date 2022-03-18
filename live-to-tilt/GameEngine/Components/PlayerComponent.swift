@@ -6,6 +6,6 @@ class PlayerComponent: Component {
 
     init(entity: Entity) {
         self.entity = entity
-        inputForce = .zero
+        self.inputForce = .zero
     }
 }
