@@ -7,20 +7,20 @@ class PlayerSystem: System {
         self.nexus = nexus
     }
 
-    private func applyInputForce(_ entity: Entity, _ inputForce: CGVector) {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
+    private func applyInputForce(_ playerComponent: PlayerComponent) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerComponent.entity) else {
             return
         }
 
-        physicsComponent.physicsBody.applyForce(inputForce)
+        physicsComponent.physicsBody.applyForce(playerComponent.inputForce)
         physicsComponent.physicsBody.rotation = physicsComponent.physicsBody.velocity.angle + .pi / 2
     }
 
-    func update(deltaTime: CGFloat, inputForce: CGVector) {
-        let entites = nexus.getEntities(with: PlayerComponent.self)
+    func update(deltaTime: CGFloat) {
+        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
 
-        entites.forEach { entity in
-            applyInputForce(entity, inputForce)
+        playerComponents.forEach { playerComponent in
+            applyInputForce(playerComponent)
         }
     }
 }

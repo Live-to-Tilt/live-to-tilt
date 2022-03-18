@@ -20,7 +20,7 @@ class PhysicsSystem: System {
         }
     }
 
-    func update(deltaTime: CGFloat, inputForce: CGVector) {
+    func update(deltaTime: CGFloat) {
         let entities = nexus.getEntities(with: PhysicsComponent.self)
 
         entities.forEach { entity in

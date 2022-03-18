@@ -15,7 +15,7 @@ final class WaveSystem: System {
         self.currentWavesIndex = .zero
     }
 
-    func update(deltaTime: CGFloat, inputForce: CGVector) {
+    func update(deltaTime: CGFloat) {
         self.elapsedTime += deltaTime
 
         if self.elapsedTime > Constants.waveIntervalDuration {
