@@ -3,10 +3,7 @@
 # Developer Guide
 ## Powerups
 To add a new Powerup to the game,
-1. Add a case to the `PowerupType` enum.
-2. Create a new component encapsulating the special properties and behaviour of the powerup. 
-For an example, see `NukePowerupComponent`.
-3. Modify `PowerupSystem#updateActivePowerups()` to call a new private function that defines what the powerup should 
-do at every timestep if it is active. For an example, see `PowerupSystem#updateNukeComponent()`. 
-The `PowerupSystem` manages all powerups by orchestrating amongst `PowerupComponent`, special powerup components 
-such as `NukePowerupComponent`, and other components that may interact with the powerup components.
+1. Create a new class encapsulating the effect of the powerup. This class should conform to `PowerupEffect` protocol. 
+The `update()` method in this class should define what the effect should do at every timestep when it is active. 
+For an example, see `NukeEffect`. 
+2. Modify `Nexus+Extensions#createPowerup()` to append the effect to the array of possible effects a powerup can have.
