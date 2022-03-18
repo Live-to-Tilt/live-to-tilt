@@ -17,13 +17,13 @@ class RandomWave: Wave {
         var delay: Double = .zero
         for _ in 0..<Constants.randomWaveEnemyCount {
             DispatchQueue.main.asyncAfter(deadline: startTime + delay) {
-                self.spawnEnemy(following: playerEntity)
+                self.spawnEnemy(target: playerEntity)
             }
             delay += Constants.randomWaveDelay
         }
     }
 
-    private func spawnEnemy(following playerEntity: Entity) {
+    private func spawnEnemy(target playerEntity: Entity) {
         let spawnLocation = getEnemySpawnLocation()
         var movement: Movement = BaseMovement(nexus: nexus)
         movement = HomingMovementDecorator(target: playerEntity, movement: movement)
