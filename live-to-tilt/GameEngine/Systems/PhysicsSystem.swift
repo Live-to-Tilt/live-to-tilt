@@ -72,23 +72,26 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
     }
 
     private func isCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) -> Bool {
-        let isPowerupPlayerCollision = nexus.hasComponent(PowerupComponent.self, in: entityA)
-            && nexus.hasComponent(PlayerComponent.self, in: entityB)
+        isPlayerPowerupCollision(entityA, entityB)
+            || isPlayerPowerupCollision(entityB, entityA)
+    }
 
-        let isPlayerPowerupCollision = nexus.hasComponent(PlayerComponent.self, in: entityA)
+    private func isPlayerPowerupCollision(_ entityA: Entity, _ entityB: Entity) -> Bool {
+        nexus.hasComponent(PlayerComponent.self, in: entityA)
             && nexus.hasComponent(PowerupComponent.self, in: entityB)
-
-        return isPowerupPlayerCollision || isPlayerPowerupCollision
     }
 
     private func isCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) -> Bool {
-        let isNukeEnemyCollision = nexus.hasComponent(NukePowerupComponent.self, in: entityA)
-            && nexus.hasComponent(EnemyComponent.self, in: entityB)
+        isNukeEnemyCollision(entityA, entityB)
+            || isNukeEnemyCollision(entityB, entityA)
+    }
 
-        let isEnemyNukeCollision = nexus.hasComponent(EnemyComponent.self, in: entityA)
-            && nexus.hasComponent(NukePowerupComponent.self, in: entityB)
+    private func isNukeEnemyCollision(_ entityA: Entity, _ entityB: Entity) -> Bool {
+        guard let powerupComponent = nexus.getComponent(of: PowerupComponent.self, for: entityA) else {
+            return false
+        }
 
-        return isNukeEnemyCollision || isEnemyNukeCollision
+        return powerupComponent.effect is NukeEffect && nexus.hasComponent(EnemyComponent.self, in: entityB)
     }
 
     private func respondToCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) {
@@ -104,7 +107,7 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
 
     private func respondToCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) {
         let enemyEntity = nexus.hasComponent(EnemyComponent.self, in: entityA) ? entityA : entityB
-        let nukeEntity = nexus.hasComponent(NukePowerupComponent.self, in: entityA) ? entityA : entityB
+        let nukeEntity = nexus.hasComponent(PowerupComponent.self, in: entityA) ? entityA : entityB
 
         guard let powerupComponent = nexus.getComponent(of: PowerupComponent.self, for: nukeEntity),
               powerupComponent.isActive else {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2105E6F227E4D0C50010195B /* PowerupEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105E6F127E4D0C50010195B /* PowerupEffect.swift */; };
+		2105E6F427E4D0ED0010195B /* NukeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105E6F327E4D0ED0010195B /* NukeEffect.swift */; };
 		2106F83C27DF493E00FA25D2 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83B27DF493E00FA25D2 /* CapsuleText.swift */; };
 		2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83D27DF497400FA25D2 /* TitleText.swift */; };
 		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
@@ -15,9 +17,7 @@
 		2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D527E39D14007A4068 /* PowerupSystem.swift */; };
 		21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20B27DE382900250CF1 /* GameArenaView.swift */; };
 		21AFD21027DE400800250CF1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20F27DE400700250CF1 /* Color+Extensions.swift */; };
-		21B52E4427E48B8000E61808 /* NukePowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B52E4327E48B8000E61808 /* NukePowerupComponent.swift */; };
 		21B52E4627E48DBB00E61808 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21B52E4527E48DBB00E61808 /* README.md */; };
-		21B52E4827E4912700E61808 /* PowerupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B52E4727E4912700E61808 /* PowerupType.swift */; };
 		21BBC8F627E1C65B00C4B5D5 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91E427D7B8A300B0E750 /* CGPoint+Extensions.swift */; };
 		21BBC8F727E1C66000C4B5D5 /* CollisionPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DF27D7B8A300B0E750 /* CollisionPoints.swift */; };
 		21BBC8F827E1C66700C4B5D5 /* GameArenaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72478EA227D739A500B9140A /* GameArenaViewModel.swift */; };
@@ -83,6 +83,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2105E6F127E4D0C50010195B /* PowerupEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupEffect.swift; sourceTree = "<group>"; };
+		2105E6F327E4D0ED0010195B /* NukeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeEffect.swift; sourceTree = "<group>"; };
 		2106F83B27DF493E00FA25D2 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
 		2106F83D27DF497400FA25D2 /* TitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
@@ -91,9 +93,7 @@
 		2184B3D527E39D14007A4068 /* PowerupSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSystem.swift; sourceTree = "<group>"; };
 		21AFD20B27DE382900250CF1 /* GameArenaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArenaView.swift; sourceTree = "<group>"; };
 		21AFD20F27DE400700250CF1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		21B52E4327E48B8000E61808 /* NukePowerupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukePowerupComponent.swift; sourceTree = "<group>"; };
 		21B52E4527E48DBB00E61808 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		21B52E4727E4912700E61808 /* PowerupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupType.swift; sourceTree = "<group>"; };
 		21BBC8FA27E1CBD800C4B5D5 /* TestGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGameViewModel.swift; sourceTree = "<group>"; };
 		21CE5B7A27DF5DFB00FE42BE /* RoundedContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedContainer.swift; sourceTree = "<group>"; };
 		3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
@@ -187,8 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				2184B3D327E398C9007A4068 /* PowerupComponent.swift */,
-				21B52E4327E48B8000E61808 /* NukePowerupComponent.swift */,
-				21B52E4727E4912700E61808 /* PowerupType.swift */,
+				2105E6F127E4D0C50010195B /* PowerupEffect.swift */,
+				2105E6F327E4D0ED0010195B /* NukeEffect.swift */,
 			);
 			path = PowerupComponent;
 			sourceTree = "<group>";
@@ -519,7 +519,6 @@
 				DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */,
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
 				72BFFFED27DF22210054FEEE /* TestGameView.swift in Sources */,
-				21B52E4427E48B8000E61808 /* NukePowerupComponent.swift in Sources */,
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				21BBC8FB27E1CBD800C4B5D5 /* TestGameViewModel.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
@@ -537,17 +536,18 @@
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
-				21B52E4827E4912700E61808 /* PowerupType.swift in Sources */,
 				2106F83C27DF493E00FA25D2 /* CapsuleText.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
 				2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
 				3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */,
+				2105E6F427E4D0ED0010195B /* NukeEffect.swift in Sources */,
 				3D55387A27E230B600DF45C2 /* EnemySystem.swift in Sources */,
 				2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */,
 				723DEFD627E1E27700592922 /* PlayerComponent.swift in Sources */,
 				2106F84427DF50A100FA25D2 /* RootView.swift in Sources */,
+				2105E6F227E4D0C50010195B /* PowerupEffect.swift in Sources */,
 				726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */,
 				726EBD0527DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift in Sources */,
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,

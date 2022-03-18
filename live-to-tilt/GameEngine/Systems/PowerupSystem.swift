@@ -17,7 +17,6 @@ final class PowerupSystem: System {
     func update(deltaTime: CGFloat) {
         manageSpawning(for: deltaTime)
         updatePowerups(for: deltaTime)
-        updateActivePowerups(for: deltaTime)
     }
 
     private func manageSpawning(for deltaTime: CGFloat) {
@@ -34,13 +33,12 @@ final class PowerupSystem: System {
     }
 
     private func spawnPowerup() {
-        guard numberOfPowerupsInArena < Constants.maxNumberOfPowerupsInArena,
-              let randomPowerupType = PowerupType.allCases.randomElement() else {
+        guard numberOfPowerupsInArena < Constants.maxNumberOfPowerupsInArena else {
             return
         }
 
         let randomSpawnLocation = getRandomSpawnLocation()
-        nexus.createPowerup(position: randomSpawnLocation, type: randomPowerupType)
+        nexus.createPowerup(position: randomSpawnLocation)
     }
 
     private func getRandomSpawnLocation() -> CGPoint {
@@ -57,51 +55,11 @@ final class PowerupSystem: System {
         return position
     }
 
-    // Updates all powerups
     private func updatePowerups(for deltaTime: CGFloat) {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
 
         for powerupComponent in powerupComponents {
-            powerupComponent.elapsedTimeSinceSpawn += deltaTime
-        }
-    }
-
-    // Updates only active powerups
-    private func updateActivePowerups(for deltaTime: CGFloat) {
-        let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
-        let activePowerupComponents = powerupComponents.filter({ $0.isActive })
-
-        for powerupComponent in activePowerupComponents {
-            let entity = powerupComponent.entity
-
-            if let nukeComponent = nexus.getComponent(of: NukePowerupComponent.self, for: entity) {
-                updateNukeComponent(nukeComponent, for: deltaTime)
-            }
-        }
-    }
-
-    // Updates the nuke component.
-    // At every timestep, its explosion radius should expand and it should destroy enemies that it comes into
-    // contact with.
-    // Destruction of enemies is handled in PhysicsSystem as it is triggered upon collision.
-    private func updateNukeComponent(_ nukeComponent: NukePowerupComponent, for deltaTime: CGFloat) {
-        let entity = nukeComponent.entity
-
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
-              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
-            return
-        }
-
-        if nukeComponent.hasCompletedExplosion {
-            nexus.removeEntity(entity)
-        } else {
-            let timeFraction = deltaTime / Constants.nukeExplosionDuration
-            let deltaRadius = (Constants.nukeExplosionRadius - (Constants.powerupDiameter / 2)) * timeFraction
-
-            nukeComponent.currentExplosionRadius += deltaRadius
-            physicsComponent.physicsBody.size += deltaRadius
-            renderableComponent.size += deltaRadius
-            renderableComponent.opacity -= timeFraction
+            powerupComponent.update(for: deltaTime)
         }
     }
 }
