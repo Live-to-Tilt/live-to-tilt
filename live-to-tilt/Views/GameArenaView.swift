@@ -10,6 +10,7 @@ struct GameArenaView: View {
         VStack {
             InfoHStack()
             PlayAreaView()
+            GameControlView(gameControl: $viewModel.gameControl)
         }
         .padding()
         .modifier(RootView())

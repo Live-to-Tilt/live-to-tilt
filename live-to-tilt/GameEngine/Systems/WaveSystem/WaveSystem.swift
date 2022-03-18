@@ -13,23 +13,29 @@ final class WaveSystem: System {
         ]
         self.elapsedTime = .zero
         self.currentWavesIndex = .zero
+
+        startWave()
     }
 
     func update(deltaTime: CGFloat) {
         self.elapsedTime += deltaTime
 
         if self.elapsedTime > Constants.waveIntervalDuration {
-            resetElapsedTime()
-            spawnWave()
-            updatePointer()
+            startWave()
         }
+    }
+
+    private func startWave() {
+        resetElapsedTime()
+        startWaveCoroutine()
+        updatePointer()
     }
 
     private func resetElapsedTime() {
         elapsedTime.formTruncatingRemainder(dividingBy: Constants.waveIntervalDuration)
     }
 
-    private func spawnWave() {
+    private func startWaveCoroutine() {
         if waves.isEmpty {
             return
         }

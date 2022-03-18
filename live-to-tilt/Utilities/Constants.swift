@@ -1,4 +1,5 @@
 import CoreGraphics
+
 struct Constants {
     // Rendering
     static let framesPerSecond: Int = 60
@@ -17,6 +18,7 @@ struct Constants {
 
     // Game Control
     static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
+    static let defaultSensitivity: CGFloat = 2.2
 
     // Entities
     static let playerSpawnPosition = CGPoint(x: 0.75, y: 0.5)
@@ -32,4 +34,7 @@ struct Constants {
     // Powerups
     static let powerupSpawnInterval: CGFloat = 8
     static let powerupDiameter: CGFloat = 0.1
+
+    // Enemy Movement
+    static let homingMovementVelocity: CGFloat = 1
 }

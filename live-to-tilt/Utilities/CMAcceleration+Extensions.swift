@@ -3,6 +3,6 @@ import CoreMotion
 
 extension CMAcceleration {
     func toCGVector() -> CGVector {
-        CGVector(dx: self.x, dy: self.y)
+        CGVector(dx: -self.y, dy: -self.x)
     }
 }

@@ -1,5 +1,15 @@
+import Foundation
+
 protocol Wave {
     var nexus: Nexus { get }
 
-    func start()
+    func coroutine()
+}
+
+extension Wave {
+    func start() {
+        DispatchQueue.main.async {
+            coroutine()
+        }
+    }
 }

@@ -25,6 +25,7 @@ class AccelerometerControl: GameControl {
         guard let data = motion.accelerometerData else {
             return CGVector.zero
         }
-        return data.acceleration.toCGVector()
+
+        return data.acceleration.toCGVector() * Constants.defaultSensitivity
     }
 }
