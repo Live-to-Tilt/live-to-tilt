@@ -3,7 +3,11 @@ import CoreGraphics
 final class PowerupSystem: System {
     let nexus: Nexus
     private var elapsedTime: CGFloat = 0
-    private var numberOfPowerupsInArena: Int = 0
+    private var numberOfPowerupsInArena: Int {
+        let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
+
+        return powerupComponents.filter({ !$0.isActive }).count
+    }
 
     init(nexus: Nexus) {
         self.nexus = nexus
@@ -29,8 +33,6 @@ final class PowerupSystem: System {
 
         let spawnLocation = getPowerupSpawnLocation()
         nexus.createPowerup(position: spawnLocation)
-
-        numberOfPowerupsInArena += 1
     }
 
     private func getPowerupSpawnLocation() -> CGPoint {

@@ -1,6 +1,6 @@
 class PowerupComponent: Component {
     let entity: Entity
-    private var isActive = false
+    private(set) var isActive = false
 
     init(entity: Entity) {
         self.entity = entity
