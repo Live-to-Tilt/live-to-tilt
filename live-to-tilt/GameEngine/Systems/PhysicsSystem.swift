@@ -52,6 +52,10 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         if isCollisionBetweenPlayerAndPowerup(entityA: entityA, entityB: entityB) {
             respondToCollisionBetweenPlayerAndPowerup(entityA: entityA, entityB: entityB)
         }
+
+        if isCollisionBetweenNukeAndEnemy(entityA: entityA, entityB: entityB) {
+            respondToCollisionBetweenNukeAndEnemy(entityA: entityA, entityB: entityB)
+        }
     }
 
     func didEnd(_ collision: Collision) {
@@ -77,6 +81,16 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         return isPowerupPlayerCollision || isPlayerPowerupCollision
     }
 
+    private func isCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) -> Bool {
+        let isNukeEnemyCollision = nexus.hasComponent(NukePowerupComponent.self, in: entityA)
+            && nexus.hasComponent(EnemyComponent.self, in: entityB)
+
+        let isEnemyNukeCollision = nexus.hasComponent(EnemyComponent.self, in: entityA)
+            && nexus.hasComponent(NukePowerupComponent.self, in: entityB)
+
+        return isNukeEnemyCollision || isEnemyNukeCollision
+    }
+
     private func respondToCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) {
         let entityWithPowerupComponent = nexus.hasComponent(PowerupComponent.self, in: entityA) ? entityA : entityB
 
@@ -86,5 +100,10 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         }
 
         powerupComponent.activate()
+    }
+
+    private func respondToCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) {
+        let enemyEntity = nexus.hasComponent(EnemyComponent.self, in: entityA) ? entityA : entityB
+        nexus.removeEntity(enemyEntity)
     }
 }
