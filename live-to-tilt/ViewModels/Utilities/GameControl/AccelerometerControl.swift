@@ -27,9 +27,7 @@ class AccelerometerControl: GameControl {
         }
 
         var force = data.acceleration.toCGVector()
-        force *= 2
-        force.dx = force.dx >= 0 ? min(0.5, force.dx) : max(-0.5, force.dx)
-        force.dy = force.dy >= 0 ? min(0.5, force.dy) : max(-0.5, force.dy)
+        force *= 2.2
 
         return force
     }

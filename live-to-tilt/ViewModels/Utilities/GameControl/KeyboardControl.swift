@@ -28,34 +28,22 @@ class KeyboardControl: GameControl {
         self.inputForce = inputForce
     }
 
-    // TODO: Improve this, currently a proof of concept
     func handleDirection(_ key: KeyEquivalent) {
-        var newForce: CGVector
+        var force: CGVector
 
         switch key.character {
         case KeyBinding.up.character:
-            newForce = CGVector.up
+            force = .up
         case KeyBinding.down.character:
-            newForce = CGVector.down
+            force = .down
         case KeyBinding.left.character:
-            newForce = CGVector.left
+            force = .left
         case KeyBinding.right.character:
-            newForce = CGVector.right
-        case KeyBinding.brake.character:
-            setInputForce(.zero)
-            return
+            force = .right
         default:
             return
         }
 
-        var force = inputForce + newForce
-        if force.dx != 0 {
-            force.dx = force.dx > 0 ? min(0.5, force.dx) : max(-0.5, force.dx)
-        }
-        if force.dy != 0 {
-            force.dy = force.dy > 0 ? min(0.5, force.dy) : max(-0.5, force.dy)
-        }
-
-        setInputForce(force)
+        setInputForce(force * 2.2)
     }
 }
