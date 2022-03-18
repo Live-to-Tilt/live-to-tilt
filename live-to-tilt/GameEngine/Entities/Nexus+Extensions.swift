@@ -45,13 +45,20 @@ extension Nexus {
                      to: entity)
     }
 
-    func createPowerup(position: CGPoint) {
+    func createPowerup(position: CGPoint, type: PowerupType) {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
+        var image: ImageAsset
+
+        switch type {
+        case .nuke:
+            image = .nuke
+            addComponent(NukePowerupComponent(entity: entity), to: entity)
+        }
 
         addComponent(PowerupComponent(entity: entity), to: entity)
         addComponent(RenderableComponent(entity: entity,
-                                         image: .powerup,
+                                         image: image,
                                          position: position,
                                          size: size,
                                          layer: .powerup),
@@ -62,6 +69,5 @@ extension Nexus {
                                                                                size: size,
                                                                                isTrigger: true)),
                      to: entity)
-
     }
 }
