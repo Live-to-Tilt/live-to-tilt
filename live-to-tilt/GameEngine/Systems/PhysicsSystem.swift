@@ -44,8 +44,8 @@ class PhysicsSystem: System {
 // in the Physics Engine.
 extension PhysicsSystem: PhysicsCollisionDelegate {
     func didBegin(_ collision: Collision) {
-        guard let entityA = getEntity(from: collision.bodyA),
-                let entityB = getEntity(from: collision.bodyB) else {
+        guard let entityA = getEntityFromPhysicsBody(collision.bodyA),
+                let entityB = getEntityFromPhysicsBody(collision.bodyB) else {
             return
         }
 
@@ -57,7 +57,7 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
     func didEnd(_ collision: Collision) {
     }
 
-    private func getEntity(from physicsBody: PhysicsBody) -> Entity? {
+    private func getEntityFromPhysicsBody(_ physicsBody: PhysicsBody) -> Entity? {
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
 
         guard let physicsComponent = physicsComponents.first(where: { $0.physicsBody === physicsBody }) else {
