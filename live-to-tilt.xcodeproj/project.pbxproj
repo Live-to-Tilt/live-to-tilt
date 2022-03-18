@@ -12,6 +12,7 @@
 		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
 		2106F84427DF50A100FA25D2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F84327DF50A100FA25D2 /* RootView.swift */; };
 		2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D327E398C9007A4068 /* PowerupComponent.swift */; };
+		2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D527E39D14007A4068 /* PowerupSystem.swift */; };
 		21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20B27DE382900250CF1 /* GameArenaView.swift */; };
 		21AFD21027DE400800250CF1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20F27DE400700250CF1 /* Color+Extensions.swift */; };
 		21BBC8F627E1C65B00C4B5D5 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91E427D7B8A300B0E750 /* CGPoint+Extensions.swift */; };
@@ -79,6 +80,7 @@
 		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
 		2106F84327DF50A100FA25D2 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		2184B3D327E398C9007A4068 /* PowerupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupComponent.swift; sourceTree = "<group>"; };
+		2184B3D527E39D14007A4068 /* PowerupSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSystem.swift; sourceTree = "<group>"; };
 		21AFD20B27DE382900250CF1 /* GameArenaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArenaView.swift; sourceTree = "<group>"; };
 		21AFD20F27DE400700250CF1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		21BBC8FA27E1CBD800C4B5D5 /* TestGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGameViewModel.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				3DC7BC7627E32A1800994C18 /* WaveSystem */,
 				72478E9A27D733DE00B9140A /* System.swift */,
 				3D55387927E230B600DF45C2 /* EnemySystem.swift */,
+				2184B3D527E39D14007A4068 /* PowerupSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -492,6 +495,7 @@
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
 				2106F83C27DF493E00FA25D2 /* CapsuleText.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
+				2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
 				3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */,

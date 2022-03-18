@@ -32,4 +32,24 @@ extension Nexus {
                                          layer: .enemyBack),
                      to: entity)
     }
+
+    func createPowerup(position: CGPoint) {
+        let entity = Entity()
+        let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
+
+        addComponent(PowerupComponent(entity: entity), to: entity)
+        addComponent(RenderableComponent(entity: entity,
+                                         image: .powerup,
+                                         position: position,
+                                         size: size,
+                                         layer: .powerup),
+                     to: entity)
+        addComponent(PhysicsComponent(entity: entity, physicsBody: PhysicsBody(isDynamic: true,
+                                                                               shape: Shape.circle,
+                                                                               position: position,
+                                                                               size: size,
+                                                                               isTrigger: true)),
+                     to: entity)
+
+    }
 }

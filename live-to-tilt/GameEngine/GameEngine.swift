@@ -55,44 +55,43 @@ extension GameEngine: PhysicsCollisionDelegate {
                 let entityB = getEntity(from: collision.bodyB) else {
             return
         }
-        
+
         if isCollisionBetweenPlayerAndPowerup(entityA: entityA, entityB: entityB) {
             respondToCollisionBetweenPlayerAndPowerup(entityA: entityA, entityB: entityB)
         }
     }
-    
+
     func didEnd(_ collision: Collision) {
-        return
-    }
-    
+        }
+
     private func getEntity(from physicsBody: PhysicsBody) -> Entity? {
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
-        
+
         guard let physicsComponent = physicsComponents.first(where: { $0.physicsBody === physicsBody }) else {
             return nil
         }
-        
+
         return physicsComponent.entity
     }
-    
+
     private func isCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) -> Bool {
         let isPowerupPlayerCollision = nexus.hasComponent(PowerupComponent.self, in: entityA)
             && nexus.hasComponent(PlayerComponent.self, in: entityB)
-        
+
         let isPlayerPowerupCollision = nexus.hasComponent(PlayerComponent.self, in: entityA)
             && nexus.hasComponent(PowerupComponent.self, in: entityB)
-        
+
         return isPowerupPlayerCollision || isPlayerPowerupCollision
     }
-    
+
     private func respondToCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) {
         let entityWithPowerupComponent = nexus.hasComponent(PowerupComponent.self, in: entityA) ? entityA : entityB
-        
+
         guard let powerupComponent = nexus.getComponent(of: PowerupComponent.self,
                                                         for: entityWithPowerupComponent) else {
             return
         }
-        
+
         powerupComponent.activate()
     }
 }
