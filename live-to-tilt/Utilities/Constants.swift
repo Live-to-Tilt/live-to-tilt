@@ -32,8 +32,9 @@ struct Constants {
     static let randomWaveEnemyCount: Int = 10
 
     // Powerups
-    static let powerupSpawnInterval: CGFloat = 8
-    static let powerupDiameter: CGFloat = 0.1
+    static let powerupSpawnInterval: CGFloat = 1
+    static let powerupDiameter: CGFloat = 0.05
+    static let maxNumberOfPowerupsInArena: Int = 3
 
     // Enemy Movement
     static let homingMovementVelocity: CGFloat = 1
