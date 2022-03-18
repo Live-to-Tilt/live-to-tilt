@@ -44,6 +44,6 @@ class KeyboardControl: GameControl {
             return
         }
 
-        setInputForce(force * 2.2)
+        setInputForce(force * Constants.defaultSensitivity)
     }
 }

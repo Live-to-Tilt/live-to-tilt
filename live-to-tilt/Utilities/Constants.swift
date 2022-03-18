@@ -1,4 +1,5 @@
 import CoreGraphics
+
 struct Constants {
     // Rendering
     static let framesPerSecond: Int = 60
@@ -17,6 +18,7 @@ struct Constants {
 
     // Game Control
     static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
+    static let defaultSensitivity: CGFloat = 2.2
 
     // Entities
     static let playerSpawnPosition = CGPoint(x: 0.75, y: 0.5)

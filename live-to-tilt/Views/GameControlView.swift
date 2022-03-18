@@ -4,7 +4,7 @@ struct GameControlView: View {
     @Binding var gameControl: GameControl
 
     var body: some View {
-        VStack {
+        HStack {
             Text("x: \(gameControl.getInputForce().dx)")
             Text("y: \(gameControl.getInputForce().dy)")
 

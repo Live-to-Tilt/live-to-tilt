@@ -26,9 +26,6 @@ class AccelerometerControl: GameControl {
             return CGVector.zero
         }
 
-        var force = data.acceleration.toCGVector()
-        force *= 2.2
-
-        return force
+        return data.acceleration.toCGVector() * Constants.defaultSensitivity
     }
 }
