@@ -4,6 +4,8 @@ struct Constants {
     // Rendering
     static let framesPerSecond: Int = 60
     static let aspectRatio: Double = 1.5
+    static let gameArenaHeight: Double = 1.0
+    static let gameArenaWidth: Double = gameArenaHeight * aspectRatio
 
     // Audio
     static let audioFadeDuration: Double = 1

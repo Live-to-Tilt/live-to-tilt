@@ -35,11 +35,11 @@ final class PowerupSystem: System {
 
     private func getPowerupSpawnLocation() -> CGPoint {
         let minX = Constants.powerupDiameter / 2
-        let maxX = Constants.aspectRatio - minX
+        let maxX = Constants.gameArenaWidth - minX
         let x = CGFloat.random(in: minX...maxX)
 
         let minY = Constants.enemyDiameter / 2
-        let maxY = 1 - minY
+        let maxY = Constants.gameArenaHeight - minY
         let y = CGFloat.random(in: minY...maxY)
 
         let position = CGPoint(x: x, y: y)
