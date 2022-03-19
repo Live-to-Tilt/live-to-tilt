@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    @StateObject var viewModel = MainMenuViewModel()
+
     var body: some View {
         NavigationView {
             VStack {
@@ -18,6 +20,9 @@ struct MainMenuView: View {
                 }
             }
             .modifier(RootView())
+            .onAppear {
+                viewModel.onAppear()
+            }
         }
         .navigationViewStyle(.stack)
     }
