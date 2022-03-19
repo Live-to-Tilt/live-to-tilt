@@ -2,7 +2,7 @@ import CoreGraphics
 
 final class PowerupSystem: System {
     let nexus: Nexus
-    private var elapsedTimeSincePreviousSpawn: CGFloat = 0
+    private var elapsedTimeSincePreviousSpawn: CGFloat = .zero
 
     private var numberOfPowerupsInArena: Int {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
@@ -43,7 +43,7 @@ final class PowerupSystem: System {
 
     private func getRandomSpawnLocation() -> CGPoint {
         let minX = Constants.powerupDiameter / 2
-        let maxX = Constants.gameArenaWidth - minX
+        let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX
         let x = CGFloat.random(in: minX...maxX)
 
         let minY = Constants.enemyDiameter / 2

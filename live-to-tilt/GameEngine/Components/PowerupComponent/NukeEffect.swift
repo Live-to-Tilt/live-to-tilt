@@ -13,7 +13,7 @@ class NukeEffect: PowerupEffect {
     let image: ImageAsset = .nuke
     private var currentExplosionRadius: CGFloat = Constants.powerupDiameter / 2
     private var hasCompletedExplosion: Bool {
-        self.currentExplosionRadius > Constants.nukeExplosionRadius
+        self.currentExplosionRadius > Constants.nukeExplosionDiameter / 2
     }
 
     init(nexus: Nexus, entity: Entity) {
@@ -31,7 +31,7 @@ class NukeEffect: PowerupEffect {
             nexus.removeEntity(entity)
         } else {
             let timeFraction = deltaTime / Constants.nukeExplosionDuration
-            let deltaRadius = (Constants.nukeExplosionRadius - (Constants.powerupDiameter / 2)) * timeFraction
+            let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
 
             self.currentExplosionRadius += deltaRadius
             physicsComponent.physicsBody.size += deltaRadius
