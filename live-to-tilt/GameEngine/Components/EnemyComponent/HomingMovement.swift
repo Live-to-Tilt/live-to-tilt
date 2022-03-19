@@ -1,19 +1,15 @@
 import CoreGraphics
 
-class HomingMovementDecorator: Movement {
+class HomingMovement: Movement {
     let nexus: Nexus
     private let target: Entity
-    private let movement: Movement
 
-    init(target: Entity, movement: Movement) {
-        self.nexus = movement.nexus
+    init(nexus: Nexus, target: Entity) {
+        self.nexus = nexus
         self.target = target
-        self.movement = movement
     }
 
     func update(entity: Entity, deltaTime: CGFloat) {
-        movement.update(entity: entity, deltaTime: deltaTime)
-
         guard
             let entityPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
             let targetPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: target) else {
