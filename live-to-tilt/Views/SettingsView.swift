@@ -21,9 +21,6 @@ struct SettingsView: View {
             }
         }
         .modifier(RootView())
-        .onAppear {
-            viewModel.onAppear()
-        }
     }
 
     private func VolumeSettingHStack() -> some View {
