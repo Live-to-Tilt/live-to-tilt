@@ -19,8 +19,4 @@ class SettingsViewModel: ObservableObject {
         soundtrackVolume = CGFloat(AudioController.shared.soundtrackVolume)
         gameControlType = GameControlManager.shared.gameControlType
     }
-
-    func onAppear() {
-        AudioController.shared.play(.theme)
-    }
 }
