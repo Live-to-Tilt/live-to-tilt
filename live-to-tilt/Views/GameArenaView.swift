@@ -58,7 +58,7 @@ struct GameArenaView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.white, lineWidth: 5)
             )
-            .frame(width: geometry.size.height * Constants.aspectRatio, height: geometry.size.height)
+            .frame(width: geometry.size.height * Constants.gameArenaAspectRatio, height: geometry.size.height)
             .position(x: frame.midX, y: frame.midY)
         }
     }

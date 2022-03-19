@@ -44,4 +44,30 @@ extension Nexus {
                                                                isTrigger: true)),
                      to: entity)
     }
+
+    func createPowerup(position: CGPoint) {
+        let entity = Entity()
+        let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
+        let effects = [
+            NukeEffect(nexus: self, entity: entity)
+        ]
+
+        guard let effect = effects.randomElement() else {
+            return
+        }
+
+        addComponent(PowerupComponent(entity: entity, effect: effect), to: entity)
+        addComponent(RenderableComponent(entity: entity,
+                                         image: effect.image,
+                                         position: position,
+                                         size: size,
+                                         layer: .powerup),
+                     to: entity)
+        addComponent(PhysicsComponent(entity: entity, physicsBody: PhysicsBody(isDynamic: true,
+                                                                               shape: Shape.circle,
+                                                                               position: position,
+                                                                               size: size,
+                                                                               isTrigger: true)),
+                     to: entity)
+    }
 }

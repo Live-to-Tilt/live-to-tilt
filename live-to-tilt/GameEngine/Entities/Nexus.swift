@@ -49,6 +49,11 @@ final class Nexus {
         entitiesByComponent[T.identifier, default: []].insert(entity)
     }
 
+    /// Checks whether the given entity contains the given component type
+    func hasComponent<T: Component>(_ type: T.Type, in entity: Entity) -> Bool {
+        getComponent(of: type, for: entity) != nil
+    }
+
     /// Removes the given entity from the nexus
     func removeEntity(_ entity: Entity) {
         entities.removeValue(forKey: entity)

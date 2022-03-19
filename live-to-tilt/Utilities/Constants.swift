@@ -3,7 +3,8 @@ import CoreGraphics
 struct Constants {
     // Rendering
     static let framesPerSecond: Int = 60
-    static let aspectRatio: Double = 1.5
+    static let gameArenaAspectRatio: Double = 1.5
+    static let gameArenaHeight: Double = 1.0
 
     // Audio
     static let audioFadeDuration: Double = 1
@@ -30,6 +31,14 @@ struct Constants {
     static let waveIntervalDuration: CGFloat = 10
     static let randomWaveDelay: Double = 0.1
     static let randomWaveEnemyCount: Int = 10
+
+    // Powerups
+    static let powerupSpawnInterval: CGFloat = 7
+    static let delayBeforePowerupIsActivatable: Double = 0.5
+    static let powerupDiameter: CGFloat = 0.05
+    static let maxNumberOfPowerupsInArena: Int = 3
+    static let nukeExplosionDiameter: CGFloat = 0.8
+    static let nukeExplosionDuration: Double = 0.5
 
     // Enemy Movement
     static let homingMovementVelocity: CGFloat = 1
