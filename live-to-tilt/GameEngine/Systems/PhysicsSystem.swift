@@ -98,11 +98,12 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         let entityWithPowerupComponent = nexus.hasComponent(PowerupComponent.self, in: entityA) ? entityA : entityB
 
         guard let powerupComponent = nexus.getComponent(of: PowerupComponent.self,
-                                                        for: entityWithPowerupComponent) else {
+                                                        for: entityWithPowerupComponent),
+              powerupComponent.elapsedTimeSinceSpawn > Constants.delayBeforePowerupIsActivatable else {
             return
         }
 
-        powerupComponent.activate()
+        powerupComponent.isActive = true
     }
 
     private func respondToCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) {
