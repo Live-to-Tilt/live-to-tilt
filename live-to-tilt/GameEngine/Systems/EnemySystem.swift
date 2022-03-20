@@ -10,7 +10,9 @@ final class EnemySystem: System {
     func update(deltaTime: CGFloat) {
         let enemyComponents = nexus.getComponents(of: EnemyComponent.self)
         enemyComponents.forEach { enemyComponent in
-            enemyComponent.updateMovement(deltaTime: deltaTime)
+            let entity = enemyComponent.entity
+            let movement = enemyComponent.movement
+            movement.update(entity: entity, deltaTime: deltaTime )
         }
     }
 }
