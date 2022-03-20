@@ -59,7 +59,11 @@ final class PowerupSystem: System {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
 
         for powerupComponent in powerupComponents {
-            powerupComponent.update(for: deltaTime)
+            powerupComponent.elapsedTimeSinceSpawn += deltaTime
+
+            if powerupComponent.isActive {
+                powerupComponent.effect.update(for: deltaTime)
+            }
         }
     }
 }
