@@ -11,7 +11,10 @@ class GameEngine {
         renderableSubject.eraseToAnyPublisher()
     }
 
+    let gameStats: GameStats
+
     init() {
+        gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus),
             PlayerSystem(nexus: nexus),
