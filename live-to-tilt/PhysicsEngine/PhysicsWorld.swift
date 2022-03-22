@@ -43,22 +43,31 @@ final class PhysicsWorld {
                 }
 
                 currentCollisions.insert(collision)
-
-                if existingCollisions.contains(collision) {
-                    continue
-                }
-
-                contactDelegate?.didBegin(collision)
             }
         }
 
-        // remove collisions that have ended
-        for collision in existingCollisions.subtracting(currentCollisions) {
-            contactDelegate?.didEnd(collision)
-        }
-        existingCollisions = currentCollisions
+        publishCollisions(currentCollisions)
 
         return currentCollisions
+    }
+
+    private func publishCollisions(_ currentCollisions: Set<Collision>) {
+        publishNewCollisions(currentCollisions)
+        publishEndedCollisions(currentCollisions)
+    }
+
+    private func publishNewCollisions(_ currentCollisions: Set<Collision>) {
+        let newCollisions = currentCollisions.subtracting(existingCollisions)
+        for collision in newCollisions {
+            contactDelegate?.didBegin(collision)
+        }
+    }
+
+    private func publishEndedCollisions(_ currentCollisions: Set<Collision>) {
+        let endedCollisions = existingCollisions.subtracting(currentCollisions)
+        for collision in endedCollisions {
+            contactDelegate?.didEnd(collision)
+        }
     }
 
     private func detectCollision(between bodyA: PhysicsBody, and bodyB: PhysicsBody) -> Collision? {
