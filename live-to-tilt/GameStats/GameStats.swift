@@ -16,13 +16,14 @@ class GameStats {
 
     var currScore: Int = 0
     var currNumPowerupsUsed: Int = 0
-    var numEnemiesKilled: Int = 0
+    var currEnemiesKilled: Int = 0
 
     let defaults: UserDefaults
 
     init() {
         defaults = UserDefaults.standard
         registerAllTimeStats()
+        observePublishers()
     }
 
     func registerAllTimeStats() {
@@ -40,5 +41,39 @@ class GameStats {
         defaults.setValue(totalNumPowerupsUsed, forKey: .totalNumPowerupsUsed)
         defaults.setValue(totalEnemiesKilled, forKey: .totalEnemiesKilled)
         defaults.setValue(totalNumGames, forKey: .totalNumGames)
+    }
+
+    func observePublishers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onIncrementStat),
+                                               name: StatsKey.score.toNotificationName(),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onIncrementStat),
+                                               name: StatsKey.numEnemiesKilled.toNotificationName(),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onIncrementStat),
+                                               name: StatsKey.numPowerupsUsed.toNotificationName(),
+                                               object: nil)
+    }
+
+    @objc
+    func onIncrementStat(_ notification: Notification) {
+        switch notification.name {
+        case StatsKey.numPowerupsUsed.toNotificationName():
+            self.currNumPowerupsUsed += 1
+            print("powerups incremented!!")
+        case StatsKey.numEnemiesKilled.toNotificationName():
+            self.currEnemiesKilled += 1
+        case StatsKey.score.toNotificationName():
+            guard let data = notification.userInfo as? [String: Int],
+                  let score = data[StatsKey.score.rawValue] else {
+                      return
+                  }
+            self.currScore += score
+        default:
+            return
+        }
     }
 }
