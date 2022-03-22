@@ -15,7 +15,8 @@ extension Nexus {
                                       physicsBody: PhysicsBody(isDynamic: false,
                                                                shape: .rectangle,
                                                                position: position,
-                                                               size: size)),
+                                                               size: size,
+                                                               collisionBitMask: Constants.wallCollisionBitMask)),
                      to: entity)
     }
 
@@ -28,10 +29,12 @@ extension Nexus {
                                          position: Constants.playerSpawnPosition,
                                          size: Constants.playerSize),
                      to: entity)
-        addComponent(PhysicsComponent(entity: entity, physicsBody: PhysicsBody(isDynamic: true,
-                                                                               shape: .circle,
-                                                                               position: Constants.playerSpawnPosition,
-                                                                               size: Constants.playerSize)),
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: true,
+                                                               shape: .circle,
+                                                               position: Constants.playerSpawnPosition,
+                                                               size: Constants.playerSize,
+                                                               collisionBitMask: Constants.playerCollisionBitMask)),
                      to: entity)
     }
 
@@ -59,6 +62,7 @@ extension Nexus {
                                                                shape: .circle,
                                                                position: position,
                                                                size: enemyFrontSize,
+                                                               collisionBitMask: Constants.enemyCollisionBitMask,
                                                                isTrigger: true)),
                      to: entity)
     }
@@ -81,11 +85,13 @@ extension Nexus {
                                          size: size,
                                          layer: .powerup),
                      to: entity)
-        addComponent(PhysicsComponent(entity: entity, physicsBody: PhysicsBody(isDynamic: true,
-                                                                               shape: Shape.circle,
-                                                                               position: position,
-                                                                               size: size,
-                                                                               isTrigger: true)),
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: true,
+                                                               shape: Shape.circle,
+                                                               position: position,
+                                                               size: size,
+                                                               collisionBitMask: Constants.powerUpBitMask,
+                                                               isTrigger: true)),
                      to: entity)
     }
 }

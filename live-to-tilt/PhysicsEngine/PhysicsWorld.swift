@@ -30,31 +30,59 @@ final class PhysicsWorld {
         }
 
         for i in 0..<physicsBodies.count - 1 {
-            let bodyA = physicsBodies[i]
             for j in (i + 1)..<physicsBodies.count {
+                let bodyA = physicsBodies[i]
                 let bodyB = physicsBodies[j]
-                let points = bodyA.collider.checkCollision(with: bodyB.collider)
 
-                guard points.hasCollision else {
+                if !canCollide(bodyA, bodyB) {
                     continue
                 }
 
-                let collision = Collision(bodyA: bodyA, bodyB: bodyB, collisionPoints: points)
-                currentCollisions.insert(collision)
-
-                if !existingCollisions.contains(collision) {
-                    contactDelegate?.didBegin(collision)
+                guard let collision = detectCollision(between: bodyA, and: bodyB) else {
+                    continue
                 }
+
+                currentCollisions.insert(collision)
             }
         }
 
-        // remove collisions that have ended
-        for collision in existingCollisions.subtracting(currentCollisions) {
-            contactDelegate?.didEnd(collision)
-        }
-        existingCollisions = currentCollisions
+        publishCollisions(currentCollisions)
 
         return currentCollisions
+    }
+
+    private func publishCollisions(_ currentCollisions: Set<Collision>) {
+        publishNewCollisions(currentCollisions)
+        publishEndedCollisions(currentCollisions)
+    }
+
+    private func publishNewCollisions(_ currentCollisions: Set<Collision>) {
+        let newCollisions = currentCollisions.subtracting(existingCollisions)
+        for collision in newCollisions {
+            contactDelegate?.didBegin(collision)
+        }
+    }
+
+    private func publishEndedCollisions(_ currentCollisions: Set<Collision>) {
+        let endedCollisions = existingCollisions.subtracting(currentCollisions)
+        for collision in endedCollisions {
+            contactDelegate?.didEnd(collision)
+        }
+    }
+
+    private func detectCollision(between bodyA: PhysicsBody, and bodyB: PhysicsBody) -> Collision? {
+        let points = bodyA.collider.checkCollision(with: bodyB.collider)
+
+        guard points.hasCollision else {
+            return nil
+        }
+
+        let collision = Collision(bodyA: bodyA, bodyB: bodyB, collisionPoints: points)
+        return collision
+    }
+
+    private func canCollide(_ bodyA: PhysicsBody, _ bodyB: PhysicsBody) -> Bool {
+        bodyA.collisionBitMask & bodyB.collisionBitMask == 0
     }
 
     private func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
