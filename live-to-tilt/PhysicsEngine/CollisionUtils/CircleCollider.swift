@@ -33,8 +33,8 @@ final class CircleCollider: Collider {
         let closestRectPoint = otherCenter + CGVector(dx: clampedX, dy: clampedY)
 
         let circleCentreToRect = closestRectPoint - center
-        let pointA = center + circleCentreToRect.unitVector * radius
+        let pointB = center + circleCentreToRect.unitVector * radius
         let hasCollision = circleCentreToRect.magnitude < radius
-        return CollisionPoints(hasCollision: hasCollision, pointA: pointA, pointB: closestRectPoint)
+        return CollisionPoints(hasCollision: hasCollision, pointA: closestRectPoint, pointB: pointB)
     }
 }

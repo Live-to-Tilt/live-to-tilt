@@ -17,12 +17,6 @@ extension Nexus {
                                                                position: position,
                                                                size: size)),
                      to: entity)
-        addComponent(RenderableComponent(entity: entity,
-                                         image: .wall,
-                                         position: position,
-                                         size: size,
-                                         opacity: 0.2),
-                     to: entity)
     }
 
     func createPlayer() {
