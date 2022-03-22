@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct HeadingOneText: ViewModifier {
+struct InfoText: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding()
-            .font(.system(size: 32, weight: .bold))
+            .font(.system(size: 36, weight: .heavy))
             .foregroundColor(.white)
+            .padding(0)
     }
 }

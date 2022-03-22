@@ -5,26 +5,56 @@ struct MainMenuView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Live to Tilt").modifier(TitleText())
+            ZStack(alignment: .center) {
+                Image("menuBackground")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .ignoresSafeArea()
+
+                Image("menuForeground")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .ignoresSafeArea()
+
+                Content()
+            }
+        }
+        .preferredColorScheme(.dark)
+        .navigationViewStyle(.stack)
+    }
+
+    private func Content() -> some View {
+        HStack {
+            Spacer()
+            Spacer()
+            Spacer()
+
+            VStack(alignment: .trailing) {
+                Text("live to tilt")
+                    .modifier(HeroText())
+                    .padding(.bottom, 40)
 
                 NavigationLink(destination: LazyView(
                     GameArenaView(viewModel: GameArenaViewModel())
                 )) {
-                    Text("Play").modifier(CapsuleText())
+                    Text("start").modifier(MenuItemText())
                 }
+
+                // TODO: Link to how to play screen
+                Text("how to play").modifier(MenuItemText())
 
                 let settingsView = SettingsView()
                 NavigationLink(destination: settingsView) {
-                    Text("Settings").modifier(CapsuleText())
+                    Text("settings").modifier(MenuItemText())
                 }
             }
-            .modifier(RootView())
-            .onAppear {
-                viewModel.onAppear()
-            }
+
+            Spacer()
         }
-        .navigationViewStyle(.stack)
+        .rotationEffect(.degrees(15))
+        .onAppear {
+            viewModel.onAppear()
+        }
     }
 }
 

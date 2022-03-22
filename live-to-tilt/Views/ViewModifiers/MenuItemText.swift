@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct HeadingOneText: ViewModifier {
+struct MenuItemText: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .padding()
-            .font(.system(size: 32, weight: .bold))
+            .padding(.vertical, 2)
+            .font(.system(size: 48, weight: .bold))
             .foregroundColor(.white)
     }
 }

@@ -5,5 +5,6 @@ struct TitleText: ViewModifier {
         content
             .padding()
             .font(.system(size: 70, weight: .bold))
+            .foregroundColor(.white)
     }
 }

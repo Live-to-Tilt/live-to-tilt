@@ -18,26 +18,14 @@ struct GameArenaView: View {
 
     private func InfoHStack() -> some View {
         HStack {
+            // TODO: Remove later
             Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 Text("Quit")
-                    .modifier(CapsuleText())
             }
 
-            HStack {
-                Text("Score: 100").modifier(HeadingOneText())
-            }
-            .modifier(RoundedContainer())
-
-            HStack {
-                Text("Combo: 50x12").modifier(HeadingOneText())
-            }
-            .modifier(RoundedContainer())
-
+            Text("wave 10").modifier(InfoText())
             Spacer()
-
-            Text("Achievement")
-                .modifier(HeadingOneText())
-                .modifier(RoundedContainer())
+            Text("combo x234").modifier(InfoText())
         }
     }
 
@@ -49,18 +37,27 @@ struct GameArenaView: View {
             let denormalization = normalization.inverted()
 
             ZStack {
+                Score()
+
                 ForEach(viewModel.renderableComponents, id: \.id) { renderableComponent in
                     EntityView(from: renderableComponent, applying: denormalization)
                 }
             }
-            .background(Color.LTSecondaryBackground)
+            .frame(width: geometry.size.height * Constants.gameArenaAspectRatio, height: geometry.size.height)
+            .position(x: frame.midX, y: frame.midY)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.white, lineWidth: 5)
             )
-            .frame(width: geometry.size.height * Constants.gameArenaAspectRatio, height: geometry.size.height)
-            .position(x: frame.midX, y: frame.midY)
         }
+    }
+
+    private func Score() -> some View {
+        let score = 12_345
+        return Text("\(score)")
+            .font(.system(size: 200, weight: .heavy))
+            .monospacedDigit()
+            .opacity(0.15)
     }
 
     // Creates a view that represents an Entity using the Entity's RenderableComponent
@@ -79,7 +76,6 @@ struct GameArenaView: View {
             .zIndex(renderable.layer.rawValue)
             .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.2)))
     }
-
 }
 
 struct GameArenaView_Previews: PreviewProvider {

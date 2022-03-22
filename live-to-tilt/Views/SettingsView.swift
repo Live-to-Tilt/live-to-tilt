@@ -16,7 +16,6 @@ struct SettingsView: View {
 
             Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
                 Text("Back")
-                    .modifier(CapsuleText())
                     .padding(.top, 40)
             }
         }
@@ -31,7 +30,6 @@ struct SettingsView: View {
                    in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume))
                 .padding()
         }
-        .modifier(RoundedContainer())
         .frame(width: 500)
     }
 
@@ -49,7 +47,6 @@ struct SettingsView: View {
             .pickerStyle(.segmented)
             .padding(.trailing, 10)
         }
-        .modifier(RoundedContainer())
         .frame(width: 500)
     }
 }
