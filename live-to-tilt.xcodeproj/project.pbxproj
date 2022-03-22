@@ -15,7 +15,6 @@
 		2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D327E398C9007A4068 /* PowerupComponent.swift */; };
 		2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D527E39D14007A4068 /* PowerupSystem.swift */; };
 		21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20B27DE382900250CF1 /* GameArenaView.swift */; };
-		21AFD21027DE400800250CF1 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21AFD20F27DE400700250CF1 /* Color+Extensions.swift */; };
 		21B52E4627E48DBB00E61808 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21B52E4527E48DBB00E61808 /* README.md */; };
 		21BBC8F627E1C65B00C4B5D5 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91E427D7B8A300B0E750 /* CGPoint+Extensions.swift */; };
 		21BBC8F727E1C66000C4B5D5 /* CollisionPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DF27D7B8A300B0E750 /* CollisionPoints.swift */; };
@@ -90,7 +89,6 @@
 		2184B3D327E398C9007A4068 /* PowerupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupComponent.swift; sourceTree = "<group>"; };
 		2184B3D527E39D14007A4068 /* PowerupSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSystem.swift; sourceTree = "<group>"; };
 		21AFD20B27DE382900250CF1 /* GameArenaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameArenaView.swift; sourceTree = "<group>"; };
-		21AFD20F27DE400700250CF1 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		21B52E4527E48DBB00E61808 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		3D05CF8A27E5B0FD00494286 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
@@ -372,7 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */,
-				21AFD20F27DE400700250CF1 /* Color+Extensions.swift */,
 				3D13480E27D8CB7900D46B84 /* UserDefaults+Extensions.swift */,
 				72478EA727D73B0500B9140A /* Constants.swift */,
 				3DBBF53427DA25DC0039557D /* ImageAsset.swift */,
@@ -567,7 +564,6 @@
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
-				21AFD21027DE400800250CF1 /* Color+Extensions.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
 				726E12E927E0A6F4002728B7 /* KeyBinding.swift in Sources */,
 				3D12D9C727D61D8500D01489 /* Main.swift in Sources */,

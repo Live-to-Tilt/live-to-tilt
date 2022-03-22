@@ -5,6 +5,6 @@ struct HeadingOneText: ViewModifier {
         content
             .padding()
             .font(.system(size: 32, weight: .bold))
-            .foregroundColor(.LTForeground)
+            .foregroundColor(.white)
     }
 }
