@@ -1,4 +1,5 @@
 import CoreGraphics
+import CoreData
 
 class PhysicsSystem: System {
     let nexus: Nexus
@@ -104,6 +105,9 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         }
 
         powerupComponent.isActive = true
+        let notificationName = Notification.Name(rawValue: StatsKey.numPowerupsUsed.rawValue)
+        NotificationCenter.default.post(name: notificationName, object: nil)
+
     }
 
     private func respondToCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) {
