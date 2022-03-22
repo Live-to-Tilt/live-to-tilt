@@ -14,7 +14,7 @@ class GameEngine {
     init() {
         systems = [
             PhysicsSystem(nexus: nexus),
-            PlayerSystem(nexus: nexus)
+            PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
             EnemySystem(nexus: nexus),
             PowerupSystem(nexus: nexus)
