@@ -11,6 +11,7 @@ final class PhysicsBody {
     var velocity: CGVector
     var restitution: CGFloat
     var position: CGPoint
+    var collisionBitMask: UInt32
 
     // Force related properties
     var drag: CGFloat
@@ -34,6 +35,7 @@ final class PhysicsBody {
          shape: Shape,
          position: CGPoint,
          size: CGSize,
+         collisionBitMask: UInt32 = .zero,
          rotation: CGFloat = .zero,
          mass: CGFloat = 1,
          velocity: CGVector = .zero,
@@ -45,6 +47,7 @@ final class PhysicsBody {
         self.shape = shape
         self.position = position
         self.size = size
+        self.collisionBitMask = collisionBitMask
         self.rotation = rotation
         self.mass = mass
         self.velocity = velocity

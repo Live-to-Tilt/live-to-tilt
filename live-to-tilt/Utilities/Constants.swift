@@ -43,4 +43,10 @@ struct Constants {
 
     // Enemy Movement
     static let homingMovementVelocity: CGFloat = 1
+
+    // Collision Bitmasks
+    static let playerCollisionBitMask: UInt32 = 1 << 0
+    static let enemyCollisionBitMask: UInt32 = 1 << 1
+    static let powerUpBitMask: UInt32 = 1 << 2 | enemyCollisionBitMask
+    static let wallCollisionBitMask: UInt32 = 1 << 3
 }
