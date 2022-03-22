@@ -30,6 +30,7 @@ class GameEngine {
     }
 
     private func setUpEntities() {
+        nexus.createWalls()
         nexus.createPlayer()
     }
 

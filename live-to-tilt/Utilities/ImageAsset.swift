@@ -3,4 +3,5 @@ enum ImageAsset: String {
     case enemyBack
     case player
     case nuke
+    case wall
 }

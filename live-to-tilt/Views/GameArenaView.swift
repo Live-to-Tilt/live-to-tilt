@@ -44,11 +44,11 @@ struct GameArenaView: View {
                 }
             }
             .frame(width: geometry.size.height * Constants.gameArenaAspectRatio, height: geometry.size.height)
-            .position(x: frame.midX, y: frame.midY)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(.white, lineWidth: 5)
             )
+            .position(x: frame.midX, y: frame.midY)
         }
     }
 

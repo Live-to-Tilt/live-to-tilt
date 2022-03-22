@@ -16,7 +16,13 @@ struct Constants {
     static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
     static let defaultSensitivity: CGFloat = 2.2
 
-    // Entities
+    // Entities]
+    static let topWallPosition = CGPoint(x: 0.75, y: -0.05)
+    static let bottomWallPosition = CGPoint(x: 0.75, y: 1.05)
+    static let leftWallPosition = CGPoint(x: -0.05, y: 0.5)
+    static let rightWallPosition = CGPoint(x: 1.55, y: 0.5)
+    static let horizontalWallSize = CGSize(width: 1.5, height: 0.1)
+    static let verticalWallSize = CGSize(width: 0.1, height: 1)
     static let playerSpawnPosition = CGPoint(x: 0.75, y: 0.5)
     static let playerSize = CGSize(width: 0.03, height: 0.045)
     static let enemyDiameter: CGFloat = 0.03
