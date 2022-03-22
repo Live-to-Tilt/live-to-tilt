@@ -30,21 +30,25 @@ final class PhysicsWorld {
         }
 
         for i in 0..<physicsBodies.count - 1 {
-            let bodyA = physicsBodies[i]
             for j in (i + 1)..<physicsBodies.count {
+                let bodyA = physicsBodies[i]
                 let bodyB = physicsBodies[j]
-                let points = bodyA.collider.checkCollision(with: bodyB.collider)
 
-                guard points.hasCollision else {
+                if !canCollide(bodyA, bodyB) {
                     continue
                 }
 
-                let collision = Collision(bodyA: bodyA, bodyB: bodyB, collisionPoints: points)
+                guard let collision = detectCollision(between: bodyA, and: bodyB) else {
+                    continue
+                }
+
                 currentCollisions.insert(collision)
 
-                if !existingCollisions.contains(collision) {
-                    contactDelegate?.didBegin(collision)
+                if existingCollisions.contains(collision) {
+                    continue
                 }
+
+                contactDelegate?.didBegin(collision)
             }
         }
 
@@ -55,6 +59,21 @@ final class PhysicsWorld {
         existingCollisions = currentCollisions
 
         return currentCollisions
+    }
+
+    private func detectCollision(between bodyA: PhysicsBody, and bodyB: PhysicsBody) -> Collision? {
+        let points = bodyA.collider.checkCollision(with: bodyB.collider)
+
+        guard points.hasCollision else {
+            return nil
+        }
+
+        let collision = Collision(bodyA: bodyA, bodyB: bodyB, collisionPoints: points)
+        return collision
+    }
+
+    private func canCollide(_ bodyA: PhysicsBody, _ bodyB: PhysicsBody) -> Bool {
+        bodyA.collisionBitMask & bodyB.collisionBitMask == 0
     }
 
     private func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
