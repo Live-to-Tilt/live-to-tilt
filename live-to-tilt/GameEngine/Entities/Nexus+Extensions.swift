@@ -1,6 +1,24 @@
 import CoreGraphics
 
 extension Nexus {
+    func createWalls() {
+        createWall(position: Constants.topWallPosition, size: Constants.horizontalWallSize)
+        createWall(position: Constants.bottomWallPosition, size: Constants.horizontalWallSize)
+        createWall(position: Constants.leftWallPosition, size: Constants.verticalWallSize)
+        createWall(position: Constants.rightWallPosition, size: Constants.verticalWallSize)
+    }
+
+    func createWall(position: CGPoint, size: CGSize) {
+        let entity = Entity()
+
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: false,
+                                                               shape: .rectangle,
+                                                               position: position,
+                                                               size: size)),
+                     to: entity)
+    }
+
     func createPlayer() {
         let entity = Entity()
 
