@@ -1,15 +1,13 @@
 import CoreGraphics
 
 class HomingMovement: Movement {
-    let nexus: Nexus
     private let target: Entity
 
-    init(nexus: Nexus, target: Entity) {
-        self.nexus = nexus
+    init(target: Entity) {
         self.target = target
     }
 
-    func update(entity: Entity, deltaTime: CGFloat) {
+    func update(nexus: Nexus, entity: Entity, deltaTime: CGFloat) {
         guard
             let entityPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
             let targetPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: target) else {
@@ -20,10 +18,8 @@ class HomingMovement: Movement {
         let targetPhysicsBody = targetPhysicsComponent.physicsBody
         let entityPosition = entityPhysicsBody.position
         let targetPosition = targetPhysicsBody.position
-        let currentVelocity = entityPhysicsBody.velocity
         let desiredDirection = targetPosition - entityPosition
         let desiredVelocity = desiredDirection.unitVector * Constants.homingMovementVelocity
-        let force = desiredVelocity - currentVelocity
-        entityPhysicsBody.applyForce(force)
+        entityPhysicsBody.velocity = desiredVelocity
     }
 }
