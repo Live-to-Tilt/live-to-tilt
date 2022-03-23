@@ -29,9 +29,17 @@ class GameRenderer {
 
         gameControl.stop()
 
-        displayLink.invalidate()
         displayLink.remove(from: .main, forMode: .default)
+        displayLink.invalidate()
         displayLink = nil
+    }
+
+    func pause() {
+        displayLink.isPaused = true
+    }
+
+    func unpause() {
+        displayLink.isPaused = false
     }
 
     @objc
