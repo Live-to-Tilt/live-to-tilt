@@ -15,6 +15,7 @@ final class Nexus {
         Array(entitiesByComponent[T.identifier, default: []])
     }
 
+    /// Returns the first entity with components of the given type
     func getEntity<T: Component>(with type: T.Type) -> Entity? {
         getEntities(with: type).first
     }
