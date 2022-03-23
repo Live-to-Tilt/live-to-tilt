@@ -31,6 +31,7 @@
 		3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* EnemySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* EnemySystem.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
+		3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
 		3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7A27E3911F00994C18 /* Movement.swift */; };
 		3DC7BC7D27E3923C00994C18 /* HomingMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7C27E3923C00994C18 /* HomingMovement.swift */; };
@@ -108,6 +109,7 @@
 		3D55387727E22FD800DF45C2 /* WaveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* EnemySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemySystem.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
+		3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateComponent.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		3DC7BC7A27E3911F00994C18 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		3DC7BC7C27E3923C00994C18 /* HomingMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomingMovement.swift; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				72478E9E27D736F200B9140A /* RenderableComponent.swift */,
 				723DEFD527E1E27700592922 /* PlayerComponent.swift */,
 				72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */,
+				3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
 				3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */,
+				3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,

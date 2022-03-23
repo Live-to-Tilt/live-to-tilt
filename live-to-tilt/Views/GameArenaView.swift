@@ -7,13 +7,21 @@ struct GameArenaView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            InfoHStack()
-            PlayAreaView()
-            GameControlView(gameControl: $viewModel.gameControl)
+        ZStack {
+            VStack {
+                InfoHStack()
+                PlayAreaView()
+                GameControlView(gameControl: $viewModel.gameControl)
+            }
+            .padding()
+            .modifier(RootView())
+
+            if viewModel.gameStateComponent?.state == .gameOver {
+                Button(action: { viewModel.restart() }) {
+                    Text("Restart")
+                }
+            }
         }
-        .padding()
-        .modifier(RootView())
     }
 
     private func InfoHStack() -> some View {
