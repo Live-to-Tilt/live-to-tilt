@@ -42,7 +42,7 @@ struct Constants {
     static let nukeExplosionDuration: Double = 0.5
 
     // Enemy Movement
-    static let homingMovementVelocity: CGFloat = 0.2
+    static let homingMovementVelocity: CGFloat = 0.1
 
     // Collision Bitmasks
     static let playerCollisionBitMask: UInt32 = 1 << 0
