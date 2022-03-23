@@ -12,8 +12,12 @@ class PlayerSystem: System {
             return
         }
 
-        physicsComponent.physicsBody.applyForce(playerComponent.inputForce)
-        physicsComponent.physicsBody.rotation = physicsComponent.physicsBody.velocity.angle + .pi / 2
+        physicsComponent.physicsBody.velocity = playerComponent.inputForce
+
+        let initialRotation = physicsComponent.physicsBody.rotation
+        let desiredRotation = playerComponent.inputForce.angle
+        let smoothedRotation = initialRotation + (desiredRotation - initialRotation) * 0.1
+        physicsComponent.physicsBody.rotation = smoothedRotation
     }
 
     func update(deltaTime: CGFloat) {

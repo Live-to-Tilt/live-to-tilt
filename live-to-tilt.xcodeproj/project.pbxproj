@@ -293,13 +293,6 @@
 			path = AudioEngine;
 			sourceTree = "<group>";
 		};
-		3DC0F28527EB03AF001D54E4 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		3DC7BC7627E32A1800994C18 /* WaveSystem */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,7 +346,6 @@
 		72478E9027D70C6A00B9140A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3DC0F28527EB03AF001D54E4 /* New Group */,
 				21B52E4227E48B5B00E61808 /* PowerupComponent */,
 				3DC7BC7927E3910E00994C18 /* MovementComponent */,
 				72478E9427D70DFE00B9140A /* Component.swift */,
