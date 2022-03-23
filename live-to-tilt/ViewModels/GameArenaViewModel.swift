@@ -40,7 +40,6 @@ class GameArenaViewModel: ObservableObject {
         gameEngine.gameStatePublisher.sink { gameStateComponent in
             self.gameStateComponent = gameStateComponent
             self.updateGameRenderer()
-
         }.store(in: &cancellables)
     }
 
