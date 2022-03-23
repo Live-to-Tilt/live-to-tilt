@@ -15,6 +15,10 @@ final class Nexus {
         Array(entitiesByComponent[T.identifier, default: []])
     }
 
+    func getEntity<T: Component>(with type: T.Type) -> Entity? {
+        getEntities(with: type).first
+    }
+
     /// Returns all components of a given type
     func getComponents<T: Component>(of type: T.Type) -> [T] {
         var components: [T] = []
@@ -24,6 +28,11 @@ final class Nexus {
         }
 
         return components
+    }
+
+    /// Returns the first component of a given type
+    func getComponent<T: Component>(of type: T.Type) -> T? {
+        getComponents(of: type).first
     }
 
     /// Returns all components of a given type for a given entity

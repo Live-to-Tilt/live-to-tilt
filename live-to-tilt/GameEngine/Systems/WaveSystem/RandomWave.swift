@@ -9,7 +9,7 @@ class RandomWave: Wave {
     }
 
     func coroutine() {
-        guard let playerEntity = nexus.getEntities(with: PlayerComponent.self).first else {
+        guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
             return
         }
 
