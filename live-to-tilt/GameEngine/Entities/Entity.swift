@@ -1,19 +1,10 @@
-import Foundation
-
-final class Entity: Identifiable {
-    let id: String
-
-    init() {
-        self.id = UUID().uuidString
-    }
-}
-
-extension Entity: Hashable {
+final class Entity: Hashable {
     static func == (lhs: Entity, rhs: Entity) -> Bool {
-        lhs.id == rhs.id
+        lhs.hashValue == rhs.hashValue
     }
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
+        let hashValue = ObjectIdentifier(self).hashValue
+        hasher.combine(hashValue)
     }
 }

@@ -46,10 +46,8 @@ class GameEngine {
     }
 
     private func updatePlayer(inputForce: CGVector) {
-        guard let playerComponent = nexus.getComponents(of: PlayerComponent.self).first else {
-            return
-        }
-        playerComponent.inputForce = inputForce
+        let playerComponent = nexus.getComponent(of: PlayerComponent.self)
+        playerComponent?.inputForce = inputForce
     }
 
     private func publishRenderables() {
@@ -57,7 +55,7 @@ class GameEngine {
     }
 
     private func publishGameState() {
-        guard let gameStateComponent = nexus.getComponents(of: GameStateComponent.self).first else {
+        guard let gameStateComponent = nexus.getComponent(of: GameStateComponent.self) else {
             return
         }
 

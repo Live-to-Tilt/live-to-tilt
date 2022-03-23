@@ -128,7 +128,7 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
     }
 
     private func respondToCollisionBetweenPlayerAndEnemy(entityA: Entity, entityB: Entity) {
-        let gameStateComponent = nexus.getComponents(of: GameStateComponent.self).first
+        let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
 
         gameStateComponent?.state = .gameOver
     }
