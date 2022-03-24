@@ -5,6 +5,7 @@ class GameEngine {
     // ECS
     let nexus = Nexus()
     let systems: [System]
+    let physicsWorld = PhysicsWorld()
 
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
@@ -18,7 +19,8 @@ class GameEngine {
 
     init() {
         systems = [
-            PhysicsSystem(nexus: nexus),
+            PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
+            CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
             MovementSystem(nexus: nexus),
