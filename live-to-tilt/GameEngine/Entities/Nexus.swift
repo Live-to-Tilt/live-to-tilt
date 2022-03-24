@@ -64,7 +64,7 @@ final class Nexus {
         getComponent(of: type, for: entity) != nil
     }
 
-    /// Remove all components of the given type for the given entity
+    /// Removes all components of the given type for the given entity
     func removeComponents<T: Component>(of type: T.Type, for entity: Entity) {
         entities[entity, default: [:]][T.identifier] = []
         entitiesByComponent[T.identifier]?.remove(entity)

@@ -11,7 +11,6 @@ class CollisionSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-
     }
 }
 
