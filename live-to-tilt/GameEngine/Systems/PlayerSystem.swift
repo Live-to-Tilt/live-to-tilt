@@ -16,7 +16,20 @@ class PlayerSystem: System {
 
         let initialRotation = physicsComponent.physicsBody.rotation
         let desiredRotation = playerComponent.inputForce.angle
-        let smoothedRotation = initialRotation + (desiredRotation - initialRotation) * 0.1
+
+        var difference = desiredRotation - initialRotation
+        if difference > .pi {
+            difference -= 2 * .pi
+        } else if difference < -.pi {
+            difference += 2 * .pi
+        }
+
+        var smoothedRotation = initialRotation + difference * 0.1
+        if smoothedRotation > .pi {
+            smoothedRotation -= 2 * .pi
+        } else if smoothedRotation < -.pi {
+            smoothedRotation = 2 * .pi - smoothedRotation
+        }
         physicsComponent.physicsBody.rotation = smoothedRotation
     }
 
