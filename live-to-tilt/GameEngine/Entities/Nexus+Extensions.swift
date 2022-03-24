@@ -39,7 +39,7 @@ extension Nexus {
                                       physicsBody: PhysicsBody(isDynamic: true,
                                                                shape: .circle,
                                                                position: Constants.playerSpawnPosition,
-                                                               size: Constants.playerSize,
+                                                               size: Constants.playerColliderSize,
                                                                collisionBitMask: Constants.playerCollisionBitMask)),
                      to: entity)
     }
