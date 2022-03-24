@@ -2,10 +2,10 @@ import CoreGraphics
 
 class CollisionComponent: Component {
     let entity: Entity
-    let collision: Collision
+    let collidedEntity: Entity
 
-    init(entity: Entity, collision: Collision) {
+    init(entity: Entity, collidedEntity: Entity) {
         self.entity = entity
-        self.collision = collision
+        self.collidedEntity = collidedEntity
     }
 }

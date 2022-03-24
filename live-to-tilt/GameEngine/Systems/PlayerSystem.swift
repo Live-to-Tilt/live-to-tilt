@@ -7,6 +7,15 @@ class PlayerSystem: System {
         self.nexus = nexus
     }
 
+    func update(deltaTime: CGFloat) {
+        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+
+        playerComponents.forEach { playerComponent in
+            applyInputForce(playerComponent)
+            handleCollisions(playerComponent)
+        }
+    }
+
     private func applyInputForce(_ playerComponent: PlayerComponent) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerComponent.entity) else {
             return
@@ -37,11 +46,22 @@ class PlayerSystem: System {
         return smoothedRotation
     }
 
-    func update(deltaTime: CGFloat) {
-        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+    private func handleCollisions(_ playerComponent: PlayerComponent) {
+        let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: playerComponent.entity)
 
-        playerComponents.forEach { playerComponent in
-            applyInputForce(playerComponent)
+        collisionComponents.forEach { collisionComponent in
+            handleEnemyCollision(collisionComponent)
         }
+
+        nexus.removeComponents(of: CollisionComponent.self, for: playerComponent.entity)
+    }
+
+    private func handleEnemyCollision(_ collisionComponent: CollisionComponent) {
+        guard nexus.getComponent(of: EnemyComponent.self, for: collisionComponent.collidedEntity) != nil else {
+            return
+        }
+
+        let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
+        gameStateComponent?.state = .gameOver
     }
 }

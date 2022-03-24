@@ -24,7 +24,8 @@ class GameEngine {
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
             MovementSystem(nexus: nexus),
-            PowerupSystem(nexus: nexus)
+            PowerupSystem(nexus: nexus),
+            EnemySystem(nexus: nexus)
         ]
 
         setUpEntities()
