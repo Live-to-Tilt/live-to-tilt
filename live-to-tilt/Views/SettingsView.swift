@@ -12,6 +12,8 @@ struct SettingsView: View {
 
             VolumeSettingHStack()
 
+            SensitivitySettingHStack()
+
             ControlsSettingHStack()
 
             Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
@@ -28,6 +30,17 @@ struct SettingsView: View {
 
             Slider(value: $viewModel.soundtrackVolume,
                    in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume))
+                .padding()
+        }
+        .frame(width: 500)
+    }
+
+    private func SensitivitySettingHStack() -> some View {
+        HStack {
+            Text("Sensitivity").modifier(HeadingOneText())
+
+            Slider(value: $viewModel.sensitivity,
+                   in: CGFloat(Constants.minSensitivity)...CGFloat(Constants.maxSensitivity))
                 .padding()
         }
         .frame(width: 500)

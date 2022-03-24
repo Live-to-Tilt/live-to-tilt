@@ -13,8 +13,10 @@ struct Constants {
     static let maxSoundtrackVolume: Float = 2
 
     // Game Control
+    static let defaultSensitivity: Float = 1
+    static let minSensitivity: Float = 0.5
+    static let maxSensitivity: Float = 1.5
     static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
-    static let defaultSensitivity: CGFloat = 2
 
     // Entities
     static let topWallPosition = CGPoint(x: 0.75, y: -0.05)
