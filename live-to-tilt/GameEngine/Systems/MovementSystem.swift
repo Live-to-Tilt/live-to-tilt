@@ -2,9 +2,11 @@ import CoreGraphics
 
 final class MovementSystem: System {
     let nexus: Nexus
+    var events: [Event : Int]
 
     init(nexus: Nexus) {
         self.nexus = nexus
+        self.events = [:]
     }
 
     func update(deltaTime: CGFloat) {
@@ -14,5 +16,6 @@ final class MovementSystem: System {
             let movement = movementComponent.movement
             movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
         }
+        postEvents()
     }
 }

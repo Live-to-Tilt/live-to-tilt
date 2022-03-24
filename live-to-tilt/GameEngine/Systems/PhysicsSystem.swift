@@ -2,11 +2,13 @@ import CoreGraphics
 
 class PhysicsSystem: System {
     let nexus: Nexus
+    var events: [Event : Int]
 
     let physicsWorld = PhysicsWorld()
 
     init(nexus: Nexus) {
         self.nexus = nexus
+        self.events = [:]
         self.physicsWorld.contactDelegate = self
     }
 
@@ -18,6 +20,7 @@ class PhysicsSystem: System {
         }
 
         updatePhysicsBodies(deltaTime: deltaTime)
+        postEvents()
     }
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {
