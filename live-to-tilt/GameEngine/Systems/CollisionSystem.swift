@@ -18,11 +18,13 @@ class CollisionSystem: System {
 // MARK: PhysicsCollisionDelegate
 extension CollisionSystem: PhysicsCollisionDelegate {
     func didBegin(_ collision: Collision) {
-        guard let entityA = getEntityFromPhysicsBody(collision.bodyA),
-                let entityB = getEntityFromPhysicsBody(collision.bodyB) else {
+        guard
+            let entityA = getEntityFromPhysicsBody(collision.bodyA),
+            let entityB = getEntityFromPhysicsBody(collision.bodyB)
+        else {
             return
         }
-
+        
         if isCollisionBetweenPlayerAndPowerup(entityA: entityA, entityB: entityB) {
             respondToCollisionBetweenPlayerAndPowerup(entityA: entityA, entityB: entityB)
         }
@@ -41,12 +43,9 @@ extension CollisionSystem: PhysicsCollisionDelegate {
 
     private func getEntityFromPhysicsBody(_ physicsBody: PhysicsBody) -> Entity? {
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
+        let physicsComponent = physicsComponents.first(where: { $0.physicsBody === physicsBody })
 
-        guard let physicsComponent = physicsComponents.first(where: { $0.physicsBody === physicsBody }) else {
-            return nil
-        }
-
-        return physicsComponent.entity
+        return physicsComponent?.entity
     }
 
     private func isCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) -> Bool {
