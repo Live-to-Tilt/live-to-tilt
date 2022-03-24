@@ -710,7 +710,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"live-to-tilt/Preview Content\"";
-				DEVELOPMENT_TEAM = 7757FZR3M3;
+				DEVELOPMENT_TEAM = R6RNQ337X4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "live-to-tilt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -721,7 +721,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cs3217.live-to-tilt";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -732,7 +732,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"live-to-tilt/Preview Content\"";
-				DEVELOPMENT_TEAM = 7757FZR3M3;
+				DEVELOPMENT_TEAM = R6RNQ337X4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "live-to-tilt/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -743,7 +743,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cs3217.live-to-tilt";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
