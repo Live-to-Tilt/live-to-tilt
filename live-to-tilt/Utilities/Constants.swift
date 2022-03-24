@@ -25,6 +25,7 @@ struct Constants {
     static let verticalWallSize = CGSize(width: 0.1, height: 1)
     static let playerSpawnPosition = CGPoint(x: 0.75, y: 0.5)
     static let playerSize = CGSize(width: 0.045, height: 0.03)
+    static let playerColliderSize = CGSize(width: 0.03, height: 0.03)
     static let enemyDiameter: CGFloat = 0.03
     static let enemyFrontToBackRatio: CGFloat = 0.8
 

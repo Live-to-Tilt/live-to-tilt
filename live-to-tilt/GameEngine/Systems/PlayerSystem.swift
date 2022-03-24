@@ -14,9 +14,12 @@ class PlayerSystem: System {
 
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
 
-        let initialRotation = physicsComponent.physicsBody.rotation
-        let desiredRotation = playerComponent.inputForce.angle
+        let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
+                                       desiredRotation: playerComponent.inputForce.angle)
+        physicsComponent.physicsBody.rotation = newRotation
+    }
 
+    private func lerpRotation(initialRotation: CGFloat, desiredRotation: CGFloat) -> CGFloat {
         var difference = desiredRotation - initialRotation
         if difference > .pi {
             difference -= 2 * .pi
@@ -30,7 +33,8 @@ class PlayerSystem: System {
         } else if smoothedRotation < -.pi {
             smoothedRotation = 2 * .pi - smoothedRotation
         }
-        physicsComponent.physicsBody.rotation = smoothedRotation
+
+        return smoothedRotation
     }
 
     func update(deltaTime: CGFloat) {
