@@ -57,6 +57,10 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         if isCollisionBetweenNukeAndEnemy(entityA: entityA, entityB: entityB) {
             respondToCollisionBetweenNukeAndEnemy(entityA: entityA, entityB: entityB)
         }
+
+        if isCollisionBetweenPlayerAndEnemy(entityA: entityA, entityB: entityB) {
+            respondToCollisionBetweenPlayerAndEnemy(entityA: entityA, entityB: entityB)
+        }
     }
 
     func didEnd(_ collision: Collision) {
@@ -73,18 +77,19 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
     }
 
     private func isCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) -> Bool {
-        isPlayerPowerupCollision(entityA, entityB)
-            || isPlayerPowerupCollision(entityB, entityA)
-    }
-
-    private func isPlayerPowerupCollision(_ entityA: Entity, _ entityB: Entity) -> Bool {
-        nexus.hasComponent(PlayerComponent.self, in: entityA)
-            && nexus.hasComponent(PowerupComponent.self, in: entityB)
+        isPlayerPowerupCollision(entityA, entityB) || isPlayerPowerupCollision(entityB, entityA)
     }
 
     private func isCollisionBetweenNukeAndEnemy(entityA: Entity, entityB: Entity) -> Bool {
-        isNukeEnemyCollision(entityA, entityB)
-            || isNukeEnemyCollision(entityB, entityA)
+        isNukeEnemyCollision(entityA, entityB) || isNukeEnemyCollision(entityB, entityA)
+    }
+
+    private func isCollisionBetweenPlayerAndEnemy(entityA: Entity, entityB: Entity) -> Bool {
+        isPlayerEnemyCollision(entityA, entityB) || isPlayerEnemyCollision(entityB, entityA)
+    }
+
+    private func isPlayerPowerupCollision(_ entityA: Entity, _ entityB: Entity) -> Bool {
+        nexus.hasComponent(PlayerComponent.self, in: entityA) && nexus.hasComponent(PowerupComponent.self, in: entityB)
     }
 
     private func isNukeEnemyCollision(_ entityA: Entity, _ entityB: Entity) -> Bool {
@@ -93,6 +98,10 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         }
 
         return powerupComponent.effect is NukeEffect && nexus.hasComponent(EnemyComponent.self, in: entityB)
+    }
+
+    private func isPlayerEnemyCollision(_ entityA: Entity, _ entityB: Entity) -> Bool {
+        nexus.hasComponent(PlayerComponent.self, in: entityA) && nexus.hasComponent(EnemyComponent.self, in: entityB)
     }
 
     private func respondToCollisionBetweenPlayerAndPowerup(entityA: Entity, entityB: Entity) {
@@ -120,5 +129,11 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         }
 
         nexus.removeEntity(enemyEntity)
+    }
+
+    private func respondToCollisionBetweenPlayerAndEnemy(entityA: Entity, entityB: Entity) {
+        let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
+
+        gameStateComponent?.state = .gameOver
     }
 }

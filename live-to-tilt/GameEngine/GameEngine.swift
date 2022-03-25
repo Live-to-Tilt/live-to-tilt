@@ -13,13 +13,18 @@ class GameEngine {
 
     let gameStats: GameStats
 
+    let gameStateSubject = PassthroughSubject<GameStateComponent, Never>()
+    var gameStatePublisher: AnyPublisher<GameStateComponent, Never> {
+        gameStateSubject.eraseToAnyPublisher()
+    }
+
     init() {
         gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus),
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
-            EnemySystem(nexus: nexus),
+            MovementSystem(nexus: nexus),
             PowerupSystem(nexus: nexus)
         ]
 
@@ -30,11 +35,13 @@ class GameEngine {
         updateSystems(deltaTime: deltaTime)
         updatePlayer(inputForce: inputForce)
         publishRenderables()
+        publishGameState()
     }
 
     private func setUpEntities() {
         nexus.createWalls()
         nexus.createPlayer()
+        nexus.createGameState()
     }
 
     private func updateSystems(deltaTime: CGFloat) {
@@ -42,13 +49,19 @@ class GameEngine {
     }
 
     private func updatePlayer(inputForce: CGVector) {
-        guard let playerComponent = nexus.getComponents(of: PlayerComponent.self).first else {
-            return
-        }
-        playerComponent.inputForce = inputForce
+        let playerComponent = nexus.getComponent(of: PlayerComponent.self)
+        playerComponent?.inputForce = inputForce
     }
 
     private func publishRenderables() {
         renderableSubject.send(nexus.getComponents(of: RenderableComponent.self))
+    }
+
+    private func publishGameState() {
+        guard let gameStateComponent = nexus.getComponent(of: GameStateComponent.self) else {
+            return
+        }
+
+        gameStateSubject.send(gameStateComponent)
     }
 }
