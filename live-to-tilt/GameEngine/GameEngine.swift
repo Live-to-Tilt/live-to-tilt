@@ -26,6 +26,7 @@ class GameEngine {
         ]
 
         setUpEntities()
+        EventManager.postEvent(.gameStart)
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {

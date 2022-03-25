@@ -2,11 +2,9 @@ import CoreGraphics
 
 class PlayerSystem: System {
     let nexus: Nexus
-    var events: [Event : Int]
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        self.events = [:]
     }
 
     private func applyInputForce(_ playerComponent: PlayerComponent) {
@@ -44,7 +42,7 @@ class PlayerSystem: System {
 
         playerComponents.forEach { playerComponent in
             applyInputForce(playerComponent)
+            EventManager.postEvent(.playerMoved, frequency: Int(playerComponent.inputForce.magnitude * deltaTime))
         }
-        postEvents()
     }
 }

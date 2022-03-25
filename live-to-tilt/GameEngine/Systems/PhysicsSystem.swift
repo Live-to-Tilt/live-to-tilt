@@ -2,13 +2,11 @@ import CoreGraphics
 
 class PhysicsSystem: System {
     let nexus: Nexus
-    var events: [Event : Int]
 
     let physicsWorld = PhysicsWorld()
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        self.events = [:]
         self.physicsWorld.contactDelegate = self
     }
 
@@ -20,7 +18,6 @@ class PhysicsSystem: System {
         }
 
         updatePhysicsBodies(deltaTime: deltaTime)
-        postEvents()
     }
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {
@@ -126,7 +123,7 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
               powerupComponent.isActive else {
             return
         }
-
+        EventManager.postEvent(.enemyKilled)
         nexus.removeEntity(enemyEntity)
     }
 
@@ -134,5 +131,6 @@ extension PhysicsSystem: PhysicsCollisionDelegate {
         let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
 
         gameStateComponent?.state = .gameOver
+        EventManager.postEvent(.gameEnd)
     }
 }

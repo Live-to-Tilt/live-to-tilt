@@ -29,6 +29,7 @@ final class WaveSystem: System {
         resetElapsedTime()
         startWaveCoroutine()
         updatePointer()
+        EventManager.postEvent(.waveStarted)
     }
 
     private func resetElapsedTime() {

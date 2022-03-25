@@ -2,7 +2,6 @@ import CoreGraphics
 
 final class PowerupSystem: System {
     let nexus: Nexus
-    var events: [Event : Int]
     private var elapsedTimeSincePreviousSpawn: CGFloat = .zero
 
     private var numberOfPowerupsInArena: Int {
@@ -13,13 +12,11 @@ final class PowerupSystem: System {
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        self.events = [:]
     }
 
     func update(deltaTime: CGFloat) {
         manageSpawning(for: deltaTime)
         updatePowerups(for: deltaTime)
-        postEvents()
     }
 
     private func manageSpawning(for deltaTime: CGFloat) {

@@ -1,10 +1,19 @@
 enum Event: String {
-    // atomic events
-    case enemySpawned
-    case enemyKilled
+    // game
     case gameStart
     case gameEnd
-    case nukePowerUpUsed
-    case scoreIncreased
+
+    // powerups
+    case powerUpSpawned
+
+    // collision
+    case nukePowerUpUsed // TODO: update after collision System implemented
+    case enemyKilled
+
+    // enemy
+    case waveStarted
+    case enemySpawned
+
+    // player
     case playerMoved
 }
