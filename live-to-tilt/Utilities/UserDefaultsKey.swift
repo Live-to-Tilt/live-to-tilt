@@ -2,8 +2,8 @@ enum UserDefaultsKey: String {
     case soundtrackVolume
     case gameControlType
 
-    case totalNumGames
+    case gameCount
     case totalScore
-    case totalNumPowerupsUsed
-    case totalEnemiesKilled
+    case powerupUseCount
+    case enemyKillCount
 }

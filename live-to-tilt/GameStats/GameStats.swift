@@ -5,18 +5,18 @@ class GameStats {
         defaults.integer(forKey: .totalScore) + self.currScore
     }
     var totalNumPowerupsUsed: Int {
-        defaults.integer(forKey: .totalNumPowerupsUsed) + self.currNumPowerupsUsed
+        defaults.integer(forKey: .powerupUseCount) + self.currNumPowerupsUsed
     }
     var totalEnemiesKilled: Int {
-        defaults.integer(forKey: .totalEnemiesKilled) + self.totalEnemiesKilled
+        defaults.integer(forKey: .enemyKillCount) + self.totalEnemiesKilled
     }
     var totalNumGames: Int {
-        defaults.integer(forKey: .totalNumGames)
+        defaults.integer(forKey: .gameCount)
     }
 
-    var currScore: Int = 0
-    var currNumPowerupsUsed: Int = 0
-    var currEnemiesKilled: Int = 0
+    var currScore: Int = .zero
+    var currNumPowerupsUsed: Int = .zero
+    var currEnemiesKilled: Int = .zero
 
     let defaults: UserDefaults
 
@@ -27,20 +27,17 @@ class GameStats {
     }
 
     func registerAllTimeStats() {
-        guard defaults.integer(forKey: .totalNumGames) == 0 else {
-            return
-        }
         defaults.register(defaults: [.totalScore: 0,
-                                     .totalNumPowerupsUsed: 0,
-                                     .totalEnemiesKilled: 0,
-                                     .totalNumGames: 0])
+                                     .powerupUseCount: 0,
+                                     .enemyKillCount: 0,
+                                     .gameCount: 0])
     }
 
     func updateAllTimeStats() {
         defaults.setValue(totalScore, forKey: .totalScore)
-        defaults.setValue(totalNumPowerupsUsed, forKey: .totalNumPowerupsUsed)
-        defaults.setValue(totalEnemiesKilled, forKey: .totalEnemiesKilled)
-        defaults.setValue(totalNumGames, forKey: .totalNumGames)
+        defaults.setValue(totalNumPowerupsUsed, forKey: .powerupUseCount)
+        defaults.setValue(totalEnemiesKilled, forKey: .enemyKillCount)
+        defaults.setValue(totalNumGames, forKey: .gameCount)
     }
 
     func observePublishers() {

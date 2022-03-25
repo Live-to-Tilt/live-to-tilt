@@ -12,5 +12,4 @@ extension StatsObservable {
     func unsubscribe(_ subscriber: StatsSubscriber) {
         subscribers.removeAll(where: {$0 === subscriber})
     }
-
 }

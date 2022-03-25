@@ -1,9 +1,9 @@
 import NotificationCenter
 
 enum StatsKey: String {
-    case score = "score"
-    case numEnemiesKilled = "currEnemiesKilled"
-    case numPowerupsUsed = "numPowerupsUsed"
+    case score
+    case numEnemiesKilled
+    case numPowerupsUsed
 }
 
 extension StatsKey {
