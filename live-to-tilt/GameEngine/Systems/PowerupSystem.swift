@@ -25,6 +25,8 @@ final class PowerupSystem: System {
         }
     }
 
+    func lateUpdate(deltaTime: CGFloat) {}
+
     private func manageSpawning(for deltaTime: CGFloat) {
         self.elapsedTimeSincePreviousSpawn += deltaTime
 
@@ -75,8 +77,6 @@ final class PowerupSystem: System {
         collisionComponents.forEach { collisionComponent in
             handlePlayerCollision(powerupComponent, collisionComponent)
         }
-
-        nexus.removeComponents(of: CollisionComponent.self, for: powerupComponent.entity)
     }
 
     private func handlePlayerCollision(_ powerupComponent: PowerupComponent, _ collisionComponent: CollisionComponent) {

@@ -15,17 +15,17 @@ class EnemySystem: System {
         }
     }
 
-    func handleCollisions(_ enemyComponent: EnemyComponent) {
+    func lateUpdate(deltaTime: CGFloat) {}
+
+    private func handleCollisions(_ enemyComponent: EnemyComponent) {
         let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: enemyComponent.entity)
 
         collisionComponents.forEach { collisionComponent in
             handlePowerupCollision(enemyComponent, collisionComponent)
         }
-
-        nexus.removeComponents(of: CollisionComponent.self, for: enemyComponent.entity)
     }
 
-    func handlePowerupCollision(_ enemyComponent: EnemyComponent, _ collisionComponent: CollisionComponent) {
+    private func handlePowerupCollision(_ enemyComponent: EnemyComponent, _ collisionComponent: CollisionComponent) {
         guard
             let powerupComponent = nexus.getComponent(of: PowerupComponent.self,
                                                       for: collisionComponent.collidedEntity),

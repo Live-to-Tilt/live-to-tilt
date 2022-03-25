@@ -48,5 +48,6 @@ class GameRenderer {
         let inputForce = gameControl.getInputForce()
 
         gameEngine.update(deltaTime: CGFloat(elapsedTime), inputForce: inputForce)
+        gameEngine.lateUpdate(deltaTime: CGFloat(elapsedTime))
     }
 }

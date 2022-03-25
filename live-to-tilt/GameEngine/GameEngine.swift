@@ -32,10 +32,14 @@ class GameEngine {
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
-        updateSystems(deltaTime: deltaTime)
         updatePlayer(inputForce: inputForce)
+        updateSystems(deltaTime: deltaTime)
         publishRenderables()
         publishGameState()
+    }
+
+    func lateUpdate(deltaTime: CGFloat) {
+        systems.forEach { $0.lateUpdate(deltaTime: deltaTime) }
     }
 
     private func setUpEntities() {

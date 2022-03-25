@@ -10,7 +10,10 @@ class CollisionSystem: System {
         self.physicsWorld.collisionDelegate = self
     }
 
-    func update(deltaTime: CGFloat) {
+    func update(deltaTime: CGFloat) {}
+
+    func lateUpdate(deltaTime: CGFloat) {
+        nexus.removeComponents(of: CollisionComponent.self)
     }
 }
 

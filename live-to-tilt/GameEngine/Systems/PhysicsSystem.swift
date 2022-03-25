@@ -19,6 +19,8 @@ class PhysicsSystem: System {
         updatePhysicsBodies(deltaTime: deltaTime)
     }
 
+    func lateUpdate(deltaTime: CGFloat) {}
+
     private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
         physicsWorld.update(physicsBodies, deltaTime: deltaTime)

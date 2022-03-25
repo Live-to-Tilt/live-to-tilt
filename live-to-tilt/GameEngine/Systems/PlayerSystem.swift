@@ -16,6 +16,8 @@ class PlayerSystem: System {
         }
     }
 
+    func lateUpdate(deltaTime: CGFloat) {}
+
     private func applyInputForce(_ playerComponent: PlayerComponent) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerComponent.entity) else {
             return
@@ -52,8 +54,6 @@ class PlayerSystem: System {
         collisionComponents.forEach { collisionComponent in
             handleEnemyCollision(collisionComponent)
         }
-
-        nexus.removeComponents(of: CollisionComponent.self, for: playerComponent.entity)
     }
 
     private func handleEnemyCollision(_ collisionComponent: CollisionComponent) {
