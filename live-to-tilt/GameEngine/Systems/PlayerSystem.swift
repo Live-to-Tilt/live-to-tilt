@@ -11,19 +11,21 @@ class PlayerSystem: System {
         let playerComponents = nexus.getComponents(of: PlayerComponent.self)
 
         playerComponents.forEach { playerComponent in
-            applyInputForce(playerComponent)
+            applyInputForce(playerComponent, deltaTime: deltaTime)
             handleCollisions(playerComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
 
-    private func applyInputForce(_ playerComponent: PlayerComponent) {
+    private func applyInputForce(_ playerComponent: PlayerComponent, deltaTime: CGFloat) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerComponent.entity) else {
             return
         }
 
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
+        EventManager.postEvent(.playerMoved,
+                               eventInfo: [.distance: Int(playerComponent.inputForce.magnitude * deltaTime)])
 
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
                                        desiredRotation: playerComponent.inputForce.angle)
