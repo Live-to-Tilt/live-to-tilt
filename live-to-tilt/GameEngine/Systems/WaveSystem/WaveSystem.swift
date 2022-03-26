@@ -25,6 +25,8 @@ final class WaveSystem: System {
         }
     }
 
+    func lateUpdate(deltaTime: CGFloat) {}
+
     private func startWave() {
         resetElapsedTime()
         startWaveCoroutine()

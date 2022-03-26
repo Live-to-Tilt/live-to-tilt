@@ -2,7 +2,7 @@ import CoreGraphics
 
 final class PhysicsWorld {
 
-    weak var contactDelegate: PhysicsCollisionDelegate?
+    weak var collisionDelegate: PhysicsCollisionDelegate?
     var existingCollisions: Set<Collision>
 
     init() {
@@ -59,14 +59,14 @@ final class PhysicsWorld {
     private func publishNewCollisions(_ currentCollisions: Set<Collision>) {
         let newCollisions = currentCollisions.subtracting(existingCollisions)
         for collision in newCollisions {
-            contactDelegate?.didBegin(collision)
+            collisionDelegate?.didBegin(collision)
         }
     }
 
     private func publishEndedCollisions(_ currentCollisions: Set<Collision>) {
         let endedCollisions = existingCollisions.subtracting(currentCollisions)
         for collision in endedCollisions {
-            contactDelegate?.didEnd(collision)
+            collisionDelegate?.didEnd(collision)
         }
     }
 

@@ -5,6 +5,7 @@ class GameEngine {
     // ECS
     let nexus = Nexus()
     let systems: [System]
+    let physicsWorld = PhysicsWorld()
 
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
@@ -18,11 +19,13 @@ class GameEngine {
 
     init() {
         systems = [
-            PhysicsSystem(nexus: nexus),
+            PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
+            CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
             MovementSystem(nexus: nexus),
-            PowerupSystem(nexus: nexus)
+            PowerupSystem(nexus: nexus),
+            EnemySystem(nexus: nexus)
         ]
 
         setUpEntities()
@@ -30,10 +33,14 @@ class GameEngine {
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
-        updateSystems(deltaTime: deltaTime)
         updatePlayer(inputForce: inputForce)
+        updateSystems(deltaTime: deltaTime)
         publishRenderables()
         publishGameState()
+    }
+
+    func lateUpdate(deltaTime: CGFloat) {
+        systems.forEach { $0.lateUpdate(deltaTime: deltaTime) }
     }
 
     private func setUpEntities() {
