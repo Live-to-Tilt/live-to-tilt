@@ -3,8 +3,11 @@ enum UserDefaultsKey: String {
     case sensitivity
     case gameControlType
 
+    // Stats
     case totalNumGames
     case totalScore
     case totalNumPowerupsUsed
-    case totalEnemiesKilled
+    case totalNumNukePowerupsUsed
+    case totalNumEnemiesKilled
+    case totalPlayerDistance
 }

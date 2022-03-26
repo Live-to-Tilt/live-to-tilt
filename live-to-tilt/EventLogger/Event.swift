@@ -1,4 +1,6 @@
-enum Event: String {
+import NotificationCenter
+
+enum Event: String, CaseIterable {
     // game
     case gameStarted
     case gameEnded
@@ -16,4 +18,10 @@ enum Event: String {
 
     // player
     case playerMoved
+}
+
+extension Event {
+    func toNotificationName() -> NSNotification.Name {
+        Notification.Name(rawValue: self.rawValue)
+    }
 }
