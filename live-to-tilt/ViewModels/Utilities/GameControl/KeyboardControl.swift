@@ -3,10 +3,13 @@ import SwiftUI
 
 class KeyboardControl: GameControl {
     private var inputForce: CGVector
-    private var hasStarted = false
+    private var hasStarted: Bool
+    private let sensitivity: CGFloat
 
-    init() {
-        inputForce = .zero
+    init(sensitivity: Float) {
+        self.inputForce = .zero
+        self.hasStarted = false
+        self.sensitivity = CGFloat(sensitivity)
     }
 
     func start() {
@@ -44,6 +47,6 @@ class KeyboardControl: GameControl {
             return
         }
 
-        setInputForce(force * Constants.defaultSensitivity)
+        setInputForce(force * sensitivity)
     }
 }

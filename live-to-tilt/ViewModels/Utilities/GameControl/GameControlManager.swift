@@ -5,6 +5,12 @@ final class GameControlManager {
 
     private let defaults: UserDefaults
 
+    var sensitivity: Float {
+        defaults.float(forKey: .sensitivity)
+    }
+    var logarithmicSensitivity: Float {
+        pow(sensitivity, 2)
+    }
     var gameControlType: GameControlType {
         guard
             let defaultsValue: String = defaults.string(forKey: .gameControlType),
@@ -17,17 +23,22 @@ final class GameControlManager {
     var gameControl: GameControl {
         switch self.gameControlType {
         case .keyboard:
-            return KeyboardControl()
+            return KeyboardControl(sensitivity: logarithmicSensitivity)
         case .accelerometer:
-            return AccelerometerControl()
+            return AccelerometerControl(sensitivity: logarithmicSensitivity)
         }
     }
 
     private init() {
         defaults = UserDefaults.standard
         defaults.register(defaults: [
-            .gameControlType: Constants.defaultGameControl.rawValue
+            .gameControlType: Constants.defaultGameControl.rawValue,
+            .sensitivity: Constants.defaultSensitivity
         ])
+    }
+
+    func setSensitivity(to newSensitivity: Float) {
+        defaults.setValue(newSensitivity, forKey: .sensitivity)
     }
 
     func setGameControlType(to newControl: GameControlType) {

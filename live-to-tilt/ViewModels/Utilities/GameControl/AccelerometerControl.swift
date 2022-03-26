@@ -3,9 +3,11 @@ import CoreMotion
 
 class AccelerometerControl: GameControl {
     private var motion: CMMotionManager
+    private let sensitivity: CGFloat
 
-    init() {
-        motion = CMMotionManager()
+    init(sensitivity: Float) {
+        self.motion = CMMotionManager()
+        self.sensitivity = CGFloat(sensitivity)
     }
 
     func start() {
@@ -26,6 +28,6 @@ class AccelerometerControl: GameControl {
             return CGVector.zero
         }
 
-        return data.acceleration.toCGVector() * Constants.defaultSensitivity
+        return data.acceleration.toCGVector() * sensitivity
     }
 }
