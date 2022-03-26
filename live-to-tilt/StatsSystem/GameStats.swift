@@ -58,24 +58,24 @@ class GameStats {
 
     func observePublishers() {
         for event in Event.allCases {
-            EventManager.registerCallback(event: event,
-                                          observer: self,
-                                          selector: #selector(onStatEvent))
+            EventManager.registerClosure(event: event, closure: onStatEvent(_:eventInfo:))
         }
     }
 
-    @objc
-    private func onStatEvent(_ notification: Notification) {
-        switch notification.name {
-        case Event.gameEnded.toNotificationName():
+    private func onStatEvent(_ event: Event, eventInfo: [EventInfo: Int]?) {
+        switch event {
+        case Event.gameEnded:
             defaults.setValue(self.totalNumGames + 1, forKey: .totalNumGames)
-        case Event.nukePowerUpUsed.toNotificationName():
+            print("game ended")
+        case Event.nukePowerUpUsed:
             self.numNukePowerupsUsed += 1
             self.numPowerupsUsed += 1
-        case Event.enemyKilled.toNotificationName():
+            print("Nuke used")
+        case Event.enemyKilled:
             self.numEnemiesKilled += 1
-        case Event.playerMoved.toNotificationName():
-            guard let data = notification.userInfo as? [EventInfo: Int],
+            print("enemy killed")
+        case Event.playerMoved:
+            guard let data = eventInfo,
                   let distance = data[.distance] else {
                       return
                   }

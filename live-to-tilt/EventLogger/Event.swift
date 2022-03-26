@@ -21,7 +21,16 @@ enum Event: String, CaseIterable {
 }
 
 extension Event {
-    func toNotificationName() -> NSNotification.Name {
+    func toNotificationName() -> Notification.Name {
         Notification.Name(rawValue: self.rawValue)
+    }
+
+    static func fromNotificationName(_ notificationName: Notification.Name) -> Event? {
+        for event in Event.allCases {
+            if event.toNotificationName() == notificationName {
+                return event
+            }
+        }
+        return nil
     }
 }
