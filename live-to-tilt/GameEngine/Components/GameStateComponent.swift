@@ -1,6 +1,12 @@
 class GameStateComponent: Component {
     let entity: Entity
-    var state: GameState
+    var state: GameState {
+        didSet {
+            if state == .gameOver {
+                EventManager.postEvent(.gameEnd)
+            }
+        }
+    }
 
     enum GameState {
         case play
