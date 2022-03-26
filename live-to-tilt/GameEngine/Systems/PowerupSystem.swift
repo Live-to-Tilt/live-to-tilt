@@ -16,8 +16,16 @@ final class PowerupSystem: System {
 
     func update(deltaTime: CGFloat) {
         manageSpawning(for: deltaTime)
-        updatePowerups(for: deltaTime)
+
+        let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
+
+        powerupComponents.forEach { powerupComponent in
+            updatePowerup(powerupComponent, for: deltaTime)
+            handleCollisions(powerupComponent)
+        }
     }
+
+    func lateUpdate(deltaTime: CGFloat) {}
 
     private func manageSpawning(for deltaTime: CGFloat) {
         self.elapsedTimeSincePreviousSpawn += deltaTime
@@ -55,15 +63,29 @@ final class PowerupSystem: System {
         return position
     }
 
-    private func updatePowerups(for deltaTime: CGFloat) {
-        let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
+    private func updatePowerup(_ powerupComponent: PowerupComponent, for deltaTime: CGFloat) {
+        powerupComponent.elapsedTimeSinceSpawn += deltaTime
 
-        for powerupComponent in powerupComponents {
-            powerupComponent.elapsedTimeSinceSpawn += deltaTime
+        if powerupComponent.isActive {
+            powerupComponent.effect.update(for: deltaTime)
+        }
+    }
 
-            if powerupComponent.isActive {
-                powerupComponent.effect.update(for: deltaTime)
-            }
+    private func handleCollisions(_ powerupComponent: PowerupComponent) {
+        let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: powerupComponent.entity)
+
+        collisionComponents.forEach { collisionComponent in
+            handlePlayerCollision(powerupComponent, collisionComponent)
+        }
+    }
+
+    private func handlePlayerCollision(_ powerupComponent: PowerupComponent, _ collisionComponent: CollisionComponent) {
+        guard nexus.hasComponent(PlayerComponent.self, in: collisionComponent.collidedEntity) else {
+            return
+        }
+
+        if powerupComponent.elapsedTimeSinceSpawn > Constants.delayBeforePowerupIsActivatable {
+            powerupComponent.isActive = true
         }
     }
 }

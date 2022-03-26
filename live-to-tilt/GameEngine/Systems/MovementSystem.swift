@@ -15,4 +15,6 @@ final class MovementSystem: System {
             movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
         }
     }
+
+    func lateUpdate(deltaTime: CGFloat) {}
 }
