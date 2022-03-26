@@ -3,7 +3,7 @@ class GameStateComponent: Component {
     var state: GameState {
         didSet {
             if state == .gameOver {
-                EventManager.postEvent(.gameEnd)
+                EventManager.postEvent(.gameEnded)
             }
         }
     }

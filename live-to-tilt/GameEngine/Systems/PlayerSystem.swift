@@ -22,10 +22,11 @@ class PlayerSystem: System {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerComponent.entity) else {
             return
         }
-        
+
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
-        EventManager.postEvent(.playerMoved, frequency: Int(playerComponent.inputForce.magnitude * deltaTime))
-        
+        EventManager.postEvent(.playerMoved,
+                               eventInfo: [.distance: Int(playerComponent.inputForce.magnitude * deltaTime)])
+
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
                                        desiredRotation: playerComponent.inputForce.angle)
         physicsComponent.physicsBody.rotation = newRotation
