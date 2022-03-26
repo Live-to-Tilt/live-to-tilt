@@ -12,12 +12,15 @@ class GameEngine {
         renderableSubject.eraseToAnyPublisher()
     }
 
+    let gameStats: GameStats
+
     let gameStateSubject = PassthroughSubject<GameStateComponent, Never>()
     var gameStatePublisher: AnyPublisher<GameStateComponent, Never> {
         gameStateSubject.eraseToAnyPublisher()
     }
 
     init() {
+        gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),

@@ -67,6 +67,7 @@
 		72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */; };
 		DB0A621527EDA4730033E23B /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0A621427EDA4730033E23B /* EventManager.swift */; };
 		DB77AF3327EEC41100F8DE4C /* EventInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3227EEC41100F8DE4C /* EventInfo.swift */; };
+		DB248E9B27E8C4CF00EB820A /* AchievementsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB248E9A27E8C4CF00EB820A /* AchievementsSystem.swift */; };
 		DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */; };
 		DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480527D8BDA900D46B84 /* Soundtrack.swift */; };
 		DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4627DB63D800A26752 /* GameControl.swift */; };
@@ -76,6 +77,7 @@
 		DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */; };
 		DBB8933727EC7AD600D61D72 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933627EC7AD600D61D72 /* Event.swift */; };
 		DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933827EC83AB00D61D72 /* Notification.Name+Extensions.swift */; };
+		DBB8932D27E8CD1700D61D72 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8932C27E8CD1700D61D72 /* GameStats.swift */; };
 		DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91D827D7B8A300B0E750 /* CGFloat+Extensions.swift */; };
 		DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DA27D7B8A300B0E750 /* PhysicsBody.swift */; };
 		DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEC91DB27D7B8A300B0E750 /* Collision.swift */; };
@@ -159,6 +161,9 @@
 		DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 		DBB8933627EC7AD600D61D72 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DBB8933827EC83AB00D61D72 /* Notification.Name+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extensions.swift"; sourceTree = "<group>"; };
+		DB248E9A27E8C4CF00EB820A /* AchievementsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsSystem.swift; sourceTree = "<group>"; };
+		DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		DBB8932C27E8CD1700D61D72 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		DBEC91D827D7B8A300B0E750 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
 		DBEC91DA27D7B8A300B0E750 /* PhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
 		DBEC91DB27D7B8A300B0E750 /* Collision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collision.swift; sourceTree = "<group>"; };
@@ -282,6 +287,7 @@
 				72478E9027D70C6A00B9140A /* Components */,
 				72478E9127D70C6F00B9140A /* Systems */,
 				72478E9C27D7363100B9140A /* GameEngine.swift */,
+				DBB8932C27E8CD1700D61D72 /* GameStats.swift */,
 			);
 			path = GameEngine;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 				72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */,
 				72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */,
 				72B630A127EC377E004C5238 /* EnemySystem.swift */,
+				DB248E9A27E8C4CF00EB820A /* AchievementsSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -586,6 +593,8 @@
 				3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */,
 				DBEC91F027D7B8A300B0E750 /* PhysicsWorld.swift in Sources */,
 				DBEC91F127D7B8A300B0E750 /* CircleCollider.swift in Sources */,
+				DBB8932D27E8CD1700D61D72 /* GameStats.swift in Sources */,
+				21CE5B7B27DF5DFB00FE42BE /* RoundedContainer.swift in Sources */,
 				72EC6AAB27E2EA0600FCCB7E /* PlayerSystem.swift in Sources */,
 				DB0A621527EDA4730033E23B /* EventManager.swift in Sources */,
 				DB77AF3327EEC41100F8DE4C /* EventInfo.swift in Sources */,
@@ -594,6 +603,7 @@
 				DBEC91F827D8F92200B0E750 /* PhysicsCollisionDelegate.swift in Sources */,
 				72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */,
 				72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */,
+				DB248E9B27E8C4CF00EB820A /* AchievementsSystem.swift in Sources */,
 				DBEC91ED27D7B8A300B0E750 /* RectangleCollider.swift in Sources */,
 				3DC0F28427EB0239001D54E4 /* MovementComponent.swift in Sources */,
 				72478E9D27D7363100B9140A /* GameEngine.swift in Sources */,

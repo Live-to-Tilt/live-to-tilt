@@ -11,6 +11,10 @@ extension UserDefaults {
         setValue(value, forKey: defaultName.rawValue)
     }
 
+    func integer(forKey defaultName: UserDefaultsKey) -> Int {
+        integer(forKey: defaultName.rawValue)
+    }
+
     func float(forKey defaultName: UserDefaultsKey) -> Float {
         float(forKey: defaultName.rawValue)
     }
