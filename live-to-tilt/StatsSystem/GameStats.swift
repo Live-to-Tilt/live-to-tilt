@@ -41,6 +41,7 @@ class GameStats {
     func registerAllTimeStats() {
         defaults.register(defaults: [.totalScore: 0,
                                      .totalNumPowerupsUsed: 0,
+                                     .totalNumNukePowerupsUsed: 0,
                                      .totalNumEnemiesKilled: 0,
                                      .totalNumGames: 0,
                                      .totalPlayerDistance: 0])
