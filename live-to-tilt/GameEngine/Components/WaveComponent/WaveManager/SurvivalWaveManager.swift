@@ -40,6 +40,6 @@ class SurvivalWaveManager: WaveManager {
         }
 
         currentInterval = nextInterval
-        elapsedTimeSinceLastWave.formTruncatingRemainder(dividingBy: nextInterval)
+        elapsedTimeSinceLastWave = .zero
     }
 }

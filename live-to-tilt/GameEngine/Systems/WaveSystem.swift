@@ -11,12 +11,7 @@ final class WaveSystem: System {
         let waveComponents = nexus.getComponents(of: WaveComponent.self)
         waveComponents.forEach { waveComponent in
             let waveManager = waveComponent.waveManager
-            waveManager.update(deltaTime: deltaTime)
-
-            if waveManager.canStartNextWave(nexus: nexus) {
-                waveManager.startNextWave(nexus: nexus)
-                EventManager.postEvent(.waveStarted)
-            }
+            waveManager.update(deltaTime: deltaTime, nexus: nexus)
         }
     }
 

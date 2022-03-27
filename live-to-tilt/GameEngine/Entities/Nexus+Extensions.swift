@@ -111,8 +111,4 @@ extension Nexus {
                      to: entity)
         EventManager.postEvent(.powerUpSpawned)
     }
-
-    func createWaveComponent() {
-
-    }
 }

@@ -7,3 +7,14 @@ protocol WaveManager {
 
     func startNextWave(nexus: Nexus)
 }
+
+extension WaveManager {
+    func update(deltaTime: CGFloat, nexus: Nexus) {
+        update(deltaTime: deltaTime)
+
+        if canStartNextWave(nexus: nexus) {
+            startNextWave(nexus: nexus)
+            EventManager.postEvent(.waveStarted)
+        }
+    }
+}
