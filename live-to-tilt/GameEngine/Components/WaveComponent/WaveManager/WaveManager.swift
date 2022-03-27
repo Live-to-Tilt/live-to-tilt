@@ -1,23 +1,9 @@
 import CoreGraphics
 
 protocol WaveManager {
-    var waveIterator: AnyIterator<Wave> { get }
-    var interval: Interval { get }
-    var elapsedTimeSinceLastWave: CGFloat { get set }
-}
+    func update(deltaTime: CGFloat)
 
-extension WaveManager {
-    mutating func update(nexus: Nexus, deltaTime: CGFloat) {
-        elapsedTimeSinceLastWave += deltaTime
+    func canStartNextWave(nexus: Nexus) -> Bool
 
-        if elapsedTimeSinceLastWave < interval.duration {
-            return
-        }
-
-        let wave = waveIterator.next()
-        wave?.start(nexus: nexus)
-
-        interval.next()
-        elapsedTimeSinceLastWave.formTruncatingRemainder(dividingBy: interval.duration)
-    }
+    func startNextWave(nexus: Nexus)
 }

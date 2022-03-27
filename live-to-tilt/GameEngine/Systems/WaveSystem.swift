@@ -10,8 +10,12 @@ final class WaveSystem: System {
     func update(deltaTime: CGFloat) {
         let waveComponents = nexus.getComponents(of: WaveComponent.self)
         waveComponents.forEach { waveComponent in
-            var waveManager = waveComponent.waveManager
-            waveManager.update(nexus: nexus, deltaTime: deltaTime)
+            let waveManager = waveComponent.waveManager
+            waveManager.update(deltaTime: deltaTime)
+
+            if waveManager.canStartNextWave(nexus: nexus) {
+                waveManager.startNextWave(nexus: nexus)
+            }
         }
     }
 

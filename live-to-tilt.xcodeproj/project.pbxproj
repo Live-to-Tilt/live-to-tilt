@@ -346,8 +346,8 @@
 		3DA4B1E927F00CF100FE19B2 /* WaveComponent */ = {
 			isa = PBXGroup;
 			children = (
-				3DA4B1F727F01FE200FE19B2 /* Iterator */,
 				3DA4B1E727F00B6600FE19B2 /* WaveComponent.swift */,
+				3DA4B1F727F01FE200FE19B2 /* Iterator */,
 				3DA4B1F127F014C200FE19B2 /* Interval */,
 				3DA4B1EA27F00D6400FE19B2 /* WaveManager */,
 				3DA4B1E527F0092200FE19B2 /* Wave */,
