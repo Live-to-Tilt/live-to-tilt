@@ -58,7 +58,7 @@ class GameStats {
 
     func observePublishers() {
         for event in Event.allCases {
-            EventManager.shared.registerClosure(event: event, closure: onStatEvent)
+            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
         }
     }
 
