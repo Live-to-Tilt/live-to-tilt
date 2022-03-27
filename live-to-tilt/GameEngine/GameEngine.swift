@@ -51,6 +51,7 @@ class GameEngine {
         nexus.createWalls()
         nexus.createPlayer()
         nexus.createGameState()
+        nexus.createWave()
     }
 
     private func updateSystems(deltaTime: CGFloat) {
