@@ -32,7 +32,7 @@ struct Constants {
     static let enemyFrontToBackRatio: CGFloat = 0.8
 
     // Wave
-    static let waveIntervalDuration: CGFloat = 10
+    static let survivalWaveIntervalDuration: CGFloat = 10
     static let randomWaveDelay: Double = 0.1
     static let randomWaveEnemyCount: Int = 10
 
