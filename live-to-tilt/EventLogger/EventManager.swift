@@ -47,7 +47,7 @@ class EventManager {
 
     @objc
     static func executeObserverClosures(_ notification: Notification) {
-        guard let event = Event.fromNotificationName(notification.name) else {
+        guard let event = Event(rawValue: notification.name.rawValue) else {
             return
         }
         guard let closureList = observerClosures[event] else {
