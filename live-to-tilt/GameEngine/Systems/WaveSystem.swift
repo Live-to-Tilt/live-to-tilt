@@ -15,6 +15,7 @@ final class WaveSystem: System {
 
             if waveManager.canStartNextWave(nexus: nexus) {
                 waveManager.startNextWave(nexus: nexus)
+                EventManager.postEvent(.waveStarted)
             }
         }
     }
