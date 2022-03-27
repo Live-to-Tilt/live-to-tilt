@@ -343,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				3DA4B1E727F00B6600FE19B2 /* WaveComponent.swift */,
-				3DA4B1F727F01FE200FE19B2 /* Iterator */,
 				3DA4B1EA27F00D6400FE19B2 /* WaveManager */,
 				3DA4B1E527F0092200FE19B2 /* Wave */,
 			);
@@ -358,13 +357,6 @@
 				3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */,
 			);
 			path = WaveManager;
-			sourceTree = "<group>";
-		};
-		3DA4B1F727F01FE200FE19B2 /* Iterator */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Iterator;
 			sourceTree = "<group>";
 		};
 		3DC7BC7927E3910E00994C18 /* MovementComponent */ = {
