@@ -2,13 +2,7 @@ import Foundation
 import CoreGraphics
 
 class RandomWave: Wave {
-    let nexus: Nexus
-
-    init(nexus: Nexus) {
-        self.nexus = nexus
-    }
-
-    func coroutine() {
+    func coroutine(nexus: Nexus) {
         guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
             return
         }
@@ -17,13 +11,13 @@ class RandomWave: Wave {
         var delay: Double = .zero
         for _ in 0..<Constants.randomWaveEnemyCount {
             DispatchQueue.main.asyncAfter(deadline: startTime + delay) {
-                self.spawnEnemy(target: playerEntity)
+                self.spawnEnemy(nexus: nexus, target: playerEntity)
             }
             delay += Constants.randomWaveDelay
         }
     }
 
-    private func spawnEnemy(target playerEntity: Entity) {
+    private func spawnEnemy(nexus: Nexus, target playerEntity: Entity) {
         let spawnLocation = getEnemySpawnLocation()
         let movement = HomingMovement(target: playerEntity)
         nexus.createEnemy(position: spawnLocation, movement: movement)

@@ -44,6 +44,13 @@ extension Nexus {
                      to: entity)
     }
 
+    func createWave() {
+        let entity = Entity()
+
+        addComponent(WaveComponent(entity: entity, gameMode: .survival),
+                     to: entity)
+    }
+
     func createEnemy(position: CGPoint, movement: Movement) {
         let entity = Entity()
         let transform = CGAffineTransform(scaleX: Constants.enemyFrontToBackRatio, y: Constants.enemyFrontToBackRatio)
@@ -103,5 +110,9 @@ extension Nexus {
                                                                isTrigger: true)),
                      to: entity)
         EventManager.postEvent(.powerUpSpawned)
+    }
+
+    func createWaveComponent() {
+
     }
 }
