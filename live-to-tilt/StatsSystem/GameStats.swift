@@ -58,23 +58,23 @@ class GameStats {
 
     func observePublishers() {
         for event in Event.allCases {
-            EventManager.registerClosure(event: event, closure: onStatEvent(_:eventInfo:))
+            EventManager.shared.registerClosure(event: event, closure: onStatEvent)
         }
     }
 
-    private func onStatEvent(_ event: Event, eventInfo: [EventInfo: Int]?) {
+    lazy var onStatEvent = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
+        guard let self = self else {
+            return
+        }
         switch event {
-        case Event.gameEnded:
-            defaults.setValue(self.totalNumGames + 1, forKey: .totalNumGames)
-            print("game ended")
-        case Event.nukePowerUpUsed:
+        case .gameEnded:
+            self.defaults.setValue(self.totalNumGames + 1, forKey: .totalNumGames)
+        case .nukePowerUpUsed:
             self.numNukePowerupsUsed += 1
             self.numPowerupsUsed += 1
-            print("Nuke used")
-        case Event.enemyKilled:
+        case .enemyKilled:
             self.numEnemiesKilled += 1
-            print("enemy killed")
-        case Event.playerMoved:
+        case .playerMoved:
             guard let data = eventInfo,
                   let distance = data[.distance] else {
                       return

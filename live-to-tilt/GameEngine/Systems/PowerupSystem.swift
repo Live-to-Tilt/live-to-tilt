@@ -86,7 +86,7 @@ final class PowerupSystem: System {
 
         if powerupComponent.elapsedTimeSinceSpawn > Constants.delayBeforePowerupIsActivatable {
             if !powerupComponent.isActive && powerupComponent.effect is NukeEffect {
-                EventManager.postEvent(.nukePowerUpUsed)
+                EventManager.shared.postEvent(.nukePowerUpUsed)
             }
             powerupComponent.isActive = true
         }

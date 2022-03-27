@@ -20,6 +20,7 @@ class GameEngine {
     }
 
     init() {
+        EventManager.shared.removeObserverClosures()
         gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
@@ -32,7 +33,7 @@ class GameEngine {
         ]
 
         setUpEntities()
-        EventManager.postEvent(.gameStarted)
+        EventManager.shared.postEvent(.gameStarted)
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
