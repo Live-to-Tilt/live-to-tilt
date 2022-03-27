@@ -2,15 +2,20 @@ import CoreGraphics
 
 class GauntletWaveManager: WaveManager {
     private let waveIterator: AnyIterator<Wave>
-    private let interval: Interval
+    private let intervalIterator: AnyIterator<CGFloat>
+    private var currentInterval: CGFloat
     private var elapsedTimeSinceLastWave: CGFloat
 
     init() {
         let waves: [Wave] = [
             RandomWave()
         ]
+        let intervals: [CGFloat] = [
+            Constants.survivalWaveIntervalDuration
+        ]
         self.waveIterator = waves.makeInfiniteLoopIterator()
-        self.interval = ConstantInterval(duration: Constants.survivalWaveIntervalDuration)
+        self.intervalIterator = intervals.makeInfiniteLoopIterator()
+        self.currentInterval = .zero
         self.elapsedTimeSinceLastWave = .zero
     }
 
@@ -19,16 +24,22 @@ class GauntletWaveManager: WaveManager {
     }
 
     func canStartNextWave(nexus: Nexus) -> Bool {
-        elapsedTimeSinceLastWave > interval.duration
+        elapsedTimeSinceLastWave > currentInterval
     }
 
     func startNextWave(nexus: Nexus) {
         let wave = waveIterator.next()
         wave?.start(nexus: nexus)
+
+        resetElapsedTime()
     }
 
     private func resetElapsedTime() {
-        interval.next()
-        elapsedTimeSinceLastWave.formTruncatingRemainder(dividingBy: interval.duration)
+        guard let nextInterval = intervalIterator.next() else {
+            return
+        }
+
+        currentInterval = nextInterval
+        elapsedTimeSinceLastWave.formTruncatingRemainder(dividingBy: nextInterval)
     }
 }

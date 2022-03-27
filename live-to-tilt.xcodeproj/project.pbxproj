@@ -36,8 +36,6 @@
 		3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1EB27F00D7000FE19B2 /* WaveManager.swift */; };
 		3DA4B1EE27F00D8700FE19B2 /* SurvivalWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1ED27F00D8700FE19B2 /* SurvivalWaveManager.swift */; };
 		3DA4B1F027F00DAE00FE19B2 /* GauntletWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */; };
-		3DA4B1F427F0157F00FE19B2 /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1F327F0157F00FE19B2 /* Interval.swift */; };
-		3DA4B1F627F015E000FE19B2 /* ConstantInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1F527F015E000FE19B2 /* ConstantInterval.swift */; };
 		3DA4B1FB27F029F200FE19B2 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */; };
 		3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
@@ -130,8 +128,6 @@
 		3DA4B1EB27F00D7000FE19B2 /* WaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManager.swift; sourceTree = "<group>"; };
 		3DA4B1ED27F00D8700FE19B2 /* SurvivalWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalWaveManager.swift; sourceTree = "<group>"; };
 		3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletWaveManager.swift; sourceTree = "<group>"; };
-		3DA4B1F327F0157F00FE19B2 /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
-		3DA4B1F527F015E000FE19B2 /* ConstantInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantInterval.swift; sourceTree = "<group>"; };
 		3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateComponent.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
@@ -348,7 +344,6 @@
 			children = (
 				3DA4B1E727F00B6600FE19B2 /* WaveComponent.swift */,
 				3DA4B1F727F01FE200FE19B2 /* Iterator */,
-				3DA4B1F127F014C200FE19B2 /* Interval */,
 				3DA4B1EA27F00D6400FE19B2 /* WaveManager */,
 				3DA4B1E527F0092200FE19B2 /* Wave */,
 			);
@@ -363,15 +358,6 @@
 				3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */,
 			);
 			path = WaveManager;
-			sourceTree = "<group>";
-		};
-		3DA4B1F127F014C200FE19B2 /* Interval */ = {
-			isa = PBXGroup;
-			children = (
-				3DA4B1F327F0157F00FE19B2 /* Interval.swift */,
-				3DA4B1F527F015E000FE19B2 /* ConstantInterval.swift */,
-			);
-			path = Interval;
 			sourceTree = "<group>";
 		};
 		3DA4B1F727F01FE200FE19B2 /* Iterator */ = {
@@ -632,7 +618,6 @@
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
-				3DA4B1F627F015E000FE19B2 /* ConstantInterval.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
 				2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
@@ -673,7 +658,6 @@
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
 				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
-				3DA4B1F427F0157F00FE19B2 /* Interval.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
