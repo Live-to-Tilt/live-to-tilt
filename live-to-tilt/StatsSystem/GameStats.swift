@@ -62,10 +62,15 @@ class GameStats {
         }
     }
 
-    lazy var onStatEvent = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
-        guard let self = self else {
+    lazy var onStatEventRef = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
+        guard let data = eventInfo else {
+            self?.onStatEvent(event, eventInfo: nil)
             return
         }
+        self?.onStatEvent(event, eventInfo: eventInfo)
+    }
+
+    private func onStatEvent(_ event: Event, eventInfo: [EventInfo: Int]?) {
         switch event {
         case .gameEnded:
             self.defaults.setValue(self.totalNumGames + 1, forKey: .totalNumGames)
