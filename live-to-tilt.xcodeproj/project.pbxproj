@@ -245,7 +245,7 @@
 				3D12D9C627D61D8500D01489 /* Main.swift */,
 				3D12D9D927D61F1C00D01489 /* AudioEngine */,
 				DBB8933527EC78DC00D61D72 /* EventLogger */,
-				DB77AF3427EECBAA00F8DE4C /* StatsSystem */,
+				DB77AF3427EECBAA00F8DE4C /* StatsManager */,
 				3D12D9D827D61F1600D01489 /* PhysicsEngine */,
 				3D12D9D727D61F0800D01489 /* GameEngine */,
 				3D12D9D627D61F0300D01489 /* ViewModels */,
@@ -460,12 +460,12 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		DB77AF3427EECBAA00F8DE4C /* StatsSystem */ = {
+		DB77AF3427EECBAA00F8DE4C /* StatsManager */ = {
 			isa = PBXGroup;
 			children = (
 				DBB8932C27E8CD1700D61D72 /* GameStats.swift */,
 			);
-			path = StatsSystem;
+			path = StatsManager;
 			sourceTree = "<group>";
 		};
 		DB88976627DC3D7500F72B9C /* Utilities */ = {
