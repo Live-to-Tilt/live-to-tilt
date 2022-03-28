@@ -63,10 +63,7 @@ class GameStats {
     }
 
     lazy var onStatEventRef = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
-        guard let data = eventInfo else {
-            self?.onStatEvent(event, eventInfo: nil)
-            return
-        }
+        let data = eventInfo
         self?.onStatEvent(event, eventInfo: eventInfo)
     }
 
@@ -80,10 +77,7 @@ class GameStats {
         case .enemyKilled:
             self.numEnemiesKilled += 1
         case .playerMoved:
-            guard let data = eventInfo,
-                  let distance = data[.distance] else {
-                      return
-                  }
+            let distance = eventInfo?[.distance] ?? .zero
             self.playerDistance += distance
         default:
             return

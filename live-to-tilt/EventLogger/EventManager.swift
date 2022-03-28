@@ -7,7 +7,7 @@ import NotificationCenter
 
 class EventManager {
     static let shared = EventManager()
-    var observerClosures: [Event: [(Event, [EventInfo: Int]?) -> Void]]
+    private var observerClosures: [Event: [(Event, [EventInfo: Int]?) -> Void]]
 
     private init() {
         observerClosures = [:]
@@ -39,11 +39,8 @@ class EventManager {
         if observerClosures[event] == nil {
             registerClosure(event: event, observer: self, selector: #selector(executeObserverClosures))
         }
-        guard var closureList = observerClosures[event] else {
-            observerClosures[event] = [closure]
-            return
-        }
-        closureList.append(closure)
+        var closures = observerClosures[event] ?? []
+        closures.append(closure)
     }
 
     private func registerClosure(event: Event, observer: AnyObject, selector: Selector) {
@@ -59,15 +56,12 @@ class EventManager {
         guard let event = Event(rawValue: notification.name.rawValue) else {
             return
         }
-        guard let closureList = observerClosures[event] else {
+        guard let closures = observerClosures[event] else {
             return
         }
-        for closure in closureList {
-            if let eventsInfo = notification.userInfo as? [EventInfo: Int] {
-                closure(event, eventsInfo)
-            } else {
-                closure(event, nil)
-            }
+        for closure in closures {
+            let eventInfo = notification.userInfo as? [EventInfo: Int]
+            closure(event, eventInfo)
         }
     }
 }
