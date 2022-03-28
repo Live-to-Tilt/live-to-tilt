@@ -39,8 +39,7 @@ class EventManager {
         if observerClosures[event] == nil {
             registerClosure(event: event, observer: self, selector: #selector(executeObserverClosures))
         }
-        var closures = observerClosures[event] ?? []
-        closures.append(closure)
+        observerClosures[event, default: []].append(closure)
     }
 
     private func registerClosure(event: Event, observer: AnyObject, selector: Selector) {
@@ -53,10 +52,10 @@ class EventManager {
 
     @objc
     private func executeObserverClosures(_ notification: Notification) {
-        guard let event = Event(rawValue: notification.name.rawValue) else {
-            return
-        }
-        guard let closures = observerClosures[event] else {
+        guard
+            let event = Event(rawValue: notification.name.rawValue),
+            let closures = observerClosures[event]
+        else {
             return
         }
         for closure in closures {
