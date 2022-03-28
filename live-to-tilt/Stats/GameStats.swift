@@ -6,27 +6,27 @@ class GameStats {
     var totalScore: Int {
         defaults.integer(forKey: .totalScore) + self.score
     }
-    var totalNumPowerupsUsed: Int {
-        defaults.integer(forKey: .totalNumPowerupsUsed) + self.numPowerupsUsed
+    var totalPowerupsUsed: Int {
+        defaults.integer(forKey: .totalPowerupsUsed) + self.powerupsUsed
     }
-    var totalNumNukePowerupsUsed: Int {
-        defaults.integer(forKey: .totalNumNukePowerupsUsed) + self.numNukePowerupsUsed
+    var totalNukePowerupsUsed: Int {
+        defaults.integer(forKey: .totalNukePowerupsUsed) + self.nukePowerupsUsed
     }
-    var totalNumEnemiesKilled: Int {
-        defaults.integer(forKey: .totalNumEnemiesKilled) + self.numEnemiesKilled
+    var totalEnemiesKilled: Int {
+        defaults.integer(forKey: .totalEnemiesKilled) + self.enemiesKilled
     }
-    var totalNumGames: Int {
-        defaults.integer(forKey: .totalNumGames)
+    var totalGamesPlayed: Int {
+        defaults.integer(forKey: .totalGamesPlayed)
     }
-    var totalPlayerDistance: Int {
-        defaults.integer(forKey: .totalPlayerDistance) + self.playerDistance
+    var totalDistanceTravelled: Int {
+        defaults.integer(forKey: .totalDistanceTravelled) + self.distanceTravelled
     }
 
     var score: Int = .zero // TODO: to update when scoring system is added
-    var numPowerupsUsed: Int = .zero
-    var numNukePowerupsUsed: Int = .zero
-    var numEnemiesKilled: Int = .zero
-    var playerDistance: Int = .zero
+    var powerupsUsed: Int = .zero
+    var nukePowerupsUsed: Int = .zero
+    var enemiesKilled: Int = .zero
+    var distanceTravelled: Int = .zero
 
     init() {
         defaults = UserDefaults.standard
@@ -40,20 +40,20 @@ class GameStats {
 
     func registerAllTimeStats() {
         defaults.register(defaults: [.totalScore: 0,
-                                     .totalNumPowerupsUsed: 0,
-                                     .totalNumNukePowerupsUsed: 0,
-                                     .totalNumEnemiesKilled: 0,
-                                     .totalNumGames: 0,
-                                     .totalPlayerDistance: 0])
+                                     .totalPowerupsUsed: 0,
+                                     .totalNukePowerupsUsed: 0,
+                                     .totalEnemiesKilled: 0,
+                                     .totalGamesPlayed: 0,
+                                     .totalDistanceTravelled: 0])
     }
 
     func updateAllTimeStats() {
         defaults.setValue(totalScore, forKey: .totalScore)
-        defaults.setValue(totalNumPowerupsUsed, forKey: .totalNumPowerupsUsed)
-        defaults.setValue(totalNumNukePowerupsUsed, forKey: .totalNumNukePowerupsUsed)
-        defaults.setValue(totalNumEnemiesKilled, forKey: .totalNumEnemiesKilled)
-        defaults.setValue(totalNumGames, forKey: .totalNumGames)
-        defaults.setValue(totalPlayerDistance, forKey: .totalPlayerDistance)
+        defaults.setValue(totalPowerupsUsed, forKey: .totalPowerupsUsed)
+        defaults.setValue(totalNukePowerupsUsed, forKey: .totalNukePowerupsUsed)
+        defaults.setValue(totalEnemiesKilled, forKey: .totalEnemiesKilled)
+        defaults.setValue(totalGamesPlayed, forKey: .totalGamesPlayed)
+        defaults.setValue(totalDistanceTravelled, forKey: .totalDistanceTravelled)
     }
 
     func observePublishers() {
@@ -70,15 +70,15 @@ class GameStats {
     private func onStatEvent(_ event: Event, eventInfo: [EventInfo: Int]?) {
         switch event {
         case .gameEnded:
-            self.defaults.setValue(self.totalNumGames + 1, forKey: .totalNumGames)
+            self.defaults.setValue(self.totalGamesPlayed + 1, forKey: .totalGamesPlayed)
         case .nukePowerUpUsed:
-            self.numNukePowerupsUsed += 1
-            self.numPowerupsUsed += 1
+            self.nukePowerupsUsed += 1
+            self.powerupsUsed += 1
         case .enemyKilled:
-            self.numEnemiesKilled += 1
+            self.enemiesKilled += 1
         case .playerMoved:
             let distance = eventInfo?[.distance] ?? .zero
-            self.playerDistance += distance
+            self.distanceTravelled += distance
         default:
             return
         }
