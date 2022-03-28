@@ -20,7 +20,7 @@ class GameEngine {
     }
 
     init() {
-        EventManager.shared.removeObserverClosures()
+        EventManager.shared.reinit()
         gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),

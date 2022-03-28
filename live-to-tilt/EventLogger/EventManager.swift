@@ -27,7 +27,7 @@ class EventManager {
         NotificationCenter.default.post(name: notificationName, object: nil)
     }
 
-    func removeObserverClosures() {
+    func reinit() {
         for event in observerClosures.keys {
             observerClosures[event] = nil
             NotificationCenter.default.removeObserver(self, name: Notification.Name(event: event), object: nil)
