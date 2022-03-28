@@ -80,7 +80,7 @@ extension Nexus {
                      to: entity)
         addComponent(MovementComponent(entity: entity, movement: movement),
                      to: entity)
-        EventManager.postEvent(.enemySpawned)
+        EventManager.shared.postEvent(.enemySpawned)
     }
 
     func createPowerup(position: CGPoint) {
@@ -109,6 +109,6 @@ extension Nexus {
                                                                collisionBitMask: Constants.powerUpBitMask,
                                                                isTrigger: true)),
                      to: entity)
-        EventManager.postEvent(.powerUpSpawned)
+        EventManager.shared.postEvent(.powerUpSpawned)
     }
 }

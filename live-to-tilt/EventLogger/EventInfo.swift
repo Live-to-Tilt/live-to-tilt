@@ -1,3 +1,3 @@
-enum EventInfo: String {
+enum EventInfo: String, Hashable {
     case distance
 }

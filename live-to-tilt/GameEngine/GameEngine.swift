@@ -12,12 +12,16 @@ class GameEngine {
         renderableSubject.eraseToAnyPublisher()
     }
 
+    let gameStats: GameStats
+
     let gameStateSubject = PassthroughSubject<GameStateComponent, Never>()
     var gameStatePublisher: AnyPublisher<GameStateComponent, Never> {
         gameStateSubject.eraseToAnyPublisher()
     }
 
     init() {
+        EventManager.shared.reinit()
+        gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
@@ -29,7 +33,7 @@ class GameEngine {
         ]
 
         setUpEntities()
-        EventManager.postEvent(.gameStarted)
+        EventManager.shared.postEvent(.gameStarted)
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
