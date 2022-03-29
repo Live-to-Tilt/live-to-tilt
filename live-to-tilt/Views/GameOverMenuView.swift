@@ -1,20 +1,25 @@
-//
-//  GameOverMenuView.swift
-//  live-to-tilt
-//
-//  Created by Chester How on 29/3/22.
-//
-
 import SwiftUI
 
 struct GameOverMenuView: View {
+    @ObservedObject var viewModel: GameArenaViewModel
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Game Over")
+            Button(action: { viewModel.restart() }) {
+                Text("Restart")
+            }
+
+            Button(action: { presentationMode.wrappedValue.dismiss() }) {
+                Text("Main Menu")
+            }
+        }
     }
 }
 
 struct GameOverMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverMenuView()
+        GameOverMenuView(viewModel: GameArenaViewModel())
     }
 }

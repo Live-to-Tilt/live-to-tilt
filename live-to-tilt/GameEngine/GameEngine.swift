@@ -2,6 +2,9 @@ import CoreGraphics
 import Combine
 
 class GameEngine {
+    private var timeScale: CGFloat = 1.0
+    private var origTimeScale: CGFloat = 1.0
+
     // ECS
     let nexus = Nexus()
     let systems: [System]
@@ -18,7 +21,9 @@ class GameEngine {
         gameStateSubject.eraseToAnyPublisher()
     }
 
-    init() {
+    init(timeScale: CGFloat = 1.0) {
+        self.timeScale = timeScale
+        self.origTimeScale = timeScale
         systems = [
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
@@ -36,14 +41,31 @@ class GameEngine {
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {
-        updatePlayer(inputForce: inputForce)
-        updateSystems(deltaTime: deltaTime)
+        let scaledTime = deltaTime * timeScale
+
+        if getGameState()?.state == .play {
+            updatePlayer(inputForce: inputForce)
+        }
+        updateSystems(deltaTime: scaledTime)
         publishRenderables()
         publishGameState()
     }
 
     func lateUpdate(deltaTime: CGFloat) {
-        systems.forEach { $0.lateUpdate(deltaTime: deltaTime) }
+        let scaledTime = deltaTime * timeScale
+        systems.forEach { $0.lateUpdate(deltaTime: scaledTime) }
+    }
+
+    func pause() {
+        let gameStateComponent = getGameState()
+        gameStateComponent?.state = .pause
+        timeScale = 0
+    }
+
+    func unpause() {
+        let gameStateComponent = getGameState()
+        gameStateComponent?.state = .play
+        timeScale = origTimeScale
     }
 
     private func setUpEntities() {
@@ -72,5 +94,9 @@ class GameEngine {
         }
 
         gameStateSubject.send(gameStateComponent)
+    }
+
+    private func getGameState() -> GameStateComponent? {
+        nexus.getComponent(of: GameStateComponent.self)
     }
 }

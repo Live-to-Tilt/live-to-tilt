@@ -36,6 +36,10 @@ class GameArenaViewModel: ObservableObject {
         gameRenderer.pause()
     }
 
+    func resume() {
+        gameRenderer.unpause()
+    }
+
     private func attachPublishers() {
         gameEngine.renderablePublisher.sink { renderableComponents in
             self.renderableComponents = renderableComponents
@@ -56,8 +60,8 @@ class GameArenaViewModel: ObservableObject {
 
     private func updateGameRenderer() {
         switch gameStateComponent?.state {
-        case .pause, .gameOver:
-            gameRenderer.pause()
+        case .gameOver:
+            gameRenderer.stop()
         default:
             break
         }
