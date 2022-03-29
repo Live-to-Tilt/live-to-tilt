@@ -47,6 +47,9 @@
 		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
 		7230521027F2C64C00AD753D /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230520F27F2C64C00AD753D /* PauseMenuView.swift */; };
 		7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521127F2D52700AD753D /* GameOverMenuView.swift */; };
+		7230521427F2D80500AD753D /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521327F2D80500AD753D /* MenuButton.swift */; };
+		7230521627F2EB7700AD753D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521527F2EB7700AD753D /* MenuView.swift */; };
+		7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521727F2EE0600AD753D /* MenuIcon.swift */; };
 		7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7234864F27E1DC210041265C /* Nexus+Extensions.swift */; };
 		723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DEFD327E1DF9F00592922 /* LazyView.swift */; };
 		723DEFD627E1E27700592922 /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723DEFD527E1E27700592922 /* PlayerComponent.swift */; };
@@ -144,6 +147,9 @@
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
 		7230521127F2D52700AD753D /* GameOverMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverMenuView.swift; sourceTree = "<group>"; };
+		7230521327F2D80500AD753D /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		7230521527F2EB7700AD753D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		7230521727F2EE0600AD753D /* MenuIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuIcon.swift; sourceTree = "<group>"; };
 		7234864F27E1DC210041265C /* Nexus+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Nexus+Extensions.swift"; sourceTree = "<group>"; };
 		723DEFD327E1DF9F00592922 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		723DEFD527E1E27700592922 /* PlayerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
@@ -212,6 +218,9 @@
 				723EE8B027E8C13D001BD0D4 /* MenuItemText.swift */,
 				723EE8B227E8C217001BD0D4 /* HeroText.swift */,
 				723EE8B427E8CFDD001BD0D4 /* InfoText.swift */,
+				7230521327F2D80500AD753D /* MenuButton.swift */,
+				7230521527F2EB7700AD753D /* MenuView.swift */,
+				7230521727F2EE0600AD753D /* MenuIcon.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -621,6 +630,7 @@
 				3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */,
 				3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
+				7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */,
 				DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
@@ -672,6 +682,7 @@
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
+				7230521627F2EB7700AD753D /* MenuView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
@@ -679,6 +690,7 @@
 				3D12D9C727D61D8500D01489 /* Main.swift in Sources */,
 				72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */,
 				723EE8B327E8C217001BD0D4 /* HeroText.swift in Sources */,
+				7230521427F2D80500AD753D /* MenuButton.swift in Sources */,
 				7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,
 				21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */,

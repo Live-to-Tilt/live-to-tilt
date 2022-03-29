@@ -5,25 +5,32 @@ struct PauseMenuView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            Text("Game Paused")
+        Group {
+            ZStack {
+                Image(systemName: "pause.fill")
+                    .modifier(MenuIcon())
+
+                Text("Game Paused").modifier(HeroText())
+            }
+
             Button(action: { viewModel.resume() }) {
-                Text("Resume")
+                Text("Resume").modifier(MenuButton())
             }
 
             Button(action: { viewModel.restart() }) {
-                Text("Restart")
+                Text("Restart").modifier(MenuButton())
             }
 
             Button(action: { presentationMode.wrappedValue.dismiss() }) {
-                Text("Main Menu")
+                Text("Main Menu").modifier(MenuButton())
             }
-        }
+        }.modifier(MenuView())
     }
 }
 
 struct PauseMenuView_Previews: PreviewProvider {
     static var previews: some View {
         PauseMenuView(viewModel: GameArenaViewModel())
+.previewInterfaceOrientation(.landscapeLeft)
     }
 }

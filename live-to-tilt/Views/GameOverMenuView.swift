@@ -5,16 +5,22 @@ struct GameOverMenuView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            Text("Game Over")
+        Group {
+            ZStack {
+                Image(systemName: "xmark.circle.fill")
+                    .modifier(MenuIcon())
+
+                Text("Game Over").modifier(HeroText())
+            }
+
             Button(action: { viewModel.restart() }) {
-                Text("Restart")
+                Text("Restart").modifier(MenuButton())
             }
 
             Button(action: { presentationMode.wrappedValue.dismiss() }) {
-                Text("Main Menu")
+                Text("Main Menu").modifier(MenuButton())
             }
-        }
+        }.modifier(MenuView())
     }
 }
 
