@@ -45,7 +45,9 @@ final class PowerupSystem: System {
             return
         }
 
-        let randomSpawnLocation = getRandomSpawnLocation()
+        // TODO
+        // let randomSpawnLocation = getRandomSpawnLocation()
+        let randomSpawnLocation = CGPoint(x: 0.75, y: 0.5)
         nexus.createPowerup(position: randomSpawnLocation)
     }
 
@@ -76,6 +78,7 @@ final class PowerupSystem: System {
 
         collisionComponents.forEach { collisionComponent in
             handlePlayerCollision(powerupComponent, collisionComponent)
+            handleEnemyCollision(powerupComponent, collisionComponent)
         }
     }
 
@@ -90,5 +93,16 @@ final class PowerupSystem: System {
             }
             powerupComponent.isActive = true
         }
+    }
+    
+    private func handleEnemyCollision(_ powerupComponent: PowerupComponent, _ collisionComponent: CollisionComponent) {
+        guard let enemyComponent = nexus.getComponent(of: EnemyComponent.self,
+                                                        for: collisionComponent.collidedEntity),
+              powerupComponent.isActive,
+              powerupComponent.effect is NukeEffect else {
+            return
+        }
+        
+        nexus.removeEntity(enemyComponent.entity)
     }
 }
