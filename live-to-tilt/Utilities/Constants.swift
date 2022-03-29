@@ -18,6 +18,9 @@ struct Constants {
     static let maxSensitivity: Float = 1.5
     static let defaultGameControl: GameControlManager.GameControlType = .accelerometer
 
+    // Game Engine
+    static let defaultTimeScale: CGFloat = 1.0
+
     // Entities
     static let topWallPosition = CGPoint(x: 0.75, y: -0.05)
     static let bottomWallPosition = CGPoint(x: 0.75, y: 1.05)

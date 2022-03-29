@@ -2,8 +2,8 @@ import CoreGraphics
 import Combine
 
 class GameEngine {
-    private var timeScale: CGFloat = 1.0
-    private var origTimeScale: CGFloat = 1.0
+    private var timeScale: CGFloat
+    private var origTimeScale: CGFloat
 
     // ECS
     let nexus = Nexus()
@@ -21,7 +21,7 @@ class GameEngine {
         gameStateSubject.eraseToAnyPublisher()
     }
 
-    init(timeScale: CGFloat = 1.0) {
+    init(timeScale: CGFloat = Constants.defaultTimeScale) {
         EventManager.shared.reinit()
 
         self.timeScale = timeScale
