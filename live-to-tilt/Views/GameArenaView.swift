@@ -8,10 +8,11 @@ struct GameArenaView: View {
 
     var body: some View {
         ZStack {
+            GameControlView(gameControl: $viewModel.gameControl)
+
             VStack {
                 InfoHStack()
                 PlayAreaView()
-                GameControlView(gameControl: $viewModel.gameControl)
             }
             .padding()
             .modifier(RootView())
@@ -21,6 +22,9 @@ struct GameArenaView: View {
                     Text("Restart")
                 }
             }
+        }
+        .onTapGesture {
+            viewModel.pause()
         }
     }
 

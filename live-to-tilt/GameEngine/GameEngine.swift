@@ -6,22 +6,19 @@ class GameEngine {
     let nexus = Nexus()
     let systems: [System]
     let physicsWorld = PhysicsWorld()
+    let gameStats: GameStats
 
+    // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
         renderableSubject.eraseToAnyPublisher()
     }
-
-    let gameStats: GameStats
-
     let gameStateSubject = PassthroughSubject<GameStateComponent, Never>()
     var gameStatePublisher: AnyPublisher<GameStateComponent, Never> {
         gameStateSubject.eraseToAnyPublisher()
     }
 
     init() {
-        EventManager.shared.reinit()
-        gameStats = GameStats()
         systems = [
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
@@ -31,8 +28,10 @@ class GameEngine {
             PowerupSystem(nexus: nexus),
             EnemySystem(nexus: nexus)
         ]
+        gameStats = GameStats()
 
         setUpEntities()
+        EventManager.shared.reinit()
         EventManager.shared.postEvent(.gameStarted)
     }
 

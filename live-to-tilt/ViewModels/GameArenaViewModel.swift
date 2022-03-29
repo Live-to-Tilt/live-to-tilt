@@ -32,6 +32,10 @@ class GameArenaViewModel: ObservableObject {
         attachPublishers()
     }
 
+    func pause() {
+        gameRenderer.pause()
+    }
+
     private func attachPublishers() {
         gameEngine.renderablePublisher.sink { renderableComponents in
             self.renderableComponents = renderableComponents

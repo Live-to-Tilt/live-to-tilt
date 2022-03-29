@@ -14,6 +14,8 @@ struct GameControlView: View {
                 AccelerometerControls(accelControl)
             }
         }
+        .opacity(0)
+        .allowsHitTesting(false)
     }
 
     private func KeyboardControls(_ keyboardControl: KeyboardControl) -> some View {
