@@ -3,34 +3,30 @@ import SwiftUI
 struct GameArenaView: View {
     @ObservedObject var viewModel: GameArenaViewModel
 
-    // Navigation
-    @Environment(\.presentationMode) var presentationMode
-
     var body: some View {
         ZStack {
+            GameControlView(gameControl: $viewModel.gameControl)
+
             VStack {
                 InfoHStack()
                 PlayAreaView()
-                GameControlView(gameControl: $viewModel.gameControl)
             }
             .padding()
             .modifier(RootView())
 
             if viewModel.gameStateComponent?.state == .gameOver {
-                Button(action: { viewModel.restart() }) {
-                    Text("Restart")
-                }
+                GameOverMenuView(viewModel: viewModel)
+            } else if viewModel.gameStateComponent?.state == .pause {
+                PauseMenuView(viewModel: viewModel)
             }
+        }
+        .onTapGesture {
+            viewModel.pause()
         }
     }
 
     private func InfoHStack() -> some View {
         HStack {
-            // TODO: Remove later
-            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                Text("Quit")
-            }
-
             Text("wave 10").modifier(InfoText())
             Spacer()
             Text("combo x234").modifier(InfoText())

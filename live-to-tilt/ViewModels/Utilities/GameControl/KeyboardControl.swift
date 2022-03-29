@@ -18,6 +18,7 @@ class KeyboardControl: GameControl {
 
     func stop() {
         hasStarted = false
+        inputForce = .zero
     }
 
     func getInputForce() -> CGVector {

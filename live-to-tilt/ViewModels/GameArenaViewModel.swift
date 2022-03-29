@@ -32,14 +32,22 @@ class GameArenaViewModel: ObservableObject {
         attachPublishers()
     }
 
+    func pause() {
+        gameRenderer.pause()
+    }
+
+    func resume() {
+        gameRenderer.unpause()
+    }
+
     private func attachPublishers() {
-        gameEngine.renderablePublisher.sink { renderableComponents in
-            self.renderableComponents = renderableComponents
+        gameEngine.renderablePublisher.sink { [weak self] renderableComponents in
+            self?.renderableComponents = renderableComponents
         }.store(in: &cancellables)
 
-        gameEngine.gameStatePublisher.sink { gameStateComponent in
-            self.gameStateComponent = gameStateComponent
-            self.updateGameRenderer()
+        gameEngine.gameStatePublisher.sink { [weak self] gameStateComponent in
+            self?.gameStateComponent = gameStateComponent
+            self?.updateGameRenderer()
         }.store(in: &cancellables)
     }
 
@@ -52,8 +60,8 @@ class GameArenaViewModel: ObservableObject {
 
     private func updateGameRenderer() {
         switch gameStateComponent?.state {
-        case .pause, .gameOver:
-            gameRenderer.pause()
+        case .gameOver:
+            gameRenderer.stop()
         default:
             break
         }

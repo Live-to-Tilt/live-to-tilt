@@ -35,11 +35,11 @@ class GameRenderer {
     }
 
     func pause() {
-        displayLink.isPaused = true
+        gameEngine.pause()
     }
 
     func unpause() {
-        displayLink.isPaused = false
+        gameEngine.unpause()
     }
 
     @objc
