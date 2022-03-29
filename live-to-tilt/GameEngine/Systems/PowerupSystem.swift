@@ -94,15 +94,15 @@ final class PowerupSystem: System {
             powerupComponent.isActive = true
         }
     }
-    
+
     private func handleEnemyCollision(_ powerupComponent: PowerupComponent, _ collisionComponent: CollisionComponent) {
         guard let enemyComponent = nexus.getComponent(of: EnemyComponent.self,
-                                                        for: collisionComponent.collidedEntity),
+                                                      for: collisionComponent.collidedEntity),
               powerupComponent.isActive,
               powerupComponent.effect is NukeEffect else {
             return
         }
-        
+
         nexus.removeEntity(enemyComponent.entity)
     }
 }
