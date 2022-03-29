@@ -13,6 +13,7 @@ struct GameArenaView: View {
             }
             .padding()
             .modifier(RootView())
+//            PauseMenuView(viewModel: viewModel)
 
             if viewModel.gameStateComponent?.state == .gameOver {
                 GameOverMenuView(viewModel: viewModel)

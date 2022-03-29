@@ -22,6 +22,8 @@ class GameEngine {
     }
 
     init(timeScale: CGFloat = 1.0) {
+        EventManager.shared.reinit()
+
         self.timeScale = timeScale
         self.origTimeScale = timeScale
         systems = [
@@ -36,7 +38,6 @@ class GameEngine {
         gameStats = GameStats()
 
         setUpEntities()
-        EventManager.shared.reinit()
         EventManager.shared.postEvent(.gameStarted)
     }
 
@@ -57,14 +58,18 @@ class GameEngine {
     }
 
     func pause() {
-        let gameStateComponent = getGameState()
-        gameStateComponent?.state = .pause
-        timeScale = 0
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        gameStateComponent.state = .pause
+        timeScale = .zero
     }
 
     func unpause() {
-        let gameStateComponent = getGameState()
-        gameStateComponent?.state = .play
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        gameStateComponent.state = .play
         timeScale = origTimeScale
     }
 

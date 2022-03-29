@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct MenuView: ViewModifier {
+struct MenuLayout: ViewModifier {
     func body(content: Content) -> some View {
         HStack {
             Spacer()

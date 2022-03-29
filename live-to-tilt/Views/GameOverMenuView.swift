@@ -20,12 +20,13 @@ struct GameOverMenuView: View {
             Button(action: { presentationMode.wrappedValue.dismiss() }) {
                 Text("Main Menu").modifier(MenuButton())
             }
-        }.modifier(MenuView())
+        }.modifier(MenuLayout())
     }
 }
 
 struct GameOverMenuView_Previews: PreviewProvider {
     static var previews: some View {
         GameOverMenuView(viewModel: GameArenaViewModel())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

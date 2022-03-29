@@ -24,13 +24,13 @@ struct PauseMenuView: View {
             Button(action: { presentationMode.wrappedValue.dismiss() }) {
                 Text("Main Menu").modifier(MenuButton())
             }
-        }.modifier(MenuView())
+        }.modifier(MenuLayout())
     }
 }
 
 struct PauseMenuView_Previews: PreviewProvider {
     static var previews: some View {
         PauseMenuView(viewModel: GameArenaViewModel())
-.previewInterfaceOrientation(.landscapeLeft)
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

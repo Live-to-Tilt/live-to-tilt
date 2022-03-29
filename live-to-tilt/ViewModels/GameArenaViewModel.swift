@@ -41,13 +41,13 @@ class GameArenaViewModel: ObservableObject {
     }
 
     private func attachPublishers() {
-        gameEngine.renderablePublisher.sink { renderableComponents in
-            self.renderableComponents = renderableComponents
+        gameEngine.renderablePublisher.sink { [weak self] renderableComponents in
+            self?.renderableComponents = renderableComponents
         }.store(in: &cancellables)
 
-        gameEngine.gameStatePublisher.sink { gameStateComponent in
-            self.gameStateComponent = gameStateComponent
-            self.updateGameRenderer()
+        gameEngine.gameStatePublisher.sink { [weak self] gameStateComponent in
+            self?.gameStateComponent = gameStateComponent
+            self?.updateGameRenderer()
         }.store(in: &cancellables)
     }
 

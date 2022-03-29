@@ -10,8 +10,6 @@ struct GameControlView: View {
 
             if let keyboardControl = gameControl as? KeyboardControl {
                 KeyboardControls(keyboardControl)
-            } else if let accelControl = gameControl as? AccelerometerControl {
-                AccelerometerControls(accelControl)
             }
         }
         .opacity(0)
@@ -41,9 +39,5 @@ struct GameControlView: View {
             }
             .keyboardShortcut(KeyBinding.right, modifiers: [])
         }
-    }
-
-    private func AccelerometerControls(_ accelControl: AccelerometerControl) -> some View {
-        Text("Accelerometer control")
     }
 }
