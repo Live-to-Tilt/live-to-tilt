@@ -38,6 +38,7 @@ struct Constants {
     static let survivalWaveIntervalDuration: CGFloat = 10
     static let randomWaveDelay: Double = 0.1
     static let randomWaveEnemyCount: Int = 10
+    static let horizontalWaveEnemyCount: Int = 16
 
     // Powerups
     static let powerupSpawnInterval: CGFloat = 7
@@ -48,7 +49,7 @@ struct Constants {
     static let nukeExplosionDuration: Double = 0.5
 
     // Enemy Movement
-    static let homingMovementVelocity: CGFloat = 0.1
+    static let enemyMovementSpeed: CGFloat = 0.1
 
     // Collision Bitmasks
     static let playerCollisionBitMask: UInt32 = 1 << 0

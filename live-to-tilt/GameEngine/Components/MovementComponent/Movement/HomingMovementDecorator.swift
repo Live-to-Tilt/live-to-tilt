@@ -1,9 +1,11 @@
 import CoreGraphics
 
-class HomingMovement: Movement {
+class HomingMovementDecorator: Movement {
+    private let movement: Movement
     private let target: Entity
 
-    init(target: Entity) {
+    init(movement: Movement, target: Entity) {
+        self.movement = movement
         self.target = target
     }
 
@@ -19,7 +21,8 @@ class HomingMovement: Movement {
         let entityPosition = entityPhysicsBody.position
         let targetPosition = targetPhysicsBody.position
         let desiredDirection = targetPosition - entityPosition
-        let desiredVelocity = desiredDirection.unitVector * Constants.homingMovementVelocity
+        let desiredVelocity = desiredDirection.unitVector * Constants.enemyMovementSpeed
         entityPhysicsBody.velocity = desiredVelocity
+        movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
     }
 }
