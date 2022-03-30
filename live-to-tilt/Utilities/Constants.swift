@@ -50,6 +50,8 @@ struct Constants {
 
     // Enemy Movement
     static let enemyMovementSpeed: CGFloat = 0.1
+    static let enemySpawnDelay: CGFloat = 1
+    static let enemyLifespan: CGFloat = 30
 
     // Collision Bitmasks
     static let playerCollisionBitMask: UInt32 = 1 << 0
