@@ -38,6 +38,8 @@ struct Constants {
     static let survivalWaveIntervalDuration: CGFloat = 10
     static let randomWaveDelay: Double = 0.1
     static let randomWaveEnemyCount: Int = 10
+    static let circleWaveDistance: CGFloat = 0.45
+    static let circleWaveEnemyCount: Int = 16
 
     // Powerups
     static let powerupSpawnInterval: CGFloat = 7

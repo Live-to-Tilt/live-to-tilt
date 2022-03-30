@@ -18,12 +18,12 @@ class RandomWave: Wave {
     }
 
     private func spawnEnemy(nexus: Nexus, target playerEntity: Entity) {
-        let spawnLocation = getEnemySpawnLocation()
+        let spawnLocation = getEnemySpawnPosition()
         let movement = HomingMovement(target: playerEntity)
         nexus.createEnemy(position: spawnLocation, movement: movement)
     }
 
-    private func getEnemySpawnLocation() -> CGPoint {
+    private func getEnemySpawnPosition() -> CGPoint {
         let minX = Constants.enemyDiameter / 2
         let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX
         let x = CGFloat.random(in: minX...maxX)

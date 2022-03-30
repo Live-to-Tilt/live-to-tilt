@@ -38,6 +38,7 @@
 		3DA4B1F027F00DAE00FE19B2 /* GauntletWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */; };
 		3DA4B1FB27F029F200FE19B2 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */; };
 		3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */; };
+		3DB3741627F406120053F400 /* CircleWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3741527F406120053F400 /* CircleWave.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
 		3DC0F28427EB0239001D54E4 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0F28327EB0239001D54E4 /* MovementComponent.swift */; };
 		3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7A27E3911F00994C18 /* Movement.swift */; };
@@ -136,6 +137,7 @@
 		3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletWaveManager.swift; sourceTree = "<group>"; };
 		3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateComponent.swift; sourceTree = "<group>"; };
+		3DB3741527F406120053F400 /* CircleWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleWave.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		3DC0F28327EB0239001D54E4 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		3DC7BC7A27E3911F00994C18 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 			children = (
 				3DCEAA5727E3062F008ADF6D /* Wave.swift */,
 				3DCEAA5927E306A3008ADF6D /* RandomWave.swift */,
+				3DB3741527F406120053F400 /* CircleWave.swift */,
 			);
 			path = Wave;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				726EBD0527DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift in Sources */,
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
 				3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */,
+				3DB3741627F406120053F400 /* CircleWave.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
 				DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */,
 				3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */,

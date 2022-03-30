@@ -8,6 +8,7 @@ class SurvivalWaveManager: WaveManager {
 
     init() {
         let waves: [Wave] = [
+            CircleWave(),
             RandomWave()
         ]
         let intervals: [CGFloat] = [
