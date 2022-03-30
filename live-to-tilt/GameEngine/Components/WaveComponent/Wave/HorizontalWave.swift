@@ -36,7 +36,7 @@ class HorizontalWave: Wave {
         let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - Constants.enemyDiameter / 2
         let spawnLocation = CGPoint(x: maxX, y: height)
         var movementA: Movement = BaseMovement()
-        movementA = LeftMovementDecorator(movement: movementA)
+        movementA = DirectionalMovement(movement: movementA, direction: .left)
         var movementB: Movement = BaseMovement()
         movementB = HomingMovementDecorator(movement: movementB, target: playerEntity)
         let movement = ConnectedMovement(movementA, for: horizontalMovementDuration, then: movementB)
@@ -50,7 +50,7 @@ class HorizontalWave: Wave {
         let minX = Constants.enemyDiameter / 2
         let spawnLocation = CGPoint(x: minX, y: height)
         var movementA: Movement = BaseMovement()
-        movementA = RightMovementDecorator(movement: movementA)
+        movementA = DirectionalMovement(movement: movementA, direction: .right)
         var movementB: Movement = BaseMovement()
         movementB = HomingMovementDecorator(movement: movementB, target: playerEntity)
         let movement = ConnectedMovement(movementA, for: horizontalMovementDuration, then: movementB)

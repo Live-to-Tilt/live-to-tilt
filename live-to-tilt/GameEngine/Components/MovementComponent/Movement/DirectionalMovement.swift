@@ -1,10 +1,12 @@
 import CoreGraphics
 
-class RightMovementDecorator: Movement {
+class DirectionalMovement: Movement {
     private let movement: Movement
+    private let direction: CGVector
 
-    init(movement: Movement) {
+    init(movement: Movement, direction: CGVector) {
         self.movement = movement
+        self.direction = direction
     }
 
     func update(nexus: Nexus, entity: Entity, deltaTime: CGFloat) {
@@ -13,7 +15,7 @@ class RightMovementDecorator: Movement {
             }
 
         let entityPhysicsBody = entityPhysicsComponent.physicsBody
-        entityPhysicsBody.velocity = .right * Constants.enemyMovementSpeed
+        entityPhysicsBody.velocity = direction * Constants.enemyMovementSpeed
         movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
     }
 }
