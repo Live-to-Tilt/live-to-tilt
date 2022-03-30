@@ -35,12 +35,14 @@ class HorizontalWave: Wave {
                                       horizontalMovementDuration: CGFloat) {
         let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - Constants.enemyDiameter / 2
         let spawnLocation = CGPoint(x: maxX, y: height)
-        var movementA: Movement = BaseMovement()
-        movementA = DirectionalMovementDecorator(movement: movementA, direction: .left)
+        let movementA: Movement = BaseMovement()
         var movementB: Movement = BaseMovement()
-        movementB = HomingMovementDecorator(movement: movementB, target: playerEntity)
-        let movement = ConnectedMovement(movementA, for: horizontalMovementDuration, then: movementB)
-        nexus.createEnemy(position: spawnLocation, movement: movement)
+        movementB = DirectionalMovementDecorator(movement: movementB, direction: .left)
+        var movementC: Movement = BaseMovement()
+        movementC = HomingMovementDecorator(movement: movementC, target: playerEntity)
+        let movementBC = ConnectedMovement(movementB, for: horizontalMovementDuration, then: movementC)
+        let movementABC = ConnectedMovement(movementA, for: Constants.enemySpawnDelay, then: movementBC)
+        nexus.createEnemy(position: spawnLocation, movement: movementABC)
     }
 
     private func spawnRightMovingEnemy(nexus: Nexus,
@@ -49,11 +51,13 @@ class HorizontalWave: Wave {
                                        horizontalMovementDuration: CGFloat) {
         let minX = Constants.enemyDiameter / 2
         let spawnLocation = CGPoint(x: minX, y: height)
-        var movementA: Movement = BaseMovement()
-        movementA = DirectionalMovementDecorator(movement: movementA, direction: .right)
+        let movementA: Movement = BaseMovement()
         var movementB: Movement = BaseMovement()
-        movementB = HomingMovementDecorator(movement: movementB, target: playerEntity)
-        let movement = ConnectedMovement(movementA, for: horizontalMovementDuration, then: movementB)
-        nexus.createEnemy(position: spawnLocation, movement: movement)
+        movementB = DirectionalMovementDecorator(movement: movementB, direction: .right)
+        var movementC: Movement = BaseMovement()
+        movementC = HomingMovementDecorator(movement: movementC, target: playerEntity)
+        let movementBC = ConnectedMovement(movementB, for: horizontalMovementDuration, then: movementC)
+        let movementABC = ConnectedMovement(movementA, for: Constants.enemySpawnDelay, then: movementBC)
+        nexus.createEnemy(position: spawnLocation, movement: movementABC)
     }
 }
