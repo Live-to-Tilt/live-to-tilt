@@ -16,5 +16,18 @@ final class MovementSystem: System {
         }
     }
 
-    func lateUpdate(deltaTime: CGFloat) {}
+    func lateUpdate(deltaTime: CGFloat) {
+        let movementEntities = nexus.getEntities(with: MovementComponent.self)
+        movementEntities.forEach { entity in
+            resetVelocity(for: entity)
+        }
+    }
+
+    private func resetVelocity(for entity: Entity) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
+            return
+        }
+        let physicsBody = physicsComponent.physicsBody
+        physicsBody.velocity = .zero
+    }
 }

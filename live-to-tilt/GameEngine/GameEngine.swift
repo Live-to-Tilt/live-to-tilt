@@ -27,11 +27,11 @@ class GameEngine {
         self.timeScale = timeScale
         self.origTimeScale = timeScale
         systems = [
+            MovementSystem(nexus: nexus),
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
-            MovementSystem(nexus: nexus),
             PowerupSystem(nexus: nexus),
             EnemySystem(nexus: nexus)
         ]
