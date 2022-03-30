@@ -39,7 +39,7 @@ class HorizontalWave: Wave {
         movementA = LeftMovementDecorator(movement: movementA)
         var movementB: Movement = BaseMovement()
         movementB = HomingMovementDecorator(movement: movementB, target: playerEntity)
-        let movement = CombineMovementDecorator(movementA: movementA, for: horizontalMovementDuration, then: movementB)
+        let movement = CombineMovementDecorator(movementA, for: horizontalMovementDuration, then: movementB)
         nexus.createEnemy(position: spawnLocation, movement: movement)
     }
 
@@ -53,7 +53,7 @@ class HorizontalWave: Wave {
         movementA = RightMovementDecorator(movement: movementA)
         var movementB: Movement = BaseMovement()
         movementB = HomingMovementDecorator(movement: movementB, target: playerEntity)
-        let movement = CombineMovementDecorator(movementA: movementA, for: horizontalMovementDuration, then: movementB)
+        let movement = CombineMovementDecorator(movementA, for: horizontalMovementDuration, then: movementB)
         nexus.createEnemy(position: spawnLocation, movement: movement)
     }
 }

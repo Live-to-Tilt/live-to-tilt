@@ -6,7 +6,7 @@ class CombineMovementDecorator: Movement {
     private let movementB: Movement
     private var elapsedTime: CGFloat
 
-    init(movementA: Movement, for duration: CGFloat, then movementB: Movement) {
+    init(_ movementA: Movement, for duration: CGFloat, then movementB: Movement) {
         self.movementA = movementA
         self.duration = duration
         self.movementB = movementB
