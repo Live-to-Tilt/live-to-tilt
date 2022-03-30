@@ -64,6 +64,7 @@ class PlayerSystem: System {
         }
 
         let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
-        gameStateComponent?.state = .gameOver
+        // TODO: Remove comment
+        // gameStateComponent?.state = .gameOver
     }
 }

@@ -21,6 +21,10 @@ class NukeEffect: PowerupEffect {
         self.entity = entity
     }
 
+    func activate() {
+        EventManager.shared.postEvent(.nukePowerUpUsed)
+    }
+
     func update(for deltaTime: CGFloat) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
               let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
@@ -30,6 +34,8 @@ class NukeEffect: PowerupEffect {
         if self.hasCompletedExplosion {
             nexus.removeEntity(entity)
         } else {
+            handleCollisions()
+
             let timeFraction = deltaTime / Constants.nukeExplosionDuration
             let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
 
@@ -38,5 +44,22 @@ class NukeEffect: PowerupEffect {
             renderableComponent.size += deltaRadius
             renderableComponent.opacity -= timeFraction
         }
+    }
+
+    private func handleCollisions() {
+        let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: self.entity)
+
+        collisionComponents.forEach { collisionComponent in
+            handleEnemyCollision(collisionComponent)
+        }
+    }
+
+    private func handleEnemyCollision(_ collisionComponent: CollisionComponent) {
+        guard let enemyComponent = nexus.getComponent(of: EnemyComponent.self,
+                                                      for: collisionComponent.collidedEntity) else {
+            return
+        }
+
+        nexus.removeEntity(enemyComponent.entity)
     }
 }

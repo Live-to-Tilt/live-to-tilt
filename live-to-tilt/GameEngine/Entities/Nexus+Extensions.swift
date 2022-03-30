@@ -83,12 +83,16 @@ extension Nexus {
         EventManager.shared.postEvent(.enemySpawned)
     }
 
-    func createPowerup(position: CGPoint) {
+    func createPowerup() {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
         let effects = [
             NukeEffect(nexus: self, entity: entity)
         ]
+        let position = CGPoint(x: 0.75, y: 0.5)
+        // TODO: remove after testing
+//        let position = getRandomSpawnLocation(forEntityOfWidth: Constants.powerupDiameter,
+//                                              height: Constants.powerupDiameter)
 
         guard let effect = effects.randomElement() else {
             return
@@ -110,5 +114,19 @@ extension Nexus {
                                                                isTrigger: true)),
                      to: entity)
         EventManager.shared.postEvent(.powerUpSpawned)
+    }
+
+    private func getRandomSpawnLocation(forEntityOfWidth width: CGFloat, height: CGFloat) -> CGPoint {
+        let minX = width / 2
+        let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX
+        let x = CGFloat.random(in: minX...maxX)
+
+        let minY = height / 2
+        let maxY = Constants.gameArenaHeight - minY
+        let y = CGFloat.random(in: minY...maxY)
+
+        let position = CGPoint(x: x, y: y)
+
+        return position
     }
 }
