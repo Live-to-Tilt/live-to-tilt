@@ -12,12 +12,7 @@ class EnemySystem: System {
 
         enemyComponents.forEach { enemyComponent in
             updateElapsedDuration(enemyComponent, deltaTime: deltaTime)
-
-            if isLifespanOver(enemyComponent) {
-                despawn(enemyComponent)
-                return
-            }
-
+            despawnIfLifespanOver(enemyComponent)
             handleCollisions(enemyComponent)
         }
     }
@@ -32,8 +27,10 @@ class EnemySystem: System {
         enemyComponent.elapsedDuration > Constants.enemyLifespan
     }
 
-    private func despawn(_ enemyComponent: EnemyComponent) {
-        nexus.removeEntity(enemyComponent.entity)
+    private func despawnIfLifespanOver(_ enemyComponent: EnemyComponent) {
+        if isLifespanOver(enemyComponent) {
+            nexus.removeEntity(enemyComponent.entity)
+        }
     }
 
     private func handleCollisions(_ enemyComponent: EnemyComponent) {

@@ -40,9 +40,9 @@ class HorizontalWave: Wave {
         movementB = DirectionalMovementDecorator(movement: movementB, direction: .left)
         var movementC: Movement = BaseMovement()
         movementC = HomingMovementDecorator(movement: movementC, target: playerEntity)
-        let movementD = ConnectedMovement(movementB, for: horizontalMovementDuration, then: movementC)
-        let movement = ConnectedMovement(movementA, for: Constants.enemySpawnDelay, then: movementD)
-        nexus.createEnemy(position: spawnLocation, movement: movement)
+        let movementBC = ConnectedMovement(movementB, for: horizontalMovementDuration, then: movementC)
+        let movementABC = ConnectedMovement(movementA, for: Constants.enemySpawnDelay, then: movementBC)
+        nexus.createEnemy(position: spawnLocation, movement: movementABC)
     }
 
     private func spawnRightMovingEnemy(nexus: Nexus,
@@ -56,8 +56,8 @@ class HorizontalWave: Wave {
         movementB = DirectionalMovementDecorator(movement: movementB, direction: .right)
         var movementC: Movement = BaseMovement()
         movementC = HomingMovementDecorator(movement: movementC, target: playerEntity)
-        let movementD = ConnectedMovement(movementB, for: horizontalMovementDuration, then: movementC)
-        let movement = ConnectedMovement(movementA, for: Constants.enemySpawnDelay, then: movementD)
-        nexus.createEnemy(position: spawnLocation, movement: movement)
+        let movementBC = ConnectedMovement(movementB, for: horizontalMovementDuration, then: movementC)
+        let movementABC = ConnectedMovement(movementA, for: Constants.enemySpawnDelay, then: movementBC)
+        nexus.createEnemy(position: spawnLocation, movement: movementABC)
     }
 }
