@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class CombineMovementDecorator: Movement {
+class ConnectedMovement: Movement {
     private let movementA: Movement
     private let duration: CGFloat
     private let movementB: Movement

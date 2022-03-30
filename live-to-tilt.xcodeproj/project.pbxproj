@@ -41,7 +41,7 @@
 		3DB3741827F43B7E0053F400 /* LeftMovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3741727F43B7E0053F400 /* LeftMovementDecorator.swift */; };
 		3DB3741A27F4400F0053F400 /* HorizontalWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3741927F4400F0053F400 /* HorizontalWave.swift */; };
 		3DB3741E27F449EE0053F400 /* RightMovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3741D27F449EE0053F400 /* RightMovementDecorator.swift */; };
-		3DB3742027F457CB0053F400 /* CombineMovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3741F27F457CB0053F400 /* CombineMovementDecorator.swift */; };
+		3DB3742027F457CB0053F400 /* ConnectedMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3741F27F457CB0053F400 /* ConnectedMovement.swift */; };
 		3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBBF53427DA25DC0039557D /* ImageAsset.swift */; };
 		3DC0F28427EB0239001D54E4 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC0F28327EB0239001D54E4 /* MovementComponent.swift */; };
 		3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC7A27E3911F00994C18 /* Movement.swift */; };
@@ -143,7 +143,7 @@
 		3DB3741727F43B7E0053F400 /* LeftMovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMovementDecorator.swift; sourceTree = "<group>"; };
 		3DB3741927F4400F0053F400 /* HorizontalWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWave.swift; sourceTree = "<group>"; };
 		3DB3741D27F449EE0053F400 /* RightMovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMovementDecorator.swift; sourceTree = "<group>"; };
-		3DB3741F27F457CB0053F400 /* CombineMovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineMovementDecorator.swift; sourceTree = "<group>"; };
+		3DB3741F27F457CB0053F400 /* ConnectedMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedMovement.swift; sourceTree = "<group>"; };
 		3DBBF53427DA25DC0039557D /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		3DC0F28327EB0239001D54E4 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		3DC7BC7A27E3911F00994C18 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
@@ -364,7 +364,7 @@
 				3DC7BC8027E4356900994C18 /* BaseMovement.swift */,
 				3DB3741727F43B7E0053F400 /* LeftMovementDecorator.swift */,
 				3DB3741D27F449EE0053F400 /* RightMovementDecorator.swift */,
-				3DB3741F27F457CB0053F400 /* CombineMovementDecorator.swift */,
+				3DB3741F27F457CB0053F400 /* ConnectedMovement.swift */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -669,7 +669,7 @@
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
 				3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
-				3DB3742027F457CB0053F400 /* CombineMovementDecorator.swift in Sources */,
+				3DB3742027F457CB0053F400 /* ConnectedMovement.swift in Sources */,
 				DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */,
 				3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */,
 				3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */,
