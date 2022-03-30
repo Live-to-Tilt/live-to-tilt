@@ -12,7 +12,7 @@ class DirectionalMovementDecorator: Movement {
     func update(nexus: Nexus, entity: Entity, deltaTime: CGFloat) {
         guard let entityPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
                 return
-            }
+        }
 
         let entityPhysicsBody = entityPhysicsComponent.physicsBody
         entityPhysicsBody.velocity += direction * Constants.enemyMovementSpeed
