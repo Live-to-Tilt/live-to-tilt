@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class DirectionalMovement: Movement {
+class DirectionalMovementDecorator: Movement {
     private let movement: Movement
     private let direction: CGVector
 
@@ -15,7 +15,7 @@ class DirectionalMovement: Movement {
             }
 
         let entityPhysicsBody = entityPhysicsComponent.physicsBody
-        entityPhysicsBody.velocity = direction * Constants.enemyMovementSpeed
+        entityPhysicsBody.velocity += direction * Constants.enemyMovementSpeed
         movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
     }
 }
