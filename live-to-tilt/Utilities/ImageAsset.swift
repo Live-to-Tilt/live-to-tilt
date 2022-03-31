@@ -4,4 +4,6 @@ enum ImageAsset: String {
     case player
     case nukeOrb
     case nukeEffect
+    case lightsaberOrb
+    case lightsaberEffect
 }

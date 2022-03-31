@@ -18,7 +18,7 @@ final class PowerupSystem: System {
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-    
+
     private func updateElapsedTime(_ powerupComponent: PowerupComponent, deltaTime: CGFloat) {
         powerupComponent.elapsedTimeSinceSpawn += deltaTime
     }

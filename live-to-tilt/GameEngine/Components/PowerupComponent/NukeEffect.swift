@@ -33,7 +33,7 @@ class NukeEffect: PowerupEffect {
         }
 
         let physicsBody = physicsComponent.physicsBody
-        physicsBody.collisionBitMask = Constants.nukeEffectCollisionBitMask
+        physicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
         physicsBody.velocity = .zero
         renderableComponent.image = self.image
 

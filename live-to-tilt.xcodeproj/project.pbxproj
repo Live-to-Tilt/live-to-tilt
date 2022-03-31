@@ -10,6 +10,7 @@
 		2105E6F227E4D0C50010195B /* PowerupEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105E6F127E4D0C50010195B /* PowerupEffect.swift */; };
 		2105E6F427E4D0ED0010195B /* NukeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105E6F327E4D0ED0010195B /* NukeEffect.swift */; };
 		2106AA4427F5B021005EBB62 /* EnemySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106AA4327F5B021005EBB62 /* EnemySystem.swift */; };
+		2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106AA4527F5D61C005EBB62 /* LightsaberEffect.swift */; };
 		2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83D27DF497400FA25D2 /* TitleText.swift */; };
 		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
 		2106F84427DF50A100FA25D2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F84327DF50A100FA25D2 /* RootView.swift */; };
@@ -109,6 +110,7 @@
 		2105E6F127E4D0C50010195B /* PowerupEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupEffect.swift; sourceTree = "<group>"; };
 		2105E6F327E4D0ED0010195B /* NukeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeEffect.swift; sourceTree = "<group>"; };
 		2106AA4327F5B021005EBB62 /* EnemySystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemySystem.swift; sourceTree = "<group>"; };
+		2106AA4527F5D61C005EBB62 /* LightsaberEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsaberEffect.swift; sourceTree = "<group>"; };
 		2106F83D27DF497400FA25D2 /* TitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
 		2106F84327DF50A100FA25D2 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				2184B3D327E398C9007A4068 /* PowerupComponent.swift */,
 				2105E6F127E4D0C50010195B /* PowerupEffect.swift */,
 				2105E6F327E4D0ED0010195B /* NukeEffect.swift */,
+				2106AA4527F5D61C005EBB62 /* LightsaberEffect.swift */,
 			);
 			path = PowerupComponent;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
+				2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,

@@ -10,6 +10,7 @@ enum Event: String, CaseIterable {
 
     // collision
     case nukePowerUpUsed
+    case lightsaberPowerUpUsed
     case enemyKilled
 
     // enemy
