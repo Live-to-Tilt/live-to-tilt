@@ -11,16 +11,19 @@ final class PowerupSystem: System {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
 
         powerupComponents.forEach { powerupComponent in
-            updatePowerup(powerupComponent, for: deltaTime)
+            updateElapsedTime(powerupComponent, deltaTime: deltaTime)
+            updateEffectIfActive(powerupComponent, deltaTime: deltaTime)
             handleCollisions(powerupComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-
-    private func updatePowerup(_ powerupComponent: PowerupComponent, for deltaTime: CGFloat) {
+    
+    private func updateElapsedTime(_ powerupComponent: PowerupComponent, deltaTime: CGFloat) {
         powerupComponent.elapsedTimeSinceSpawn += deltaTime
+    }
 
+    private func updateEffectIfActive(_ powerupComponent: PowerupComponent, deltaTime: CGFloat) {
         if powerupComponent.isActive {
             powerupComponent.effect.update(for: deltaTime)
         }
