@@ -90,8 +90,6 @@ extension Nexus {
         let effects = [
             NukeEffect(nexus: self, entity: entity)
         ]
-//        let position = CGPoint(x: 0.75, y: 0.5)
-        // TODO: remove after testing
         let position = generateRandomSpawnLocation(forEntityOfWidth: Constants.powerupDiameter,
                                                    height: Constants.powerupDiameter)
 
