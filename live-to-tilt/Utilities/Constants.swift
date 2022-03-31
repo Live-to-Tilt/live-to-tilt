@@ -43,8 +43,9 @@ struct Constants {
     static let delayBeforePowerupIsActivatable: Double = 0.5
     static let powerupDiameter: CGFloat = 0.05
     static let maxNumberOfPowerupsInArena: Int = 3
-    static let nukeExplosionDiameter: CGFloat = 0.8
-    static let nukeExplosionDuration: Double = 0.5
+    static let nukeExplosionDiameter: CGFloat = 0.7
+    static let nukeExplosionDuration: Double = 0.3
+    static let nukeCompletionDelay: Double = 2
 
     // Enemy Movement
     static let homingMovementVelocity: CGFloat = 0.1

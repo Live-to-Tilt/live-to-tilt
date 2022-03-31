@@ -13,8 +13,12 @@ class NukeEffect: PowerupEffect {
     let orbImage: ImageAsset = .nukeOrb
     let image: ImageAsset = .nukeEffect
     private var currentExplosionRadius: CGFloat = Constants.powerupDiameter / 2
-    private var hasCompletedExplosion: Bool {
+    private var elapsedTimeSinceExpansionComplete: CGFloat = .zero
+    private var hasCompletedExpansion: Bool {
         self.currentExplosionRadius > Constants.nukeExplosionDiameter / 2
+    }
+    private var hasCompleted: Bool {
+        self.elapsedTimeSinceExpansionComplete >= Constants.nukeCompletionDelay
     }
 
     init(nexus: Nexus, entity: Entity) {
@@ -40,19 +44,20 @@ class NukeEffect: PowerupEffect {
             return
         }
 
-        if self.hasCompletedExplosion {
+        if self.hasCompleted {
             nexus.removeEntity(entity)
+        } else if self.hasCompletedExpansion {
+            self.elapsedTimeSinceExpansionComplete += deltaTime
         } else {
-            handleCollisions()
-
             let timeFraction = deltaTime / Constants.nukeExplosionDuration
             let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
 
             self.currentExplosionRadius += deltaRadius
             physicsComponent.physicsBody.size += deltaRadius
             renderableComponent.size += deltaRadius
-            renderableComponent.opacity -= timeFraction
         }
+
+        handleCollisions()
     }
 
     private func handleCollisions() {
