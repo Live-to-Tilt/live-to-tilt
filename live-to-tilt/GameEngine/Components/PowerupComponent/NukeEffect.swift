@@ -10,7 +10,8 @@ import CoreGraphics
 class NukeEffect: PowerupEffect {
     let nexus: Nexus
     let entity: Entity
-    let image: ImageAsset = .nuke
+    let orbImage: ImageAsset = .nukeOrb
+    let image: ImageAsset = .nukeEffect
     private var currentExplosionRadius: CGFloat = Constants.powerupDiameter / 2
     private var hasCompletedExplosion: Bool {
         self.currentExplosionRadius > Constants.nukeExplosionDiameter / 2
@@ -22,6 +23,14 @@ class NukeEffect: PowerupEffect {
     }
 
     func activate() {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
+              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
+            return
+        }
+
+        physicsComponent.physicsBody.collisionBitMask = Constants.nukeEffectCollisionBitMask
+        renderableComponent.image = self.image
+
         EventManager.shared.postEvent(.nukePowerUpUsed)
     }
 

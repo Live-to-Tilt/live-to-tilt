@@ -100,7 +100,7 @@ extension Nexus {
 
         addComponent(PowerupComponent(entity: entity, effect: effect), to: entity)
         addComponent(RenderableComponent(entity: entity,
-                                         image: effect.image,
+                                         image: effect.orbImage,
                                          position: position,
                                          size: size,
                                          layer: .powerup),
@@ -110,7 +110,7 @@ extension Nexus {
                                                                shape: Shape.circle,
                                                                position: position,
                                                                size: size,
-                                                               collisionBitMask: Constants.powerUpBitMask,
+                                                               collisionBitMask: Constants.powerupCollisionBitMask,
                                                                isTrigger: true)),
                      to: entity)
         EventManager.shared.postEvent(.powerUpSpawned)

@@ -52,6 +52,7 @@ struct Constants {
     // Collision Bitmasks
     static let playerCollisionBitMask: UInt32 = 1 << 0
     static let enemyCollisionBitMask: UInt32 = 1 << 1
-    static let powerUpBitMask: UInt32 = 1 << 2
-    static let wallCollisionBitMask: UInt32 = 1 << 3
+    static let wallCollisionBitMask: UInt32 = 1 << 2
+    static let powerupCollisionBitMask: UInt32 = 1 << 1
+    static let nukeEffectCollisionBitMask: UInt32 = 0b101
 }
