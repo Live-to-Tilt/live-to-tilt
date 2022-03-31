@@ -59,10 +59,23 @@ class PlayerSystem: System {
     }
 
     private func handleEnemyCollision(_ collisionComponent: CollisionComponent) {
-        guard nexus.getComponent(of: EnemyComponent.self, for: collisionComponent.collidedEntity) != nil else {
+        guard let enemyComponent = nexus.getComponent(of: EnemyComponent.self,
+                                                      for: collisionComponent.collidedEntity) else {
             return
         }
 
+        if isRecentlySpawned(enemyComponent) {
+            return
+        }
+
+        endGame()
+    }
+
+    private func isRecentlySpawned(_ enemyComponent: EnemyComponent) -> Bool {
+        enemyComponent.elapsedDuration < Constants.enemySpawnDelay
+    }
+
+    private func endGame() {
         let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
         gameStateComponent?.state = .gameOver
     }
