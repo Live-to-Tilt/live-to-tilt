@@ -83,6 +83,12 @@ extension Nexus {
                      to: entity)
         EventManager.shared.postEvent(.enemySpawned)
     }
+    
+    func createPowerups() {
+        for _ in 1...Constants.maxNumberOfPowerupsInArena {
+            createPowerup()
+        }
+    }
 
     func createPowerup() {
         let entity = Entity()

@@ -78,10 +78,7 @@ class GameEngine {
         nexus.createPlayer()
         nexus.createGameState()
         nexus.createWave()
-
-        for _ in 1...Constants.maxNumberOfPowerupsInArena {
-            nexus.createPowerup()
-        }
+        nexus.createPowerups()
     }
 
     private func updateSystems(deltaTime: CGFloat) {
