@@ -50,6 +50,7 @@ struct Constants {
     static let nukeExplosionDuration: Double = 0.3
     static let nukeCompletionDelay: Double = 2
     static let lightsaberDuration: Double = 4
+    static let lightsaberSize = CGSize(width: 0.1, height: 0.7)
 
     // Enemy Movement
     static let enemyMovementSpeed: CGFloat = 0.1
@@ -60,6 +61,6 @@ struct Constants {
     static let playerCollisionBitMask: UInt32 = 1 << 0
     static let enemyCollisionBitMask: UInt32 = 1 << 1
     static let wallCollisionBitMask: UInt32 = 1 << 2
-    static let powerupCollisionBitMask: UInt32 = 1 << 1
+    static let powerupCollisionBitMask: UInt32 = 0xFFFFFFF2
     static let enemyAffectorCollisionBitMask: UInt32 = 0xFFFFFFFD
 }
