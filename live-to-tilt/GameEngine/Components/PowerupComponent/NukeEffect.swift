@@ -33,6 +33,7 @@ class NukeEffect: PowerupEffect {
         }
 
         let physicsBody = physicsComponent.physicsBody
+        physicsBody.isDynamic = false
         physicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
         physicsBody.velocity = .zero
         renderableComponent.image = self.image
@@ -84,7 +85,7 @@ class NukeEffect: PowerupEffect {
                                                       for: collisionComponent.collidedEntity) else {
             return
         }
-        
+
         nexus.removeEntity(enemyComponent.entity)
     }
 }
