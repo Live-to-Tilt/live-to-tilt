@@ -9,7 +9,7 @@ import CoreGraphics
  */
 class NukeEffect: PowerupEffect {
     let nexus: Nexus
-    let entity: Entity
+    let powerupEntity: Entity
     let orbImage: ImageAsset = .nukeOrb
     let image: ImageAsset = .nukeEffect
     private var currentExplosionRadius: CGFloat = Constants.powerupDiameter / 2
@@ -21,14 +21,14 @@ class NukeEffect: PowerupEffect {
         self.elapsedTimeSinceExpansionComplete >= Constants.nukeCompletionDelay
     }
 
-    init(nexus: Nexus, entity: Entity) {
+    init(nexus: Nexus, powerupEntity: Entity) {
         self.nexus = nexus
-        self.entity = entity
+        self.powerupEntity = powerupEntity
     }
 
     func activate() {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
-              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
+              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
             return
         }
 
@@ -41,13 +41,13 @@ class NukeEffect: PowerupEffect {
     }
 
     func update(for deltaTime: CGFloat) {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
-              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
+              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
             return
         }
 
         if self.hasCompleted {
-            nexus.removeEntity(entity)
+            nexus.removeEntity(powerupEntity)
         } else if self.hasCompletedExpansion {
             self.elapsedTimeSinceExpansionComplete += deltaTime
         } else {
@@ -64,7 +64,7 @@ class NukeEffect: PowerupEffect {
     }
 
     private func handleCollisions() {
-        let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: self.entity)
+        let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: powerupEntity)
 
         collisionComponents.forEach { collisionComponent in
             handleEnemyCollision(collisionComponent)
