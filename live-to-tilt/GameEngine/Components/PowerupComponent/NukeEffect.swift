@@ -41,26 +41,34 @@ class NukeEffect: PowerupEffect {
     }
 
     func update(for deltaTime: CGFloat) {
+        if self.hasCompleted {
+            nexus.removeEntity(entity)
+        } else if self.hasCompletedExpansion {
+            updateElapsedTimeSinceExpansionComplete(deltaTime: deltaTime)
+        } else {
+            expandExplosion(deltaTime: deltaTime)
+        }
+
+        handleCollisions()
+    }
+
+    private func updateElapsedTimeSinceExpansionComplete(deltaTime: CGFloat) {
+        self.elapsedTimeSinceExpansionComplete += deltaTime
+    }
+
+    private func expandExplosion(deltaTime: CGFloat) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
               let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
             return
         }
 
-        if self.hasCompleted {
-            nexus.removeEntity(entity)
-        } else if self.hasCompletedExpansion {
-            self.elapsedTimeSinceExpansionComplete += deltaTime
-        } else {
-            let timeFraction = deltaTime / Constants.nukeExplosionDuration
-            let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
+        let timeFraction = deltaTime / Constants.nukeExplosionDuration
+        let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
 
-            let physicsBody = physicsComponent.physicsBody
-            physicsBody.size += deltaRadius
-            self.currentExplosionRadius += deltaRadius
-            renderableComponent.size += deltaRadius
-        }
-
-        handleCollisions()
+        let physicsBody = physicsComponent.physicsBody
+        physicsBody.size += deltaRadius
+        self.currentExplosionRadius += deltaRadius
+        renderableComponent.size += deltaRadius
     }
 
     private func handleCollisions() {
