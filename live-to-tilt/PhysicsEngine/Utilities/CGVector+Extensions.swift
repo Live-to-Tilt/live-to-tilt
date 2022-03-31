@@ -55,6 +55,13 @@ extension CGVector {
         lhs.dx * rhs.dy - lhs.dy * rhs.dx
     }
 
+    static func random(magnitude: CGFloat) -> CGVector {
+        let randomX = CGFloat.random(in: -1...1)
+        let randomY = CGFloat.random(in: -1...1)
+        let randomVector = CGVector(dx: randomX, dy: randomY)
+        return randomVector.unitVector * magnitude
+    }
+
     static var up: CGVector {
         CGVector(dx: 0, dy: -1)
     }

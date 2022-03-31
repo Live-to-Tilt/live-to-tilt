@@ -23,6 +23,8 @@ class PlayerSystem: System {
             return
         }
 
+        // TODO: remove below
+        playerComponent.inputForce = CGVector(dx: 0.3, dy: 0.4)
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
         EventManager.shared.postEvent(.playerMoved,
                                       eventInfo: [.distance: Int(playerComponent.inputForce.magnitude * deltaTime)])

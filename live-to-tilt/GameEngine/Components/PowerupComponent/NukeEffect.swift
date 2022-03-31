@@ -32,7 +32,9 @@ class NukeEffect: PowerupEffect {
             return
         }
 
-        physicsComponent.physicsBody.collisionBitMask = Constants.nukeEffectCollisionBitMask
+        let physicsBody = physicsComponent.physicsBody
+        physicsBody.collisionBitMask = Constants.nukeEffectCollisionBitMask
+        physicsBody.velocity = .zero
         renderableComponent.image = self.image
 
         EventManager.shared.postEvent(.nukePowerUpUsed)
@@ -52,8 +54,9 @@ class NukeEffect: PowerupEffect {
             let timeFraction = deltaTime / Constants.nukeExplosionDuration
             let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
 
+            let physicsBody = physicsComponent.physicsBody
+            physicsBody.size += deltaRadius
             self.currentExplosionRadius += deltaRadius
-            physicsComponent.physicsBody.size += deltaRadius
             renderableComponent.size += deltaRadius
         }
 
