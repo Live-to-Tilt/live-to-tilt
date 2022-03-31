@@ -122,12 +122,16 @@ final class PhysicsWorld {
         dynamicBody.position += normal * depth
 
         // Resolve velocity
-//        let velocity = dynamicBody.velocity
-//        let angle = normal.angle
-//
-//        dynamicBody.velocity = CGVector(
-//            dx: -velocity.dx * cos(2 * angle) - velocity.dy * sin(2 * angle),
-//            dy: -velocity.dx * sin(2 * angle) + velocity.dy * cos(2 * angle)
-//        ) * (1 - dynamicBody.restitution)
+        guard dynamicBody.restitution != .zero else {
+            return
+        }
+
+        let velocity = dynamicBody.velocity
+        let angle = normal.angle
+
+        dynamicBody.velocity = CGVector(
+            dx: -velocity.dx * cos(2 * angle) - velocity.dy * sin(2 * angle),
+            dy: -velocity.dx * sin(2 * angle) + velocity.dy * cos(2 * angle)
+        ) * dynamicBody.restitution
     }
 }

@@ -78,6 +78,7 @@ class GameEngine {
         nexus.createPlayer()
         nexus.createGameState()
         nexus.createWave()
+        nexus.createPowerups()
     }
 
     private func updateSystems(deltaTime: CGFloat) {

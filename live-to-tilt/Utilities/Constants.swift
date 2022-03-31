@@ -41,12 +41,14 @@ struct Constants {
     static let horizontalWaveEnemyCount: Int = 16
 
     // Powerups
-    static let powerupSpawnInterval: CGFloat = 7
     static let delayBeforePowerupIsActivatable: Double = 0.5
     static let powerupDiameter: CGFloat = 0.05
+    static let powerupRestitution: CGFloat = 1
+    static let maxPowerupSpeed: CGFloat = 0.02
     static let maxNumberOfPowerupsInArena: Int = 3
-    static let nukeExplosionDiameter: CGFloat = 0.8
-    static let nukeExplosionDuration: Double = 0.5
+    static let nukeExplosionDiameter: CGFloat = 0.7
+    static let nukeExplosionDuration: Double = 0.3
+    static let nukeCompletionDelay: Double = 2
 
     // Enemy Movement
     static let enemyMovementSpeed: CGFloat = 0.1
@@ -56,6 +58,7 @@ struct Constants {
     // Collision Bitmasks
     static let playerCollisionBitMask: UInt32 = 1 << 0
     static let enemyCollisionBitMask: UInt32 = 1 << 1
-    static let powerUpBitMask: UInt32 = 1 << 2
-    static let wallCollisionBitMask: UInt32 = 1 << 3
+    static let wallCollisionBitMask: UInt32 = 1 << 2
+    static let powerupCollisionBitMask: UInt32 = 1 << 1
+    static let nukeEffectCollisionBitMask: UInt32 = 0b101
 }

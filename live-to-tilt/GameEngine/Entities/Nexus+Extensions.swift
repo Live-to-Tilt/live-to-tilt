@@ -40,7 +40,8 @@ extension Nexus {
                                                                shape: .circle,
                                                                position: Constants.playerSpawnPosition,
                                                                size: Constants.playerColliderSize,
-                                                               collisionBitMask: Constants.playerCollisionBitMask)),
+                                                               collisionBitMask: Constants.playerCollisionBitMask,
+                                                               restitution: .zero)),
                      to: entity)
     }
 
@@ -83,12 +84,20 @@ extension Nexus {
         EventManager.shared.postEvent(.enemySpawned)
     }
 
-    func createPowerup(position: CGPoint) {
+    func createPowerups() {
+        for _ in 1...Constants.maxNumberOfPowerupsInArena {
+            createPowerup()
+        }
+    }
+
+    func createPowerup() {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
         let effects = [
             NukeEffect(nexus: self, entity: entity)
         ]
+        let position = generateRandomSpawnLocation(forEntityOfWidth: Constants.powerupDiameter,
+                                                   height: Constants.powerupDiameter)
 
         guard let effect = effects.randomElement() else {
             return
@@ -96,7 +105,7 @@ extension Nexus {
 
         addComponent(PowerupComponent(entity: entity, effect: effect), to: entity)
         addComponent(RenderableComponent(entity: entity,
-                                         image: effect.image,
+                                         image: effect.orbImage,
                                          position: position,
                                          size: size,
                                          layer: .powerup),
@@ -106,9 +115,25 @@ extension Nexus {
                                                                shape: Shape.circle,
                                                                position: position,
                                                                size: size,
-                                                               collisionBitMask: Constants.powerUpBitMask,
-                                                               isTrigger: true)),
+                                                               collisionBitMask: Constants.powerupCollisionBitMask,
+                                                               velocity:
+                                                                CGVector.random(magnitude: Constants.maxPowerupSpeed),
+                                                               restitution: Constants.powerupRestitution)),
                      to: entity)
         EventManager.shared.postEvent(.powerUpSpawned)
+    }
+
+    private func generateRandomSpawnLocation(forEntityOfWidth width: CGFloat, height: CGFloat) -> CGPoint {
+        let minX = width / 2
+        let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX
+        let x = CGFloat.random(in: minX...maxX)
+
+        let minY = height / 2
+        let maxY = Constants.gameArenaHeight - minY
+        let y = CGFloat.random(in: minY...maxY)
+
+        let position = CGPoint(x: x, y: y)
+
+        return position
     }
 }
