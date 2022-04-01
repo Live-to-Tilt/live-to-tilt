@@ -30,7 +30,6 @@ class PlayerSystem: System {
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
                                        desiredRotation: playerComponent.inputForce.angle)
         physicsComponent.physicsBody.rotation = newRotation
-
     }
 
     private func lerpRotation(initialRotation: CGFloat, desiredRotation: CGFloat) -> CGFloat {
