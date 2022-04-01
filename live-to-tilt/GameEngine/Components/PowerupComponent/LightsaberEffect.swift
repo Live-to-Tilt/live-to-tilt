@@ -48,6 +48,7 @@ class LightsaberEffect: PowerupEffect {
         }
 
         let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
+        
         powerupPhysicsBody.isDynamic = false
         powerupPhysicsBody.shape = .rectangle
         powerupPhysicsBody.size = Constants.lightsaberSize
@@ -72,6 +73,7 @@ class LightsaberEffect: PowerupEffect {
         let playerPhysicsBody = playerPhysicsComponent.physicsBody
         let playerPosition = playerPhysicsBody.position
         let playerRotation = playerPhysicsBody.rotation
+        
         powerupPhysicsBody.position = playerPosition
         powerupPhysicsBody.rotation = playerRotation
     }
