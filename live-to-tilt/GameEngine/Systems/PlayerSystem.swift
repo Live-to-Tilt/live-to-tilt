@@ -24,7 +24,7 @@ class PlayerSystem: System {
         }
 
         // TODO: remove below
-        let testRotationPeriod = 1.0
+        let testRotationPeriod = 0.2
         let deltaRotation = (deltaTime / testRotationPeriod) * Double.pi * 2
         // TODO: remove above
         physicsComponent.physicsBody.velocity = playerComponent.inputForce

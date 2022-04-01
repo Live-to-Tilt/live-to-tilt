@@ -18,6 +18,7 @@ class LightsaberEffect: PowerupEffect {
 
     let nexus: Nexus
     let powerupEntity: Entity
+    let fadeEntity = Entity()
     let orbImage: ImageAsset = .lightsaberOrb
     let image: ImageAsset = .lightsaberEffect
     private var elapsedTime: CGFloat = .zero
@@ -36,16 +37,22 @@ class LightsaberEffect: PowerupEffect {
     }
 
     func update(for deltaTime: CGFloat) {
+        guard status != .inactive else {
+            return
+        }
+
         if status == .activating {
             animateActivation(deltaTime: deltaTime)
         }
 
         if status == .completed {
             nexus.removeEntity(powerupEntity)
+            nexus.removeEntity(fadeEntity)
         }
 
         followPlayer()
         handleCollisions()
+        animateFade(deltaTime: deltaTime)
         updateElapsedTime(deltaTime: deltaTime)
         updateStatus()
     }
@@ -94,7 +101,28 @@ class LightsaberEffect: PowerupEffect {
         powerupPhysicsBody.position = playerPosition
         powerupPhysicsBody.rotation = playerRotation
     }
-    
+
+    private func animateFade(deltaTime: CGFloat) {
+        guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
+            return
+        }
+
+        let previousRenderableComponents = nexus.getComponents(of: RenderableComponent.self, for: fadeEntity)
+        let timeFraction = deltaTime / Constants.lightsaberFadeDuration
+
+        previousRenderableComponents.forEach { renderableComponent in
+            renderableComponent.opacity -= timeFraction
+        }
+
+        nexus.addComponent(RenderableComponent(entity: fadeEntity,
+                                               image: renderableComponent.image,
+                                               position: renderableComponent.position,
+                                               size: renderableComponent.size,
+                                               rotation: renderableComponent.rotation,
+                                               opacity: Constants.lightsaberFadeInitialOpacity,
+                                               layer: renderableComponent.layer), to: fadeEntity)
+    }
+
     private func updateElapsedTime(deltaTime: CGFloat) {
         self.elapsedTime += deltaTime
     }
