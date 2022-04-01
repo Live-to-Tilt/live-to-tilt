@@ -84,7 +84,7 @@ struct GameArenaView: View {
 
 struct GameArenaView_Previews: PreviewProvider {
     static var previews: some View {
-        GameArenaView(viewModel: GameArenaViewModel())
+        GameArenaView(viewModel: GameArenaViewModel(gameMode: .survival))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

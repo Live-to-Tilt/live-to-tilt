@@ -35,7 +35,7 @@ struct MainMenuView: View {
                     .padding(.bottom, 40)
 
                 NavigationLink(destination: LazyView(
-                    GameArenaView(viewModel: GameArenaViewModel())
+                    GameModeSelectionView()
                 )) {
                     Text("start").modifier(MenuItemText())
                 }

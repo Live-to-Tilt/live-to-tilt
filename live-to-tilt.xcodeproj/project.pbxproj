@@ -28,12 +28,13 @@
 		3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480727D8BDDF00D46B84 /* AudioController.swift */; };
 		3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480C27D8C87400D46B84 /* UserDefaultsKey.swift */; };
 		3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13481227D8D89100D46B84 /* SettingsViewModel.swift */; };
+		3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */; };
 		3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387527E2115D00DF45C2 /* EnemyComponent.swift */; };
 		3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* MovementSystem.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */; };
-		3DA4B1E827F00B6600FE19B2 /* WaveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1E727F00B6600FE19B2 /* WaveComponent.swift */; };
+		3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */; };
 		3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1EB27F00D7000FE19B2 /* WaveManager.swift */; };
 		3DA4B1EE27F00D8700FE19B2 /* SurvivalWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1ED27F00D8700FE19B2 /* SurvivalWaveManager.swift */; };
 		3DA4B1F027F00DAE00FE19B2 /* GauntletWaveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */; };
@@ -130,12 +131,13 @@
 		3D13480E27D8CB7900D46B84 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		3D13481027D8D86000D46B84 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3D13481227D8D89100D46B84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionView.swift; sourceTree = "<group>"; };
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
 		3D55387727E22FD800DF45C2 /* WaveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
-		3DA4B1E727F00B6600FE19B2 /* WaveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveComponent.swift; sourceTree = "<group>"; };
+		3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerComponent.swift; sourceTree = "<group>"; };
 		3DA4B1EB27F00D7000FE19B2 /* WaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManager.swift; sourceTree = "<group>"; };
 		3DA4B1ED27F00D8700FE19B2 /* SurvivalWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalWaveManager.swift; sourceTree = "<group>"; };
 		3DA4B1EF27F00DAE00FE19B2 /* GauntletWaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletWaveManager.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				72742DC727DD954A0033F06B /* GameControlView.swift */,
 				7230520F27F2C64C00AD753D /* PauseMenuView.swift */,
 				7230521127F2D52700AD753D /* GameOverMenuView.swift */,
+				3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -372,7 +375,7 @@
 		3DA4B1E927F00CF100FE19B2 /* WaveComponent */ = {
 			isa = PBXGroup;
 			children = (
-				3DA4B1E727F00B6600FE19B2 /* WaveComponent.swift */,
+				3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */,
 				3DA4B1EA27F00D6400FE19B2 /* WaveManager */,
 				3DA4B1E527F0092200FE19B2 /* Wave */,
 			);
@@ -645,7 +648,7 @@
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */,
 				DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */,
-				3DA4B1E827F00B6600FE19B2 /* WaveComponent.swift in Sources */,
+				3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
@@ -700,6 +703,7 @@
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
 				3DB3741827F43B7E0053F400 /* DirectionalMovementDecorator.swift in Sources */,
 				7230521627F2EB7700AD753D /* MenuLayout.swift in Sources */,
+				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,

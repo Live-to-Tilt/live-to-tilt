@@ -45,10 +45,10 @@ extension Nexus {
                      to: entity)
     }
 
-    func createWave() {
+    func createWaveManager(for gameMode: GameMode) {
         let entity = Entity()
 
-        addComponent(WaveComponent(entity: entity, gameMode: .survival),
+        addComponent(WaveManagerComponent(entity: entity, gameMode: gameMode),
                      to: entity)
     }
 
