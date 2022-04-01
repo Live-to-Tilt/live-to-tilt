@@ -25,21 +25,31 @@ class LightsaberEffect: PowerupEffect {
 
     func activate() {
         guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
-              let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
+              let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity),
+              let playerEntity = nexus.getEntity(with: PlayerComponent.self),
+              let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerEntity) else {
             return
         }
 
         let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
+        let playerPhysicsBody = playerPhysicsComponent.physicsBody
+        let playerPosition = playerPhysicsBody.position
+        let playerRotation = playerPhysicsBody.rotation
+        powerupPhysicsBody.isDynamic = false
+        powerupPhysicsBody.shape = .rectangle
+        powerupPhysicsBody.position = playerPosition
+        powerupPhysicsBody.size = Constants.lightsaberSize
         powerupPhysicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
         powerupPhysicsBody.velocity = .zero
+        powerupPhysicsBody.rotation = playerRotation
         powerupRenderableComponent.image = self.image
+        powerupRenderableComponent.size = Constants.lightsaberSize
 
         EventManager.shared.postEvent(.lightsaberPowerUpUsed)
     }
 
     func update(for deltaTime: CGFloat) {
         guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
-              let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity),
               let playerEntity = nexus.getEntity(with: PlayerComponent.self),
               let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerEntity) else {
             return
@@ -49,13 +59,15 @@ class LightsaberEffect: PowerupEffect {
             nexus.removeEntity(powerupEntity)
         }
 
-        let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
-        let playerPhysicsbody = playerPhysicsComponent.physicsBody
-        let playerPosition = playerPhysicsbody.position
-        powerupPhysicsBody.position = playerPosition
-        self.elapsedTime += deltaTime
-
         handleCollisions()
+
+        let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
+        let playerPhysicsBody = playerPhysicsComponent.physicsBody
+        let playerPosition = playerPhysicsBody.position
+        let playerRotation = playerPhysicsBody.rotation
+        powerupPhysicsBody.position = playerPosition
+        powerupPhysicsBody.rotation = playerRotation
+        self.elapsedTime += deltaTime
     }
 
     private func handleCollisions() {

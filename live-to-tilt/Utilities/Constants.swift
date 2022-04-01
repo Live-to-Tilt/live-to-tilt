@@ -50,7 +50,7 @@ struct Constants {
     static let nukeExplosionDuration: Double = 0.3
     static let nukeCompletionDelay: Double = 2
     static let lightsaberDuration: Double = 4
-    static let lightsaberSize = CGSize(width: 0.1, height: 0.7)
+    static let lightsaberSize = CGSize(width: 0.7, height: 0.01)
 
     // Enemy Movement
     static let enemyMovementSpeed: CGFloat = 0.1
