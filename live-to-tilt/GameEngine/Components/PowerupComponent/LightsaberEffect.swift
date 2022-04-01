@@ -5,8 +5,6 @@ import CoreGraphics
  
  When activated, the Player will gain a Lightsaber, which follows the Player around and destroys enemies it comes
  into contact with.
- 
- See https://tilttolive.fandom.com/wiki/Nuke for more details.
  */
 class LightsaberEffect: PowerupEffect {
     enum Status {
