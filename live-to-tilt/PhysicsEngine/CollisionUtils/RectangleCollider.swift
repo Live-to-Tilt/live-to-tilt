@@ -3,10 +3,12 @@ import CoreGraphics
 final class RectangleCollider: Collider {
     var center: CGPoint
     var size: CGSize
+    var rotation: Double
 
-    init(center: CGPoint, size: CGSize) {
+    init(center: CGPoint, size: CGSize, rotation: Double) {
         self.center = center
         self.size = size
+        self.rotation = rotation
     }
 
     func checkCollision(with otherCollider: Collider) -> CollisionPoints {

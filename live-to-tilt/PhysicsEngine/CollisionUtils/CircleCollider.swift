@@ -24,17 +24,19 @@ final class CircleCollider: Collider {
 
     func checkCollision(with otherCollider: RectangleCollider) -> CollisionPoints {
         let otherCenter = otherCollider.center
-        let normal = center - otherCenter
+        let rotatedCenter = center.rotated(around: otherCenter, by: -otherCollider.rotation)
+        let normal = rotatedCenter - otherCenter
 
         let rectHalfWidth = otherCollider.size.width / 2
         let rectHalfHeight = otherCollider.size.height / 2
         let clampedX = normal.dx.clamped(-rectHalfWidth, rectHalfWidth)
         let clampedY = normal.dy.clamped(-rectHalfHeight, rectHalfHeight)
-        let closestRectPoint = otherCenter + CGVector(dx: clampedX, dy: clampedY)
+        let rotatedClosestRectPoint = otherCenter + CGVector(dx: clampedX, dy: clampedY)
+        let closestRectPoint = rotatedClosestRectPoint.rotated(around: otherCenter, by: otherCollider.rotation)
 
         let circleCentreToRect = closestRectPoint - center
         let pointB = center + circleCentreToRect.unitVector * radius
-        let hasCollision = circleCentreToRect.magnitude < radius
+        let hasCollision = circleCentreToRect.magnitudeSquared < radius.square()
         return CollisionPoints(hasCollision: hasCollision, pointA: closestRectPoint, pointB: pointB)
     }
 }
