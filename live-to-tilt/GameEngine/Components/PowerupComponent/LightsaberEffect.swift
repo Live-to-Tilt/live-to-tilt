@@ -24,42 +24,49 @@ class LightsaberEffect: PowerupEffect {
     }
 
     func activate() {
-        guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
-              let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity),
-              let playerEntity = nexus.getEntity(with: PlayerComponent.self),
-              let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerEntity) else {
-            return
-        }
-
-        let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
-        let playerPhysicsBody = playerPhysicsComponent.physicsBody
-        let playerPosition = playerPhysicsBody.position
-        let playerRotation = playerPhysicsBody.rotation
-        powerupPhysicsBody.isDynamic = false
-        powerupPhysicsBody.shape = .rectangle
-        powerupPhysicsBody.position = playerPosition
-        powerupPhysicsBody.size = Constants.lightsaberSize
-        powerupPhysicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
-        powerupPhysicsBody.velocity = .zero
-        powerupPhysicsBody.rotation = playerRotation
-        powerupRenderableComponent.image = self.image
-        powerupRenderableComponent.size = Constants.lightsaberSize
+        transformOrbToLightsaber()
 
         EventManager.shared.postEvent(.lightsaberPowerUpUsed)
     }
 
     func update(for deltaTime: CGFloat) {
+        guard !hasCompleted else {
+            nexus.removeEntity(powerupEntity)
+            return
+        }
+
+        handleCollisions()
+        updateElapsedTime(deltaTime: deltaTime)
+        followPlayer()
+    }
+
+    private func transformOrbToLightsaber() {
+        guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
+              let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self,
+                                                                  for: powerupEntity) else {
+            return
+        }
+
+        let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
+        powerupPhysicsBody.isDynamic = false
+        powerupPhysicsBody.shape = .rectangle
+        powerupPhysicsBody.size = Constants.lightsaberSize
+        powerupPhysicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
+        powerupPhysicsBody.velocity = .zero
+        powerupRenderableComponent.image = self.image
+        powerupRenderableComponent.size = Constants.lightsaberSize
+    }
+
+    private func updateElapsedTime(deltaTime: CGFloat) {
+        self.elapsedTime += deltaTime
+    }
+
+    private func followPlayer() {
         guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
               let playerEntity = nexus.getEntity(with: PlayerComponent.self),
               let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerEntity) else {
             return
         }
-
-        if self.hasCompleted {
-            nexus.removeEntity(powerupEntity)
-        }
-
-        handleCollisions()
 
         let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
         let playerPhysicsBody = playerPhysicsComponent.physicsBody
@@ -67,7 +74,6 @@ class LightsaberEffect: PowerupEffect {
         let playerRotation = playerPhysicsBody.rotation
         powerupPhysicsBody.position = playerPosition
         powerupPhysicsBody.rotation = playerRotation
-        self.elapsedTime += deltaTime
     }
 
     private func handleCollisions() {
