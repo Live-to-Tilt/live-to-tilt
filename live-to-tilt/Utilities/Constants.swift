@@ -52,7 +52,7 @@ struct Constants {
     static let lightsaberActivationDuration: Double = 1.5
     static let lightsaberActivationScale: Double = 5
     static let lightsaberDuration: Double = 4
-    static let lightsaberSize = CGSize(width: 0.7, height: 0.01)
+    static let lightsaberSize = CGSize(width: 0.7, height: 0.02)
 
     // Enemy Movement
     static let enemyMovementSpeed: CGFloat = 0.1

@@ -40,6 +40,7 @@ class LightsaberEffect: PowerupEffect {
         case .inactive:
             return
         case .activating:
+            followPlayer()
             animateActivation(deltaTime: deltaTime)
         case .active:
             followPlayer()
@@ -86,7 +87,7 @@ class LightsaberEffect: PowerupEffect {
 
         powerupPhysicsBody.isDynamic = false
         powerupPhysicsBody.shape = .rectangle
-        powerupPhysicsBody.size = Constants.lightsaberSize * Constants.lightsaberActivationScale
+        powerupPhysicsBody.size = Constants.lightsaberSize
         powerupPhysicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
         powerupPhysicsBody.velocity = .zero
         powerupRenderableComponent.image = self.image
@@ -94,16 +95,13 @@ class LightsaberEffect: PowerupEffect {
     }
 
     private func animateActivation(deltaTime: CGFloat) {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
-              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
+        guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
             return
         }
 
         let timeFraction = deltaTime / Constants.lightsaberActivationDuration
         let deltaSize = (Constants.lightsaberSize * (Constants.lightsaberActivationScale - 1)) * timeFraction
-        let physicsBody = physicsComponent.physicsBody
 
-        physicsBody.size -= deltaSize
         renderableComponent.size -= deltaSize
     }
 
