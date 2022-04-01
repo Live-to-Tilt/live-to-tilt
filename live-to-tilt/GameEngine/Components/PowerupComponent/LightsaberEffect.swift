@@ -36,44 +36,18 @@ class LightsaberEffect: PowerupEffect {
     }
 
     func update(for deltaTime: CGFloat) {
-        switch status {
-        case .inactive:
-            return
-        case .activating:
-            followPlayer()
+        if status == .activating {
             animateActivation(deltaTime: deltaTime)
-        case .active:
-            followPlayer()
-            handleCollisions()
-        case .completed:
+        }
+
+        if status == .completed {
             nexus.removeEntity(powerupEntity)
         }
 
+        followPlayer()
+        handleCollisions()
         updateElapsedTime(deltaTime: deltaTime)
         updateStatus()
-    }
-
-    private func updateElapsedTime(deltaTime: CGFloat) {
-        self.elapsedTime += deltaTime
-    }
-
-    private func updateStatus() {
-        switch status {
-        case .activating:
-            if elapsedTime >= Constants.lightsaberActivationDuration {
-                status = .active
-            }
-        case .active:
-            if elapsedTime >= Constants.lightsaberActivationDuration + Constants.lightsaberDuration {
-                status = .completed
-            }
-        default:
-            return
-        }
-    }
-
-    private func updateStatus(_ status: Status) {
-        self.status = status
     }
 
     private func transformOrbToLightsaber() {
@@ -119,6 +93,29 @@ class LightsaberEffect: PowerupEffect {
 
         powerupPhysicsBody.position = playerPosition
         powerupPhysicsBody.rotation = playerRotation
+    }
+    
+    private func updateElapsedTime(deltaTime: CGFloat) {
+        self.elapsedTime += deltaTime
+    }
+
+    private func updateStatus() {
+        switch status {
+        case .activating:
+            if elapsedTime >= Constants.lightsaberActivationDuration {
+                status = .active
+            }
+        case .active:
+            if elapsedTime >= Constants.lightsaberActivationDuration + Constants.lightsaberDuration {
+                status = .completed
+            }
+        default:
+            return
+        }
+    }
+
+    private func updateStatus(_ status: Status) {
+        self.status = status
     }
 
     private func handleCollisions() {
