@@ -46,7 +46,6 @@ final class PowerupSystem: System {
 
         powerupComponent.isActive = true
         powerupComponent.effect.activate()
-        // TODO: add back
-        // nexus.createPowerup()
+        nexus.createPowerup()
     }
 }

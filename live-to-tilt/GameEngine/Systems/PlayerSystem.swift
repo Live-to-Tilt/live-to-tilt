@@ -23,18 +23,12 @@ class PlayerSystem: System {
             return
         }
 
-        // TODO: remove below
-        let testRotationPeriod = 0.2
-        let deltaRotation = (deltaTime / testRotationPeriod) * Double.pi * 2
-        // TODO: remove above
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
         EventManager.shared.postEvent(.playerMoved,
                                       eventInfo: [.distance: Int(playerComponent.inputForce.magnitude * deltaTime)])
 
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
-                                       desiredRotation: physicsComponent.physicsBody.rotation + deltaRotation)
-//        let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
-//                                       desiredRotation: playerComponent.inputForce.angle)
+                                       desiredRotation: playerComponent.inputForce.angle)
         physicsComponent.physicsBody.rotation = newRotation
 
     }
