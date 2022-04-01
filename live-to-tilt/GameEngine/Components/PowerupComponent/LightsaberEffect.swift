@@ -9,14 +9,19 @@ import CoreGraphics
  See https://tilttolive.fandom.com/wiki/Nuke for more details.
  */
 class LightsaberEffect: PowerupEffect {
+    enum Status {
+        case inactive
+        case activating
+        case active
+        case completed
+    }
+
     let nexus: Nexus
     let powerupEntity: Entity
     let orbImage: ImageAsset = .lightsaberOrb
     let image: ImageAsset = .lightsaberEffect
     private var elapsedTime: CGFloat = .zero
-    private var hasCompleted: Bool {
-        self.elapsedTime >= Constants.lightsaberDuration
-    }
+    private var status: Status = .inactive
 
     init(nexus: Nexus, powerupEntity: Entity) {
         self.nexus = nexus
@@ -25,19 +30,49 @@ class LightsaberEffect: PowerupEffect {
 
     func activate() {
         transformOrbToLightsaber()
+        updateStatus(.activating)
 
         EventManager.shared.postEvent(.lightsaberPowerUpUsed)
     }
 
     func update(for deltaTime: CGFloat) {
-        guard !hasCompleted else {
-            nexus.removeEntity(powerupEntity)
+        switch status {
+        case .inactive:
             return
+        case .activating:
+            animateActivation(deltaTime: deltaTime)
+        case .active:
+            followPlayer()
+            handleCollisions()
+        case .completed:
+            nexus.removeEntity(powerupEntity)
         }
 
-        handleCollisions()
         updateElapsedTime(deltaTime: deltaTime)
-        followPlayer()
+        updateStatus()
+    }
+
+    private func updateElapsedTime(deltaTime: CGFloat) {
+        self.elapsedTime += deltaTime
+    }
+
+    private func updateStatus() {
+        switch status {
+        case .activating:
+            if elapsedTime >= Constants.lightsaberActivationDuration {
+                status = .active
+            }
+        case .active:
+            if elapsedTime >= Constants.lightsaberActivationDuration + Constants.lightsaberDuration {
+                status = .completed
+            }
+        default:
+            return
+        }
+    }
+
+    private func updateStatus(_ status: Status) {
+        self.status = status
     }
 
     private func transformOrbToLightsaber() {
@@ -48,18 +83,28 @@ class LightsaberEffect: PowerupEffect {
         }
 
         let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
-        
+
         powerupPhysicsBody.isDynamic = false
         powerupPhysicsBody.shape = .rectangle
-        powerupPhysicsBody.size = Constants.lightsaberSize
+        powerupPhysicsBody.size = Constants.lightsaberSize * Constants.lightsaberActivationScale
         powerupPhysicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
         powerupPhysicsBody.velocity = .zero
         powerupRenderableComponent.image = self.image
-        powerupRenderableComponent.size = Constants.lightsaberSize
+        powerupRenderableComponent.size = Constants.lightsaberSize * Constants.lightsaberActivationScale
     }
 
-    private func updateElapsedTime(deltaTime: CGFloat) {
-        self.elapsedTime += deltaTime
+    private func animateActivation(deltaTime: CGFloat) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
+              let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
+            return
+        }
+
+        let timeFraction = deltaTime / Constants.lightsaberActivationDuration
+        let deltaSize = (Constants.lightsaberSize * (Constants.lightsaberActivationScale - 1)) * timeFraction
+        let physicsBody = physicsComponent.physicsBody
+
+        physicsBody.size -= deltaSize
+        renderableComponent.size -= deltaSize
     }
 
     private func followPlayer() {
@@ -73,7 +118,7 @@ class LightsaberEffect: PowerupEffect {
         let playerPhysicsBody = playerPhysicsComponent.physicsBody
         let playerPosition = playerPhysicsBody.position
         let playerRotation = playerPhysicsBody.rotation
-        
+
         powerupPhysicsBody.position = playerPosition
         powerupPhysicsBody.rotation = playerRotation
     }

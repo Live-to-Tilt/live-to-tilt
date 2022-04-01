@@ -24,14 +24,19 @@ class PlayerSystem: System {
         }
 
         // TODO: remove below
-        playerComponent.inputForce = CGVector(dx: 0.01, dy: 0.01)
+        let testRotationPeriod = 1.0
+        let deltaRotation = (deltaTime / testRotationPeriod) * Double.pi * 2
+        // TODO: remove above
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
         EventManager.shared.postEvent(.playerMoved,
                                       eventInfo: [.distance: Int(playerComponent.inputForce.magnitude * deltaTime)])
 
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
-                                       desiredRotation: playerComponent.inputForce.angle)
+                                       desiredRotation: physicsComponent.physicsBody.rotation + deltaRotation)
+//        let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
+//                                       desiredRotation: playerComponent.inputForce.angle)
         physicsComponent.physicsBody.rotation = newRotation
+
     }
 
     private func lerpRotation(initialRotation: CGFloat, desiredRotation: CGFloat) -> CGFloat {

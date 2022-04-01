@@ -28,7 +28,7 @@ class NukeEffect: PowerupEffect {
 
     func activate() {
         transformOrbToNuke()
-        
+
         EventManager.shared.postEvent(.nukePowerUpUsed)
     }
 
@@ -43,7 +43,7 @@ class NukeEffect: PowerupEffect {
 
         handleCollisions()
     }
-    
+
     private func transformOrbToNuke() {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
               let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupEntity) else {
@@ -51,7 +51,7 @@ class NukeEffect: PowerupEffect {
         }
 
         let physicsBody = physicsComponent.physicsBody
-        
+
         physicsBody.isDynamic = false
         physicsBody.collisionBitMask = Constants.enemyAffectorCollisionBitMask
         physicsBody.velocity = .zero
@@ -71,7 +71,7 @@ class NukeEffect: PowerupEffect {
         let timeFraction = deltaTime / Constants.nukeExplosionDuration
         let deltaRadius = (Constants.nukeExplosionDiameter / 2 - Constants.powerupDiameter / 2) * timeFraction
         let physicsBody = physicsComponent.physicsBody
-        
+
         currentExplosionRadius += deltaRadius
         physicsBody.size += deltaRadius
         renderableComponent.size += deltaRadius
