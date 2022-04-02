@@ -42,4 +42,14 @@ extension CGPoint {
     func distanceTo(_ point: CGPoint) -> CGFloat {
         (self - point).magnitude
     }
+
+    func rotated(around pivot: CGPoint, by angle: Double) -> CGPoint {
+        let translateOriginToPivot = CGAffineTransform(translationX: pivot.x, y: pivot.y)
+        let rotate = CGAffineTransform(rotationAngle: angle)
+        let rotateAroundPivot = translateOriginToPivot.inverted()
+            .concatenating(rotate)
+            .concatenating(translateOriginToPivot)
+
+        return self.applying(rotateAroundPivot)
+    }
 }

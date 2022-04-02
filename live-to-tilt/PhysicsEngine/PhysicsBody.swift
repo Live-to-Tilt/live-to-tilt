@@ -27,7 +27,7 @@ final class PhysicsBody {
         case .circle:
             return CircleCollider(center: position, radius: size.width / 2)
         case .rectangle:
-            return RectangleCollider(center: position, size: size)
+            return RectangleCollider(center: position, size: size, rotation: rotation)
         }
     }
 

@@ -93,11 +93,12 @@ extension Nexus {
     func createPowerup() {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
-        let effects = [
-            NukeEffect(nexus: self, entity: entity)
-        ]
         let position = generateRandomSpawnLocation(forEntityOfWidth: Constants.powerupDiameter,
                                                    height: Constants.powerupDiameter)
+        let effects: [PowerupEffect] = [
+            NukeEffect(nexus: self, powerupEntity: entity),
+            LightsaberEffect(nexus: self, powerupEntity: entity)
+        ]
 
         guard let effect = effects.randomElement() else {
             return
