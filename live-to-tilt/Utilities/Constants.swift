@@ -66,5 +66,6 @@ struct Constants {
 
     // Combo
     static let comboTimeWindow: CGFloat = 2
-    static let enemyKilledComboScore: Int = 6
+    static let enemyKilledComboBase: Int = 6
+    static let enemyKilledComboMultiplier: Int = 1
 }

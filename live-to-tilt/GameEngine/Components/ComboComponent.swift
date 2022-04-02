@@ -4,12 +4,12 @@ class ComboComponent: Component {
     let entity: Entity
     var base: Int
     var multiplier: Int
-    var elapsedTimeSinceComboMaintainingEvent: CGFloat
+    var elapsedTimeSinceComboAccumulatingEvent: CGFloat
 
     init(entity: Entity) {
         self.entity = entity
         self.base = .zero
         self.multiplier = .zero
-        self.elapsedTimeSinceComboMaintainingEvent = .zero
+        self.elapsedTimeSinceComboAccumulatingEvent = .zero
     }
 }
