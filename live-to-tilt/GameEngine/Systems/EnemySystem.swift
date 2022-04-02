@@ -13,6 +13,7 @@ class EnemySystem: System {
         enemyComponents.forEach { enemyComponent in
             updateElapsedDuration(enemyComponent, deltaTime: deltaTime)
             despawnIfLifespanOver(enemyComponent)
+            despawnIfOutsideArena(enemyComponent)
         }
     }
 
@@ -28,6 +29,25 @@ class EnemySystem: System {
 
     private func despawnIfLifespanOver(_ enemyComponent: EnemyComponent) {
         if isLifespanOver(enemyComponent) {
+            nexus.removeEntity(enemyComponent.entity)
+        }
+    }
+
+    private func isOutsideArena(_ enemyComponent: EnemyComponent) -> Bool {
+        let entity = enemyComponent.entity
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
+            return false
+        }
+        let physicsBody = physicsComponent.physicsBody
+        let position = physicsBody.position
+        return position.x < Constants.leftWallPosition.x ||
+        position.x > Constants.rightWallPosition.x ||
+        position.y > Constants.bottomWallPosition.y ||
+        position.y < Constants.topWallPosition.y
+    }
+
+    private func despawnIfOutsideArena(_ enemyComponent: EnemyComponent) {
+        if isOutsideArena(enemyComponent) {
             nexus.removeEntity(enemyComponent.entity)
         }
     }

@@ -32,6 +32,7 @@
 		3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13481227D8D89100D46B84 /* SettingsViewModel.swift */; };
 		3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */; };
 		3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */; };
+		3D2B39E327F7EDF400693B3B /* StraightWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* StraightWave.swift */; };
 		3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387527E2115D00DF45C2 /* EnemyComponent.swift */; };
 		3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* MovementSystem.swift */; };
@@ -138,6 +139,8 @@
 		3D13481227D8D89100D46B84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionView.swift; sourceTree = "<group>"; };
 		3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDecorator.swift; sourceTree = "<group>"; };
+		3D2B39E227F7EDF400693B3B /* GauntletStraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletStraightWave.swift; sourceTree = "<group>"; };
+		3D2B39E227F7EDF400693B3B /* StraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightWave.swift; sourceTree = "<group>"; };
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
 		3D55387727E22FD800DF45C2 /* WaveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				3DCEAA5727E3062F008ADF6D /* Wave.swift */,
 				3DCEAA5927E306A3008ADF6D /* RandomWave.swift */,
 				3DB3741927F4400F0053F400 /* HorizontalWave.swift */,
+				3D2B39E227F7EDF400693B3B /* StraightWave.swift */,
 			);
 			path = Wave;
 			sourceTree = "<group>";
@@ -657,6 +661,7 @@
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */,
 				DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */,
+				3D2B39E327F7EDF400693B3B /* StraightWave.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
