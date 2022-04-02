@@ -8,10 +8,10 @@ class GauntletWaveManager: WaveManager {
 
     init() {
         let waves: [Wave] = [
-            RandomWave()
+            StraightWave()
         ]
         let intervals: [CGFloat] = [
-            Constants.survivalWaveIntervalDuration
+            Constants.gauntletWaveIntervalDuration
         ]
         self.waveIterator = waves.makeInfiniteLoopIterator()
         self.intervalIterator = intervals.makeInfiniteLoopIterator()
