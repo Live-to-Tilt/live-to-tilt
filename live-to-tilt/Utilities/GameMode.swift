@@ -18,9 +18,15 @@ extension GameMode {
     var description: String {
         switch self {
         case .survival:
-            return "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis semper dolor, ut ultricies enim gravida laoreet."
+            return """
+                Use flashy powerups to defeat endless waves of enemies. \
+                How long can you survive?
+                """
         case .gauntlet:
-            return "Quisque posuere, orci at gravida tincidunt, tellus ligula ornare justo, id pharetra nisl erat et sapien."
+            return """
+                Think Flappy Bird, but Live to Tilt. Put your fine control skills \
+                to the test as you weave through complex enemy formations!
+                """
         }
     }
 }
