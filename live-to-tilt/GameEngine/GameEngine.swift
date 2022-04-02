@@ -34,7 +34,8 @@ class GameEngine {
             PlayerSystem(nexus: nexus),
             WaveSystem(nexus: nexus),
             PowerupSystem(nexus: nexus),
-            EnemySystem(nexus: nexus)
+            EnemySystem(nexus: nexus),
+            ComboSystem(nexus: nexus)
         ]
         self.gameStats = GameStats()
         self.gameMode = gameMode
@@ -80,6 +81,7 @@ class GameEngine {
         nexus.createWalls()
         nexus.createPlayer()
         nexus.createGameState()
+        nexus.createCombo()
         nexus.createWaveManager(for: gameMode)
         nexus.createPowerups()
     }
