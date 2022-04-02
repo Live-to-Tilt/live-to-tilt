@@ -9,8 +9,8 @@ enum Event: String, CaseIterable {
     case powerUpSpawned
 
     // collision
-    case nukePowerUpUsed
-    case lightsaberPowerUpUsed
+    case nukePowerupUsed
+    case lightsaberPowerupUsed
     case enemyKilled
 
     // enemy

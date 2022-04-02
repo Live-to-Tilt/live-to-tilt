@@ -77,10 +77,10 @@ class GameStats {
         switch event {
         case .gameEnded:
             self.defaults.setValue(self.totalGamesPlayed + 1, forKey: .totalGamesPlayed)
-        case .nukePowerUpUsed:
+        case .nukePowerupUsed:
             self.nukePowerupsUsed += 1
             self.powerupsUsed += 1
-        case .lightsaberPowerUpUsed:
+        case .lightsaberPowerupUsed:
             self.lightsaberPowerupsUsed += 1
             self.powerupsUsed += 1
         case .enemyKilled:

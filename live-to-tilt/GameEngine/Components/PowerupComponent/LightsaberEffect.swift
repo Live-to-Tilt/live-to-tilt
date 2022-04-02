@@ -7,10 +7,10 @@ import CoreGraphics
  into contact with.
  */
 class LightsaberEffect: PowerupEffect {
-    let nexus: Nexus
-    let powerupEntity: Entity
     let orbImage: ImageAsset = .lightsaberOrb
-    let image: ImageAsset = .lightsaberEffect
+    private let nexus: Nexus
+    private let powerupEntity: Entity
+    private let image: ImageAsset = .lightsaberEffect
     private var elapsedTime: CGFloat = .zero
     private var hasCompleted: Bool {
         elapsedTime >= Constants.lightsaberDuration
@@ -25,7 +25,7 @@ class LightsaberEffect: PowerupEffect {
         transformOrbToLightsaber()
         attachLightsaberToPlayer()
 
-        EventManager.shared.postEvent(.lightsaberPowerUpUsed)
+        EventManager.shared.postEvent(.lightsaberPowerupUsed)
     }
 
     func update(for deltaTime: CGFloat) {

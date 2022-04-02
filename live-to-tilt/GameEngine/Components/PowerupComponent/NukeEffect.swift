@@ -8,10 +8,10 @@ import CoreGraphics
  See https://tilttolive.fandom.com/wiki/Nuke for more details.
  */
 class NukeEffect: PowerupEffect {
-    let nexus: Nexus
-    let powerupEntity: Entity
     let orbImage: ImageAsset = .nukeOrb
-    let image: ImageAsset = .nukeEffect
+    private let nexus: Nexus
+    private let powerupEntity: Entity
+    private let image: ImageAsset = .nukeEffect
     private var currentExplosionRadius: CGFloat = Constants.powerupDiameter / 2
     private var elapsedTimeSinceExpansionComplete: CGFloat = .zero
     private var hasCompletedExpansion: Bool {
@@ -29,7 +29,7 @@ class NukeEffect: PowerupEffect {
     func activate() {
         transformOrbToNuke()
 
-        EventManager.shared.postEvent(.nukePowerUpUsed)
+        EventManager.shared.postEvent(.nukePowerupUsed)
     }
 
     func update(for deltaTime: CGFloat) {
