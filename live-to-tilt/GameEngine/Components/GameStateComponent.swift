@@ -1,3 +1,5 @@
+import CoreGraphics
+
 class GameStateComponent: Component {
     let entity: Entity
     var state: GameState {
@@ -7,6 +9,9 @@ class GameStateComponent: Component {
             }
         }
     }
+    var comboBase: Int
+    var comboMultiplier: Int
+    var elapsedTimeSincePreviousComboAccumulate: CGFloat
 
     enum GameState {
         case play
@@ -17,5 +22,8 @@ class GameStateComponent: Component {
     init(entity: Entity) {
         self.entity = entity
         self.state = .play
+        self.comboBase = .zero
+        self.comboMultiplier = .zero
+        self.elapsedTimeSincePreviousComboAccumulate = .zero
     }
 }
