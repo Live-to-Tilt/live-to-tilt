@@ -23,7 +23,7 @@ class ComboSystem: System {
         EventManager.shared.registerClosure(event: .enemyKilled, closure: onEnemyKilled)
     }
 
-    private lazy var onEnemyKilled = { [weak self] (_ event: Event, _: [EventInfo: Int]?) -> Void in
+    private lazy var onEnemyKilled = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
         guard let gameStateComponent = self?.nexus.getComponent(of: GameStateComponent.self) else {
             return
         }
@@ -53,9 +53,8 @@ class ComboSystem: System {
 
     private func resetCombo(_ gameStateComponent: GameStateComponent) {
         let comboScore = gameStateComponent.comboBase * gameStateComponent.comboMultiplier
-        
         EventManager.shared.postEvent(.comboExpired,
-                                      eventInfo: [.comboScore: comboScore])
+                                      eventInfo: [.deltaScore: comboScore])
 
         gameStateComponent.comboBase = .zero
         gameStateComponent.comboMultiplier = .zero

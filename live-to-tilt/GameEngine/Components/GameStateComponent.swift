@@ -12,6 +12,7 @@ class GameStateComponent: Component {
     var comboBase: Int
     var comboMultiplier: Int
     var elapsedTimeSincePreviousComboAccumulate: CGFloat
+    var score: Int
 
     enum GameState {
         case play
@@ -25,5 +26,6 @@ class GameStateComponent: Component {
         self.comboBase = .zero
         self.comboMultiplier = .zero
         self.elapsedTimeSincePreviousComboAccumulate = .zero
+        self.score = .zero
     }
 }

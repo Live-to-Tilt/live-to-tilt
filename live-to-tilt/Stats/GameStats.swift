@@ -79,20 +79,17 @@ class GameStats {
         case .nukePowerupUsed:
             self.nukePowerupsUsed += 1
             self.powerupsUsed += 1
-            self.score += Constants.nukeActivationScore
         case .lightsaberPowerupUsed:
             self.lightsaberPowerupsUsed += 1
             self.powerupsUsed += 1
-            self.score += Constants.lightsaberActivationScore
         case .enemyKilled:
             self.enemiesKilled += 1
-            self.score += Constants.enemyKilledScore
         case .playerMoved:
             let distance = eventInfo?[.distance] ?? .zero
             self.distanceTravelled += distance
-        case .comboExpired:
-            let comboScore = eventInfo?[.comboScore] ?? .zero
-            self.score += comboScore
+        case .scoreChanged:
+            let deltaScore = eventInfo?[.deltaScore] ?? .zero
+            self.score += deltaScore
         default:
             return
         }
