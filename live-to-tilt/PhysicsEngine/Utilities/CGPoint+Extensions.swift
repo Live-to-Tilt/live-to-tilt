@@ -44,14 +44,12 @@ extension CGPoint {
     }
 
     func rotated(around pivot: CGPoint, by angle: Double) -> CGPoint {
-        let sin = CGFloat(sin(angle))
-        let cos = CGFloat(cos(angle))
+        let translateOriginToPivot = CGAffineTransform(translationX: pivot.x, y: pivot.y)
+        let rotate = CGAffineTransform(rotationAngle: angle)
+        let rotateAroundPivot = translateOriginToPivot.inverted()
+            .concatenating(rotate)
+            .concatenating(translateOriginToPivot)
 
-        let translatedPoint = CGPoint(x: self.x - pivot.x, y: self.y - pivot.y)
-        let rotatedTranslatedPoint = CGPoint(x: translatedPoint.x * cos - translatedPoint.y * sin,
-                                             y: translatedPoint.x * sin + translatedPoint.y * cos)
-        let rotatedPoint = CGPoint(x: rotatedTranslatedPoint.x + pivot.x, y: rotatedTranslatedPoint.y + pivot.y)
-
-        return rotatedPoint
+        return self.applying(rotateAroundPivot)
     }
 }
