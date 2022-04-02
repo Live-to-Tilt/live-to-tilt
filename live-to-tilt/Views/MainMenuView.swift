@@ -43,8 +43,9 @@ struct MainMenuView: View {
                 // TODO: Link to how to play screen
                 Text("how to play").modifier(MenuItemText())
 
-                let settingsView = SettingsView()
-                NavigationLink(destination: settingsView) {
+                NavigationLink(destination: LazyView(
+                    SettingsView()
+                )) {
                     Text("settings").modifier(MenuItemText())
                 }
             }

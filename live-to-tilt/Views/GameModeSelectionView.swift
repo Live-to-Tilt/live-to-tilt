@@ -4,10 +4,15 @@ struct GameModeSelectionView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
-            Content()
+        NavigationView {
+            VStack {
+                Content()
+            }
+            .modifier(RootView())
         }
-        .modifier(RootView())
+        .navigationBarHidden(true)
+        .preferredColorScheme(.dark)
+        .navigationViewStyle(.stack)
     }
 
     private func Content() -> some View {
