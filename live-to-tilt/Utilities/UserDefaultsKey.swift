@@ -8,6 +8,7 @@ enum UserDefaultsKey: String {
     case totalScore
     case totalPowerupsUsed
     case totalNukePowerupsUsed
+    case totalLightsaberPowerupsUsed
     case totalEnemiesKilled
     case totalDistanceTravelled
 }

@@ -12,6 +12,9 @@ class GameStats {
     var totalNukePowerupsUsed: Int {
         defaults.integer(forKey: .totalNukePowerupsUsed) + self.nukePowerupsUsed
     }
+    var totalLightsaberPowerupsUsed: Int {
+        defaults.integer(forKey: .totalLightsaberPowerupsUsed) + self.lightsaberPowerupsUsed
+    }
     var totalEnemiesKilled: Int {
         defaults.integer(forKey: .totalEnemiesKilled) + self.enemiesKilled
     }
@@ -25,6 +28,7 @@ class GameStats {
     var score: Int = .zero // TODO: to update when scoring system is added
     var powerupsUsed: Int = .zero
     var nukePowerupsUsed: Int = .zero
+    var lightsaberPowerupsUsed: Int = .zero
     var enemiesKilled: Int = .zero
     var distanceTravelled: Int = .zero
 
@@ -42,6 +46,7 @@ class GameStats {
         defaults.register(defaults: [.totalScore: 0,
                                      .totalPowerupsUsed: 0,
                                      .totalNukePowerupsUsed: 0,
+                                     .totalLightsaberPowerupsUsed: 0,
                                      .totalEnemiesKilled: 0,
                                      .totalGamesPlayed: 0,
                                      .totalDistanceTravelled: 0])
@@ -51,6 +56,7 @@ class GameStats {
         defaults.setValue(totalScore, forKey: .totalScore)
         defaults.setValue(totalPowerupsUsed, forKey: .totalPowerupsUsed)
         defaults.setValue(totalNukePowerupsUsed, forKey: .totalNukePowerupsUsed)
+        defaults.setValue(totalLightsaberPowerupsUsed, forKey: .totalLightsaberPowerupsUsed)
         defaults.setValue(totalEnemiesKilled, forKey: .totalEnemiesKilled)
         defaults.setValue(totalGamesPlayed, forKey: .totalGamesPlayed)
         defaults.setValue(totalDistanceTravelled, forKey: .totalDistanceTravelled)
@@ -73,6 +79,9 @@ class GameStats {
             self.defaults.setValue(self.totalGamesPlayed + 1, forKey: .totalGamesPlayed)
         case .nukePowerUpUsed:
             self.nukePowerupsUsed += 1
+            self.powerupsUsed += 1
+        case .lightsaberPowerUpUsed:
+            self.lightsaberPowerupsUsed += 1
             self.powerupsUsed += 1
         case .enemyKilled:
             self.enemiesKilled += 1
