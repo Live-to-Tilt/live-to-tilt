@@ -25,7 +25,7 @@ class GameStats {
         defaults.integer(forKey: .totalDistanceTravelled) + self.distanceTravelled
     }
 
-    var score: Int = .zero // TODO: to update when scoring system is added
+    var score: Int = .zero
     var powerupsUsed: Int = .zero
     var nukePowerupsUsed: Int = .zero
     var lightsaberPowerupsUsed: Int = .zero
@@ -69,7 +69,6 @@ class GameStats {
     }
 
     lazy var onStatEventRef = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
-        let data = eventInfo
         self?.onStatEvent(event, eventInfo: eventInfo)
     }
 
