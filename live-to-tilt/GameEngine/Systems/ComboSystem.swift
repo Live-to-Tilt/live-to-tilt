@@ -12,7 +12,7 @@ class ComboSystem: System {
         guard let gameStateComponent = nexus.getComponent(of: GameStateComponent.self) else {
             return
         }
-        
+
         updateElapsedTime(gameStateComponent, deltaTime: deltaTime)
         resetComboIfTimeWindowExpired(gameStateComponent)
     }
@@ -27,7 +27,7 @@ class ComboSystem: System {
         guard let gameStateComponent = self?.nexus.getComponent(of: GameStateComponent.self) else {
             return
         }
-        
+
         self?.accumulateCombo(gameStateComponent)
     }
 
