@@ -23,7 +23,7 @@ class ComboSystem: System {
         EventManager.shared.registerClosure(event: .enemyKilled, closure: onEnemyKilled)
     }
 
-    private lazy var onEnemyKilled = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
+    private lazy var onEnemyKilled = { [weak self] (_ event: Event, _: [EventInfo: Int]?) -> Void in
         guard let gameStateComponent = self?.nexus.getComponent(of: GameStateComponent.self) else {
             return
         }
