@@ -18,6 +18,10 @@ enum Event: String, CaseIterable {
 
     // player
     case playerMoved
+
+    // Stats
+    case enemiesKilledStat
+    case nukePowerUpsStat
 }
 
 extension Event {

@@ -1,6 +1,6 @@
 import Foundation
 
-class GameStats {
+class GameStats: ObservableObject {
     let defaults: UserDefaults
 
     var totalScore: Int {
@@ -24,8 +24,12 @@ class GameStats {
 
     var score: Int = .zero // TODO: to update when scoring system is added
     var powerupsUsed: Int = .zero
-    var nukePowerupsUsed: Int = .zero
-    var enemiesKilled: Int = .zero
+    var nukePowerupsUsed: Int = .zero {
+        didSet {
+            EventManager.shared.postEvent(.nukePowerUpsStat)
+        }
+    }
+    @Published var enemiesKilled: Int = .zero
     var distanceTravelled: Int = .zero
 
     init() {
@@ -38,7 +42,7 @@ class GameStats {
         updateAllTimeStats()
     }
 
-    func registerAllTimeStats() {
+    private func registerAllTimeStats() {
         defaults.register(defaults: [.totalScore: 0,
                                      .totalPowerupsUsed: 0,
                                      .totalNukePowerupsUsed: 0,
@@ -56,13 +60,14 @@ class GameStats {
         defaults.setValue(totalDistanceTravelled, forKey: .totalDistanceTravelled)
     }
 
-    func observePublishers() {
-        for event in Event.allCases {
-            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
-        }
+    private func observePublishers() {
+        EventManager.shared.registerClosure(event: .gameEnded, closure: onStatEventRef)
+        EventManager.shared.registerClosure(event: .nukePowerUpUsed, closure: onStatEventRef)
+        EventManager.shared.registerClosure(event: .enemyKilled, closure: onStatEventRef)
+        EventManager.shared.registerClosure(event: .playerMoved, closure: onStatEventRef)
     }
 
-    lazy var onStatEventRef = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
+    private lazy var onStatEventRef = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
         let data = eventInfo
         self?.onStatEvent(event, eventInfo: eventInfo)
     }
