@@ -2,8 +2,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject var viewModel = SettingsViewModel()
-
-    // Navigation
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {

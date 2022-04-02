@@ -26,7 +26,7 @@ struct GameOverMenuView: View {
 
 struct GameOverMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverMenuView(viewModel: GameArenaViewModel())
+        GameOverMenuView(viewModel: GameArenaViewModel(gameMode: .survival))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

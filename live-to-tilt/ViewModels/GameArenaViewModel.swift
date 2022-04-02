@@ -10,9 +10,9 @@ class GameArenaViewModel: ObservableObject {
 
     var cancellables = Set<AnyCancellable>()
 
-    init() {
+    init(gameMode: GameMode) {
         renderableComponents = []
-        gameEngine = GameEngine()
+        gameEngine = GameEngine(gameMode: gameMode)
         gameControl = GameControlManager.shared.gameControl
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         gameRenderer.start()
@@ -26,7 +26,7 @@ class GameArenaViewModel: ObservableObject {
     func restart() {
         detachPublishers()
         gameRenderer.stop()
-        gameEngine = GameEngine()
+        gameEngine = GameEngine(gameMode: gameEngine.gameMode)
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         gameRenderer.start()
         attachPublishers()

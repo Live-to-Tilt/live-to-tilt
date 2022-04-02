@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class WaveComponent: Component {
+class WaveManagerComponent: Component {
     let entity: Entity
     let waveManager: WaveManager
 
