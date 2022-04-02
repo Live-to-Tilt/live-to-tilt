@@ -23,6 +23,7 @@ class LightsaberEffect: PowerupEffect {
 
     func activate() {
         transformOrbToLightsaber()
+        attachLightsaberToPlayer()
 
         EventManager.shared.postEvent(.lightsaberPowerUpUsed)
     }
@@ -32,7 +33,6 @@ class LightsaberEffect: PowerupEffect {
             nexus.removeEntity(powerupEntity)
         }
 
-        followPlayer()
         handleCollisions()
         updateElapsedTime(deltaTime: deltaTime)
     }
@@ -55,20 +55,16 @@ class LightsaberEffect: PowerupEffect {
         powerupRenderableComponent.size = Constants.lightsaberSize
     }
 
-    private func followPlayer() {
-        guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity),
-              let playerEntity = nexus.getEntity(with: PlayerComponent.self),
-              let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerEntity) else {
+    private func attachLightsaberToPlayer() {
+        guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
             return
         }
 
-        let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
-        let playerPhysicsBody = playerPhysicsComponent.physicsBody
-        let playerPosition = playerPhysicsBody.position
-        let playerRotation = playerPhysicsBody.rotation
+        let movement = BaseMovement()
+        let attachMovement = AttachMovementDecorator(movement: movement, target: playerEntity)
 
-        powerupPhysicsBody.position = playerPosition
-        powerupPhysicsBody.rotation = playerRotation
+        nexus.addComponent(MovementComponent(entity: powerupEntity, movement: attachMovement),
+                           to: powerupEntity)
     }
 
     private func updateElapsedTime(deltaTime: CGFloat) {
