@@ -18,7 +18,7 @@ class ComboSystem: System {
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-    
+
     private func subscribeToEvents() {
         EventManager.shared.registerClosure(event: .enemyKilled, closure: onEnemyKilled)
     }
@@ -32,7 +32,7 @@ class ComboSystem: System {
             self?.accumulate(comboComponent)
         }
     }
-    
+
     private func accumulate(_ comboComponent: ComboComponent) {
         comboComponent.base += Constants.enemyKilledComboBase
         comboComponent.multiplier += Constants.enemyKilledComboMultiplier
@@ -56,7 +56,7 @@ class ComboSystem: System {
     private func reset(_ comboComponent: ComboComponent) {
         EventManager.shared.postEvent(.comboExpired,
                                       eventInfo: [.comboScore: comboComponent.base * comboComponent.multiplier])
-        
+
         comboComponent.base = .zero
         comboComponent.multiplier = .zero
         comboComponent.elapsedTimeSinceComboAccumulatingEvent = .zero
