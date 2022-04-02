@@ -1,15 +1,14 @@
 import CoreGraphics
 
-class HomingMovementDecorator: Movement {
-    private let movement: Movement
+class HomingMovementDecorator: MovementDecorator {
     private let target: Entity
 
     init(movement: Movement, target: Entity) {
-        self.movement = movement
         self.target = target
+        super.init(movement: movement)
     }
 
-    func update(nexus: Nexus, entity: Entity, deltaTime: CGFloat) {
+    override func update(nexus: Nexus, entity: Entity, deltaTime: CGFloat) {
         guard
             let entityPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity),
             let targetPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: target) else {
@@ -23,6 +22,6 @@ class HomingMovementDecorator: Movement {
         let desiredDirection = targetPosition - entityPosition
         let desiredVelocity = desiredDirection.unitVector * Constants.enemyMovementSpeed
         entityPhysicsBody.velocity += desiredVelocity
-        movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
+        super.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
     }
 }
