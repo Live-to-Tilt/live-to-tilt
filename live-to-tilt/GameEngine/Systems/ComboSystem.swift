@@ -5,7 +5,7 @@ class ComboSystem: System {
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        observePublishers()
+        subscribeToEvents()
     }
 
     func update(deltaTime: CGFloat) {
@@ -19,7 +19,7 @@ class ComboSystem: System {
 
     func lateUpdate(deltaTime: CGFloat) {}
     
-    private func observePublishers() {
+    private func subscribeToEvents() {
         EventManager.shared.registerClosure(event: .enemyKilled, closure: onEnemyKilled)
     }
 
