@@ -3,13 +3,14 @@ import Combine
 
 class GameEngine {
     private var timeScale: CGFloat
-    private var origTimeScale: CGFloat
+    private var previousTimeScale: CGFloat
 
     // ECS
     let nexus = Nexus()
     let systems: [System]
     let physicsWorld = PhysicsWorld()
     let gameStats: GameStats
+    let gameMode: GameMode
 
     // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
@@ -21,12 +22,12 @@ class GameEngine {
         gameStateSubject.eraseToAnyPublisher()
     }
 
-    init(timeScale: CGFloat = Constants.defaultTimeScale) {
+    init(gameMode: GameMode) {
         EventManager.shared.reinit()
 
-        self.timeScale = timeScale
-        self.origTimeScale = timeScale
-        systems = [
+        self.timeScale = Constants.defaultTimeScale
+        self.previousTimeScale = timeScale
+        self.systems = [
             MovementSystem(nexus: nexus),
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
@@ -35,7 +36,8 @@ class GameEngine {
             PowerupSystem(nexus: nexus),
             EnemySystem(nexus: nexus)
         ]
-        gameStats = GameStats()
+        self.gameStats = GameStats()
+        self.gameMode = gameMode
 
         setUpEntities()
         EventManager.shared.postEvent(.gameStarted)
@@ -62,6 +64,7 @@ class GameEngine {
             return
         }
         gameStateComponent.state = .pause
+        previousTimeScale = timeScale
         timeScale = .zero
     }
 
@@ -70,14 +73,14 @@ class GameEngine {
             return
         }
         gameStateComponent.state = .play
-        timeScale = origTimeScale
+        timeScale = previousTimeScale
     }
 
     private func setUpEntities() {
         nexus.createWalls()
         nexus.createPlayer()
         nexus.createGameState()
-        nexus.createWave()
+        nexus.createWaveManager(for: gameMode)
         nexus.createPowerups()
     }
 

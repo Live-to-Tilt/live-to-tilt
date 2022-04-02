@@ -30,7 +30,7 @@ struct PauseMenuView: View {
 
 struct PauseMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        PauseMenuView(viewModel: GameArenaViewModel())
+        PauseMenuView(viewModel: GameArenaViewModel(gameMode: .survival))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
