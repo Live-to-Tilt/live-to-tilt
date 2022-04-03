@@ -88,8 +88,8 @@ class GameStats {
             let distance = eventInfo?[.distance] ?? .zero
             self.distanceTravelled += distance
         case .scoreChanged:
-            let deltaScore = eventInfo?[.deltaScore] ?? .zero
-            self.score += Int(deltaScore)
+            let score = eventInfo?[.score] ?? .zero
+            self.score = Int(score)
         default:
             return
         }

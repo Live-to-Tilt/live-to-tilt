@@ -1,5 +1,5 @@
 enum EventInfo: String, Hashable {
     case distance
-
-    case deltaScore
+    case comboScore
+    case score
 }
