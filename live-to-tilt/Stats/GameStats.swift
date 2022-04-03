@@ -2,7 +2,6 @@ import Foundation
 
 class GameStats {
     let defaults: UserDefaults
-    private var observerClosures: [Event: [(Event, [EventInfo: Int]?) -> Void]]
 
     var totalScore: Int {
         defaults.integer(forKey: .totalScore) + self.score
@@ -26,7 +25,7 @@ class GameStats {
         defaults.float(forKey: .totalDistanceTravelled) + self.distanceTravelled
     }
 
-    var score: Int = .zero // TODO: to update when scoring system is added
+    var score: Int = .zero
     var powerupsUsed: Int = .zero
     var nukePowerupsUsed: Int = .zero
     var lightsaberPowerupsUsed: Int = .zero
@@ -70,7 +69,6 @@ class GameStats {
     }
 
     private lazy var onStatEventRef = { [weak self] (_ event: Event, _ eventInfo: [EventInfo: Float]?) -> Void in
-        let data = eventInfo
         self?.onStatEvent(event, eventInfo)
     }
 
@@ -89,6 +87,9 @@ class GameStats {
         case .playerMoved:
             let distance = eventInfo?[.distance] ?? .zero
             self.distanceTravelled += distance
+        case .scoreChanged:
+            let score = eventInfo?[.score] ?? .zero
+            self.score = Int(score)
         default:
             return
         }

@@ -65,4 +65,14 @@ struct Constants {
     static let wallCollisionBitMask: UInt32 = 1 << 2
     static let powerupCollisionBitMask: UInt32 = 0xFFFFFFF2
     static let enemyAffectorCollisionBitMask: UInt32 = 0xFFFFFFFD
+
+    // Combo
+    static let comboTimeWindow: CGFloat = 2
+    static let enemyKilledComboBase: Int = 6
+    static let enemyKilledComboMultiplier: Int = 1
+
+    // Score
+    static let enemyKilledScore: Int = 10
+    static let nukeActivationScore: Int = 3
+    static let lightsaberActivationScore: Int = 8
 }

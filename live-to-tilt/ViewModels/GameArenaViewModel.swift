@@ -3,6 +3,7 @@ import Combine
 class GameArenaViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
+    @Published var comboComponent: ComboComponent?
 
     var gameEngine: GameEngine
     var gameControl: GameControl
@@ -48,6 +49,10 @@ class GameArenaViewModel: ObservableObject {
         gameEngine.gameStatePublisher.sink { [weak self] gameStateComponent in
             self?.gameStateComponent = gameStateComponent
             self?.updateGameRenderer()
+        }.store(in: &cancellables)
+
+        gameEngine.comboPublisher.sink { [weak self] comboComponent in
+            self?.comboComponent = comboComponent
         }.store(in: &cancellables)
     }
 

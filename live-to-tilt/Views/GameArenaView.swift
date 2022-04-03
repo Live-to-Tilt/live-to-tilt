@@ -26,10 +26,13 @@ struct GameArenaView: View {
     }
 
     private func InfoHStack() -> some View {
-        HStack {
+        let comboBase = viewModel.comboComponent?.base ?? 0
+        let comboMultiplier = viewModel.comboComponent?.multiplier ?? 0
+
+        return HStack {
             Text("wave 10").modifier(InfoText())
             Spacer()
-            Text("combo x234").modifier(InfoText())
+            Text("combo \(comboBase) x \(comboMultiplier)").modifier(InfoText())
         }
     }
 
@@ -57,7 +60,8 @@ struct GameArenaView: View {
     }
 
     private func Score() -> some View {
-        let score = 12_345
+        let score = viewModel.gameStateComponent?.score ?? 0
+
         return Text("\(score)")
             .font(.system(size: 200, weight: .heavy))
             .monospacedDigit()

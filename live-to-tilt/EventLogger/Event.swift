@@ -19,6 +19,12 @@ enum Event: String, CaseIterable {
 
     // player
     case playerMoved
+
+    // combo
+    case comboExpired
+
+    // score
+    case scoreChanged
 }
 
 extension Event {
