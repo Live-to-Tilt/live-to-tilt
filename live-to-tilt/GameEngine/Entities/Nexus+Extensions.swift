@@ -26,6 +26,12 @@ extension Nexus {
         addComponent(GameStateComponent(entity: entity), to: entity)
     }
 
+    func createCombo() {
+        let entity = Entity()
+
+        addComponent(ComboComponent(entity: entity), to: entity)
+    }
+
     func createPlayer() {
         let entity = Entity()
 

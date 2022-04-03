@@ -9,12 +9,12 @@ class ComboSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        guard let gameStateComponent = nexus.getComponent(of: GameStateComponent.self) else {
+        guard let comboComponent = nexus.getComponent(of: ComboComponent.self) else {
             return
         }
 
-        updateElapsedTime(gameStateComponent, deltaTime: deltaTime)
-        resetComboIfTimeWindowExpired(gameStateComponent)
+        updateElapsedTime(comboComponent, deltaTime: deltaTime)
+        resetIfTimeWindowExpired(comboComponent)
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
@@ -24,40 +24,40 @@ class ComboSystem: System {
     }
 
     private lazy var onEnemyKilled = { [weak self] (_ event: Event, _: [EventInfo: Float]?) -> Void in
-        guard let gameStateComponent = self?.nexus.getComponent(of: GameStateComponent.self) else {
+        guard let comboComponent = self?.nexus.getComponent(of: ComboComponent.self) else {
             return
         }
 
-        self?.accumulateCombo(gameStateComponent)
+        self?.accumulate(comboComponent)
     }
 
-    private func accumulateCombo(_ gameStateComponent: GameStateComponent) {
-        gameStateComponent.comboBase += Constants.enemyKilledComboBase
-        gameStateComponent.comboMultiplier += Constants.enemyKilledComboMultiplier
-        gameStateComponent.elapsedTimeSincePreviousComboAccumulate = .zero
+    private func accumulate(_ comboComponent: ComboComponent) {
+        comboComponent.base += Constants.enemyKilledComboBase
+        comboComponent.multiplier += Constants.enemyKilledComboMultiplier
+        comboComponent.elapsedTimeSincePreviousAccumulate = .zero
     }
 
-    private func updateElapsedTime(_ gameStateComponent: GameStateComponent, deltaTime: CGFloat) {
-        gameStateComponent.elapsedTimeSincePreviousComboAccumulate += deltaTime
+    private func updateElapsedTime(_ comboComponent: ComboComponent, deltaTime: CGFloat) {
+        comboComponent.elapsedTimeSincePreviousAccumulate += deltaTime
     }
 
-    private func resetComboIfTimeWindowExpired(_ gameStateComponent: GameStateComponent) {
-        if isComboTimeWindowExpired(gameStateComponent) {
-            resetCombo(gameStateComponent)
+    private func resetIfTimeWindowExpired(_ comboComponent: ComboComponent) {
+        if isTimeWindowExpired(comboComponent) {
+            reset(comboComponent)
         }
     }
 
-    private func isComboTimeWindowExpired(_ gameStateComponent: GameStateComponent) -> Bool {
-        gameStateComponent.elapsedTimeSincePreviousComboAccumulate > Constants.comboTimeWindow
+    private func isTimeWindowExpired(_ comboComponent: ComboComponent) -> Bool {
+        comboComponent.elapsedTimeSincePreviousAccumulate > Constants.comboTimeWindow
     }
 
-    private func resetCombo(_ gameStateComponent: GameStateComponent) {
-        let comboScore = gameStateComponent.comboBase * gameStateComponent.comboMultiplier
+    private func reset(_ comboComponent: ComboComponent) {
+        let comboScore = comboComponent.base * comboComponent.multiplier
         EventManager.shared.postEvent(.comboExpired,
                                       eventInfo: [.comboScore: Float(comboScore)])
 
-        gameStateComponent.comboBase = .zero
-        gameStateComponent.comboMultiplier = .zero
-        gameStateComponent.elapsedTimeSincePreviousComboAccumulate = .zero
+        comboComponent.base = .zero
+        comboComponent.multiplier = .zero
+        comboComponent.elapsedTimeSincePreviousAccumulate = .zero
     }
 }

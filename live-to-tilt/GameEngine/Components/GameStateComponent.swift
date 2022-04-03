@@ -9,9 +9,6 @@ class GameStateComponent: Component {
             }
         }
     }
-    var comboBase: Int
-    var comboMultiplier: Int
-    var elapsedTimeSincePreviousComboAccumulate: CGFloat
     var score: Int
 
     enum GameState {
@@ -23,9 +20,6 @@ class GameStateComponent: Component {
     init(entity: Entity) {
         self.entity = entity
         self.state = .play
-        self.comboBase = .zero
-        self.comboMultiplier = .zero
-        self.elapsedTimeSincePreviousComboAccumulate = .zero
         self.score = .zero
     }
 }

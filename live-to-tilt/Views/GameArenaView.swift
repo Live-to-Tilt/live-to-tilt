@@ -26,8 +26,8 @@ struct GameArenaView: View {
     }
 
     private func InfoHStack() -> some View {
-        let comboBase = viewModel.gameStateComponent?.comboBase ?? 0
-        let comboMultiplier = viewModel.gameStateComponent?.comboMultiplier ?? 0
+        let comboBase = viewModel.comboComponent?.base ?? 0
+        let comboMultiplier = viewModel.comboComponent?.multiplier ?? 0
 
         return HStack {
             Text("wave 10").modifier(InfoText())
