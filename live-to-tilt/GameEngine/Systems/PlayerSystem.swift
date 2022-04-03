@@ -25,7 +25,7 @@ class PlayerSystem: System {
 
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
         EventManager.shared.postEvent(.playerMoved,
-                                      eventInfo: [.distance: Int(playerComponent.inputForce.magnitude * deltaTime)])
+                                      eventInfo: [.distance: Float(playerComponent.inputForce.magnitude * deltaTime)])
 
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
                                        desiredRotation: playerComponent.inputForce.angle)
