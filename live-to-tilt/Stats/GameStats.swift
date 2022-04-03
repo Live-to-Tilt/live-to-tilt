@@ -21,8 +21,8 @@ class GameStats {
     var totalGamesPlayed: Int {
         defaults.integer(forKey: .totalGamesPlayed)
     }
-    var totalDistanceTravelled: Int {
-        defaults.integer(forKey: .totalDistanceTravelled) + self.distanceTravelled
+    var totalDistanceTravelled: Float {
+        defaults.float(forKey: .totalDistanceTravelled) + self.distanceTravelled
     }
 
     var score: Int = .zero
@@ -30,7 +30,7 @@ class GameStats {
     var nukePowerupsUsed: Int = .zero
     var lightsaberPowerupsUsed: Int = .zero
     var enemiesKilled: Int = .zero
-    var distanceTravelled: Int = .zero
+    var distanceTravelled: Float = .zero
 
     init() {
         defaults = UserDefaults.standard
@@ -68,11 +68,11 @@ class GameStats {
         }
     }
 
-    lazy var onStatEventRef = { [weak self] (_ event: Event, eventInfo: [EventInfo: Int]?) -> Void in
-        self?.onStatEvent(event, eventInfo: eventInfo)
+    private lazy var onStatEventRef = { [weak self] (_ event: Event, _ eventInfo: [EventInfo: Float]?) -> Void in
+        self?.onStatEvent(event, eventInfo)
     }
 
-    private func onStatEvent(_ event: Event, eventInfo: [EventInfo: Int]?) {
+    private func onStatEvent(_ event: Event, _ eventInfo: [EventInfo: Float]?) {
         switch event {
         case .gameEnded:
             self.defaults.setValue(self.totalGamesPlayed + 1, forKey: .totalGamesPlayed)
@@ -89,7 +89,7 @@ class GameStats {
             self.distanceTravelled += distance
         case .scoreChanged:
             let deltaScore = eventInfo?[.deltaScore] ?? .zero
-            self.score += deltaScore
+            self.score += Int(deltaScore)
         default:
             return
         }
