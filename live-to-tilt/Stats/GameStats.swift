@@ -26,14 +26,22 @@ class GameStats {
         defaults.float(forKey: .totalDistanceTravelled) + self.distanceTravelled
     }
 
-    var score: Int = .zero
+    var score: Int = .zero {
+        didSet {
+            onUpdateStat(statId: .score)
+        }
+    }
     var powerupsUsed: Int = .zero
     var nukePowerupsUsed: Int = .zero {
         didSet {
             onUpdateStat(statId: .nukePowerUpsUsed)
         }
     }
-    var enemiesKilled: Int = .zero
+    var enemiesKilled: Int = .zero {
+        didSet {
+            onUpdateStat(statId: .enemiesKilled)
+        }
+    }
     var lightsaberPowerupsUsed: Int = .zero
     var distanceTravelled: Float = .zero
 

@@ -4,6 +4,7 @@ class GameArenaViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
+    @Published var achievements: [StatsAchievement]?
 
     var gameEngine: GameEngine
     var gameControl: GameControl
@@ -53,6 +54,13 @@ class GameArenaViewModel: ObservableObject {
 
         gameEngine.comboPublisher.sink { [weak self] comboComponent in
             self?.comboComponent = comboComponent
+        }.store(in: &cancellables)
+
+        gameEngine.achievementPublisher.sink { [weak self] achievements in
+            self?.achievements = achievements
+            for achievement in achievements {
+                print("achievement received: \(achievement.name)")
+            }
         }.store(in: &cancellables)
     }
 

@@ -1,12 +1,12 @@
 import CoreGraphics
 import Combine
+import SwiftUI
 
 class GameEngine {
     private var timeScale: CGFloat
     private var previousTimeScale: CGFloat
 
-//    var achievement: TenEnemiesKilledAchievement
-    var achievementsManager: AchievementManager
+    @ObservedObject var achievementManager: AchievementManager
 
     // ECS
     let nexus = Nexus()
@@ -28,6 +28,11 @@ class GameEngine {
     var comboPublisher: AnyPublisher<ComboComponent, Never> {
         comboSubject.eraseToAnyPublisher()
     }
+    let achievementSubject = PassthroughSubject<[StatsAchievement], Never>()
+    var achievementPublisher: AnyPublisher<[StatsAchievement], Never> {
+        achievementSubject.eraseToAnyPublisher()
+    }
+    var achievementCancellable: AnyCancellable?
 
     init(gameMode: GameMode) {
         EventManager.shared.reinit()
@@ -47,8 +52,10 @@ class GameEngine {
         ]
         self.gameStats = GameStats()
         self.gameMode = gameMode
-//        achievement = TenEnemiesKilledAchievement(id: 1, name: "10 enemies killed!", gameStats: gameStats)
-        achievementsManager = AchievementManager(gameStats: gameStats)
+        self.achievementManager = AchievementManager(gameStats: gameStats)
+        self.achievementCancellable = achievementManager.$newAchievements.sink { [weak self] newAchievements in
+            self?.publishAchievements(newAchievements)
+        }
 
         setUpEntities()
         EventManager.shared.postEvent(.gameStarted)
@@ -124,6 +131,15 @@ class GameEngine {
         }
 
         comboSubject.send(comboComponent)
+    }
+
+    private func publishAchievements(_ achievements: [StatsAchievement]) {
+        guard !achievements.isEmpty else {
+            return
+        }
+        achievementManager.newAchievements = []
+
+        achievementSubject.send(achievements)
     }
 
     private func getGameState() -> GameStateComponent? {

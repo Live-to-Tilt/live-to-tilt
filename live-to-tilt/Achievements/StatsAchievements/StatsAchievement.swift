@@ -2,13 +2,7 @@ class StatsAchievement {
     let id: Int
     let name: String
     let criteria: Int
-    var isCompleted: Bool {
-        didSet {
-            if self.isCompleted {
-                print("\(self.name) ACHIEVEMENT UNLOCKED!")
-            }
-        }
-    }
+    var isCompleted: Bool
 
     init(id: Int, name: String, criteria: Int) {
         self.id = id
@@ -17,7 +11,7 @@ class StatsAchievement {
         self.criteria = criteria
     }
 
-    func checkIfCompleted(gameStats: GameStats) {
-
+    func checkIfCompleted(gameStats: GameStats) -> Bool {
+        false
     }
 }
