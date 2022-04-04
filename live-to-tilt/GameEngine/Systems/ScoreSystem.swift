@@ -19,9 +19,9 @@ class ScoreSystem: System {
         EventManager.shared.registerClosure(event: .comboExpired, closure: onGameEvent)
     }
 
-    private lazy var onGameEvent = { [weak self] (_ event: Event, eventInfo: [EventInfo: Float]?) -> Void in
+    private lazy var onGameEvent = { [weak self] (event: Event, eventInfo: EventInfo?) -> Void in
         guard let gameStateComponent = self?.nexus.getComponent(of: GameStateComponent.self),
-              let deltaScore = self?.getDeltaScoreFromEvent(event, eventInfo: eventInfo) else {
+              let deltaScore = self?.getDeltaScoreFromEvent(event, eventInfo) else {
             return
         }
 
@@ -30,7 +30,7 @@ class ScoreSystem: System {
                                       eventInfo: [.score: Float(gameStateComponent.score)])
     }
 
-    private func getDeltaScoreFromEvent(_ event: Event, eventInfo: [EventInfo: Float]?) -> Int {
+    private func getDeltaScoreFromEvent(_ event: Event, _ eventInfo: EventInfo?) -> Int {
         switch event {
         case .enemyKilled:
             return Constants.enemyKilledScore

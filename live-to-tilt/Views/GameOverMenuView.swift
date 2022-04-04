@@ -13,6 +13,10 @@ struct GameOverMenuView: View {
                 Text("Game Over").modifier(HeroText())
             }
 
+            Text("Score: \(viewModel.gameStateComponent?.score ?? 0)")
+            Text("Time: 1:00")
+            Text("Dead Dots: 1999")
+
             Button(action: { viewModel.restart() }) {
                 Text("Restart").modifier(MenuButton())
             }
