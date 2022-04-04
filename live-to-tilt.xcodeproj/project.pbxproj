@@ -85,6 +85,7 @@
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
 		72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */; };
 		72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309F27EC20B9004C5238 /* CollisionComponent.swift */; };
+		72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */; };
 		72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */; };
 		72EC6AAB27E2EA0600FCCB7E /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AAA27E2EA0600FCCB7E /* PlayerSystem.swift */; };
 		72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */; };
@@ -198,6 +199,7 @@
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
 		72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
 		72B6309F27EC20B9004C5238 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
+		72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTimeStats.swift; sourceTree = "<group>"; };
 		72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		72EC6AAA27E2EA0600FCCB7E /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
 		72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				DBB8932C27E8CD1700D61D72 /* GameStats.swift */,
+				72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 			files = (
 				214E15A027F9767F00815A35 /* ComboComponent.swift in Sources */,
 				3DB3741A27F4400F0053F400 /* HorizontalWave.swift in Sources */,
+				72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */,
 				21BBC8F927E1C66B00C4B5D5 /* MainMenuView.swift in Sources */,
 				21BBC8F827E1C66700C4B5D5 /* GameArenaViewModel.swift in Sources */,
 				21BBC8F727E1C66000C4B5D5 /* CollisionPoints.swift in Sources */,
