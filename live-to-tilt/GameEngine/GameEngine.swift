@@ -5,8 +5,8 @@ class GameEngine {
     private var timeScale: CGFloat
     private var previousTimeScale: CGFloat
 
-    var achievement: TenEnemiesKilledAchievement
-    var achievementsManager: AchievementsManager
+//    var achievement: TenEnemiesKilledAchievement
+    var achievementsManager: AchievementManager
 
     // ECS
     let nexus = Nexus()
@@ -47,8 +47,8 @@ class GameEngine {
         ]
         self.gameStats = GameStats()
         self.gameMode = gameMode
-        achievement = TenEnemiesKilledAchievement(id: 1, name: "10 enemies killed!", gameStats: gameStats)
-        achievementsManager = AchievementsManager(gameStats: gameStats)
+//        achievement = TenEnemiesKilledAchievement(id: 1, name: "10 enemies killed!", gameStats: gameStats)
+        achievementsManager = AchievementManager(gameStats: gameStats)
 
         setUpEntities()
         EventManager.shared.postEvent(.gameStarted)

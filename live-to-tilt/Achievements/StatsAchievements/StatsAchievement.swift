@@ -1,6 +1,7 @@
-class Achievement {
+class StatsAchievement {
     let id: Int
     let name: String
+    let criteria: Int
     var isCompleted: Bool {
         didSet {
             if self.isCompleted {
@@ -8,13 +9,12 @@ class Achievement {
             }
         }
     }
-    let threshold: Int
 
-    init(id: Int, name: String, threshold: Int) {
+    init(id: Int, name: String, criteria: Int) {
         self.id = id
         self.name = name
         self.isCompleted = false
-        self.threshold = threshold
+        self.criteria = criteria
     }
 
     func checkIfCompleted(gameStats: GameStats) {
