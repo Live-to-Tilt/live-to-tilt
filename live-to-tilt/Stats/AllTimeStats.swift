@@ -4,7 +4,9 @@ import Foundation
  Manages the All-Time statistics of the game, i.e. the cumulative stats across all games.
  */
 class AllTimeStats {
-    let defaults: UserDefaults
+    static let shared = AllTimeStats()
+
+    private let defaults: UserDefaults
 
     var totalGamesPlayed: Int {
         defaults.integer(forKey: .totalGamesPlayed)
@@ -28,10 +30,9 @@ class AllTimeStats {
         defaults.float(forKey: .totalDistanceTravelled)
     }
 
-    init() {
+    private init() {
         defaults = UserDefaults.standard
         registerAllTimeStats()
-        observePublishers()
     }
 
     private func registerAllTimeStats() {
@@ -44,37 +45,21 @@ class AllTimeStats {
                                      .totalDistanceTravelled: 0])
     }
 
-    private func observePublishers() {
-        EventManager.shared.registerClosure(event: .gameEnded, closure: onStatEventRef)
-    }
-
-    private lazy var onStatEventRef = { [weak self] (_: Event, eventInfo: EventInfo?) -> Void in
-        self?.onStatEvent(eventInfo)
-    }
-
     // Update all-time stats once a game ends
-    private func onStatEvent(_ eventInfo: EventInfo?) {
+    func addStatsFromLatestGame(_ gameStats: GameStats) {
         defaults.setValue(totalGamesPlayed + 1,
                           forKey: .totalGamesPlayed)
-
-        let score = eventInfo?[.score] ?? .zero
-        defaults.setValue(totalScore + Int(score),
+        defaults.setValue(totalScore + gameStats.score,
                           forKey: .totalScore)
-
-        let nukePowerupsUsed = eventInfo?[.nukePowerupsUsed] ?? .zero
-        defaults.setValue(totalNukePowerupsUsed + Int(nukePowerupsUsed),
+        defaults.setValue(totalPowerupsUsed + gameStats.powerupsUsed,
+                          forKey: .totalPowerupsUsed)
+        defaults.setValue(totalNukePowerupsUsed + gameStats.nukePowerupsUsed,
                           forKey: .totalNukePowerupsUsed)
-
-        let lightsaberPowerupsUsed = eventInfo?[.lightsaberPowerupsUsed] ?? .zero
-        defaults.setValue(totalLightsaberPowerupsUsed + Int(lightsaberPowerupsUsed),
+        defaults.setValue(totalLightsaberPowerupsUsed + gameStats.lightsaberPowerupsUsed,
                           forKey: .totalLightsaberPowerupsUsed)
-
-        let enemiesKilled = eventInfo?[.enemiesKilled] ?? .zero
-        defaults.setValue(totalEnemiesKilled + Int(enemiesKilled),
+        defaults.setValue(totalEnemiesKilled + gameStats.enemiesKilled,
                           forKey: .totalEnemiesKilled)
-
-        let distanceTravelled = eventInfo?[.distanceTravelled] ?? .zero
-        defaults.setValue(totalDistanceTravelled + distanceTravelled,
+        defaults.setValue(totalDistanceTravelled + gameStats.distanceTravelled,
                           forKey: .totalDistanceTravelled)
     }
 }

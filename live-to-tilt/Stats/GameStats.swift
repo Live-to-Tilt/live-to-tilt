@@ -26,6 +26,8 @@ class GameStats {
     // Update game stats whenever an event is received
     private func onStatEvent(_ event: Event, _ eventInfo: EventInfo?) {
         switch event {
+        case .gameEnded:
+            AllTimeStats.shared.addStatsFromLatestGame(self)
         case .nukePowerupUsed:
             self.nukePowerupsUsed += 1
             self.powerupsUsed += 1
