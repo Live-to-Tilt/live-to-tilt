@@ -60,7 +60,8 @@ struct GameArenaView: View {
     }
 
     private func Score() -> some View {
-        let score = viewModel.gameStateComponent?.score ?? 0
+//        let score = viewModel.gameStateComponent?.score ?? 0
+        let score = viewModel.gameEngine.gameStats.score
 
         return Text("\(score)")
             .font(.system(size: 200, weight: .heavy))

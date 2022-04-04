@@ -20,14 +20,12 @@ class ScoreSystem: System {
     }
 
     private lazy var onGameEvent = { [weak self] (event: Event, eventInfo: EventInfo?) -> Void in
-        guard let gameStateComponent = self?.nexus.getComponent(of: GameStateComponent.self),
-              let deltaScore = self?.getDeltaScoreFromEvent(event, eventInfo) else {
+        guard let deltaScore = self?.getDeltaScoreFromEvent(event, eventInfo) else {
             return
         }
 
-        gameStateComponent.score += deltaScore
         EventManager.shared.postEvent(.scoreChanged,
-                                      eventInfo: [.score: Float(gameStateComponent.score)])
+                                      eventInfo: [.score: Float(deltaScore)])
     }
 
     private func getDeltaScoreFromEvent(_ event: Event, _ eventInfo: EventInfo?) -> Int {

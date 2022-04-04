@@ -9,7 +9,6 @@ class GameStateComponent: Component {
             }
         }
     }
-    var score: Int
 
     enum GameState {
         case play
@@ -20,6 +19,5 @@ class GameStateComponent: Component {
     init(entity: Entity) {
         self.entity = entity
         self.state = .play
-        self.score = .zero
     }
 }

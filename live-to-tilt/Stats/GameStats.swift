@@ -41,7 +41,7 @@ class GameStats {
             self.distanceTravelled += distance
         case .scoreChanged:
             let score = eventInfo?[.score] ?? .zero
-            self.score = Int(score)
+            self.score += Int(score)
         default:
             return
         }
