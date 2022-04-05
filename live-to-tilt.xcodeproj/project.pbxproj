@@ -86,6 +86,7 @@
 		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
 		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
 		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
+		72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144827FC23F500131A83 /* GameOverStat.swift */; };
 		72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */; };
 		72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309F27EC20B9004C5238 /* CollisionComponent.swift */; };
 		72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */; };
@@ -203,6 +204,7 @@
 		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
 		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		72B5144827FC23F500131A83 /* GameOverStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStat.swift; sourceTree = "<group>"; };
 		72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
 		72B6309F27EC20B9004C5238 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
 		72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTimeStats.swift; sourceTree = "<group>"; };
@@ -468,9 +470,9 @@
 				72478E9E27D736F200B9140A /* RenderableComponent.swift */,
 				723DEFD527E1E27700592922 /* PlayerComponent.swift */,
 				72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */,
-				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */,
 				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
+				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				214E159F27F9767F00815A35 /* ComboComponent.swift */,
 			);
 			path = Components;
@@ -527,6 +529,7 @@
 			children = (
 				DBB8932C27E8CD1700D61D72 /* GameStats.swift */,
 				72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */,
+				72B5144827FC23F500131A83 /* GameOverStat.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
+				72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */,
 				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,

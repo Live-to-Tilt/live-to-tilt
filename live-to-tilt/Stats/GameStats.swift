@@ -67,4 +67,19 @@ class GameStats {
             return playTime.toTimeString()
         }
     }
+
+    func getGameOverStats() -> [GameOverStat] {
+        var stats: [GameOverStat] = []
+
+        switch gameMode {
+        case .survival:
+            stats.append(GameOverStat(label: "Score", value: score.withCommas()))
+            stats.append(GameOverStat(label: "Time", value: playTime.toTimeString()))
+            stats.append(GameOverStat(label: "Dead Dots", value: enemiesKilled.withCommas()))
+        case .gauntlet:
+            stats.append(GameOverStat(label: "Time", value: playTime.toTimeString()))
+        }
+
+        return stats
+    }
 }

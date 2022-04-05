@@ -13,9 +13,7 @@ struct GameOverMenuView: View {
                 Text("Game Over").modifier(HeroText())
             }
 
-            Text("Score: \(viewModel.gameEngine.gameStats.score)")
-            Text("Time: \(viewModel.gameEngine.gameStats.playTime.toTimeString())")
-            Text("Dead Dots: \(viewModel.gameEngine.gameStats.enemiesKilled)")
+            Stats()
 
             Button(action: { viewModel.restart() }) {
                 Text("Restart").modifier(MenuButton())
@@ -25,6 +23,31 @@ struct GameOverMenuView: View {
                 Text("Main Menu").modifier(MenuButton())
             }
         }.modifier(MenuLayout())
+    }
+
+    private func Stats() -> some View {
+        let stats = viewModel.gameEngine.gameStats.getGameOverStats()
+        return VStack {
+            ForEach(stats, id: \.self) { stat in
+                HStack {
+                    Text(stat.label)
+                        .font(.system(size: 30))
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
+                        .frame(width: 190, alignment: .trailing)
+                    Text(stat.value)
+                        .font(.system(size: 30, weight: .heavy))
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
+                        .background(Color(red: 0.84, green: 0.24, blue: 0.20))
+                        .frame(width: 200, alignment: .leading)
+                }
+            }
+        }
+        .padding()
+        .offset(x: 0, y: -20)
     }
 }
 
