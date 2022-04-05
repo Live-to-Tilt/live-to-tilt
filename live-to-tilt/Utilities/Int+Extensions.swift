@@ -8,6 +8,6 @@ extension Int {
     }()
 
     func withCommas() -> String {
-        Int.commaFormatter.string(from: NSNumber(value: self)) ?? ""
+        Int.commaFormatter.string(from: NSNumber(value: self)) ?? "0"
     }
 }

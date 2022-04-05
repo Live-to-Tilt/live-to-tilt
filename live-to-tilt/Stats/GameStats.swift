@@ -1,4 +1,5 @@
 import CoreGraphics
+
 /**
  Manages the statistics of the current game.
  */
