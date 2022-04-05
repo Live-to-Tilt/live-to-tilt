@@ -2,12 +2,12 @@
  Manages the statistics of the current game.
  */
 class GameStats {
-    var score: Int = .zero
-    var powerupsUsed: Int = .zero
-    var nukePowerupsUsed: Int = .zero
-    var lightsaberPowerupsUsed: Int = .zero
-    var enemiesKilled: Int = .zero
-    var distanceTravelled: Float = .zero
+    private(set) var score: Int = .zero
+    private(set) var powerupsUsed: Int = .zero
+    private(set) var nukePowerupsUsed: Int = .zero
+    private(set) var lightsaberPowerupsUsed: Int = .zero
+    private(set) var enemiesKilled: Int = .zero
+    private(set) var distanceTravelled: Float = .zero
 
     init() {
         observePublishers()
