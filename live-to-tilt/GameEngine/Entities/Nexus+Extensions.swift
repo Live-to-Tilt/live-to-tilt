@@ -1,6 +1,20 @@
 import CoreGraphics
 
 extension Nexus {
+    static func generateRandomSpawnPosition(forEntityOfWidth width: CGFloat, height: CGFloat) -> CGPoint {
+        let minX = width / 2
+        let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX
+        let x = CGFloat.random(in: minX...maxX)
+
+        let minY = height / 2
+        let maxY = Constants.gameArenaHeight - minY
+        let y = CGFloat.random(in: minY...maxY)
+
+        let position = CGPoint(x: x, y: y)
+
+        return position
+    }
+
     func createWalls() {
         createWall(position: Constants.topWallPosition, size: Constants.horizontalWallSize)
         createWall(position: Constants.bottomWallPosition, size: Constants.horizontalWallSize)
@@ -58,6 +72,13 @@ extension Nexus {
                      to: entity)
     }
 
+    func createPowerupManager(for gameMode: GameMode) {
+        let entity = Entity()
+
+        addComponent(PowerupManagerComponent(entity: entity, gameMode: gameMode),
+                     to: entity)
+    }
+
     func createEnemy(position: CGPoint, movement: Movement) {
         let entity = Entity()
         let transform = CGAffineTransform(scaleX: Constants.enemyFrontToBackRatio, y: Constants.enemyFrontToBackRatio)
@@ -90,29 +111,13 @@ extension Nexus {
         EventManager.shared.postEvent(.enemySpawned)
     }
 
-    func createPowerups() {
-        for _ in 1...Constants.maxNumberOfPowerupsInArena {
-            createPowerup()
-        }
-    }
-
-    func createPowerup() {
+    func createPowerup(position: CGPoint, powerup: Powerup, velocity: CGVector = .zero) {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
-        let position = generateRandomSpawnLocation(forEntityOfWidth: Constants.powerupDiameter,
-                                                   height: Constants.powerupDiameter)
-        let effects: [PowerupEffect] = [
-            NukeEffect(nexus: self, powerupEntity: entity),
-            LightsaberEffect(nexus: self, powerupEntity: entity)
-        ]
 
-        guard let effect = effects.randomElement() else {
-            return
-        }
-
-        addComponent(PowerupComponent(entity: entity, effect: effect), to: entity)
+        addComponent(PowerupComponent(entity: entity, powerup: powerup), to: entity)
         addComponent(RenderableComponent(entity: entity,
-                                         image: effect.orbImage,
+                                         image: powerup.image,
                                          position: position,
                                          size: size,
                                          layer: .powerup),
@@ -123,8 +128,7 @@ extension Nexus {
                                                                position: position,
                                                                size: size,
                                                                collisionBitMask: Constants.powerupCollisionBitMask,
-                                                               velocity:
-                                                                CGVector.random(magnitude: Constants.maxPowerupSpeed),
+                                                               velocity: velocity,
                                                                restitution: Constants.powerupRestitution)),
                      to: entity)
         EventManager.shared.postEvent(.powerUpSpawned)
@@ -136,19 +140,5 @@ extension Nexus {
             addComponent(CountdownComponent(entity: entity, maxTime: Constants.gauntletMaxTime),
                          to: entity)
         }
-    }
-
-    private func generateRandomSpawnLocation(forEntityOfWidth width: CGFloat, height: CGFloat) -> CGPoint {
-        let minX = width / 2
-        let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX
-        let x = CGFloat.random(in: minX...maxX)
-
-        let minY = height / 2
-        let maxY = Constants.gameArenaHeight - minY
-        let y = CGFloat.random(in: minY...maxY)
-
-        let position = CGPoint(x: x, y: y)
-
-        return position
     }
 }

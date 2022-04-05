@@ -17,4 +17,10 @@ extension Array {
             return result
         })
     }
+
+    func makeRandomIterator() -> AnyIterator<Element> {
+        AnyIterator({
+            self.randomElement()
+        })
+    }
 }

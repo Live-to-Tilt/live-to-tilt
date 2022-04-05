@@ -39,7 +39,7 @@
 		3D2B39E327F7EDF400693B3B /* StraightWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* StraightWave.swift */; };
 		3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */; };
 		3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387527E2115D00DF45C2 /* EnemyComponent.swift */; };
-		3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveSystem.swift */; };
+		3D55387827E22FD800DF45C2 /* WaveManagerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* MovementSystem.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */; };
@@ -60,6 +60,13 @@
 		3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC8027E4356900994C18 /* BaseMovement.swift */; };
 		3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5727E3062F008ADF6D /* Wave.swift */; };
 		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
+		3DEA51A227FC7BBF001D6CB5 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A127FC7BBF001D6CB5 /* Powerup.swift */; };
+		3DEA51A427FC7DD6001D6CB5 /* NukePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A327FC7DD6001D6CB5 /* NukePowerup.swift */; };
+		3DEA51A727FC829A001D6CB5 /* PowerupManagerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A627FC829A001D6CB5 /* PowerupManagerComponent.swift */; };
+		3DEA51AA27FC82E3001D6CB5 /* PowerupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A927FC82E3001D6CB5 /* PowerupManager.swift */; };
+		3DEA51AC27FC844D001D6CB5 /* SurvivalPowerupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AB27FC844D001D6CB5 /* SurvivalPowerupManager.swift */; };
+		3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AD27FC84BB001D6CB5 /* GauntletPowerupManager.swift */; };
+		3DEA51B027FC8957001D6CB5 /* PowerupManagerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AF27FC8957001D6CB5 /* PowerupManagerSystem.swift */; };
 		7230521027F2C64C00AD753D /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230520F27F2C64C00AD753D /* PauseMenuView.swift */; };
 		7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521127F2D52700AD753D /* GameOverMenuView.swift */; };
 		7230521427F2D80500AD753D /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521327F2D80500AD753D /* MenuButton.swift */; };
@@ -156,7 +163,7 @@
 		3D2B39E227F7EDF400693B3B /* StraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightWave.swift; sourceTree = "<group>"; };
 		3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDecorator.swift; sourceTree = "<group>"; };
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
-		3D55387727E22FD800DF45C2 /* WaveSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSystem.swift; sourceTree = "<group>"; };
+		3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
@@ -177,6 +184,13 @@
 		3DC7BC8027E4356900994C18 /* BaseMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMovement.swift; sourceTree = "<group>"; };
 		3DCEAA5727E3062F008ADF6D /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		3DCEAA5927E306A3008ADF6D /* RandomWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWave.swift; sourceTree = "<group>"; };
+		3DEA51A127FC7BBF001D6CB5 /* Powerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
+		3DEA51A327FC7DD6001D6CB5 /* NukePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukePowerup.swift; sourceTree = "<group>"; };
+		3DEA51A627FC829A001D6CB5 /* PowerupManagerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupManagerComponent.swift; sourceTree = "<group>"; };
+		3DEA51A927FC82E3001D6CB5 /* PowerupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupManager.swift; sourceTree = "<group>"; };
+		3DEA51AB27FC844D001D6CB5 /* SurvivalPowerupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurvivalPowerupManager.swift; sourceTree = "<group>"; };
+		3DEA51AD27FC84BB001D6CB5 /* GauntletPowerupManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletPowerupManager.swift; sourceTree = "<group>"; };
+		3DEA51AF27FC8957001D6CB5 /* PowerupManagerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupManagerSystem.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
@@ -266,6 +280,7 @@
 		21B52E4227E48B5B00E61808 /* PowerupComponent */ = {
 			isa = PBXGroup;
 			children = (
+				3DEA51A027FC7BB4001D6CB5 /* Powerup */,
 				2184B3D327E398C9007A4068 /* PowerupComponent.swift */,
 				2105E6F127E4D0C50010195B /* PowerupEffect.swift */,
 				2105E6F327E4D0ED0010195B /* NukeEffect.swift */,
@@ -404,14 +419,14 @@
 			path = Movement;
 			sourceTree = "<group>";
 		};
-		3DA4B1E927F00CF100FE19B2 /* WaveComponent */ = {
+		3DA4B1E927F00CF100FE19B2 /* WaveManagerComponent */ = {
 			isa = PBXGroup;
 			children = (
 				3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */,
 				3DA4B1EA27F00D6400FE19B2 /* WaveManager */,
 				3DA4B1E527F0092200FE19B2 /* Wave */,
 			);
-			path = WaveComponent;
+			path = WaveManagerComponent;
 			sourceTree = "<group>";
 		};
 		3DA4B1EA27F00D6400FE19B2 /* WaveManager */ = {
@@ -431,6 +446,34 @@
 				3DC0F28327EB0239001D54E4 /* MovementComponent.swift */,
 			);
 			path = MovementComponent;
+			sourceTree = "<group>";
+		};
+		3DEA51A027FC7BB4001D6CB5 /* Powerup */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA51A127FC7BBF001D6CB5 /* Powerup.swift */,
+				3DEA51A327FC7DD6001D6CB5 /* NukePowerup.swift */,
+			);
+			path = Powerup;
+			sourceTree = "<group>";
+		};
+		3DEA51A527FC827F001D6CB5 /* PowerupManagerComponent */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA51A827FC82BD001D6CB5 /* PowerupManager */,
+				3DEA51A627FC829A001D6CB5 /* PowerupManagerComponent.swift */,
+			);
+			path = PowerupManagerComponent;
+			sourceTree = "<group>";
+		};
+		3DEA51A827FC82BD001D6CB5 /* PowerupManager */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA51A927FC82E3001D6CB5 /* PowerupManager.swift */,
+				3DEA51AB27FC844D001D6CB5 /* SurvivalPowerupManager.swift */,
+				3DEA51AD27FC84BB001D6CB5 /* GauntletPowerupManager.swift */,
+			);
+			path = PowerupManager;
 			sourceTree = "<group>";
 		};
 		7215CD4827DB657D00A26752 /* GameControl */ = {
@@ -466,7 +509,8 @@
 		72478E9027D70C6A00B9140A /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3DA4B1E927F00CF100FE19B2 /* WaveComponent */,
+				3DEA51A527FC827F001D6CB5 /* PowerupManagerComponent */,
+				3DA4B1E927F00CF100FE19B2 /* WaveManagerComponent */,
 				21B52E4227E48B5B00E61808 /* PowerupComponent */,
 				3DC7BC7927E3910E00994C18 /* MovementComponent */,
 				72478E9427D70DFE00B9140A /* Component.swift */,
@@ -486,8 +530,8 @@
 		72478E9127D70C6F00B9140A /* Systems */ = {
 			isa = PBXGroup;
 			children = (
-				3D55387727E22FD800DF45C2 /* WaveSystem.swift */,
 				72478E9A27D733DE00B9140A /* System.swift */,
+				3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */,
 				3D55387927E230B600DF45C2 /* MovementSystem.swift */,
 				2184B3D527E39D14007A4068 /* PowerupSystem.swift */,
 				72EC6AAA27E2EA0600FCCB7E /* PlayerSystem.swift */,
@@ -497,6 +541,7 @@
 				21DB9E3C27F85B02008AF29A /* ComboSystem.swift */,
 				21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */,
 				3D05B53127FC1177005CB316 /* CountdownSystem.swift */,
+				3DEA51AF27FC8957001D6CB5 /* PowerupManagerSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -677,6 +722,7 @@
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
 				72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */,
 				3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */,
+				3DEA51AA27FC82E3001D6CB5 /* PowerupManager.swift in Sources */,
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
 				3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */,
@@ -690,7 +736,8 @@
 				DBB8933727EC7AD600D61D72 /* Event.swift in Sources */,
 				3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
-				3D55387827E22FD800DF45C2 /* WaveSystem.swift in Sources */,
+				3DEA51A727FC829A001D6CB5 /* PowerupManagerComponent.swift in Sources */,
+				3D55387827E22FD800DF45C2 /* WaveManagerSystem.swift in Sources */,
 				3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */,
@@ -701,6 +748,8 @@
 				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
 				2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */,
+				3DEA51A227FC7BBF001D6CB5 /* Powerup.swift in Sources */,
+				3DEA51A427FC7DD6001D6CB5 /* NukePowerup.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
@@ -736,6 +785,7 @@
 				21DB9E3D27F85B02008AF29A /* ComboSystem.swift in Sources */,
 				DBEC91EF27D7B8A300B0E750 /* CGVector+Extensions.swift in Sources */,
 				72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */,
+				3DEA51B027FC8957001D6CB5 /* PowerupManagerSystem.swift in Sources */,
 				7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */,
 				DBEC91F827D8F92200B0E750 /* PhysicsCollisionDelegate.swift in Sources */,
 				72478EA527D73A8200B9140A /* GameRenderer.swift in Sources */,
@@ -761,6 +811,7 @@
 				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,
+				3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupManager.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
 				726E12E927E0A6F4002728B7 /* KeyBinding.swift in Sources */,
@@ -770,6 +821,7 @@
 				7230521427F2D80500AD753D /* MenuButton.swift in Sources */,
 				7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,
+				3DEA51AC27FC844D001D6CB5 /* SurvivalPowerupManager.swift in Sources */,
 				21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */,
 				723EE8B127E8C13D001BD0D4 /* MenuItemText.swift in Sources */,
 				3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */,

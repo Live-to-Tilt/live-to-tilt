@@ -2,12 +2,12 @@ import CoreGraphics
 
 class PowerupComponent: Component {
     let entity: Entity
-    let effect: PowerupEffect
-    var elapsedTimeSinceSpawn: Double = 0
-    var isActive = false
+    let powerup: Powerup
+    var elapsedTimeSinceSpawn: CGFloat
 
-    init(entity: Entity, effect: PowerupEffect) {
+    init(entity: Entity, powerup: Powerup) {
         self.entity = entity
-        self.effect = effect
+        self.powerup = powerup
+        self.elapsedTimeSinceSpawn = .zero
     }
 }

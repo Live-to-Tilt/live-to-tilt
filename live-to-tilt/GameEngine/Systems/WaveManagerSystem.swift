@@ -1,6 +1,6 @@
 import CoreGraphics
 
-final class WaveSystem: System {
+final class WaveManagerSystem: System {
     let nexus: Nexus
 
     init(nexus: Nexus) {
@@ -8,9 +8,9 @@ final class WaveSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        let waveComponents = nexus.getComponents(of: WaveManagerComponent.self)
-        waveComponents.forEach { waveComponent in
-            let waveManager = waveComponent.waveManager
+        let waveManagerComponents = nexus.getComponents(of: WaveManagerComponent.self)
+        waveManagerComponents.forEach { waveManagerComponent in
+            let waveManager = waveManagerComponent.waveManager
             waveManager.update(deltaTime: deltaTime, nexus: nexus)
         }
     }
