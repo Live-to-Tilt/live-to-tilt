@@ -38,6 +38,7 @@ struct GameArenaView: View {
             Spacer()
             Text("combo \(comboBase) x \(comboMultiplier)").modifier(InfoText())
         }
+        .zIndex(10)
         .toast(isPresenting: $viewModel.showAchievement, duration: 1.5) {
             AlertToast(type: .regular, title: "Achievement Unlocked: \(viewModel.achievement?.name ?? "empty")!")
         }

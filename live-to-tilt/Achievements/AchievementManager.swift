@@ -9,14 +9,25 @@ class AchievementManager: ObservableObject {
     private var completedAchievements: Set<String>
     private let achievements: [Event: [Int]] = [.updateEnemiesKilled: [1, 10, 25, 50],
                                                 .updateNukePowerUpsUsed: [1, 5, 10, 25, 50],
-                                                .updateScore: [100, 250, 500, 1_000, 5_000]]
+                                                .updateScore: [100, 250, 500, 1_000, 5_000, 10_000],
+                                                .updateTotalScore: [10_000, 25_000, 50_000, 100_000, 250_000],
+                                                .updateTotalGamesPlayed: [5, 10, 50, 100]
+    ]
     private var statsToAchievements: [Event: [StatsAchievement]]
 
     init() {
-        self.statsToAchievements = [:]
         self.completedAchievements = []
         self.newAchievement = nil
         self.storage = UserDefaults.standard
+        self.statsToAchievements = [:]
+        assignStatsToAchievements(self.achievements)
+        registerClosures()
+    }
+
+    func reinit() {
+        self.completedAchievements = []
+        self.newAchievement = nil
+        self.statsToAchievements = [:]
         assignStatsToAchievements(self.achievements)
         registerClosures()
     }
@@ -28,19 +39,19 @@ class AchievementManager: ObservableObject {
                 switch statId {
                 case .updateEnemiesKilled:
                     name = "Kill \(criterion) enemies"
-                    self.statsToAchievements[statId, default: []].append(
-                        EnemiesKilledAchievement(name: name, criteria: criterion))
                 case .updateNukePowerUpsUsed:
                     name = "Use \(criterion) nuke powerups"
-                    self.statsToAchievements[statId, default: []].append(
-                        NukeAchievement(name: name, criteria: criterion))
                 case .updateScore:
                     name = "Earn \(criterion) points"
-                    self.statsToAchievements[statId, default: []].append(
-                        ScoreAchievement(name: name, criteria: criterion))
+                case .updateTotalScore:
+                    name = "Earn \(criterion) points across all games"
+                case .updateTotalGamesPlayed:
+                    name = "Play \(criterion) games"
                 default:
                     continue
                 }
+                self.statsToAchievements[statId, default: []].append(
+                    StatsAchievement(name: name, criteria: criterion))
                 storage.register(defaults: [name: false])
             }
         }
@@ -50,6 +61,8 @@ class AchievementManager: ObservableObject {
         EventManager.shared.registerClosure(event: .updateEnemiesKilled, closure: onStatUpdateRef)
         EventManager.shared.registerClosure(event: .updateNukePowerUpsUsed, closure: onStatUpdateRef)
         EventManager.shared.registerClosure(event: .updateScore, closure: onStatUpdateRef)
+        EventManager.shared.registerClosure(event: .updateTotalScore, closure: onAllTimeStatUpdateRef)
+        EventManager.shared.registerClosure(event: .updateTotalGamesPlayed, closure: onAllTimeStatUpdateRef)
     }
 
     private lazy var onStatUpdateRef = { [weak self] (_ updatedStat: Event, eventInfo: EventInfo?) -> Void in
@@ -64,9 +77,27 @@ class AchievementManager: ObservableObject {
         for achievement in achievements {
             if !completedAchievements.contains(where: { $0 == achievement.name })
                 && achievement.checkIfCompleted(stat: stat) {
-                self.storage.set(true, forKey: achievement.name)
+                storage.set(true, forKey: achievement.name)
                 newAchievement = achievement
                 completedAchievements.insert(achievement.name)
+            }
+        }
+    }
+
+    private lazy var onAllTimeStatUpdateRef = { [weak self] (_ updatedStat: Event, eventInfo: EventInfo?) -> Void in
+        self?.onAllTimeStatUpdate(updatedStat, eventInfo: eventInfo)
+    }
+
+    private func onAllTimeStatUpdate(_ updatedStat: Event, eventInfo: EventInfo?) {
+        guard let achievements = self.statsToAchievements[updatedStat],
+              let stat = eventInfo?[.statValue] else {
+            return
+        }
+        for achievement in achievements {
+            if !storage.bool(forKey: achievement.name)
+                && achievement.checkIfCompleted(stat: stat) {
+                storage.set(true, forKey: achievement.name)
+                newAchievement = achievement
             }
         }
     }

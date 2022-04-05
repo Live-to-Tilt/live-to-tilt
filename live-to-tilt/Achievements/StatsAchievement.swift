@@ -10,6 +10,10 @@ class StatsAchievement {
     }
 
     func checkIfCompleted(stat: Float) -> Bool {
-        false
+        if !self.isCompleted && Int(stat) >= self.criteria {
+            self.isCompleted = true
+            return true
+        }
+        return false
     }
 }

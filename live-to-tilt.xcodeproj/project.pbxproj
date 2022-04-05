@@ -99,8 +99,6 @@
 		DB77AF3327EEC41100F8DE4C /* EventInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */; };
 		DB77AF3927F7722E00F8DE4C /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */; };
 		DB77AF3B27F7723F00F8DE4C /* StatsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */; };
-		DB77AF3F27F8393F00F8DE4C /* EnemiesKilledAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3E27F8393F00F8DE4C /* EnemiesKilledAchievement.swift */; };
-		DB77AF4127F84BDC00F8DE4C /* NukeAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF4027F84BDC00F8DE4C /* NukeAchievement.swift */; };
 		DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */; };
 		DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480527D8BDA900D46B84 /* Soundtrack.swift */; };
 		DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4627DB63D800A26752 /* GameControl.swift */; };
@@ -108,7 +106,6 @@
 		DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4927DB661C00A26752 /* AccelerometerControl.swift */; };
 		DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480E27D8CB7900D46B84 /* UserDefaults+Extensions.swift */; };
 		DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */; };
-		DB972C7327FB423800CB1C25 /* ScoreAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB972C7227FB423800CB1C25 /* ScoreAchievement.swift */; };
 		DB972C7727FBFDF000CB1C25 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DB972C7627FBFDF000CB1C25 /* AlertToast */; };
 		DBB8932D27E8CD1700D61D72 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8932C27E8CD1700D61D72 /* GameStats.swift */; };
 		DBB8933727EC7AD600D61D72 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933627EC7AD600D61D72 /* Event.swift */; };
@@ -225,10 +222,7 @@
 		DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoKey.swift; sourceTree = "<group>"; };
 		DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAchievement.swift; sourceTree = "<group>"; };
-		DB77AF3E27F8393F00F8DE4C /* EnemiesKilledAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesKilledAchievement.swift; sourceTree = "<group>"; };
-		DB77AF4027F84BDC00F8DE4C /* NukeAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeAchievement.swift; sourceTree = "<group>"; };
 		DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
-		DB972C7227FB423800CB1C25 /* ScoreAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAchievement.swift; sourceTree = "<group>"; };
 		DBB8932C27E8CD1700D61D72 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		DBB8933627EC7AD600D61D72 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DBB8933827EC83AB00D61D72 /* Notification.Name+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extensions.swift"; sourceTree = "<group>"; };
@@ -557,7 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */,
-				DB972C7427FB427000CB1C25 /* StatsAchievements */,
+				DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -572,17 +566,6 @@
 				DBEC91E027D7B8A300B0E750 /* CGVector+Extensions.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		DB972C7427FB427000CB1C25 /* StatsAchievements */ = {
-			isa = PBXGroup;
-			children = (
-				DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */,
-				DB77AF4027F84BDC00F8DE4C /* NukeAchievement.swift */,
-				DB77AF3E27F8393F00F8DE4C /* EnemiesKilledAchievement.swift */,
-				DB972C7227FB423800CB1C25 /* ScoreAchievement.swift */,
-			);
-			path = StatsAchievements;
 			sourceTree = "<group>";
 		};
 		DBB8933527EC78DC00D61D72 /* EventLogger */ = {
@@ -712,7 +695,6 @@
 				21BBC8F727E1C66000C4B5D5 /* CollisionPoints.swift in Sources */,
 				21BBC8F627E1C65B00C4B5D5 /* CGPoint+Extensions.swift in Sources */,
 				DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */,
-				DB77AF3F27F8393F00F8DE4C /* EnemiesKilledAchievement.swift in Sources */,
 				DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */,
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
 				72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */,
@@ -763,7 +745,6 @@
 				726EBD0527DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift in Sources */,
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
 				3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */,
-				DB972C7327FB423800CB1C25 /* ScoreAchievement.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
 				3DB3742027F457CB0053F400 /* ConnectedMovement.swift in Sources */,
 				DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */,
@@ -797,7 +778,6 @@
 				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
-				DB77AF4127F84BDC00F8DE4C /* NukeAchievement.swift in Sources */,
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
 				3DB3741827F43B7E0053F400 /* DirectionalMovementDecorator.swift in Sources */,
 				7230521627F2EB7700AD753D /* MenuLayout.swift in Sources */,

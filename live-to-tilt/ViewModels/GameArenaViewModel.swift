@@ -34,6 +34,7 @@ class GameArenaViewModel: ObservableObject {
         gameRenderer.stop()
         gameEngine = GameEngine(gameMode: gameEngine.gameMode)
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
+        achievementManager.reinit()
         gameRenderer.start()
         attachPublishers()
     }
@@ -70,7 +71,6 @@ class GameArenaViewModel: ObservableObject {
             }
             self?.achievement = achievement
             self?.showAchievement = true
-            print("achievement received: \(achievement.name)")
         }.store(in: &cancellables)
     }
 
