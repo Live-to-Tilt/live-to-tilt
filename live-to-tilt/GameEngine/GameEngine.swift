@@ -106,7 +106,7 @@ class GameEngine {
     }
 
     private func publishGameState() {
-        guard let gameStateComponent = nexus.getComponent(of: GameStateComponent.self) else {
+        guard let gameStateComponent = getGameState() else {
             return
         }
 

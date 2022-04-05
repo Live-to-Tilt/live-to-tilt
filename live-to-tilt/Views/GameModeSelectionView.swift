@@ -47,9 +47,17 @@ struct GameModeSelectionView: View {
     }
 
     private func GameModeInfo() -> some View {
-        VStack {
-            Text(selectedGameMode.rawValue)
-                .modifier(HeadingOneText())
+        VStack(alignment: .leading) {
+            HStack {
+                Text(selectedGameMode.rawValue)
+                    .modifier(HeadingOneText())
+
+                Spacer()
+
+                Text("🏆 1234") // TODO: replace with highscore
+                    .font(.system(size: 24))
+            }
+
             Text(selectedGameMode.description)
                 .font(.system(size: 24))
         }
