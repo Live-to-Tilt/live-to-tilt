@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -103,6 +103,7 @@
 		DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480E27D8CB7900D46B84 /* UserDefaults+Extensions.swift */; };
 		DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */; };
 		DB972C7327FB423800CB1C25 /* ScoreAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB972C7227FB423800CB1C25 /* ScoreAchievement.swift */; };
+		DB972C7727FBFDF000CB1C25 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DB972C7627FBFDF000CB1C25 /* AlertToast */; };
 		DBB8932D27E8CD1700D61D72 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8932C27E8CD1700D61D72 /* GameStats.swift */; };
 		DBB8933727EC7AD600D61D72 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933627EC7AD600D61D72 /* Event.swift */; };
 		DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933827EC83AB00D61D72 /* Notification.Name+Extensions.swift */; };
@@ -239,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB972C7727FBFDF000CB1C25 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +606,9 @@
 			dependencies = (
 			);
 			name = "live-to-tilt";
+			packageProductDependencies = (
+				DB972C7627FBFDF000CB1C25 /* AlertToast */,
+			);
 			productName = "live-to-tilt";
 			productReference = 3D12D9C327D61D8500D01489 /* live-to-tilt.app */;
 			productType = "com.apple.product-type.application";
@@ -631,6 +636,9 @@
 				Base,
 			);
 			mainGroup = 3D12D9BA27D61D8500D01489;
+			packageReferences = (
+				DB972C7527FBFDF000CB1C25 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 3D12D9C427D61D8500D01489 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -973,6 +981,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DB972C7527FBFDF000CB1C25 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.3.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DB972C7627FBFDF000CB1C25 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB972C7527FBFDF000CB1C25 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3D12D9BB27D61D8500D01489 /* Project object */;
 }

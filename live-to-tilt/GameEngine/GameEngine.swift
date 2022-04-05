@@ -28,8 +28,8 @@ class GameEngine {
     var comboPublisher: AnyPublisher<ComboComponent, Never> {
         comboSubject.eraseToAnyPublisher()
     }
-    let achievementSubject = PassthroughSubject<[StatsAchievement], Never>()
-    var achievementPublisher: AnyPublisher<[StatsAchievement], Never> {
+    let achievementSubject = PassthroughSubject<StatsAchievement, Never>()
+    var achievementPublisher: AnyPublisher<StatsAchievement, Never> {
         achievementSubject.eraseToAnyPublisher()
     }
     var achievementCancellable: AnyCancellable?
@@ -53,8 +53,11 @@ class GameEngine {
         self.gameStats = GameStats()
         self.gameMode = gameMode
         self.achievementManager = AchievementManager(gameStats: gameStats)
-        self.achievementCancellable = achievementManager.$newAchievements.sink { [weak self] newAchievements in
-            self?.publishAchievements(newAchievements)
+        self.achievementCancellable = achievementManager.$newAchievement.sink { [weak self] newAchievement in
+            guard let achievement = newAchievement else {
+                return
+            }
+            self?.publishAchievements(achievement)
         }
 
         setUpEntities()
@@ -133,13 +136,10 @@ class GameEngine {
         comboSubject.send(comboComponent)
     }
 
-    private func publishAchievements(_ achievements: [StatsAchievement]) {
-        guard !achievements.isEmpty else {
-            return
-        }
-        achievementManager.newAchievements = []
+    private func publishAchievements(_ achievement: StatsAchievement) {
+        achievementManager.newAchievement = nil
 
-        achievementSubject.send(achievements)
+        achievementSubject.send(achievement)
     }
 
     private func getGameState() -> GameStateComponent? {

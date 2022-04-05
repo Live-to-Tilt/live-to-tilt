@@ -3,13 +3,13 @@ import SwiftUI
 /// AchievementsManager manages achievements that are dependent on game statistics.
 /// This can be extended in future to support more event types.
 class AchievementManager: ObservableObject {
-    @Published var newAchievements: [StatsAchievement]
+    @Published var newAchievement: StatsAchievement?
 
     private var completedAchievements: Set<Int>
 
     private var gameStats: GameStats
 
-    private let achievements: [StatId: [Int]] = [.enemiesKilled: [10, 25, 50],
+    private let achievements: [StatId: [Int]] = [.enemiesKilled: [1, 10, 25, 50],
                                                  .nukePowerUpsUsed: [1, 5, 10, 25, 50],
                                                  .score: [100, 250, 500, 1_000, 5_000]]
 
@@ -19,7 +19,7 @@ class AchievementManager: ObservableObject {
         self.gameStats = gameStats
         self.statsToAchievements = [:]
         self.completedAchievements = []
-        self.newAchievements = []
+        self.newAchievement = nil
         assignStatsToAchievements(self.achievements)
         registerClosures()
     }
@@ -61,7 +61,7 @@ class AchievementManager: ObservableObject {
         for achievement in achievements {
             if !completedAchievements.contains(where: { $0 == achievement.id })
                 && achievement.checkIfCompleted(gameStats: self.gameStats) {
-                newAchievements.append(achievement)
+                newAchievement = achievement
                 completedAchievements.insert(achievement.id)
             }
         }
