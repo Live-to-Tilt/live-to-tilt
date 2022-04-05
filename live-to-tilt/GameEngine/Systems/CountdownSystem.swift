@@ -8,10 +8,10 @@ class CountdownSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        let timerComponents = nexus.getComponents(of: CountdownComponent.self)
-        timerComponents.forEach { timerComponent in
-            updateTimeLeft(timerComponent, deltaTime: deltaTime)
-            updateGameState(timerComponent)
+        let countdownComponents = nexus.getComponents(of: CountdownComponent.self)
+        countdownComponents.forEach { countdownComponent in
+            updateTimeLeft(countdownComponent, deltaTime: deltaTime)
+            updateGameState(countdownComponent)
         }
     }
 
@@ -19,13 +19,13 @@ class CountdownSystem: System {
 
     }
 
-    private func updateTimeLeft(_ timerComponent: CountdownComponent, deltaTime: CGFloat) {
-        let timeLeft = timerComponent.timeLeft - deltaTime
-        timerComponent.timeLeft = max(.zero, timeLeft)
+    private func updateTimeLeft(_ countdownComponent: CountdownComponent, deltaTime: CGFloat) {
+        let timeLeft = countdownComponent.timeLeft - deltaTime
+        countdownComponent.timeLeft = max(.zero, timeLeft)
     }
 
-    private func updateGameState(_ timerComponent: CountdownComponent) {
-        if !timeIsUp(timerComponent) {
+    private func updateGameState(_ countdownComponent: CountdownComponent) {
+        if !timeIsUp(countdownComponent) {
             return
         }
 
@@ -33,8 +33,8 @@ class CountdownSystem: System {
         gameStateComponent?.state = .gameOver
     }
 
-    private func timeIsUp(_ timerComponent: CountdownComponent) -> Bool {
-        let timeLeft = timerComponent.timeLeft
+    private func timeIsUp(_ countdownComponent: CountdownComponent) -> Bool {
+        let timeLeft = countdownComponent.timeLeft
         return timeLeft == .zero
     }
 }
