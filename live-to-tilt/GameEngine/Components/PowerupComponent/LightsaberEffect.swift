@@ -13,7 +13,7 @@ class LightsaberEffect: PowerupEffect {
     private let image: ImageAsset = .lightsaberEffect
     private var elapsedTime: CGFloat = .zero
     private var hasCompleted: Bool {
-        elapsedTime >= Constants.lightsaberDuration
+        elapsedTime >= Constants.lightsaberLifespan
     }
 
     init(nexus: Nexus, powerupEntity: Entity) {

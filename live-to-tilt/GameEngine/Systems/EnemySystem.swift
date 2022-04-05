@@ -11,28 +11,12 @@ class EnemySystem: System {
         let enemyComponents = nexus.getComponents(of: EnemyComponent.self)
 
         enemyComponents.forEach { enemyComponent in
-            updateElapsedTime(enemyComponent, deltaTime: deltaTime)
-            despawnIfLifespanOver(enemyComponent)
             despawnIfOutsideArena(enemyComponent)
             handleCollisions(enemyComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-
-    private func updateElapsedTime(_ enemyComponent: EnemyComponent, deltaTime: CGFloat) {
-        enemyComponent.elapsedTimeSinceSpawn += deltaTime
-    }
-
-    private func isLifespanOver(_ enemyComponent: EnemyComponent) -> Bool {
-        enemyComponent.elapsedTimeSinceSpawn > Constants.enemyLifespan
-    }
-
-    private func despawnIfLifespanOver(_ enemyComponent: EnemyComponent) {
-        if isLifespanOver(enemyComponent) {
-            nexus.removeEntity(enemyComponent.entity)
-        }
-    }
 
     private func isOutsideArena(_ enemyComponent: EnemyComponent) -> Bool {
         let entity = enemyComponent.entity
@@ -75,7 +59,10 @@ class EnemySystem: System {
     }
 
     private func isRecentlySpawned(_ enemyComponent: EnemyComponent) -> Bool {
-        enemyComponent.elapsedTimeSinceSpawn < Constants.enemySpawnDelay
+        guard let lifespanComponent = nexus.getComponent(of: LifespanComponent.self, for: enemyComponent.entity) else {
+            return false
+        }
+        return lifespanComponent.elapsedTimeSinceSpawn < Constants.enemySpawnDelay
     }
 
     private func endGame() {

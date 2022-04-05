@@ -46,7 +46,9 @@ class GameEngine {
             EnemySystem(nexus: nexus),
             ComboSystem(nexus: nexus),
             ScoreSystem(nexus: nexus),
-            CountdownSystem(nexus: nexus)
+            CountdownSystem(nexus: nexus),
+            EnemyKillerSystem(nexus: nexus),
+            LifespanSystem(nexus: nexus)
         ]
         self.gameMode = gameMode
         self.gameStats = GameStats(gameMode: gameMode)
