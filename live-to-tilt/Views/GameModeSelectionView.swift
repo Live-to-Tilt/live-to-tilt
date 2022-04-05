@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameModeSelectionView: View {
     @State var selectedGameMode: GameMode = .survival
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
         NavigationView {

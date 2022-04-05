@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @StateObject var viewModel = SettingsViewModel()
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
         VStack {

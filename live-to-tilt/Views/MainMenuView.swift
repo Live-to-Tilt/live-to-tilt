@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MainMenuView: View {
     @StateObject var viewModel = MainMenuViewModel()
+    @State private var isActive = false
 
     var body: some View {
         NavigationView {
@@ -21,6 +22,7 @@ struct MainMenuView: View {
         }
         .preferredColorScheme(.dark)
         .navigationViewStyle(.stack)
+        .environment(\.rootPresentationMode, self.$isActive)
     }
 
     private func Content() -> some View {
@@ -34,19 +36,15 @@ struct MainMenuView: View {
                     .modifier(HeroText())
                     .padding(.bottom, 40)
 
-                NavigationLink(destination: LazyView(
-                    GameModeSelectionView()
-                )) {
+                NavigationLink(destination: LazyView(GameModeSelectionView()),
+                               isActive: self.$isActive) {
                     Text("start").modifier(MenuItemText())
                 }
-                .isDetailLink(false)
 
                 // TODO: Link to how to play screen
                 Text("how to play").modifier(MenuItemText())
 
-                NavigationLink(destination: LazyView(
-                    SettingsView()
-                )) {
+                NavigationLink(destination: LazyView(SettingsView())) {
                     Text("settings").modifier(MenuItemText())
                 }
             }

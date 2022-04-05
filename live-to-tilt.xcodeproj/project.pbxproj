@@ -83,6 +83,7 @@
 		726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */; };
 		72742DC827DD954A0033F06B /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72742DC727DD954A0033F06B /* GameControlView.swift */; };
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
+		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
 		72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */; };
 		72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309F27EC20B9004C5238 /* CollisionComponent.swift */; };
 		72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */; };
@@ -197,6 +198,7 @@
 		726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlManager.swift; sourceTree = "<group>"; };
 		72742DC727DD954A0033F06B /* GameControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
+		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
 		72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
 		72B6309F27EC20B9004C5238 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
 		72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTimeStats.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				723DEFD327E1DF9F00592922 /* LazyView.swift */,
+				727A389927FBF7400046E8F2 /* RootPresentationMode.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				3D2B39E327F7EDF400693B3B /* StraightWave.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
+				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
 				2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
