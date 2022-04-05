@@ -35,6 +35,9 @@ class AllTimeStats {
     var survivalHighScore: Int {
         defaults.integer(forKey: .survivalHighScore)
     }
+    var gauntletHighScore: Float {
+        defaults.float(forKey: .gauntletHighScore)
+    }
 
     private init() {
         defaults = UserDefaults.standard
@@ -49,7 +52,8 @@ class AllTimeStats {
                                      .totalLightsaberPowerupsUsed: 0,
                                      .totalEnemiesKilled: 0,
                                      .totalDistanceTravelled: 0,
-                                     .survivalHighScore: 0])
+                                     .survivalHighScore: 0,
+                                     .gauntletHighScore: 0])
     }
 
     /// Update all-time stats once a game ends
@@ -85,17 +89,19 @@ class AllTimeStats {
             if gameStats.score > survivalHighScore {
                 defaults.setValue(gameStats.score, forKey: .survivalHighScore)
             }
-        default:
-            return
+        case .gauntlet:
+            if gameStats.playTime > gauntletHighScore {
+                defaults.setValue(gameStats.playTime, forKey: .gauntletHighScore)
+            }
         }
     }
 
-    func getHighScore(for gameMode: GameMode) -> Int {
+    func getHighScore(for gameMode: GameMode) -> String {
         switch gameMode {
         case .survival:
-            return survivalHighScore
+            return String(survivalHighScore)
         case .gauntlet:
-            return 0
+            return gauntletHighScore.toTimeString()
         }
     }
 }

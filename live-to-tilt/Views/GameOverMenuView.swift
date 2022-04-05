@@ -14,7 +14,7 @@ struct GameOverMenuView: View {
             }
 
             Text("Score: \(viewModel.gameEngine.gameStats.score)")
-            Text("Time: 1:00")
+            Text("Time: \(viewModel.gameEngine.gameStats.playTime.toTimeString())")
             Text("Dead Dots: \(viewModel.gameEngine.gameStats.enemiesKilled)")
 
             Button(action: { viewModel.restart() }) {

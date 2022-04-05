@@ -1,3 +1,4 @@
+import CoreGraphics
 /**
  Manages the statistics of the current game.
  */
@@ -9,13 +10,18 @@ class GameStats {
     private(set) var lightsaberPowerupsUsed: Int = .zero
     private(set) var enemiesKilled: Int = .zero
     private(set) var distanceTravelled: Float = .zero
+    private(set) var playTime: Float = .zero
 
     init(gameMode: GameMode) {
         self.gameMode = gameMode
         observePublishers()
     }
 
-    func observePublishers() {
+    func incrementPlayTime(deltaTime: CGFloat) {
+        playTime += Float(deltaTime)
+    }
+
+    private func observePublishers() {
         for event in Event.allCases {
             EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
         }
@@ -25,7 +31,11 @@ class GameStats {
         self?.onStatEvent(event, eventInfo)
     }
 
-    // Update game stats whenever an event is received
+    /// Update game stats based on the received event
+    ///
+    /// - Parameters:
+    ///   - event: type of event received
+    ///   - eventInfo: event info received
     private func onStatEvent(_ event: Event, _ eventInfo: EventInfo?) {
         switch event {
         case .gameEnded:

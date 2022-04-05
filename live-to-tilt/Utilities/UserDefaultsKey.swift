@@ -12,4 +12,5 @@ enum UserDefaultsKey: String {
     case totalEnemiesKilled
     case totalDistanceTravelled
     case survivalHighScore
+    case gauntletHighScore
 }
