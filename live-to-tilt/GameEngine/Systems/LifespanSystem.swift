@@ -32,6 +32,10 @@ final class LifespanSystem: System {
     }
 
     private func isLifespanOver(_ lifespanComponent: LifespanComponent) -> Bool {
-        lifespanComponent.elapsedTimeSinceSpawn > lifespanComponent.lifespan
+        guard let lifespan = lifespanComponent.maxLifespan else {
+            return false
+        }
+
+        return lifespanComponent.elapsedTimeSinceSpawn > lifespan
     }
 }

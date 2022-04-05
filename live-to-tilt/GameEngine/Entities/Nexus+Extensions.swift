@@ -118,6 +118,7 @@ extension Nexus {
                                                                velocity: velocity,
                                                                restitution: Constants.powerupRestitution)),
                      to: entity)
+        addComponent(LifespanComponent(entity: entity), to: entity)
         EventManager.shared.postEvent(.powerUpSpawned)
     }
 

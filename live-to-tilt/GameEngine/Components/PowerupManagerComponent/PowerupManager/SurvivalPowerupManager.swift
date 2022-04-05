@@ -12,8 +12,8 @@ class SurvivalPowerupManager: PowerupManager {
     }
 
     func update(nexus: Nexus, deltaTime: CGFloat) {
-        let powerupEntites = nexus.getEntities(with: PowerupComponent.self)
-        let missingPowerupCount = Constants.survivalPowerupCount - powerupEntites.count
+        let powerupEntities = nexus.getEntities(with: PowerupComponent.self)
+        let missingPowerupCount = Constants.survivalPowerupCount - powerupEntities.count
         spawnPowerups(nexus: nexus, count: missingPowerupCount)
     }
 

@@ -2,12 +2,12 @@ import CoreGraphics
 
 class LifespanComponent: Component {
     let entity: Entity
-    let lifespan: CGFloat
+    let maxLifespan: CGFloat?
     var elapsedTimeSinceSpawn: CGFloat
 
-    init(entity: Entity, lifespan: CGFloat) {
+    init(entity: Entity, lifespan: CGFloat? = nil) {
         self.entity = entity
-        self.lifespan = lifespan
+        self.maxLifespan = lifespan
         self.elapsedTimeSinceSpawn = .zero
     }
 }

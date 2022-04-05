@@ -11,16 +11,11 @@ final class PowerupSystem: System {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
 
         powerupComponents.forEach { powerupComponent in
-            updateElapsedTime(powerupComponent, deltaTime: deltaTime)
             handleCollisions(powerupComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-
-    private func updateElapsedTime(_ powerupComponent: PowerupComponent, deltaTime: CGFloat) {
-        powerupComponent.elapsedTimeSinceSpawn += deltaTime
-    }
 
     private func handleCollisions(_ powerupComponent: PowerupComponent) {
         let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: powerupComponent.entity)
@@ -46,7 +41,10 @@ final class PowerupSystem: System {
         nexus.removeEntity(powerupEntity)
     }
 
-    private func isRecentlySpawned(_ powerupComponent: PowerupComponent) -> Bool {
-        powerupComponent.elapsedTimeSinceSpawn < Constants.delayBeforePowerupIsActivatable
+    private func isRecentlySpawned(_ enemyComponent: PowerupComponent) -> Bool {
+        guard let lifespanComponent = nexus.getComponent(of: LifespanComponent.self, for: enemyComponent.entity) else {
+            return false
+        }
+        return lifespanComponent.elapsedTimeSinceSpawn < Constants.enemySpawnDelay
     }
 }
