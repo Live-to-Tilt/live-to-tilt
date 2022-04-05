@@ -25,6 +25,10 @@ class GameEngine {
     var comboPublisher: AnyPublisher<ComboComponent, Never> {
         comboSubject.eraseToAnyPublisher()
     }
+    let countdownSubject = PassthroughSubject<CountdownComponent, Never>()
+    var countdownPublisher: AnyPublisher<CountdownComponent, Never> {
+        countdownSubject.eraseToAnyPublisher()
+    }
 
     init(gameMode: GameMode) {
         EventManager.shared.reinit()
@@ -40,7 +44,8 @@ class GameEngine {
             PowerupSystem(nexus: nexus),
             EnemySystem(nexus: nexus),
             ComboSystem(nexus: nexus),
-            ScoreSystem(nexus: nexus)
+            ScoreSystem(nexus: nexus),
+            CountdownSystem(nexus: nexus)
         ]
         self.gameMode = gameMode
         self.gameStats = GameStats(gameMode: gameMode)
@@ -58,6 +63,7 @@ class GameEngine {
         publishRenderables()
         publishGameState()
         publishCombo()
+        publishCountdown()
     }
 
     func lateUpdate(deltaTime: CGFloat) {
@@ -89,6 +95,7 @@ class GameEngine {
         nexus.createCombo()
         nexus.createWaveManager(for: gameMode)
         nexus.createPowerups()
+        nexus.createCountdown(for: gameMode)
     }
 
     private func updateSystems(deltaTime: CGFloat) {
@@ -121,6 +128,14 @@ class GameEngine {
         }
 
         comboSubject.send(comboComponent)
+    }
+
+    private func publishCountdown() {
+        guard let countdownComponent = nexus.getComponent(of: CountdownComponent.self) else {
+            return
+        }
+
+        countdownSubject.send(countdownComponent)
     }
 
     private func getGameState() -> GameStateComponent? {
