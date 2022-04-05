@@ -104,7 +104,7 @@ extension Nexus {
 
         addComponent(PowerupComponent(entity: entity, powerup: powerup), to: entity)
         addComponent(RenderableComponent(entity: entity,
-                                         image: powerup.image,
+                                         image: powerup.orbImage,
                                          position: position,
                                          size: size,
                                          layer: .powerup),

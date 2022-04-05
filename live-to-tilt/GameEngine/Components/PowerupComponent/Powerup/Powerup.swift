@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Powerup {
-    var image: ImageAsset { get }
+    var orbImage: ImageAsset { get }
 
     func coroutine(nexus: Nexus)
 }

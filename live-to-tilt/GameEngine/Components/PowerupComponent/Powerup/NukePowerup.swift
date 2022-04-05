@@ -1,8 +1,8 @@
 class NukePowerup: Powerup {
-    let image: ImageAsset
+    let orbImage: ImageAsset
 
     init() {
-        self.image = .nukeOrb
+        self.orbImage = .nukeOrb
     }
 
     func coroutine(nexus: Nexus) {
