@@ -5,23 +5,22 @@ import Foundation
  Manages the statistics of the current game.
  */
 class GameStats {
-    private var observerClosures: [StatId: [(StatId) -> Void]]
     private let gameMode: GameMode
     private(set) var score: Int = .zero {
         didSet {
-            onUpdateStat(statId: .score)
+            onUpdateStat(.updateScore, value: score)
         }
     }
     private(set) var powerupsUsed: Int = .zero
     private(set) var nukePowerupsUsed: Int = .zero {
         didSet {
-            onUpdateStat(statId: .nukePowerUpsUsed)
+            onUpdateStat(.updateNukePowerUpsUsed, value: nukePowerupsUsed)
         }
     }
     private(set) var lightsaberPowerupsUsed: Int = .zero
     private(set) var enemiesKilled: Int = .zero {
         didSet {
-            onUpdateStat(statId: .enemiesKilled)
+            onUpdateStat(.updateEnemiesKilled, value: enemiesKilled)
         }
     }
     private(set) var distanceTravelled: Float = .zero
@@ -29,7 +28,6 @@ class GameStats {
 
     init(gameMode: GameMode) {
         self.gameMode = gameMode
-        self.observerClosures = [:]
         observePublishers()
     }
 
@@ -37,17 +35,8 @@ class GameStats {
         playTime += Float(deltaTime)
     }
 
-    func registerClosure(for statId: StatId, closure: @escaping (StatId) -> Void) {
-        observerClosures[statId, default: []].append(closure)
-    }
-
-    func onUpdateStat(statId: StatId) {
-        guard let closures = observerClosures[statId] else {
-            return
-        }
-        for closure in closures {
-            closure(statId)
-        }
+    func onUpdateStat(_ statUpdated: Event, value: Int) {
+        EventManager.shared.postEvent(statUpdated, eventInfo: [.statValue: Float(value)])
     }
 
     private func observePublishers() {

@@ -11,6 +11,7 @@ class GameArenaViewModel: ObservableObject {
     var gameEngine: GameEngine
     var gameControl: GameControl
     var gameRenderer: GameRenderer
+    var achievementManager: AchievementManager
 
     var cancellables = Set<AnyCancellable>()
 
@@ -19,6 +20,7 @@ class GameArenaViewModel: ObservableObject {
         gameEngine = GameEngine(gameMode: gameMode)
         gameControl = GameControlManager.shared.gameControl
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
+        achievementManager = AchievementManager()
         gameRenderer.start()
         attachPublishers()
     }
@@ -62,7 +64,10 @@ class GameArenaViewModel: ObservableObject {
             self?.countdownComponent = countdownComponent
         }.store(in: &cancellables)
 
-        gameEngine.achievementPublisher.sink { [weak self] achievement in
+        achievementManager.$newAchievement.sink { [weak self] newAchievement in
+            guard let achievement = newAchievement else {
+                return
+            }
             self?.achievement = achievement
             self?.showAchievement = true
             print("achievement received: \(achievement.name)")

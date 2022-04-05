@@ -25,6 +25,11 @@ enum Event: String, CaseIterable {
 
     // score
     case scoreChanged
+
+    // stat updates
+    case updateEnemiesKilled
+    case updateNukePowerUpsUsed
+    case updateScore
 }
 
 extension Event {

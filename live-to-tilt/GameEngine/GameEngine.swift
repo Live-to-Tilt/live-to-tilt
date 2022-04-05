@@ -6,8 +6,6 @@ class GameEngine {
     private var timeScale: CGFloat
     private var previousTimeScale: CGFloat
 
-    @ObservedObject var achievementManager: AchievementManager
-
     // ECS
     let nexus = Nexus()
     let systems: [System]
@@ -32,11 +30,6 @@ class GameEngine {
     var countdownPublisher: AnyPublisher<CountdownComponent, Never> {
         countdownSubject.eraseToAnyPublisher()
     }
-    let achievementSubject = PassthroughSubject<StatsAchievement, Never>()
-    var achievementPublisher: AnyPublisher<StatsAchievement, Never> {
-        achievementSubject.eraseToAnyPublisher()
-    }
-    var achievementCancellable: AnyCancellable?
 
     init(gameMode: GameMode) {
         EventManager.shared.reinit()
@@ -57,14 +50,6 @@ class GameEngine {
         ]
         self.gameMode = gameMode
         self.gameStats = GameStats(gameMode: gameMode)
-        self.achievementManager = AchievementManager(gameStats: gameStats)
-        self.achievementCancellable = achievementManager.$newAchievement.sink { [weak self] newAchievement in
-            guard let achievement = newAchievement else {
-                return
-            }
-            self?.publishAchievements(achievement)
-        }
-
         setUpEntities()
         EventManager.shared.postEvent(.gameStarted)
     }
@@ -151,12 +136,6 @@ class GameEngine {
         }
 
         countdownSubject.send(countdownComponent)
-    }
-
-    private func publishAchievements(_ achievement: StatsAchievement) {
-        achievementManager.newAchievement = nil
-
-        achievementSubject.send(achievement)
     }
 
     private func getGameState() -> GameStateComponent? {

@@ -1,6 +1,6 @@
-class EnemiesKilledAchievement: StatsAchievement {
-    override func checkIfCompleted(gameStats: GameStats) -> Bool {
-        if !self.isCompleted && gameStats.enemiesKilled >= self.criteria {
+final class EnemiesKilledAchievement: StatsAchievement {
+    override func checkIfCompleted(stat: Float) -> Bool {
+        if !self.isCompleted && Int(stat) >= self.criteria {
             self.isCompleted = true
             return true
         }
