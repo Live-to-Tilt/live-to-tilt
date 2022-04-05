@@ -32,6 +32,8 @@ struct GameArenaView: View {
         return HStack {
             Text("wave 10").modifier(InfoText())
             Spacer()
+            CountdownBar()
+            Spacer()
             Text("combo \(comboBase) x \(comboMultiplier)").modifier(InfoText())
         }
     }
@@ -56,6 +58,18 @@ struct GameArenaView: View {
                     .stroke(.white, lineWidth: 5)
             )
             .position(x: frame.midX, y: frame.midY)
+        }
+    }
+
+    private func CountdownBar() -> some View {
+        viewModel.countdownComponent.map { countdownComponent in
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundColor(.white)
+                    .frame(width: 500 * countdownComponent.timeLeft / countdownComponent.maxTime,
+                           height: 30)
+            }
+            .frame(width: 500, alignment: .leading)
         }
     }
 

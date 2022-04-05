@@ -4,6 +4,7 @@ class GameArenaViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
+    @Published var countdownComponent: CountdownComponent?
 
     var gameEngine: GameEngine
     var gameControl: GameControl
@@ -53,6 +54,10 @@ class GameArenaViewModel: ObservableObject {
 
         gameEngine.comboPublisher.sink { [weak self] comboComponent in
             self?.comboComponent = comboComponent
+        }.store(in: &cancellables)
+
+        gameEngine.countdownSubject.sink { [weak self] countdownComponent in
+            self?.countdownComponent = countdownComponent
         }.store(in: &cancellables)
     }
 
