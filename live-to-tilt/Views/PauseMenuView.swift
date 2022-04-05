@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PauseMenuView: View {
     @ObservedObject var viewModel: GameArenaViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.rootPresentationMode) private var rootPresentationMode
 
     var body: some View {
         Group {
@@ -21,7 +21,7 @@ struct PauseMenuView: View {
                 Text("Restart").modifier(MenuButton())
             }
 
-            Button(action: { presentationMode.wrappedValue.dismiss() }) {
+            Button(action: { self.rootPresentationMode.wrappedValue.dismiss() }) {
                 Text("Main Menu").modifier(MenuButton())
             }
         }.modifier(MenuLayout())

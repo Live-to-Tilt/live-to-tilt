@@ -83,6 +83,10 @@
 		726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */; };
 		72742DC827DD954A0033F06B /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72742DC727DD954A0033F06B /* GameControlView.swift */; };
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
+		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
+		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
+		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
+		72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144827FC23F500131A83 /* GameOverStat.swift */; };
 		72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */; };
 		72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309F27EC20B9004C5238 /* CollisionComponent.swift */; };
 		72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */; };
@@ -197,6 +201,10 @@
 		726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlManager.swift; sourceTree = "<group>"; };
 		72742DC727DD954A0033F06B /* GameControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
+		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
+		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		72B5144827FC23F500131A83 /* GameOverStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStat.swift; sourceTree = "<group>"; };
 		72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
 		72B6309F27EC20B9004C5238 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
 		72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTimeStats.swift; sourceTree = "<group>"; };
@@ -436,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				723DEFD327E1DF9F00592922 /* LazyView.swift */,
+				727A389927FBF7400046E8F2 /* RootPresentationMode.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -500,6 +509,8 @@
 				726E12E827E0A6F4002728B7 /* KeyBinding.swift */,
 				3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */,
 				3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */,
+				72B5144427FC060000131A83 /* Float+Extensions.swift */,
+				72B5144627FC17CA00131A83 /* Int+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -518,6 +529,7 @@
 			children = (
 				DBB8932C27E8CD1700D61D72 /* GameStats.swift */,
 				72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */,
+				72B5144827FC23F500131A83 /* GameOverStat.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -657,6 +669,7 @@
 				DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */,
 				DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */,
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
+				72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */,
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
 				3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */,
@@ -678,12 +691,14 @@
 				3D2B39E327F7EDF400693B3B /* StraightWave.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
+				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
 				2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
+				72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */,
 				2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
@@ -729,6 +744,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
+				72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */,
 				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,

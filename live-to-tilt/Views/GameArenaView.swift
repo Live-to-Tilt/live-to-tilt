@@ -60,7 +60,7 @@ struct GameArenaView: View {
     }
 
     private func Score() -> some View {
-        Text("\(viewModel.gameEngine.gameStats.score)")
+        Text("\(viewModel.gameEngine.gameStats.getBackdropValue())")
             .font(.system(size: 200, weight: .heavy))
             .monospacedDigit()
             .opacity(0.15)

@@ -9,8 +9,8 @@ class GameEngine {
     let nexus = Nexus()
     let systems: [System]
     let physicsWorld = PhysicsWorld()
-    let gameStats: GameStats
     let gameMode: GameMode
+    let gameStats: GameStats
 
     // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
@@ -42,8 +42,8 @@ class GameEngine {
             ComboSystem(nexus: nexus),
             ScoreSystem(nexus: nexus)
         ]
-        self.gameStats = GameStats()
         self.gameMode = gameMode
+        self.gameStats = GameStats(gameMode: gameMode)
 
         setUpEntities()
         EventManager.shared.postEvent(.gameStarted)
@@ -52,9 +52,8 @@ class GameEngine {
     func update(deltaTime: CGFloat, inputForce: CGVector) {
         let scaledTime = deltaTime * timeScale
 
-        if getGameState()?.state == .play {
-            updatePlayer(inputForce: inputForce)
-        }
+        gameStats.incrementPlayTime(deltaTime: deltaTime)
+        updatePlayer(inputForce: inputForce)
         updateSystems(deltaTime: scaledTime)
         publishRenderables()
         publishGameState()
@@ -97,6 +96,9 @@ class GameEngine {
     }
 
     private func updatePlayer(inputForce: CGVector) {
+        guard getGameState()?.state == .play else {
+            return
+        }
         let playerComponent = nexus.getComponent(of: PlayerComponent.self)
         playerComponent?.inputForce = inputForce
     }
