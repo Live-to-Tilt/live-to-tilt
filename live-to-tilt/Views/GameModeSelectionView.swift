@@ -54,7 +54,7 @@ struct GameModeSelectionView: View {
 
                 Spacer()
 
-                Text("🏆 1234") // TODO: replace with highscore
+                Text("🏆 \(AllTimeStats.shared.getHighScore(for: selectedGameMode))")
                     .font(.system(size: 24))
             }
 

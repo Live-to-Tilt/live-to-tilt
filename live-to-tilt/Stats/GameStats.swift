@@ -2,6 +2,7 @@
  Manages the statistics of the current game.
  */
 class GameStats {
+    private let gameMode: GameMode
     private(set) var score: Int = .zero
     private(set) var powerupsUsed: Int = .zero
     private(set) var nukePowerupsUsed: Int = .zero
@@ -9,7 +10,8 @@ class GameStats {
     private(set) var enemiesKilled: Int = .zero
     private(set) var distanceTravelled: Float = .zero
 
-    init() {
+    init(gameMode: GameMode) {
+        self.gameMode = gameMode
         observePublishers()
     }
 
@@ -27,7 +29,7 @@ class GameStats {
     private func onStatEvent(_ event: Event, _ eventInfo: EventInfo?) {
         switch event {
         case .gameEnded:
-            AllTimeStats.shared.addStatsFromLatestGame(self)
+            AllTimeStats.shared.addStatsFromLatestGame(self, gameMode)
         case .nukePowerupUsed:
             self.nukePowerupsUsed += 1
             self.powerupsUsed += 1

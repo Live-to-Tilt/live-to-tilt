@@ -360,6 +360,7 @@
 		3D12D9D927D61F1C00D01489 /* AudioEngine */ = {
 			isa = PBXGroup;
 			children = (
+				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				3D13480527D8BDA900D46B84 /* Soundtrack.swift */,
 				3D13480727D8BDDF00D46B84 /* AudioController.swift */,
 			);
@@ -463,7 +464,6 @@
 				72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */,
 				3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */,
 				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
-				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				214E159F27F9767F00815A35 /* ComboComponent.swift */,
 			);
 			path = Components;

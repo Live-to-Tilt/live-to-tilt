@@ -9,8 +9,8 @@ class GameEngine {
     let nexus = Nexus()
     let systems: [System]
     let physicsWorld = PhysicsWorld()
-    let gameStats: GameStats
     let gameMode: GameMode
+    let gameStats: GameStats
 
     // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
@@ -42,8 +42,8 @@ class GameEngine {
             ComboSystem(nexus: nexus),
             ScoreSystem(nexus: nexus)
         ]
-        self.gameStats = GameStats()
         self.gameMode = gameMode
+        self.gameStats = GameStats(gameMode: gameMode)
 
         setUpEntities()
         EventManager.shared.postEvent(.gameStarted)

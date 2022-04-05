@@ -8,6 +8,7 @@ class AllTimeStats {
 
     private let defaults: UserDefaults
 
+    // Cumulative stats
     var totalGamesPlayed: Int {
         defaults.integer(forKey: .totalGamesPlayed)
     }
@@ -30,6 +31,11 @@ class AllTimeStats {
         defaults.float(forKey: .totalDistanceTravelled)
     }
 
+    // Highscores
+    var survivalHighScore: Int {
+        defaults.integer(forKey: .survivalHighScore)
+    }
+
     private init() {
         defaults = UserDefaults.standard
         registerAllTimeStats()
@@ -42,11 +48,21 @@ class AllTimeStats {
                                      .totalNukePowerupsUsed: 0,
                                      .totalLightsaberPowerupsUsed: 0,
                                      .totalEnemiesKilled: 0,
-                                     .totalDistanceTravelled: 0])
+                                     .totalDistanceTravelled: 0,
+                                     .survivalHighScore: 0])
     }
 
-    // Update all-time stats once a game ends
-    func addStatsFromLatestGame(_ gameStats: GameStats) {
+    /// Update all-time stats once a game ends
+    ///
+    /// - Parameters:
+    ///   - gameStats: stats from the latest game
+    ///   - gameMode: game mode of the latest game
+    func addStatsFromLatestGame(_ gameStats: GameStats, _ gameMode: GameMode) {
+        updateCumulativeStats(gameStats)
+        updateHighScores(gameStats, gameMode)
+    }
+
+    private func updateCumulativeStats(_ gameStats: GameStats) {
         defaults.setValue(totalGamesPlayed + 1,
                           forKey: .totalGamesPlayed)
         defaults.setValue(totalScore + gameStats.score,
@@ -61,5 +77,25 @@ class AllTimeStats {
                           forKey: .totalEnemiesKilled)
         defaults.setValue(totalDistanceTravelled + gameStats.distanceTravelled,
                           forKey: .totalDistanceTravelled)
+    }
+
+    private func updateHighScores(_ gameStats: GameStats, _ gameMode: GameMode) {
+        switch gameMode {
+        case .survival:
+            if gameStats.score > survivalHighScore {
+                defaults.setValue(gameStats.score, forKey: .survivalHighScore)
+            }
+        default:
+            return
+        }
+    }
+
+    func getHighScore(for gameMode: GameMode) -> Int {
+        switch gameMode {
+        case .survival:
+            return survivalHighScore
+        case .gauntlet:
+            return 0
+        }
     }
 }

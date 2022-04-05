@@ -39,6 +39,7 @@ struct MainMenuView: View {
                 )) {
                     Text("start").modifier(MenuItemText())
                 }
+                .isDetailLink(false)
 
                 // TODO: Link to how to play screen
                 Text("how to play").modifier(MenuItemText())
