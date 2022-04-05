@@ -1,4 +1,5 @@
 import CoreGraphics
+import Foundation
 
 /**
  Manages the statistics of the current game.
@@ -6,11 +7,23 @@ import CoreGraphics
 class GameStats {
     private var observerClosures: [StatId: [(StatId) -> Void]]
     private let gameMode: GameMode
-    private(set) var score: Int = .zero
+    private(set) var score: Int = .zero {
+        didSet {
+            onUpdateStat(statId: .score)
+        }
+    }
     private(set) var powerupsUsed: Int = .zero
-    private(set) var nukePowerupsUsed: Int = .zero
+    private(set) var nukePowerupsUsed: Int = .zero {
+        didSet {
+            onUpdateStat(statId: .nukePowerUpsUsed)
+        }
+    }
     private(set) var lightsaberPowerupsUsed: Int = .zero
-    private(set) var enemiesKilled: Int = .zero
+    private(set) var enemiesKilled: Int = .zero {
+        didSet {
+            onUpdateStat(statId: .enemiesKilled)
+        }
+    }
     private(set) var distanceTravelled: Float = .zero
     private(set) var playTime: Float = .zero
 
@@ -24,12 +37,6 @@ class GameStats {
         playTime += Float(deltaTime)
     }
 
-    private func observePublishers() {
-        for event in Event.allCases {
-            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
-        }
-    }
-    
     func registerClosure(for statId: StatId, closure: @escaping (StatId) -> Void) {
         observerClosures[statId, default: []].append(closure)
     }
@@ -40,6 +47,12 @@ class GameStats {
         }
         for closure in closures {
             closure(statId)
+        }
+    }
+
+    private func observePublishers() {
+        for event in Event.allCases {
+            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
         }
     }
 
