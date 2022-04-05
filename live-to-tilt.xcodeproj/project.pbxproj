@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2105E6F227E4D0C50010195B /* PowerupEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105E6F127E4D0C50010195B /* PowerupEffect.swift */; };
-		2105E6F427E4D0ED0010195B /* NukeEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105E6F327E4D0ED0010195B /* NukeEffect.swift */; };
 		2106AA4427F5B021005EBB62 /* EnemySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106AA4327F5B021005EBB62 /* EnemySystem.swift */; };
-		2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106AA4527F5D61C005EBB62 /* LightsaberEffect.swift */; };
 		2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83D27DF497400FA25D2 /* TitleText.swift */; };
 		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
 		2106F84427DF50A100FA25D2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F84327DF50A100FA25D2 /* RootView.swift */; };
@@ -73,6 +70,10 @@
 		3DEA51B827FC93A4001D6CB5 /* LifespanComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51B727FC93A4001D6CB5 /* LifespanComponent.swift */; };
 		3DEA51BA27FC94F5001D6CB5 /* LifespanSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */; };
 		3DEA51BC27FC97A0001D6CB5 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51BB27FC97A0001D6CB5 /* GameUtils.swift */; };
+		3DEA51BF27FC9B42001D6CB5 /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51BE27FC9B42001D6CB5 /* AnimationComponent.swift */; };
+		3DEA51C227FC9B53001D6CB5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C127FC9B53001D6CB5 /* Animation.swift */; };
+		3DEA51C627FC9BE6001D6CB5 /* ScaleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */; };
+		3DEA51C827FC9D17001D6CB5 /* AnimationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */; };
 		7230521027F2C64C00AD753D /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230520F27F2C64C00AD753D /* PauseMenuView.swift */; };
 		7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521127F2D52700AD753D /* GameOverMenuView.swift */; };
 		7230521427F2D80500AD753D /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521327F2D80500AD753D /* MenuButton.swift */; };
@@ -134,10 +135,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2105E6F127E4D0C50010195B /* PowerupEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupEffect.swift; sourceTree = "<group>"; };
-		2105E6F327E4D0ED0010195B /* NukeEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeEffect.swift; sourceTree = "<group>"; };
 		2106AA4327F5B021005EBB62 /* EnemySystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemySystem.swift; sourceTree = "<group>"; };
-		2106AA4527F5D61C005EBB62 /* LightsaberEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightsaberEffect.swift; sourceTree = "<group>"; };
 		2106F83D27DF497400FA25D2 /* TitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
 		2106F84327DF50A100FA25D2 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -203,6 +201,10 @@
 		3DEA51B727FC93A4001D6CB5 /* LifespanComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifespanComponent.swift; sourceTree = "<group>"; };
 		3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifespanSystem.swift; sourceTree = "<group>"; };
 		3DEA51BB27FC97A0001D6CB5 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
+		3DEA51BE27FC9B42001D6CB5 /* AnimationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		3DEA51C127FC9B53001D6CB5 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAnimation.swift; sourceTree = "<group>"; };
+		3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSystem.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
@@ -294,9 +296,6 @@
 			children = (
 				3DEA51A027FC7BB4001D6CB5 /* Powerup */,
 				2184B3D327E398C9007A4068 /* PowerupComponent.swift */,
-				2105E6F127E4D0C50010195B /* PowerupEffect.swift */,
-				2105E6F327E4D0ED0010195B /* NukeEffect.swift */,
-				2106AA4527F5D61C005EBB62 /* LightsaberEffect.swift */,
 			);
 			path = PowerupComponent;
 			sourceTree = "<group>";
@@ -489,6 +488,24 @@
 			path = PowerupManager;
 			sourceTree = "<group>";
 		};
+		3DEA51BD27FC9B36001D6CB5 /* AnimationComponent */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA51C027FC9B45001D6CB5 /* Animation */,
+				3DEA51BE27FC9B42001D6CB5 /* AnimationComponent.swift */,
+			);
+			path = AnimationComponent;
+			sourceTree = "<group>";
+		};
+		3DEA51C027FC9B45001D6CB5 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA51C127FC9B53001D6CB5 /* Animation.swift */,
+				3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		7215CD4827DB657D00A26752 /* GameControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +539,7 @@
 		72478E9027D70C6A00B9140A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3DEA51BD27FC9B36001D6CB5 /* AnimationComponent */,
 				3DEA51A527FC827F001D6CB5 /* PowerupManagerComponent */,
 				3DA4B1E927F00CF100FE19B2 /* WaveManagerComponent */,
 				21B52E4227E48B5B00E61808 /* PowerupComponent */,
@@ -559,6 +577,7 @@
 				3DEA51AF27FC8957001D6CB5 /* PowerupManagerSystem.swift */,
 				3DEA51B527FC9249001D6CB5 /* EnemyKillerSystem.swift */,
 				3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */,
+				3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -747,6 +766,7 @@
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
 				3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */,
 				3DA4B1EE27F00D8700FE19B2 /* SurvivalWaveManager.swift in Sources */,
+				3DEA51C227FC9B53001D6CB5 /* Animation.swift in Sources */,
 				DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */,
 				DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */,
 				3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */,
@@ -767,7 +787,6 @@
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
-				2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */,
 				3DEA51A227FC7BBF001D6CB5 /* Powerup.swift in Sources */,
 				3DEA51A427FC7DD6001D6CB5 /* NukePowerup.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
@@ -779,12 +798,10 @@
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
 				3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */,
-				2105E6F427E4D0ED0010195B /* NukeEffect.swift in Sources */,
 				3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */,
 				2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */,
 				723DEFD627E1E27700592922 /* PlayerComponent.swift in Sources */,
 				2106F84427DF50A100FA25D2 /* RootView.swift in Sources */,
-				2105E6F227E4D0C50010195B /* PowerupEffect.swift in Sources */,
 				3DA4B1FB27F029F200FE19B2 /* Array+Extensions.swift in Sources */,
 				3D05CF8B27E5B0FD00494286 /* MainMenuViewModel.swift in Sources */,
 				3DEA51B827FC93A4001D6CB5 /* LifespanComponent.swift in Sources */,
@@ -794,6 +811,7 @@
 				3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
 				3DB3742027F457CB0053F400 /* ConnectedMovement.swift in Sources */,
+				3DEA51C627FC9BE6001D6CB5 /* ScaleAnimation.swift in Sources */,
 				DBEC91EA27D7B8A300B0E750 /* Collision.swift in Sources */,
 				3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */,
 				3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */,
@@ -820,6 +838,7 @@
 				3DA4B1F027F00DAE00FE19B2 /* GauntletWaveManager.swift in Sources */,
 				DBEC91ED27D7B8A300B0E750 /* RectangleCollider.swift in Sources */,
 				3DC0F28427EB0239001D54E4 /* MovementComponent.swift in Sources */,
+				3DEA51C827FC9D17001D6CB5 /* AnimationSystem.swift in Sources */,
 				72478E9D27D7363100B9140A /* GameEngine.swift in Sources */,
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
@@ -832,6 +851,7 @@
 				3DB3741827F43B7E0053F400 /* DirectionalMovementDecorator.swift in Sources */,
 				3DEA51BC27FC97A0001D6CB5 /* GameUtils.swift in Sources */,
 				7230521627F2EB7700AD753D /* MenuLayout.swift in Sources */,
+				3DEA51BF27FC9B42001D6CB5 /* AnimationComponent.swift in Sources */,
 				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,

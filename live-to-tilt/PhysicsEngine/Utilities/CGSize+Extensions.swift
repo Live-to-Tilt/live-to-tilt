@@ -5,6 +5,10 @@ extension CGSize {
         lhs = CGSize(width: lhs.width + rhs, height: lhs.height + rhs)
     }
 
+    static func += (lhs: inout CGSize, rhs: CGSize) {
+        lhs = CGSize(width: lhs.width + rhs.width, height: lhs.height + rhs.height)
+    }
+
     static func -= (lhs: inout CGSize, rhs: CGFloat) {
         lhs = CGSize(width: lhs.width - rhs, height: lhs.height - rhs)
     }

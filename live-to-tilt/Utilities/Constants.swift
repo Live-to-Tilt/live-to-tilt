@@ -48,9 +48,9 @@ struct Constants {
     static let powerupRestitution: CGFloat = 1
     static let maxPowerupSpeed: CGFloat = 0.02
     static let survivalPowerupCount: Int = 3
-    static let nukeExplosionDiameter: CGFloat = 0.7
-    static let nukeExplosionDuration: Double = 0.3
-    static let nukeCompletionDelay: Double = 2
+    static let nukeExplosionScale: CGFloat = 8
+    static let nukeExplosionAnimationDuration: Double = 0.3
+    static let nukeExplosionLifespan: Double = 2
     static let lightsaberLifespan: Double = 4
     static let lightsaberSize = CGSize(width: 0.7, height: 0.02)
 
