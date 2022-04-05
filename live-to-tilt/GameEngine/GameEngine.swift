@@ -12,8 +12,8 @@ class GameEngine {
     let nexus = Nexus()
     let systems: [System]
     let physicsWorld = PhysicsWorld()
-    let gameStats: GameStats
     let gameMode: GameMode
+    let gameStats: GameStats
 
     // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
@@ -27,6 +27,10 @@ class GameEngine {
     let comboSubject = PassthroughSubject<ComboComponent, Never>()
     var comboPublisher: AnyPublisher<ComboComponent, Never> {
         comboSubject.eraseToAnyPublisher()
+    }
+    let countdownSubject = PassthroughSubject<CountdownComponent, Never>()
+    var countdownPublisher: AnyPublisher<CountdownComponent, Never> {
+        countdownSubject.eraseToAnyPublisher()
     }
     let achievementSubject = PassthroughSubject<StatsAchievement, Never>()
     var achievementPublisher: AnyPublisher<StatsAchievement, Never> {
@@ -48,10 +52,11 @@ class GameEngine {
             PowerupSystem(nexus: nexus),
             EnemySystem(nexus: nexus),
             ComboSystem(nexus: nexus),
-            ScoreSystem(nexus: nexus)
+            ScoreSystem(nexus: nexus),
+            CountdownSystem(nexus: nexus)
         ]
-        self.gameStats = GameStats()
         self.gameMode = gameMode
+        self.gameStats = GameStats(gameMode: gameMode)
         self.achievementManager = AchievementManager(gameStats: gameStats)
         self.achievementCancellable = achievementManager.$newAchievement.sink { [weak self] newAchievement in
             guard let achievement = newAchievement else {
@@ -67,13 +72,13 @@ class GameEngine {
     func update(deltaTime: CGFloat, inputForce: CGVector) {
         let scaledTime = deltaTime * timeScale
 
-        if getGameState()?.state == .play {
-            updatePlayer(inputForce: inputForce)
-        }
+        gameStats.incrementPlayTime(deltaTime: deltaTime)
+        updatePlayer(inputForce: inputForce)
         updateSystems(deltaTime: scaledTime)
         publishRenderables()
         publishGameState()
         publishCombo()
+        publishCountdown()
     }
 
     func lateUpdate(deltaTime: CGFloat) {
@@ -105,6 +110,7 @@ class GameEngine {
         nexus.createCombo()
         nexus.createWaveManager(for: gameMode)
         nexus.createPowerups()
+        nexus.createCountdown(for: gameMode)
     }
 
     private func updateSystems(deltaTime: CGFloat) {
@@ -112,6 +118,9 @@ class GameEngine {
     }
 
     private func updatePlayer(inputForce: CGVector) {
+        guard getGameState()?.state == .play else {
+            return
+        }
         let playerComponent = nexus.getComponent(of: PlayerComponent.self)
         playerComponent?.inputForce = inputForce
     }
@@ -121,7 +130,7 @@ class GameEngine {
     }
 
     private func publishGameState() {
-        guard let gameStateComponent = nexus.getComponent(of: GameStateComponent.self) else {
+        guard let gameStateComponent = getGameState() else {
             return
         }
 
@@ -134,6 +143,14 @@ class GameEngine {
         }
 
         comboSubject.send(comboComponent)
+    }
+
+    private func publishCountdown() {
+        guard let countdownComponent = nexus.getComponent(of: CountdownComponent.self) else {
+            return
+        }
+
+        countdownSubject.send(countdownComponent)
     }
 
     private func publishAchievements(_ achievement: StatsAchievement) {

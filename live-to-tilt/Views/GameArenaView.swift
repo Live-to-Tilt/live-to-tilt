@@ -34,6 +34,8 @@ struct GameArenaView: View {
         return HStack {
             Text("wave 10").modifier(InfoText())
             Spacer()
+            CountdownBar()
+            Spacer()
             Text("combo \(comboBase) x \(comboMultiplier)").modifier(InfoText())
         }
         .toast(isPresenting: $viewModel.showAchievement, duration: 1.5) {
@@ -64,10 +66,20 @@ struct GameArenaView: View {
         }
     }
 
-    private func Score() -> some View {
-        let score = viewModel.gameStateComponent?.score ?? 0
+    private func CountdownBar() -> some View {
+        viewModel.countdownComponent.map { countdownComponent in
+            ZStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .foregroundColor(.white)
+                    .frame(width: 500 * countdownComponent.timeLeft / countdownComponent.maxTime,
+                           height: 30)
+            }
+            .frame(width: 500, alignment: .leading)
+        }
+    }
 
-        return Text("\(score)")
+    private func Score() -> some View {
+        Text("\(viewModel.gameEngine.gameStats.getBackdropValue())")
             .font(.system(size: 200, weight: .heavy))
             .monospacedDigit()
             .opacity(0.15)

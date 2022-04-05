@@ -130,6 +130,14 @@ extension Nexus {
         EventManager.shared.postEvent(.powerUpSpawned)
     }
 
+    func createCountdown(for gameMode: GameMode) {
+        if gameMode == .gauntlet {
+            let entity = Entity()
+            addComponent(CountdownComponent(entity: entity, maxTime: Constants.gauntletMaxTime),
+                         to: entity)
+        }
+    }
+
     private func generateRandomSpawnLocation(forEntityOfWidth width: CGFloat, height: CGFloat) -> CGPoint {
         let minX = width / 2
         let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - minX

@@ -3,7 +3,7 @@ enum UserDefaultsKey: String {
     case sensitivity
     case gameControlType
 
-    // Stats
+    // All-Time Stats
     case totalGamesPlayed
     case totalScore
     case totalPowerupsUsed
@@ -11,4 +11,6 @@ enum UserDefaultsKey: String {
     case totalLightsaberPowerupsUsed
     case totalEnemiesKilled
     case totalDistanceTravelled
+    case survivalHighScore
+    case gauntletHighScore
 }

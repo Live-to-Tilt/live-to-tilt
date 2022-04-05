@@ -5,15 +5,18 @@
 
 import NotificationCenter
 
+typealias EventInfo = [EventInfoKey: Float]
+typealias EventClosure = (Event, EventInfo?) -> Void
+
 class EventManager {
     static let shared = EventManager()
-    private var observerClosures: [Event: [(Event, [EventInfo: Float]?) -> Void]]
+    private var observerClosures: [Event: [EventClosure]]
 
     private init() {
         observerClosures = [:]
     }
 
-    func postEvent(_ event: Event, eventInfo: [EventInfo: Float]) {
+    func postEvent(_ event: Event, eventInfo: EventInfo) {
         var userInfo: [String: Float] = [:]
         for eventInfoPair in eventInfo {
             userInfo[eventInfoPair.key.rawValue] = eventInfoPair.value
@@ -35,7 +38,7 @@ class EventManager {
         observerClosures = [:]
     }
 
-    func registerClosure(event: Event, closure: @escaping (Event, [EventInfo: Float]?) -> Void) {
+    func registerClosure(event: Event, closure: @escaping EventClosure) {
         if observerClosures[event] == nil {
             registerClosure(event: event, observer: self, selector: #selector(executeObserverClosures))
         }
@@ -58,17 +61,17 @@ class EventManager {
         else {
             return
         }
-        var eventInfoDict: [EventInfo: Float] = [:]
+        var eventInfo: EventInfo = [:]
         if let eventInfoRaw = notification.userInfo as? [String: Float] {
             for (key, value) in eventInfoRaw {
-                if let eventInfo = EventInfo(rawValue: key) {
-                    eventInfoDict[eventInfo] = value
+                if let eventInfoKey = EventInfoKey(rawValue: key) {
+                    eventInfo[eventInfoKey] = value
                 }
             }
         }
 
         for closure in closures {
-            closure(event, eventInfoDict)
+            closure(event, eventInfo)
         }
     }
 }

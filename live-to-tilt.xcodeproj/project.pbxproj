@@ -26,6 +26,8 @@
 		21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E3827F8342C008AF29A /* AttachMovementDecorator.swift */; };
 		21DB9E3D27F85B02008AF29A /* ComboSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E3C27F85B02008AF29A /* ComboSystem.swift */; };
 		21DB9E4327F8B67E008AF29A /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */; };
+		3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B52F27FC109D005CB316 /* CountdownComponent.swift */; };
+		3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B53127FC1177005CB316 /* CountdownSystem.swift */; };
 		3D05CF8B27E5B0FD00494286 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05CF8A27E5B0FD00494286 /* MainMenuViewModel.swift */; };
 		3D12D9C727D61D8500D01489 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D12D9C627D61D8500D01489 /* Main.swift */; };
 		3D12D9CB27D61D8800D01489 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D12D9CA27D61D8800D01489 /* Assets.xcassets */; };
@@ -83,8 +85,13 @@
 		726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */; };
 		72742DC827DD954A0033F06B /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72742DC727DD954A0033F06B /* GameControlView.swift */; };
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
+		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
+		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
+		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
+		72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144827FC23F500131A83 /* GameOverStat.swift */; };
 		72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */; };
 		72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309F27EC20B9004C5238 /* CollisionComponent.swift */; };
+		72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */; };
 		72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */; };
 		72EC6AAB27E2EA0600FCCB7E /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AAA27E2EA0600FCCB7E /* PlayerSystem.swift */; };
 		72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */; };
@@ -95,6 +102,7 @@
 		DB77AF3F27F8393F00F8DE4C /* EnemiesKilledAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3E27F8393F00F8DE4C /* EnemiesKilledAchievement.swift */; };
 		DB77AF4127F84BDC00F8DE4C /* NukeAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF4027F84BDC00F8DE4C /* NukeAchievement.swift */; };
 		DB77AF4327F891AF00F8DE4C /* StatId.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF4227F891AF00F8DE4C /* StatId.swift */; };
+		DB77AF3327EEC41100F8DE4C /* EventInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */; };
 		DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */; };
 		DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480527D8BDA900D46B84 /* Soundtrack.swift */; };
 		DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4627DB63D800A26752 /* GameControl.swift */; };
@@ -137,6 +145,8 @@
 		21DB9E3C27F85B02008AF29A /* ComboSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboSystem.swift; sourceTree = "<group>"; };
 		21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
+		3D05B52F27FC109D005CB316 /* CountdownComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownComponent.swift; sourceTree = "<group>"; };
+		3D05B53127FC1177005CB316 /* CountdownSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownSystem.swift; sourceTree = "<group>"; };
 		3D05CF8A27E5B0FD00494286 /* MainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewModel.swift; sourceTree = "<group>"; };
 		3D12D9C327D61D8500D01489 /* live-to-tilt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "live-to-tilt.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D12D9C627D61D8500D01489 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -203,8 +213,13 @@
 		726EBD0627DDA8AB00FAF2C0 /* GameControlManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlManager.swift; sourceTree = "<group>"; };
 		72742DC727DD954A0033F06B /* GameControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
+		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
+		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		72B5144827FC23F500131A83 /* GameOverStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStat.swift; sourceTree = "<group>"; };
 		72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
 		72B6309F27EC20B9004C5238 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
+		72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTimeStats.swift; sourceTree = "<group>"; };
 		72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		72EC6AAA27E2EA0600FCCB7E /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
 		72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
@@ -215,6 +230,7 @@
 		DB77AF3E27F8393F00F8DE4C /* EnemiesKilledAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesKilledAchievement.swift; sourceTree = "<group>"; };
 		DB77AF4027F84BDC00F8DE4C /* NukeAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukeAchievement.swift; sourceTree = "<group>"; };
 		DB77AF4227F891AF00F8DE4C /* StatId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatId.swift; sourceTree = "<group>"; };
+		DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoKey.swift; sourceTree = "<group>"; };
 		DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 		DB972C7227FB423800CB1C25 /* ScoreAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreAchievement.swift; sourceTree = "<group>"; };
 		DBB8932C27E8CD1700D61D72 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
@@ -449,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				723DEFD327E1DF9F00592922 /* LazyView.swift */,
+				727A389927FBF7400046E8F2 /* RootPresentationMode.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -478,6 +495,7 @@
 				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
 				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				214E159F27F9767F00815A35 /* ComboComponent.swift */,
+				3D05B52F27FC109D005CB316 /* CountdownComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -495,6 +513,7 @@
 				2106AA4327F5B021005EBB62 /* EnemySystem.swift */,
 				21DB9E3C27F85B02008AF29A /* ComboSystem.swift */,
 				21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */,
+				3D05B53127FC1177005CB316 /* CountdownSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -513,6 +532,8 @@
 				726E12E827E0A6F4002728B7 /* KeyBinding.swift */,
 				3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */,
 				3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */,
+				72B5144427FC060000131A83 /* Float+Extensions.swift */,
+				72B5144627FC17CA00131A83 /* Int+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -531,6 +552,8 @@
 			children = (
 				DBB8932C27E8CD1700D61D72 /* GameStats.swift */,
 				DB77AF4227F891AF00F8DE4C /* StatId.swift */,
+				72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */,
+				72B5144827FC23F500131A83 /* GameOverStat.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -571,7 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				DBB8933627EC7AD600D61D72 /* Event.swift */,
-				DB77AF3227EEC41100F8DE4C /* EventInfo.swift */,
+				DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */,
 				DB0A621427EDA4730033E23B /* EventManager.swift */,
 			);
 			path = EventLogger;
@@ -688,6 +711,7 @@
 			files = (
 				214E15A027F9767F00815A35 /* ComboComponent.swift in Sources */,
 				3DB3741A27F4400F0053F400 /* HorizontalWave.swift in Sources */,
+				72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */,
 				21BBC8F927E1C66B00C4B5D5 /* MainMenuView.swift in Sources */,
 				21BBC8F827E1C66700C4B5D5 /* GameArenaViewModel.swift in Sources */,
 				21BBC8F727E1C66000C4B5D5 /* CollisionPoints.swift in Sources */,
@@ -696,6 +720,8 @@
 				DB77AF3F27F8393F00F8DE4C /* EnemiesKilledAchievement.swift in Sources */,
 				DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */,
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
+				72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */,
+				3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */,
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
 				3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */,
@@ -718,12 +744,14 @@
 				3D2B39E327F7EDF400693B3B /* StraightWave.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
+				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
 				2106AA4627F5D61C005EBB62 /* LightsaberEffect.swift in Sources */,
 				72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */,
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
+				72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */,
 				2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,
@@ -752,7 +780,7 @@
 				DBB8932D27E8CD1700D61D72 /* GameStats.swift in Sources */,
 				72EC6AAB27E2EA0600FCCB7E /* PlayerSystem.swift in Sources */,
 				DB0A621527EDA4730033E23B /* EventManager.swift in Sources */,
-				DB77AF3327EEC41100F8DE4C /* EventInfo.swift in Sources */,
+				DB77AF3327EEC41100F8DE4C /* EventInfoKey.swift in Sources */,
 				21DB9E3D27F85B02008AF29A /* ComboSystem.swift in Sources */,
 				DBEC91EF27D7B8A300B0E750 /* CGVector+Extensions.swift in Sources */,
 				72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */,
@@ -771,6 +799,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
+				72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */,
 				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
@@ -780,6 +809,7 @@
 				7230521627F2EB7700AD753D /* MenuLayout.swift in Sources */,
 				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
+				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
 				726E12E927E0A6F4002728B7 /* KeyBinding.swift in Sources */,

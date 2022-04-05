@@ -2,7 +2,7 @@ import SwiftUI
 
 struct GameModeSelectionView: View {
     @State var selectedGameMode: GameMode = .survival
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
         NavigationView {
@@ -47,9 +47,17 @@ struct GameModeSelectionView: View {
     }
 
     private func GameModeInfo() -> some View {
-        VStack {
-            Text(selectedGameMode.rawValue)
-                .modifier(HeadingOneText())
+        VStack(alignment: .leading) {
+            HStack {
+                Text(selectedGameMode.rawValue)
+                    .modifier(HeadingOneText())
+
+                Spacer()
+
+                Text("🏆 \(AllTimeStats.shared.getHighScore(for: selectedGameMode))")
+                    .font(.system(size: 24))
+            }
+
             Text(selectedGameMode.description)
                 .font(.system(size: 24))
         }
