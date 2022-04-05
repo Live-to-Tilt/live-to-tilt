@@ -85,6 +85,7 @@
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
 		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
 		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
+		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
 		72B6309E27EC1CBD004C5238 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */; };
 		72B630A027EC20B9004C5238 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6309F27EC20B9004C5238 /* CollisionComponent.swift */; };
 		72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */; };
@@ -201,6 +202,7 @@
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
 		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
 		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
+		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		72B6309D27EC1CBD004C5238 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
 		72B6309F27EC20B9004C5238 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
 		72D0E1C027FAF0C700F6D165 /* AllTimeStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTimeStats.swift; sourceTree = "<group>"; };
@@ -364,7 +366,6 @@
 		3D12D9D927D61F1C00D01489 /* AudioEngine */ = {
 			isa = PBXGroup;
 			children = (
-				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				3D13480527D8BDA900D46B84 /* Soundtrack.swift */,
 				3D13480727D8BDDF00D46B84 /* AudioController.swift */,
 			);
@@ -467,6 +468,7 @@
 				72478E9E27D736F200B9140A /* RenderableComponent.swift */,
 				723DEFD527E1E27700592922 /* PlayerComponent.swift */,
 				72EC6AA827E2DBF700FCCB7E /* PhysicsComponent.swift */,
+				72B6309F27EC20B9004C5238 /* CollisionComponent.swift */,
 				3DAEBC8227EA33A0007862FF /* GameStateComponent.swift */,
 				3D55387527E2115D00DF45C2 /* EnemyComponent.swift */,
 				214E159F27F9767F00815A35 /* ComboComponent.swift */,
@@ -506,6 +508,7 @@
 				3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */,
 				3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */,
 				72B5144427FC060000131A83 /* Float+Extensions.swift */,
+				72B5144627FC17CA00131A83 /* Int+Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				3DC7BC7B27E3911F00994C18 /* Movement.swift in Sources */,
 				72478E9727D70E4200B9140A /* ComponentIdentifier.swift in Sources */,
 				DBEC91F527D7B8A300B0E750 /* Collider.swift in Sources */,
+				72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */,
 				2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */,
 				DBEC91E727D7B8A300B0E750 /* CGFloat+Extensions.swift in Sources */,
 				72478E9B27D733DE00B9140A /* System.swift in Sources */,

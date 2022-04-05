@@ -31,7 +31,7 @@ class AllTimeStats {
         defaults.float(forKey: .totalDistanceTravelled)
     }
 
-    // Highscores
+    // High Scores
     var survivalHighScore: Int {
         defaults.integer(forKey: .survivalHighScore)
     }
@@ -99,7 +99,7 @@ class AllTimeStats {
     func getHighScore(for gameMode: GameMode) -> String {
         switch gameMode {
         case .survival:
-            return String(survivalHighScore)
+            return survivalHighScore.withCommas()
         case .gauntlet:
             return gauntletHighScore.toTimeString()
         }

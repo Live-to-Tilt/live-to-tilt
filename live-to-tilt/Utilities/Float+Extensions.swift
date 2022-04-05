@@ -1,10 +1,14 @@
 import Foundation
 
 extension Float {
-    func toTimeString() -> String {
+    private static var timeFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.zeroFormattingBehavior = .pad
         formatter.allowedUnits = [.minute, .second]
-        return formatter.string(from: TimeInterval(self)) ?? "0:00"
+        return formatter
+    }()
+
+    func toTimeString() -> String {
+        Float.timeFormatter.string(from: TimeInterval(self)) ?? "0:00"
     }
 }

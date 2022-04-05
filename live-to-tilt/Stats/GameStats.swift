@@ -58,4 +58,13 @@ class GameStats {
             return
         }
     }
+
+    func getBackdropValue() -> String {
+        switch gameMode {
+        case .survival:
+            return score.withCommas()
+        case .gauntlet:
+            return playTime.toTimeString()
+        }
+    }
 }
