@@ -72,6 +72,7 @@
 		3DEA51B627FC9249001D6CB5 /* EnemyKillerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51B527FC9249001D6CB5 /* EnemyKillerSystem.swift */; };
 		3DEA51B827FC93A4001D6CB5 /* LifespanComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51B727FC93A4001D6CB5 /* LifespanComponent.swift */; };
 		3DEA51BA27FC94F5001D6CB5 /* LifespanSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */; };
+		3DEA51BC27FC97A0001D6CB5 /* GameUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51BB27FC97A0001D6CB5 /* GameUtils.swift */; };
 		7230521027F2C64C00AD753D /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230520F27F2C64C00AD753D /* PauseMenuView.swift */; };
 		7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521127F2D52700AD753D /* GameOverMenuView.swift */; };
 		7230521427F2D80500AD753D /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521327F2D80500AD753D /* MenuButton.swift */; };
@@ -201,6 +202,7 @@
 		3DEA51B527FC9249001D6CB5 /* EnemyKillerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyKillerSystem.swift; sourceTree = "<group>"; };
 		3DEA51B727FC93A4001D6CB5 /* LifespanComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifespanComponent.swift; sourceTree = "<group>"; };
 		3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifespanSystem.swift; sourceTree = "<group>"; };
+		3DEA51BB27FC97A0001D6CB5 /* GameUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUtils.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				3DA4B1FA27F029F200FE19B2 /* Array+Extensions.swift */,
 				72B5144427FC060000131A83 /* Float+Extensions.swift */,
 				72B5144627FC17CA00131A83 /* Int+Extensions.swift */,
+				3DEA51BB27FC97A0001D6CB5 /* GameUtils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
 				3DB3741827F43B7E0053F400 /* DirectionalMovementDecorator.swift in Sources */,
+				3DEA51BC27FC97A0001D6CB5 /* GameUtils.swift in Sources */,
 				7230521627F2EB7700AD753D /* MenuLayout.swift in Sources */,
 				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,

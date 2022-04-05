@@ -23,8 +23,8 @@ class SurvivalPowerupManager: PowerupManager {
                 continue
             }
 
-            let spawnPosition = Nexus.generateRandomSpawnPosition(forEntityOfWidth: Constants.powerupDiameter,
-                                                                  height: Constants.powerupDiameter)
+            let spawnPosition = GameUtils.generateRandomSpawnPosition(forEntityOfWidth: Constants.powerupDiameter,
+                                                                      height: Constants.powerupDiameter)
             let velocity = CGVector.random(magnitude: Constants.maxPowerupSpeed)
             nexus.createPowerup(position: spawnPosition, powerup: powerup, velocity: velocity)
         }
