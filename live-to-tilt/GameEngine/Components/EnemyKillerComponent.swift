@@ -1,6 +1,4 @@
-import CoreGraphics
-
-class EnemyComponent: Component {
+class EnemyKillerComponent: Component {
     let entity: Entity
 
     init(entity: Entity) {

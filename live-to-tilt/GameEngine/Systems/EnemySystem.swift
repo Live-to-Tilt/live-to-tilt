@@ -11,27 +11,12 @@ class EnemySystem: System {
         let enemyComponents = nexus.getComponents(of: EnemyComponent.self)
 
         enemyComponents.forEach { enemyComponent in
-            updateElapsedDuration(enemyComponent, deltaTime: deltaTime)
-            despawnIfLifespanOver(enemyComponent)
             despawnIfOutsideArena(enemyComponent)
+            handleCollisions(enemyComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-
-    private func updateElapsedDuration(_ enemyComponent: EnemyComponent, deltaTime: CGFloat) {
-        enemyComponent.elapsedDuration += deltaTime
-    }
-
-    private func isLifespanOver(_ enemyComponent: EnemyComponent) -> Bool {
-        enemyComponent.elapsedDuration > Constants.enemyLifespan
-    }
-
-    private func despawnIfLifespanOver(_ enemyComponent: EnemyComponent) {
-        if isLifespanOver(enemyComponent) {
-            nexus.removeEntity(enemyComponent.entity)
-        }
-    }
 
     private func isOutsideArena(_ enemyComponent: EnemyComponent) -> Bool {
         let entity = enemyComponent.entity
@@ -50,5 +35,38 @@ class EnemySystem: System {
         if isOutsideArena(enemyComponent) {
             nexus.removeEntity(enemyComponent.entity)
         }
+    }
+
+    private func handleCollisions(_ enemyComponent: EnemyComponent) {
+        let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: enemyComponent.entity)
+
+        collisionComponents.forEach { collisionComponent in
+            handlePlayerCollision(enemyComponent, collisionComponent)
+        }
+    }
+
+    private func handlePlayerCollision(_ enemyComponent: EnemyComponent, _ collisionComponent: CollisionComponent) {
+        let collidedEntity = collisionComponent.collidedEntity
+        if !nexus.hasComponent(PlayerComponent.self, in: collidedEntity) {
+            return
+        }
+
+        if isRecentlySpawned(enemyComponent) {
+            return
+        }
+
+        endGame()
+    }
+
+    private func isRecentlySpawned(_ enemyComponent: EnemyComponent) -> Bool {
+        guard let lifespanComponent = nexus.getComponent(of: LifespanComponent.self, for: enemyComponent.entity) else {
+            return false
+        }
+        return lifespanComponent.elapsedTimeSinceSpawn < Constants.enemySpawnDelay
+    }
+
+    private func endGame() {
+        let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
+        gameStateComponent?.state = .gameOver
     }
 }
