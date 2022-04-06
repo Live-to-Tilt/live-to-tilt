@@ -1,15 +1,28 @@
 import CoreGraphics
+import Foundation
 
 /**
  Manages the statistics of the current game.
  */
 class GameStats {
     private let gameMode: GameMode
-    private(set) var score: Int = .zero
+    private(set) var score: Int = .zero {
+        didSet {
+            onUpdateStat(.updateScore, value: score)
+        }
+    }
     private(set) var powerupsUsed: Int = .zero
-    private(set) var nukePowerupsUsed: Int = .zero
+    private(set) var nukePowerupsUsed: Int = .zero {
+        didSet {
+            onUpdateStat(.updateNukePowerUpsUsed, value: nukePowerupsUsed)
+        }
+    }
     private(set) var lightsaberPowerupsUsed: Int = .zero
-    private(set) var enemiesKilled: Int = .zero
+    private(set) var enemiesKilled: Int = .zero {
+        didSet {
+            onUpdateStat(.updateEnemiesKilled, value: enemiesKilled)
+        }
+    }
     private(set) var distanceTravelled: Float = .zero
     private(set) var playTime: Float = .zero
 
@@ -20,6 +33,10 @@ class GameStats {
 
     func incrementPlayTime(deltaTime: CGFloat) {
         playTime += Float(deltaTime)
+    }
+
+    func onUpdateStat(_ statUpdated: Event, value: Int) {
+        EventManager.shared.postEvent(statUpdated, eventInfo: [.statValue: Float(value)])
     }
 
     private func observePublishers() {

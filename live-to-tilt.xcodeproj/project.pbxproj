@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -111,6 +111,8 @@
 		72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */; };
 		DB0A621527EDA4730033E23B /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0A621427EDA4730033E23B /* EventManager.swift */; };
 		DB77AF3327EEC41100F8DE4C /* EventInfoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */; };
+		DB77AF3927F7722E00F8DE4C /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */; };
+		DB77AF3B27F7723F00F8DE4C /* StatsAchievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */; };
 		DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */; };
 		DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480527D8BDA900D46B84 /* Soundtrack.swift */; };
 		DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4627DB63D800A26752 /* GameControl.swift */; };
@@ -118,6 +120,7 @@
 		DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7215CD4927DB661C00A26752 /* AccelerometerControl.swift */; };
 		DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480E27D8CB7900D46B84 /* UserDefaults+Extensions.swift */; };
 		DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */; };
+		DB972C7727FBFDF000CB1C25 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DB972C7627FBFDF000CB1C25 /* AlertToast */; };
 		DBB8932D27E8CD1700D61D72 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8932C27E8CD1700D61D72 /* GameStats.swift */; };
 		DBB8933727EC7AD600D61D72 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933627EC7AD600D61D72 /* Event.swift */; };
 		DBB8933927EC83AB00D61D72 /* Notification.Name+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB8933827EC83AB00D61D72 /* Notification.Name+Extensions.swift */; };
@@ -245,6 +248,8 @@
 		72EC6AAC27E2EC3200FCCB7E /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
 		DB0A621427EDA4730033E23B /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		DB77AF3227EEC41100F8DE4C /* EventInfoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoKey.swift; sourceTree = "<group>"; };
+		DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
+		DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsAchievement.swift; sourceTree = "<group>"; };
 		DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 		DBB8932C27E8CD1700D61D72 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		DBB8933627EC7AD600D61D72 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -269,6 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB972C7727FBFDF000CB1C25 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +326,7 @@
 		3D12D9C527D61D8500D01489 /* live-to-tilt */ = {
 			isa = PBXGroup;
 			children = (
+				DB77AF3727F7721500F8DE4C /* Achievements */,
 				3D12D9C627D61D8500D01489 /* Main.swift */,
 				3D12D9D927D61F1C00D01489 /* AudioEngine */,
 				DBB8933527EC78DC00D61D72 /* EventLogger */,
@@ -622,6 +629,15 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
+		DB77AF3727F7721500F8DE4C /* Achievements */ = {
+			isa = PBXGroup;
+			children = (
+				DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */,
+				DB77AF3A27F7723F00F8DE4C /* StatsAchievement.swift */,
+			);
+			path = Achievements;
+			sourceTree = "<group>";
+		};
 		DB88976627DC3D7500F72B9C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +689,9 @@
 			dependencies = (
 			);
 			name = "live-to-tilt";
+			packageProductDependencies = (
+				DB972C7627FBFDF000CB1C25 /* AlertToast */,
+			);
 			productName = "live-to-tilt";
 			productReference = 3D12D9C327D61D8500D01489 /* live-to-tilt.app */;
 			productType = "com.apple.product-type.application";
@@ -700,6 +719,9 @@
 				Base,
 			);
 			mainGroup = 3D12D9BA27D61D8500D01489;
+			packageReferences = (
+				DB972C7527FBFDF000CB1C25 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 3D12D9C427D61D8500D01489 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -765,6 +787,7 @@
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
 				3DC7BC7D27E3923C00994C18 /* HomingMovementDecorator.swift in Sources */,
+				DB77AF3927F7722E00F8DE4C /* AchievementManager.swift in Sources */,
 				3DA4B1EE27F00D8700FE19B2 /* SurvivalWaveManager.swift in Sources */,
 				3DEA51C227FC9B53001D6CB5 /* Animation.swift in Sources */,
 				DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */,
@@ -869,6 +892,7 @@
 				21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */,
 				723EE8B127E8C13D001BD0D4 /* MenuItemText.swift in Sources */,
 				3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */,
+				DB77AF3B27F7723F00F8DE4C /* StatsAchievement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,6 +1081,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DB972C7527FBFDF000CB1C25 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.3.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DB972C7627FBFDF000CB1C25 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DB972C7527FBFDF000CB1C25 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3D12D9BB27D61D8500D01489 /* Project object */;
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import AlertToast
 
 struct GameArenaView: View {
     @ObservedObject var viewModel: GameArenaViewModel
@@ -23,6 +24,7 @@ struct GameArenaView: View {
         .onTapGesture {
             viewModel.pause()
         }
+
     }
 
     private func InfoHStack() -> some View {
@@ -35,6 +37,10 @@ struct GameArenaView: View {
             CountdownBar()
             Spacer()
             Text("combo \(comboBase) x \(comboMultiplier)").modifier(InfoText())
+        }
+        .zIndex(10)
+        .toast(isPresenting: $viewModel.showAchievement, duration: 1.5) {
+            AlertToast(type: .regular, title: "Achievement Unlocked: \(viewModel.achievement?.name ?? "empty")!")
         }
     }
 
