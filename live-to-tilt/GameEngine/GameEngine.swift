@@ -1,6 +1,5 @@
 import CoreGraphics
 import Combine
-import SwiftUI
 
 class GameEngine {
     private var timeScale: CGFloat
@@ -55,7 +54,7 @@ class GameEngine {
         self.gameMode = gameMode
         self.gameStats = GameStats(gameMode: gameMode)
         setUpEntities()
-        EventManager.shared.postEvent(.gameStarted)
+        EventManager.shared.postEvent(GameStartedEvent())
     }
 
     func update(deltaTime: CGFloat, inputForce: CGVector) {

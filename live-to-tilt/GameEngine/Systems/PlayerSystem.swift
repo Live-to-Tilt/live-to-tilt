@@ -23,12 +23,13 @@ class PlayerSystem: System {
         }
 
         physicsComponent.physicsBody.velocity = playerComponent.inputForce
-        EventManager.shared.postEvent(.playerMoved,
-                                      eventInfo: [.distance: Float(playerComponent.inputForce.magnitude * deltaTime)])
 
         let newRotation = lerpRotation(initialRotation: physicsComponent.physicsBody.rotation,
                                        desiredRotation: playerComponent.inputForce.angle)
         physicsComponent.physicsBody.rotation = newRotation
+
+        let deltaDistance = Float(playerComponent.inputForce.magnitude * deltaTime)
+        EventManager.shared.postEvent(PlayerMovedEvent(deltaDistance: deltaDistance))
     }
 
     private func lerpRotation(initialRotation: CGFloat, desiredRotation: CGFloat) -> CGFloat {

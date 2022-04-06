@@ -1,28 +1,30 @@
 import CoreGraphics
-import Foundation
 
 /**
  Manages the statistics of the current game.
  */
 class GameStats {
     private let gameMode: GameMode
-    private(set) var score: Int = .zero {
-        didSet {
-            onUpdateStat(.updateScore, value: score)
-        }
-    }
+    private(set) var score: Int = .zero
+//    {
+//        didSet {
+//            onUpdateStat(.updateScore, value: score)
+//        }
+//    }
     private(set) var powerupsUsed: Int = .zero
-    private(set) var nukePowerupsUsed: Int = .zero {
-        didSet {
-            onUpdateStat(.updateNukePowerUpsUsed, value: nukePowerupsUsed)
-        }
-    }
+    private(set) var nukePowerupsUsed: Int = .zero
+//    {
+//        didSet {
+//            onUpdateStat(.updateNukePowerUpsUsed, value: nukePowerupsUsed)
+//        }
+//    }
     private(set) var lightsaberPowerupsUsed: Int = .zero
-    private(set) var enemiesKilled: Int = .zero {
-        didSet {
-            onUpdateStat(.updateEnemiesKilled, value: enemiesKilled)
-        }
-    }
+    private(set) var enemiesKilled: Int = .zero
+//    {
+//        didSet {
+//            onUpdateStat(.updateEnemiesKilled, value: enemiesKilled)
+//        }
+//    }
     private(set) var distanceTravelled: Float = .zero
     private(set) var playTime: Float = .zero
 
@@ -35,43 +37,54 @@ class GameStats {
         playTime += Float(deltaTime)
     }
 
-    func onUpdateStat(_ statUpdated: Event, value: Int) {
-        EventManager.shared.postEvent(statUpdated, eventInfo: [.statValue: Float(value)])
-    }
+//    func onUpdateStat(_ statUpdated: Event, value: Int) {
+        // TODO: Re-enable
+//        EventManager.shared.postEventOld(statUpdated, eventInfo: [.statValue: Float(value)])
+//    }
 
     private func observePublishers() {
-        for event in Event.allCases {
-            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
-        }
+        EventManager.shared.registerClosureForEvent(of: GameEndedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosureForEvent(of: PowerupUsedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosureForEvent(of: ScoreChangedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosureForEvent(of: PlayerMovedEvent.self, closure: onStatEventRef)
+
+//        for event in Event.allCases {
+//            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
+//        }
     }
 
-    private lazy var onStatEventRef = { [weak self] (event: Event, eventInfo: EventInfo?) -> Void in
-        self?.onStatEvent(event, eventInfo)
+    private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
+        self?.onStatEvent(event)
     }
 
     /// Update game stats based on the received event
     ///
     /// - Parameters:
     ///   - event: type of event received
-    ///   - eventInfo: event info received
-    private func onStatEvent(_ event: Event, _ eventInfo: EventInfo?) {
+    private func onStatEvent(_ event: Event) {
         switch event {
-        case .gameEnded:
+        case _ as GameEndedEvent:
             AllTimeStats.shared.addStatsFromLatestGame(self, gameMode)
-        case .nukePowerupUsed:
-            self.nukePowerupsUsed += 1
+
+        case let powerupUsedEvent as PowerupUsedEvent:
+            // NOTE: Probably need to refactor this
+            if powerupUsedEvent.powerup is NukePowerup {
+                self.nukePowerupsUsed += 1
+            } else if powerupUsedEvent.powerup is LightsaberPowerup {
+                self.lightsaberPowerupsUsed += 1
+            }
             self.powerupsUsed += 1
-        case .lightsaberPowerupUsed:
-            self.lightsaberPowerupsUsed += 1
-            self.powerupsUsed += 1
-        case .enemyKilled:
+
+        case let scoreChangedEvent as ScoreChangedEvent:
+            self.score += scoreChangedEvent.deltaScore
+
+        case _ as EnemyKilledEvent:
             self.enemiesKilled += 1
-        case .playerMoved:
-            let distance = eventInfo?[.distance] ?? .zero
-            self.distanceTravelled += distance
-        case .scoreChanged:
-            let score = eventInfo?[.score] ?? .zero
-            self.score += Int(score)
+
+        case let playerMovedEvent as PlayerMovedEvent:
+            self.distanceTravelled += playerMovedEvent.deltaDistance
+
         default:
             return
         }

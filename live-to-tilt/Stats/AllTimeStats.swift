@@ -82,8 +82,9 @@ class AllTimeStats {
         defaults.setValue(totalDistanceTravelled + gameStats.distanceTravelled,
                           forKey: .totalDistanceTravelled)
 
-        EventManager.shared.postEvent(.updateTotalScore, eventInfo: [.statValue: Float(totalScore)])
-        EventManager.shared.postEvent(.updateTotalGamesPlayed, eventInfo: [.statValue: Float(totalGamesPlayed)])
+        // TODO: Re-enable
+//        EventManager.shared.postEventOld(.updateTotalScore, eventInfo: [.statValue: Float(totalScore)])
+//        EventManager.shared.postEventOld(.updateTotalGamesPlayed, eventInfo: [.statValue: Float(totalGamesPlayed)])
     }
 
     private func updateHighScores(_ gameStats: GameStats, _ gameMode: GameMode) {

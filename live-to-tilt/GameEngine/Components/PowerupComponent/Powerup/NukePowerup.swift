@@ -1,5 +1,6 @@
 class NukePowerup: Powerup {
     let orbImage: ImageAsset
+    let activationScore: Int = Constants.nukeActivationScore
 
     init() {
         self.orbImage = .nukeOrb

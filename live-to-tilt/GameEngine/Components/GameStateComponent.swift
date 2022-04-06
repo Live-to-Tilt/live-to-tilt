@@ -5,7 +5,7 @@ class GameStateComponent: Component {
     var state: GameState {
         didSet {
             if state == .gameOver {
-                EventManager.shared.postEvent(.gameEnded)
+                EventManager.shared.postEvent(GameEndedEvent())
             }
         }
     }
