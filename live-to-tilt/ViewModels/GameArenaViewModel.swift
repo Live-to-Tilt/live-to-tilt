@@ -5,13 +5,13 @@ class GameArenaViewModel: ObservableObject {
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
     @Published var countdownComponent: CountdownComponent?
-    @Published var achievement: StatsAchievement?
+    @Published var achievement: Achievement?
     @Published var showAchievement = false
 
     var gameEngine: GameEngine
     var gameControl: GameControl
     var gameRenderer: GameRenderer
-//    var achievementManager: AchievementManager
+    var achievementManager: AchievementManager
 
     var cancellables = Set<AnyCancellable>()
 
@@ -20,7 +20,7 @@ class GameArenaViewModel: ObservableObject {
         gameEngine = GameEngine(gameMode: gameMode)
         gameControl = GameControlManager.shared.gameControl
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
-//        achievementManager = AchievementManager()
+        achievementManager = AchievementManager()
         gameRenderer.start()
         attachPublishers()
     }
@@ -34,7 +34,7 @@ class GameArenaViewModel: ObservableObject {
         gameRenderer.stop()
         gameEngine = GameEngine(gameMode: gameEngine.gameMode)
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
-//        achievementManager.reinit()
+        achievementManager.reinit()
         gameRenderer.start()
         attachPublishers()
     }
@@ -65,13 +65,13 @@ class GameArenaViewModel: ObservableObject {
             self?.countdownComponent = countdownComponent
         }.store(in: &cancellables)
 
-//        achievementManager.$newAchievement.sink { [weak self] newAchievement in
-//            guard let achievement = newAchievement else {
-//                return
-//            }
-//            self?.achievement = achievement
-//            self?.showAchievement = true
-//        }.store(in: &cancellables)
+        achievementManager.$newAchievement.sink { [weak self] newAchievement in
+            guard let achievement = newAchievement else {
+                return
+            }
+            self?.achievement = achievement
+            self?.showAchievement = true
+        }.store(in: &cancellables)
     }
 
     private func detachPublishers() {

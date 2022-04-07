@@ -1,3 +1,0 @@
-enum AchievementCriterion {
-    case enemiesKilled
-}
