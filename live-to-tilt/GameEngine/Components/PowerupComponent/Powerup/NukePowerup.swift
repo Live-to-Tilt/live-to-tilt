@@ -1,3 +1,5 @@
+import CoreGraphics
+
 class NukePowerup: Powerup {
     let orbImage: ImageAsset
     let activationScore: Int = Constants.nukeActivationScore
@@ -6,15 +8,35 @@ class NukePowerup: Powerup {
         self.orbImage = .nukeOrb
     }
 
-    func coroutine(nexus: Nexus) {
-        guard
-            let playerEntity = nexus.getEntity(with: PlayerComponent.self),
-            let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerEntity) else {
-                return
-            }
+    func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+        nexus.createNukeExplosion(position: powerupPosition)
+    }
+}
 
-        let playerPhysicsBody = playerPhysicsComponent.physicsBody
-        let playerPosition = playerPhysicsBody.position
-        nexus.createNukeExplosion(position: playerPosition)
+extension Nexus {
+    func createNukeExplosion(position: CGPoint) {
+        let entity = Entity()
+        let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
+        let physicsBody = PhysicsBody(isDynamic: false,
+                                      shape: .circle,
+                                      position: position,
+                                      size: size,
+                                      collisionBitMask: Constants.enemyAffectorCollisionBitMask)
+
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: physicsBody),
+                     to: entity)
+        addComponent(RenderableComponent(entity: entity,
+                                         image: .nukeEffect,
+                                         position: position,
+                                         size: size),
+                     to: entity)
+        addComponent(EnemyKillerComponent(entity: entity), to: entity)
+        addComponent(LifespanComponent(entity: entity, lifespan: Constants.nukeExplosionLifespan), to: entity)
+        addComponent(AnimationComponent(entity: entity,
+                                        animation: ScaleAnimation(initialSize: size,
+                                                                  scale: Constants.nukeExplosionScale,
+                                                                  duration: Constants.nukeExplosionAnimationDuration)),
+                     to: entity)
     }
 }
