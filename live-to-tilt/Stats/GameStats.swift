@@ -5,26 +5,23 @@ import CoreGraphics
  */
 class GameStats {
     private let gameMode: GameMode
-    private(set) var score: Int = .zero
-//    {
-//        didSet {
-//            onUpdateStat(.updateScore, value: score)
-//        }
-//    }
+    private(set) var score: Int = .zero {
+        didSet {
+            onStatUpdated()
+        }
+    }
     private(set) var powerupsUsed: Int = .zero
-    private(set) var nukePowerupsUsed: Int = .zero
-//    {
-//        didSet {
-//            onUpdateStat(.updateNukePowerUpsUsed, value: nukePowerupsUsed)
-//        }
-//    }
+    private(set) var nukePowerupsUsed: Int = .zero {
+        didSet {
+            onStatUpdated()
+        }
+    }
     private(set) var lightsaberPowerupsUsed: Int = .zero
-    private(set) var enemiesKilled: Int = .zero
-//    {
-//        didSet {
-//            onUpdateStat(.updateEnemiesKilled, value: enemiesKilled)
-//        }
-//    }
+    private(set) var enemiesKilled: Int = .zero {
+        didSet {
+            onStatUpdated()
+        }
+    }
     private(set) var distanceTravelled: Float = .zero
     private(set) var playTime: Float = .zero
 
@@ -37,10 +34,9 @@ class GameStats {
         playTime += Float(deltaTime)
     }
 
-//    func onUpdateStat(_ statUpdated: Event, value: Int) {
-        // TODO: Re-enable
-//        EventManager.shared.postEventOld(statUpdated, eventInfo: [.statValue: Float(value)])
-//    }
+    func onStatUpdated() {
+        EventManager.shared.postEvent(GameStatsUpdatedEvent(gameStats: self))
+    }
 
     private func observePublishers() {
         EventManager.shared.registerClosureForEvent(of: GameEndedEvent.self, closure: onStatEventRef)
@@ -48,10 +44,6 @@ class GameStats {
         EventManager.shared.registerClosureForEvent(of: ScoreChangedEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: PlayerMovedEvent.self, closure: onStatEventRef)
-
-//        for event in Event.allCases {
-//            EventManager.shared.registerClosure(event: event, closure: onStatEventRef)
-//        }
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
