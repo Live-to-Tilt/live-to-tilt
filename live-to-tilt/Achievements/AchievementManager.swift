@@ -7,9 +7,11 @@ class AchievementManager: ObservableObject {
 
     private let storage: UserDefaults
     private let achievments: [Achievement] = [
-        KillEnemies()
+        KillEnemies(),
+        TotalScore()
     ]
 
+    // TODO: Convert these into Achievements
 //    private let achievements: [EventIdentifier: [Int]] = [EnemiesKilledStatUpdatedEvent.identifier: [1, 10, 25, 50],
 //                                                .updateNukePowerUpsUsed: [1, 5, 10, 25, 50],
 //                                                .updateScore: [100, 250, 500, 1_000, 5_000, 10_000],
@@ -39,9 +41,10 @@ class AchievementManager: ObservableObject {
     }
 
     private func registerClosures() {
-        EventManager.shared.registerClosureForEvent(of: GameStatsUpdatedEvent.self, closure: onGameStatsUpdatedRef)
-//        EventManager.shared.registerClosure(event: .updateTotalScore, closure: onAllTimeStatUpdateRef)
-//        EventManager.shared.registerClosure(event: .updateTotalGamesPlayed, closure: onAllTimeStatUpdateRef)
+        EventManager.shared.registerClosureForEvent(of: GameStatsUpdatedEvent.self,
+                                                    closure: onGameStatsUpdatedRef)
+        EventManager.shared.registerClosureForEvent(of: AllTimeStatsUpdatedEvent.self,
+                                                    closure: onAllTimeStatsUpdatedRef)
     }
 
     private lazy var onGameStatsUpdatedRef = { [weak self] (_ event: Event) -> Void in
@@ -61,21 +64,20 @@ class AchievementManager: ObservableObject {
         }
     }
 
-    private lazy var onAllTimeStatUpdateRef = { [weak self] (_ updatedStat: Event) -> Void in
-        self?.onAllTimeStatUpdate(updatedStat)
+    private lazy var onAllTimeStatsUpdatedRef = { [weak self] (_ event: Event) -> Void in
+        self?.onAllTimeStatsUpdated(event)
     }
 
-    private func onAllTimeStatUpdate(_ updatedStat: Event) {
-//        guard let achievements = self.statsToAchievements[updatedStat],
-//              let stat = eventInfo?[.statValue] else {
-//            return
-//        }
-//        for achievement in achievements {
-//            if !storage.bool(forKey: achievement.name)
-//                && achievement.checkIfCompleted(stat: stat) {
-//                storage.set(true, forKey: achievement.name)
-//                newAchievement = achievement
-//            }
-//        }
+    private func onAllTimeStatsUpdated(_ event: Event) {
+        guard event is AllTimeStatsUpdatedEvent else {
+            return
+        }
+
+        achievments.forEach { achievment in
+            if achievment.checkIfCompleted(gameStats: nil) {
+                storage.set(true, forKey: achievment.name)
+                newAchievement = achievment
+            }
+        }
     }
  }

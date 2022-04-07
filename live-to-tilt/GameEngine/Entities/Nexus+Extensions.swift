@@ -118,8 +118,6 @@ extension Nexus {
                                                                restitution: Constants.powerupRestitution)),
                      to: entity)
         addComponent(LifespanComponent(entity: entity), to: entity)
-        // TODO: Re-enable
-//        EventManager.shared.postEventOld(.powerUpSpawned)
     }
 
     func createCountdown(for gameMode: GameMode) {
