@@ -15,35 +15,19 @@ struct GameModeSelectionView: View {
 
     private func Content() -> some View {
         VStack {
-            Text("Select Gamemode").modifier(TitleText())
+            SubViewHeader(title: "Select Gamemode", closeButtonAction: { self.presentationMode.wrappedValue.dismiss() })
 
-            GameModePicker()
+            GameModePicker(selectedGameMode: $selectedGameMode)
 
             GameModeInfo()
 
-            Buttons()
-        }
-        .frame(width: 700)
-    }
-
-    private func GameModePicker() -> some View {
-        HStack {
-            ForEach(GameMode.allCases) { gameMode in
-                GameModeButton(gameMode: gameMode)
+            NavigationLink(destination: LazyView(
+                GameArenaView(viewModel: GameArenaViewModel(gameMode: selectedGameMode))
+            )) {
+                Text("Start").modifier(MenuButton())
             }
         }
-        .padding(15)
-        .border(.white, width: 5)
-    }
-
-    private func GameModeButton(gameMode: GameMode) -> some View {
-        Button(action: { selectedGameMode = gameMode }) {
-            Text(gameMode.emoji)
-                .font(.system(size: 48))
-                .padding(.vertical, 10)
-                .frame(maxWidth: .infinity)
-                .background(selectedGameMode == gameMode ? Color(red: 0.84, green: 0.24, blue: 0.20) : .clear)
-        }
+        .frame(width: 700)
     }
 
     private func GameModeInfo() -> some View {
@@ -63,20 +47,6 @@ struct GameModeSelectionView: View {
         }
         .padding(.bottom, 50)
         .frame(width: 600)
-    }
-
-    private func Buttons() -> some View {
-        HStack {
-            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                Text("Back").modifier(MenuButton(width: 200))
-            }
-
-            NavigationLink(destination: LazyView(
-                GameArenaView(viewModel: GameArenaViewModel(gameMode: selectedGameMode))
-            )) {
-                Text("Start").modifier(MenuButton(width: 200))
-            }
-        }
     }
 }
 
