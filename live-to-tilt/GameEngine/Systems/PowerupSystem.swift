@@ -37,7 +37,15 @@ final class PowerupSystem: System {
 
         let powerup = powerupComponent.powerup
         let powerupEntity = powerupComponent.entity
-        powerup.activate(nexus: nexus)
+
+        guard let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupEntity) else {
+            return
+        }
+
+        let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
+        let powerupPosition = powerupPhysicsBody.position
+
+        powerup.activate(nexus: nexus, at: powerupPosition)
         nexus.removeEntity(powerupEntity)
     }
 
