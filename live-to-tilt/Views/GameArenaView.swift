@@ -24,7 +24,6 @@ struct GameArenaView: View {
         .onTapGesture {
             viewModel.pause()
         }
-
     }
 
     private func InfoHStack() -> some View {

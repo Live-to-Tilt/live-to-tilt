@@ -14,7 +14,6 @@ extension WaveManager {
 
         if canStartNextWave(nexus: nexus) {
             startNextWave(nexus: nexus)
-            EventManager.shared.postEvent(.waveStarted)
         }
     }
 }

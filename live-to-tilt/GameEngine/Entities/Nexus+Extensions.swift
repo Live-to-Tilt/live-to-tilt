@@ -95,7 +95,6 @@ extension Nexus {
         addComponent(MovementComponent(entity: entity, movement: movement),
                      to: entity)
         addComponent(LifespanComponent(entity: entity, lifespan: Constants.enemyLifespan), to: entity)
-        EventManager.shared.postEvent(.enemySpawned)
     }
 
     func createPowerup(position: CGPoint, powerup: Powerup, velocity: CGVector = .zero) {
@@ -119,7 +118,6 @@ extension Nexus {
                                                                restitution: Constants.powerupRestitution)),
                      to: entity)
         addComponent(LifespanComponent(entity: entity), to: entity)
-        EventManager.shared.postEvent(.powerUpSpawned)
     }
 
     func createCountdown(for gameMode: GameMode) {

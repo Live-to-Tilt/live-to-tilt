@@ -5,7 +5,7 @@ class GameArenaViewModel: ObservableObject {
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
     @Published var countdownComponent: CountdownComponent?
-    @Published var achievement: StatsAchievement?
+    @Published var achievement: Achievement?
     @Published var showAchievement = false
 
     var gameEngine: GameEngine
