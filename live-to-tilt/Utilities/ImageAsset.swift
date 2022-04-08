@@ -6,4 +6,5 @@ enum ImageAsset: String {
     case nukeEffect
     case lightsaberOrb
     case lightsaberEffect
+    case timeOrb
 }

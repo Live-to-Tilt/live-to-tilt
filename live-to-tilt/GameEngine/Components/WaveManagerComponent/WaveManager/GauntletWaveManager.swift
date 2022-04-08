@@ -8,7 +8,7 @@ class GauntletWaveManager: WaveManager {
 
     init() {
         let waves: [Wave] = [
-            StraightWave()
+            GauntletStraightWave()
         ]
         let intervals: [CGFloat] = [
             Constants.gauntletWaveIntervalDuration
