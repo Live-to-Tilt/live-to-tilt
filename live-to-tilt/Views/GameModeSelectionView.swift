@@ -15,13 +15,17 @@ struct GameModeSelectionView: View {
 
     private func Content() -> some View {
         VStack {
-            Text("Select Gamemode").modifier(TitleText())
+            SubViewHeader(title: "Select Gamemode", closeButtonAction: { self.presentationMode.wrappedValue.dismiss() })
 
             GameModePicker(selectedGameMode: $selectedGameMode)
 
             GameModeInfo()
 
-            Buttons()
+            NavigationLink(destination: LazyView(
+                GameArenaView(viewModel: GameArenaViewModel(gameMode: selectedGameMode))
+            )) {
+                Text("Start").modifier(MenuButton())
+            }
         }
         .frame(width: 700)
     }
@@ -43,20 +47,6 @@ struct GameModeSelectionView: View {
         }
         .padding(.bottom, 50)
         .frame(width: 600)
-    }
-
-    private func Buttons() -> some View {
-        HStack {
-            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                Text("Back").modifier(MenuButton(width: 200))
-            }
-
-            NavigationLink(destination: LazyView(
-                GameArenaView(viewModel: GameArenaViewModel(gameMode: selectedGameMode))
-            )) {
-                Text("Start").modifier(MenuButton(width: 200))
-            }
-        }
     }
 }
 

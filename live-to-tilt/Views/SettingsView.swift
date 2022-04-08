@@ -6,19 +6,15 @@ struct SettingsView: View {
 
     var body: some View {
         VStack {
-            Text("Settings").modifier(TitleText())
+            SubViewHeader(title: "Settings", closeButtonAction: { self.presentationMode.wrappedValue.dismiss() })
 
             VolumeSettingHStack()
 
             SensitivitySettingHStack()
 
             ControlsSettingHStack()
-
-            Button(action: { self.presentationMode.wrappedValue.dismiss() }) {
-                Text("Back")
-                    .padding(.top, 40)
-            }
         }
+        .frame(width: 500)
         .modifier(RootView())
     }
 
@@ -30,7 +26,6 @@ struct SettingsView: View {
                    in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume))
                 .padding()
         }
-        .frame(width: 500)
     }
 
     private func SensitivitySettingHStack() -> some View {
@@ -41,7 +36,6 @@ struct SettingsView: View {
                    in: CGFloat(Constants.minSensitivity)...CGFloat(Constants.maxSensitivity))
                 .padding()
         }
-        .frame(width: 500)
     }
 
     private func ControlsSettingHStack() -> some View {
@@ -58,7 +52,6 @@ struct SettingsView: View {
             .pickerStyle(.segmented)
             .padding(.trailing, 10)
         }
-        .frame(width: 500)
     }
 }
 

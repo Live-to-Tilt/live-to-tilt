@@ -6,21 +6,13 @@ struct HowToPlayView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Text("How to Play")
-                    .modifier(TitleText())
-
-                Spacer()
-
-                CloseButton(action: { self.presentationMode.wrappedValue.dismiss() })
-            }
+            SubViewHeader(title: "How to Play", closeButtonAction: { self.presentationMode.wrappedValue.dismiss() })
 
             GameModePicker(selectedGameMode: $selectedGameMode)
 
             Text(selectedGameMode.rawValue).modifier(HeadingOneText())
 
             Instructions()
-
         }
         .frame(width: 700)
         .modifier(RootView())

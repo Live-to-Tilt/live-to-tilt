@@ -50,15 +50,15 @@ extension GameMode {
                 Instruction(image: "enemyInstruction",
                             text: "Hit a dot, lose your life. You can't kill dots in this mode."),
                 Instruction(image: "timerInstruction",
-                            text: "Orbs will extend your life bar at the bottom"),
+                            text: "Orbs will extend your life bar at the bottom."),
                 Instruction(image: "lifebarInstruction",
                             text: "If your life bar runs out, it's game over.")
             ]
         }
     }
-}
 
-struct Instruction: Hashable {
-    let image: String
-    let text: String
+    struct Instruction: Hashable {
+        let image: String
+        let text: String
+    }
 }

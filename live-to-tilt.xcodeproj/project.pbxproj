@@ -103,6 +103,7 @@
 		729FA8D827FFD95C008F55BB /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8D727FFD95C008F55BB /* HowToPlayView.swift */; };
 		729FA8DB27FFDB3C008F55BB /* GameModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */; };
 		729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DC27FFECAC008F55BB /* CloseButton.swift */; };
+		729FA8DF27FFEFA1008F55BB /* SubViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DE27FFEFA1008F55BB /* SubViewHeader.swift */; };
 		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
 		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
 		72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144827FC23F500131A83 /* GameOverStat.swift */; };
@@ -253,6 +254,7 @@
 		729FA8D727FFD95C008F55BB /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModePicker.swift; sourceTree = "<group>"; };
 		729FA8DC27FFECAC008F55BB /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		729FA8DE27FFEFA1008F55BB /* SubViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewHeader.swift; sourceTree = "<group>"; };
 		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144827FC23F500131A83 /* GameOverStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStat.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 			children = (
 				729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */,
 				729FA8DC27FFECAC008F55BB /* CloseButton.swift */,
+				729FA8DE27FFEFA1008F55BB /* SubViewHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -930,6 +933,7 @@
 				729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */,
 				72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */,
 				2106AA4427F5B021005EBB62 /* EnemySystem.swift in Sources */,
+				729FA8DF27FFEFA1008F55BB /* SubViewHeader.swift in Sources */,
 				3DA4B1F027F00DAE00FE19B2 /* GauntletWaveManager.swift in Sources */,
 				DBEC91ED27D7B8A300B0E750 /* RectangleCollider.swift in Sources */,
 				3DC0F28427EB0239001D54E4 /* MovementComponent.swift in Sources */,
