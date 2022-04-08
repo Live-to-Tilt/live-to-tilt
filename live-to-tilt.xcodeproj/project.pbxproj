@@ -100,6 +100,9 @@
 		72742DC827DD954A0033F06B /* GameControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72742DC727DD954A0033F06B /* GameControlView.swift */; };
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
 		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
+		729FA8D827FFD95C008F55BB /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8D727FFD95C008F55BB /* HowToPlayView.swift */; };
+		729FA8DB27FFDB3C008F55BB /* GameModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */; };
+		729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DC27FFECAC008F55BB /* CloseButton.swift */; };
 		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
 		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
 		72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144827FC23F500131A83 /* GameOverStat.swift */; };
@@ -247,6 +250,9 @@
 		72742DC727DD954A0033F06B /* GameControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControlView.swift; sourceTree = "<group>"; };
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
 		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
+		729FA8D727FFD95C008F55BB /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModePicker.swift; sourceTree = "<group>"; };
+		729FA8DC27FFECAC008F55BB /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144827FC23F500131A83 /* GameOverStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStat.swift; sourceTree = "<group>"; };
@@ -374,6 +380,7 @@
 		3D12D9D527D61EF600D01489 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				729FA8D927FFDB28008F55BB /* Components */,
 				723DEFD227E1DF9300592922 /* Utilities */,
 				2106F83627DF3F6300FA25D2 /* ViewModifiers */,
 				3D12D9C827D61D8500D01489 /* MainMenuView.swift */,
@@ -383,6 +390,7 @@
 				7230520F27F2C64C00AD753D /* PauseMenuView.swift */,
 				7230521127F2D52700AD753D /* GameOverMenuView.swift */,
 				3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */,
+				729FA8D727FFD95C008F55BB /* HowToPlayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -636,6 +644,15 @@
 				72478EA427D73A8200B9140A /* GameRenderer.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		729FA8D927FFDB28008F55BB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */,
+				729FA8DC27FFECAC008F55BB /* CloseButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		72E48B0F27FD8E5300FFB66F /* Events */ = {
@@ -910,6 +927,7 @@
 				3DEA51B627FC9249001D6CB5 /* EnemyKillerSystem.swift in Sources */,
 				3DB3742227F4B1200053F400 /* CopyMovementDecorator.swift in Sources */,
 				3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */,
+				729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */,
 				72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */,
 				2106AA4427F5B021005EBB62 /* EnemySystem.swift in Sources */,
 				3DA4B1F027F00DAE00FE19B2 /* GauntletWaveManager.swift in Sources */,
@@ -926,10 +944,12 @@
 				723EE8B527E8CFDD001BD0D4 /* InfoText.swift in Sources */,
 				72478E9527D70DFE00B9140A /* Component.swift in Sources */,
 				2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */,
+				729FA8D827FFD95C008F55BB /* HowToPlayView.swift in Sources */,
 				3DB3741827F43B7E0053F400 /* DirectionalMovementDecorator.swift in Sources */,
 				3DEA51BC27FC97A0001D6CB5 /* GameUtils.swift in Sources */,
 				7230521627F2EB7700AD753D /* MenuLayout.swift in Sources */,
 				3DEA51BF27FC9B42001D6CB5 /* AnimationComponent.swift in Sources */,
+				729FA8DB27FFDB3C008F55BB /* GameModePicker.swift in Sources */,
 				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,
