@@ -19,7 +19,7 @@ struct GameModePicker: View {
                 .font(.system(size: 48))
                 .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
-                .background(selectedGameMode == gameMode ? Color(red: 0.84, green: 0.24, blue: 0.20) : .clear)
+                .modifier(PickerOption(isSelected: selectedGameMode == gameMode))
         }
     }
 }
