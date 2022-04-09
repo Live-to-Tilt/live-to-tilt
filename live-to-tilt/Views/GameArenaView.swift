@@ -73,11 +73,8 @@ struct GameArenaView: View {
                     .frame(width: 500, height: 20)
 
                 RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.white)
-                    .frame(width: 496 * countdownComponent.timeLeft / countdownComponent.maxTime,
-                           height: 12)
-                    .padding(.vertical, 8)
-                    .padding(.horizontal, 4)
+                    .modifier(CountdownInnerBar(timeLeft: countdownComponent.timeLeft,
+                                                maxTime: countdownComponent.maxTime))
             }
         }
     }
