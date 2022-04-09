@@ -11,11 +11,24 @@ final class PowerupSystem: System {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
 
         powerupComponents.forEach { powerupComponent in
+            despawnIfOutsideArena(powerupComponent)
             handleCollisions(powerupComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
+
+    private func despawnIfOutsideArena(_ powerupComponent: PowerupComponent) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: powerupComponent.entity) else {
+            return
+        }
+
+        let powerupPosition = physicsComponent.physicsBody.position
+
+        if GameUtils.isOutsideArena(position: powerupPosition) {
+            nexus.removeEntity(powerupComponent.entity)
+        }
+    }
 
     private func handleCollisions(_ powerupComponent: PowerupComponent) {
         let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: powerupComponent.entity)

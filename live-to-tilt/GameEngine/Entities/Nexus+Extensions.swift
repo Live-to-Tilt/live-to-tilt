@@ -100,6 +100,7 @@ extension Nexus {
     func createPowerup(position: CGPoint,
                        powerup: Powerup,
                        velocity: CGVector = .zero,
+                       bitmask: UInt32 = Constants.powerupCollisionBitMask,
                        movement: Movement? = nil) {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
@@ -116,7 +117,7 @@ extension Nexus {
                                                                shape: Shape.circle,
                                                                position: position,
                                                                size: size,
-                                                               collisionBitMask: Constants.powerupCollisionBitMask,
+                                                               collisionBitMask: bitmask,
                                                                velocity: velocity,
                                                                restitution: Constants.powerupRestitution)),
                      to: entity)

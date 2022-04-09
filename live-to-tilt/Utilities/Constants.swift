@@ -37,9 +37,9 @@ struct Constants {
     // Wave
     static let survivalWaveIntervalDuration: CGFloat = 5
     static let randomWaveDelay: Double = 0.1
-    static let randomWaveEnemyCount: Int = 10
-    static let horizontalWaveEnemyCount: Int = 16
-    static let gauntletWaveIntervalDuration: CGFloat = 8
+    static let randomWaveEnemyCount: Int = 30
+    static let horizontalWaveEnemyCount: Int = 20
+    static let gauntletWaveIntervalDuration: CGFloat = 3
     static let gauntletStraightWaveGap: Int = 2
 
     // Powerups
@@ -64,6 +64,7 @@ struct Constants {
     static let enemyCollisionBitMask: UInt32 = 1 << 1
     static let wallCollisionBitMask: UInt32 = 1 << 2
     static let powerupCollisionBitMask: UInt32 = 0xFFFFFFF2
+    static let timePowerupCollisionBitMask: UInt32 = 0xFFFFFFFE
     static let enemyAffectorCollisionBitMask: UInt32 = 0xFFFFFFFD
 
     // Combo
