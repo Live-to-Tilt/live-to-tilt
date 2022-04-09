@@ -14,7 +14,7 @@ class TimePowerup: Powerup {
             return
         }
 
-        let updatedTimeLeft = countdownComponent.timeLeft + Constants.gauntletTimeIncreament
+        let updatedTimeLeft = countdownComponent.timeLeft + Constants.gauntletTimeIncrement
         countdownComponent.timeLeft = min(countdownComponent.maxTime, updatedTimeLeft)
     }
 }
