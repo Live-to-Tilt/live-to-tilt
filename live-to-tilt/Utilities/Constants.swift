@@ -78,4 +78,5 @@ struct Constants {
 
     // Countdown
     static let gauntletMaxTime: CGFloat = 10
+    static let gauntletTimeIncrement: CGFloat = 5
 }

@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class StraightWave: Wave {
+class GauntletStraightWave: Wave {
     func coroutine(nexus: Nexus) {
         let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio - Constants.enemyDiameter / 2
         let maxEnemyCount = Int((Constants.gameArenaHeight / Constants.enemyDiameter).rounded(.down))
@@ -8,7 +8,8 @@ class StraightWave: Wave {
         var spawnY = Constants.enemyDiameter / 2
         for i in  0..<maxEnemyCount {
             if i == powerupIndex {
-                spawnCheckpoint()
+                let spawnPosition = CGPoint(x: maxX, y: spawnY)
+                spawnCheckpoint(at: spawnPosition, nexus: nexus)
             } else if !isWithinRange(of: powerupIndex, index: i) {
                 let spawnPosition = CGPoint(x: maxX, y: spawnY)
                 spawnEnemy(at: spawnPosition, nexus: nexus)
@@ -21,8 +22,10 @@ class StraightWave: Wave {
         abs(index - powerupIndex) <= Constants.gauntletStraightWaveGap
     }
 
-    private func spawnCheckpoint() {
-
+    private func spawnCheckpoint(at position: CGPoint, nexus: Nexus) {
+        var movement: Movement = BaseMovement()
+        movement = DirectionalMovementDecorator(movement: movement, direction: .left)
+        nexus.createPowerup(position: position, powerup: TimePowerup(), movement: movement)
     }
 
     private func spawnEnemy(at position: CGPoint, nexus: Nexus) {
