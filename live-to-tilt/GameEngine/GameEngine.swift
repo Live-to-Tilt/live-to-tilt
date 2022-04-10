@@ -60,7 +60,7 @@ class GameEngine {
     func update(deltaTime: CGFloat, inputForce: CGVector) {
         let scaledTime = deltaTime * timeScale
 
-        gameStats.incrementPlayTime(deltaTime: deltaTime)
+        gameStats.incrementPlayTime(deltaTime: scaledTime)
         updatePlayer(inputForce: inputForce)
         updateSystems(deltaTime: scaledTime)
         publishRenderables()
