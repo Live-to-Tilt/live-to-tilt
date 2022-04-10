@@ -9,9 +9,9 @@ struct GameArenaView: View {
             GameControlView(gameControl: $viewModel.gameControl)
 
             VStack {
-                InfoHStack()
+                TopInfoBar()
                 PlayAreaView()
-                CountdownBar()
+                BottomInfoBar()
             }
             .padding()
             .modifier(RootView())
@@ -27,14 +27,12 @@ struct GameArenaView: View {
         }
     }
 
-    private func InfoHStack() -> some View {
-        let comboBase = viewModel.comboComponent?.base ?? 0
-        let comboMultiplier = viewModel.comboComponent?.multiplier ?? 0
-
-        return HStack {
+    private func TopInfoBar() -> some View {
+        HStack {
             Text("wave 10").modifier(InfoText())
             Spacer()
-            Text("combo \(comboBase) x \(comboMultiplier)").modifier(InfoText())
+            Text("👑 \(AllTimeStats.shared.getHighScore(for: viewModel.gameEngine.gameMode))")
+                .modifier(InfoText())
         }
         .zIndex(10)
         .toast(isPresenting: $viewModel.showAchievement, duration: 1.5) {
@@ -65,24 +63,15 @@ struct GameArenaView: View {
         }
     }
 
-    private func CountdownBar() -> some View {
-        GeometryReader { geometry in
-            if let countdownComponent = viewModel.countdownComponent {
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.white, lineWidth: 2)
-                        .frame(width: geometry.size.width)
-
-                    RoundedRectangle(cornerRadius: 20)
-                        .modifier(CountdownInnerBar(size: geometry.size,
-                                                    timeLeft: countdownComponent.timeLeft,
-                                                    maxTime: countdownComponent.maxTime))
-                }
-            } else {
-                EmptyView()
+    private func BottomInfoBar() -> some View {
+        Group {
+            switch viewModel.gameEngine.gameMode {
+            case .survival:
+                Combo()
+            case .gauntlet:
+                CountdownBar()
             }
         }
-        .frame(height: 20)
     }
 
     private func Score() -> some View {
@@ -107,6 +96,34 @@ struct GameArenaView: View {
             .opacity(renderable.opacity)
             .zIndex(renderable.layer.rawValue)
             .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.2)))
+    }
+
+    private func Combo() -> some View {
+        let comboBase = viewModel.comboComponent?.base ?? 0
+        let comboMultiplier = viewModel.comboComponent?.multiplier ?? 0
+
+        return Text("combo \(comboBase) x \(comboMultiplier)")
+            .modifier(InfoText())
+            .multilineTextAlignment(.center)
+    }
+
+    private func CountdownBar() -> some View {
+        let timeLeft = viewModel.countdownComponent?.timeLeft ?? 0
+        let maxTime = viewModel.countdownComponent?.maxTime ?? 0
+
+        return GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(.white, lineWidth: 2)
+                    .frame(width: geometry.size.width)
+
+                RoundedRectangle(cornerRadius: 20)
+                    .modifier(CountdownInnerBar(size: geometry.size,
+                                                timeLeft: timeLeft,
+                                                maxTime: maxTime))
+            }
+        }
+        .frame(height: 20)
     }
 }
 

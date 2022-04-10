@@ -11,7 +11,7 @@ struct CountdownInnerBar: ViewModifier {
         content
             .foregroundColor(getColor(timeLeft: timeLeft,
                                       maxTime: maxTime))
-            .frame(width: (size.width - padding * 2) * timeLeft / maxTime,
+            .frame(width: max(0, (size.width - padding * 2) * timeLeft / maxTime),
                    height: size.height - padding * 2)
             .padding(padding)
     }
