@@ -14,4 +14,11 @@ struct GameUtils {
 
         return position
     }
+
+    static func isOutsideArena(position: CGPoint) -> Bool {
+        position.x < Constants.leftWallPosition.x ||
+        position.x > Constants.rightWallPosition.x ||
+        position.y > Constants.bottomWallPosition.y ||
+        position.y < Constants.topWallPosition.y
+    }
 }

@@ -18,21 +18,14 @@ class EnemySystem: System {
 
     func lateUpdate(deltaTime: CGFloat) {}
 
-    private func isOutsideArena(_ enemyComponent: EnemyComponent) -> Bool {
-        let entity = enemyComponent.entity
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
-            return false
-        }
-        let physicsBody = physicsComponent.physicsBody
-        let position = physicsBody.position
-        return position.x < Constants.leftWallPosition.x ||
-        position.x > Constants.rightWallPosition.x ||
-        position.y > Constants.bottomWallPosition.y ||
-        position.y < Constants.topWallPosition.y
-    }
-
     private func despawnIfOutsideArena(_ enemyComponent: EnemyComponent) {
-        if isOutsideArena(enemyComponent) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: enemyComponent.entity) else {
+            return
+        }
+
+        let enemyPosition = physicsComponent.physicsBody.position
+
+        if GameUtils.isOutsideArena(position: enemyPosition) {
             nexus.removeEntity(enemyComponent.entity)
         }
     }

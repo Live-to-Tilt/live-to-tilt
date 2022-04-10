@@ -106,6 +106,7 @@
 		729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DC27FFECAC008F55BB /* CloseButton.swift */; };
 		729FA8DF27FFEFA1008F55BB /* SubViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DE27FFEFA1008F55BB /* SubViewHeader.swift */; };
 		729FA8E127FFF861008F55BB /* PickerOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8E027FFF861008F55BB /* PickerOption.swift */; };
+		72AC63512801743300A7C8C6 /* CountdownInnerBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AC63502801743300A7C8C6 /* CountdownInnerBar.swift */; };
 		72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144427FC060000131A83 /* Float+Extensions.swift */; };
 		72B5144727FC17CA00131A83 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144627FC17CA00131A83 /* Int+Extensions.swift */; };
 		72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B5144827FC23F500131A83 /* GameOverStat.swift */; };
@@ -259,6 +260,7 @@
 		729FA8DC27FFECAC008F55BB /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		729FA8DE27FFEFA1008F55BB /* SubViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubViewHeader.swift; sourceTree = "<group>"; };
 		729FA8E027FFF861008F55BB /* PickerOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerOption.swift; sourceTree = "<group>"; };
+		72AC63502801743300A7C8C6 /* CountdownInnerBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownInnerBar.swift; sourceTree = "<group>"; };
 		72B5144427FC060000131A83 /* Float+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144627FC17CA00131A83 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		72B5144827FC23F500131A83 /* GameOverStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverStat.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				7230521527F2EB7700AD753D /* MenuLayout.swift */,
 				7230521727F2EE0600AD753D /* MenuIcon.swift */,
 				729FA8E027FFF861008F55BB /* PickerOption.swift */,
+				72AC63502801743300A7C8C6 /* CountdownInnerBar.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				21BBC8F927E1C66B00C4B5D5 /* MainMenuView.swift in Sources */,
 				21BBC8F827E1C66700C4B5D5 /* GameArenaViewModel.swift in Sources */,
 				21BBC8F727E1C66000C4B5D5 /* CollisionPoints.swift in Sources */,
+				72AC63512801743300A7C8C6 /* CountdownInnerBar.swift in Sources */,
 				21BBC8F627E1C65B00C4B5D5 /* CGPoint+Extensions.swift in Sources */,
 				DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */,
 				DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */,

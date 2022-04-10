@@ -35,11 +35,11 @@ struct Constants {
     static let enemyFrontToBackRatio: CGFloat = 0.8
 
     // Wave
-    static let survivalWaveIntervalDuration: CGFloat = 10
+    static let survivalWaveIntervalDuration: CGFloat = 5
     static let randomWaveDelay: Double = 0.1
-    static let randomWaveEnemyCount: Int = 10
-    static let horizontalWaveEnemyCount: Int = 16
-    static let gauntletWaveIntervalDuration: CGFloat = 10
+    static let randomWaveEnemyCount: Int = 30
+    static let horizontalWaveEnemyCount: Int = 20
+    static let gauntletWaveIntervalDuration: CGFloat = 4
     static let gauntletStraightWaveGap: Int = 2
 
     // Powerups
@@ -64,6 +64,7 @@ struct Constants {
     static let enemyCollisionBitMask: UInt32 = 1 << 1
     static let wallCollisionBitMask: UInt32 = 1 << 2
     static let powerupCollisionBitMask: UInt32 = 0xFFFFFFF2
+    static let timePowerupCollisionBitMask: UInt32 = 0xFFFFFFFE
     static let enemyAffectorCollisionBitMask: UInt32 = 0xFFFFFFFD
 
     // Combo
@@ -77,6 +78,6 @@ struct Constants {
     static let lightsaberActivationScore: Int = 8
 
     // Countdown
-    static let gauntletMaxTime: CGFloat = 10
+    static let gauntletMaxTime: CGFloat = 20
     static let gauntletTimeIncrement: CGFloat = 5
 }
