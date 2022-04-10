@@ -15,15 +15,15 @@ struct GameArenaView: View {
             }
             .padding()
             .modifier(RootView())
+            .onTapGesture {
+                viewModel.pause()
+            }
 
             if viewModel.gameStateComponent?.state == .gameOver {
                 GameOverMenuView(viewModel: viewModel)
             } else if viewModel.gameStateComponent?.state == .pause {
                 PauseMenuView(viewModel: viewModel)
             }
-        }
-        .onTapGesture {
-            viewModel.pause()
         }
     }
 
