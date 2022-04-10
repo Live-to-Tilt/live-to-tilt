@@ -66,17 +66,23 @@ struct GameArenaView: View {
     }
 
     private func CountdownBar() -> some View {
-        viewModel.countdownComponent.map { countdownComponent in
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(.white, lineWidth: 2)
-                    .frame(width: 500, height: 20)
+        GeometryReader { geometry in
+            if let countdownComponent = viewModel.countdownComponent {
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.white, lineWidth: 2)
+                        .frame(width: geometry.size.width)
 
-                RoundedRectangle(cornerRadius: 20)
-                    .modifier(CountdownInnerBar(timeLeft: countdownComponent.timeLeft,
-                                                maxTime: countdownComponent.maxTime))
+                    RoundedRectangle(cornerRadius: 20)
+                        .modifier(CountdownInnerBar(size: geometry.size,
+                                                    timeLeft: countdownComponent.timeLeft,
+                                                    maxTime: countdownComponent.maxTime))
+                }
+            } else {
+                EmptyView()
             }
         }
+        .frame(height: 20)
     }
 
     private func Score() -> some View {

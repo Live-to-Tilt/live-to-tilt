@@ -1,18 +1,19 @@
 import SwiftUI
 
 struct CountdownInnerBar: ViewModifier {
+    var size: CGSize
     var timeLeft: CGFloat
     var maxTime: CGFloat
+
+    private let padding: CGFloat = 4
 
     func body(content: Content) -> some View {
         content
             .foregroundColor(getColor(timeLeft: timeLeft,
                                       maxTime: maxTime))
-            .frame(width: getWidth(timeLeft: timeLeft,
-                                   maxTime: maxTime),
-                   height: 12)
-            .padding(.vertical, 8)
-            .padding(.horizontal, 4)
+            .frame(width: (size.width - padding * 2) * timeLeft / maxTime,
+                   height: size.height - padding * 2)
+            .padding(padding)
     }
 
     private func getColor(timeLeft: CGFloat, maxTime: CGFloat) -> Color {
@@ -23,9 +24,5 @@ struct CountdownInnerBar: ViewModifier {
         } else {
             return .red
         }
-    }
-
-    private func getWidth(timeLeft: CGFloat, maxTime: CGFloat) -> CGFloat {
-        492 * timeLeft / maxTime
     }
 }
