@@ -102,7 +102,7 @@
 		72774A8927DB797A00B0E1DD /* KeyboardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774A8827DB797A00B0E1DD /* KeyboardControl.swift */; };
 		727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727A389927FBF7400046E8F2 /* RootPresentationMode.swift */; };
 		727DD52628041255002B75CC /* WaveStartedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727DD52528041255002B75CC /* WaveStartedEvent.swift */; };
-		727DD52A2804175C002B75CC /* PowerupDespawned.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727DD5292804175C002B75CC /* PowerupDespawned.swift */; };
+		727DD52A2804175C002B75CC /* PowerupDespawnedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727DD5292804175C002B75CC /* PowerupDespawnedEvent.swift */; };
 		729FA8D827FFD95C008F55BB /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8D727FFD95C008F55BB /* HowToPlayView.swift */; };
 		729FA8DB27FFDB3C008F55BB /* GameModePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */; };
 		729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729FA8DC27FFECAC008F55BB /* CloseButton.swift */; };
@@ -258,7 +258,7 @@
 		72774A8827DB797A00B0E1DD /* KeyboardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardControl.swift; sourceTree = "<group>"; };
 		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
 		727DD52528041255002B75CC /* WaveStartedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveStartedEvent.swift; sourceTree = "<group>"; };
-		727DD5292804175C002B75CC /* PowerupDespawned.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupDespawned.swift; sourceTree = "<group>"; };
+		727DD5292804175C002B75CC /* PowerupDespawnedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupDespawnedEvent.swift; sourceTree = "<group>"; };
 		729FA8D727FFD95C008F55BB /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModePicker.swift; sourceTree = "<group>"; };
 		729FA8DC27FFECAC008F55BB /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
@@ -678,7 +678,7 @@
 				72E48B1427FD8FA900FFB66F /* EventIdentifier.swift */,
 				72E48B1027FD8F1100FFB66F /* GameStartedEvent.swift */,
 				72E48B1227FD8F5400FFB66F /* GameEndedEvent.swift */,
-				727DD5292804175C002B75CC /* PowerupDespawned.swift */,
+				727DD5292804175C002B75CC /* PowerupDespawnedEvent.swift */,
 				72E48B1627FD977900FFB66F /* PowerupUsedEvent.swift */,
 				72E48B1827FD9C6500FFB66F /* ScoreChangedEvent.swift */,
 				72E48B1A27FD9E1400FFB66F /* EnemyKilledEvent.swift */,
@@ -975,7 +975,7 @@
 				3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */,
 				72478E9927D7138900B9140A /* Nexus.swift in Sources */,
 				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,
-				727DD52A2804175C002B75CC /* PowerupDespawned.swift in Sources */,
+				727DD52A2804175C002B75CC /* PowerupDespawnedEvent.swift in Sources */,
 				3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupManager.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
