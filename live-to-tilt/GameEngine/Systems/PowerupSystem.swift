@@ -27,6 +27,7 @@ final class PowerupSystem: System {
 
         if GameUtils.isOutsideArena(position: powerupPosition) {
             nexus.removeEntity(powerupComponent.entity)
+            EventManager.shared.postEvent(PowerupDespawnedEvent())
         }
     }
 

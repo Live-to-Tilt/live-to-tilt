@@ -10,6 +10,7 @@ class GameStats {
             onStatUpdated()
         }
     }
+    private(set) var powerupsDespawned: Int = .zero
     private(set) var powerupsUsed: Int = .zero
     private(set) var nukePowerupsUsed: Int = .zero {
         didSet {
@@ -41,6 +42,7 @@ class GameStats {
 
     private func observePublishers() {
         EventManager.shared.registerClosureForEvent(of: GameEndedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosureForEvent(of: PowerupDespawnedEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: PowerupUsedEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: ScoreChangedEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onStatEventRef)
@@ -60,6 +62,9 @@ class GameStats {
         switch event {
         case _ as GameEndedEvent:
             AllTimeStats.shared.addStatsFromLatestGame(self, gameMode)
+
+        case _ as PowerupDespawnedEvent:
+            self.powerupsDespawned += 1
 
         case let powerupUsedEvent as PowerupUsedEvent:
             // NOTE: Probably need to refactor this
@@ -107,7 +112,8 @@ class GameStats {
         case .gauntlet:
             return [
                 GameOverStat(label: "Time", value: playTime.toTimeString()),
-                GameOverStat(label: "Waves Survived", value: wave.withCommas())
+                GameOverStat(label: "Waves", value: wave.withCommas()),
+                GameOverStat(label: "Pickups", value: "\(powerupsUsed) of \(powerupsUsed + powerupsDespawned)")
             ]
         }
     }
