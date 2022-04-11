@@ -1,0 +1,2 @@
+class WaveStartedEvent: Event {
+}

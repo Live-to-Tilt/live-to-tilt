@@ -35,14 +35,14 @@ struct GameOverMenuView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal)
                         .padding(.vertical, 5)
-                        .frame(width: 190, alignment: .trailing)
+                        .frame(width: 250, alignment: .trailing)
                     Text(stat.value)
                         .font(.system(size: 30, weight: .heavy))
                         .foregroundColor(.white)
                         .padding(.horizontal)
                         .padding(.vertical, 5)
                         .background(Color(red: 0.84, green: 0.24, blue: 0.20))
-                        .frame(width: 200, alignment: .leading)
+                        .frame(width: 260, alignment: .leading)
                 }
             }
         }

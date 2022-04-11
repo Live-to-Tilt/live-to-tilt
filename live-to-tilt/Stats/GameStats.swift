@@ -24,6 +24,7 @@ class GameStats {
     }
     private(set) var distanceTravelled: Float = .zero
     private(set) var playTime: Float = .zero
+    private(set) var wave: Int = .zero
 
     init(gameMode: GameMode) {
         self.gameMode = gameMode
@@ -44,6 +45,7 @@ class GameStats {
         EventManager.shared.registerClosureForEvent(of: ScoreChangedEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosureForEvent(of: PlayerMovedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosureForEvent(of: WaveStartedEvent.self, closure: onStatEventRef)
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
@@ -53,7 +55,7 @@ class GameStats {
     /// Update game stats based on the received event
     ///
     /// - Parameters:
-    ///   - event: type of event received
+    ///   - event: event received
     private func onStatEvent(_ event: Event) {
         switch event {
         case _ as GameEndedEvent:
@@ -77,6 +79,9 @@ class GameStats {
         case let playerMovedEvent as PlayerMovedEvent:
             self.distanceTravelled += playerMovedEvent.deltaDistance
 
+        case _ as WaveStartedEvent:
+            self.wave += 1
+
         default:
             return
         }
@@ -92,17 +97,18 @@ class GameStats {
     }
 
     func getGameOverStats() -> [GameOverStat] {
-        var stats: [GameOverStat] = []
-
         switch gameMode {
         case .survival:
-            stats.append(GameOverStat(label: "Score", value: score.withCommas()))
-            stats.append(GameOverStat(label: "Time", value: playTime.toTimeString()))
-            stats.append(GameOverStat(label: "Dead Dots", value: enemiesKilled.withCommas()))
+            return [
+                GameOverStat(label: "Score", value: score.withCommas()),
+                GameOverStat(label: "Time", value: playTime.toTimeString()),
+                GameOverStat(label: "Dead Dots", value: enemiesKilled.withCommas())
+            ]
         case .gauntlet:
-            stats.append(GameOverStat(label: "Time", value: playTime.toTimeString()))
+            return [
+                GameOverStat(label: "Time", value: playTime.toTimeString()),
+                GameOverStat(label: "Waves Survived", value: wave.withCommas())
+            ]
         }
-
-        return stats
     }
 }

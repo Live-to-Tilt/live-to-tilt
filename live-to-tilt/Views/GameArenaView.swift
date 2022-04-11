@@ -29,7 +29,7 @@ struct GameArenaView: View {
 
     private func TopInfoBar() -> some View {
         HStack {
-            Text("wave 10").modifier(InfoText())
+            Text("wave #\(viewModel.gameEngine.gameStats.wave)").modifier(InfoText())
             Spacer()
             Text("👑 \(AllTimeStats.shared.getHighScore(for: viewModel.gameEngine.gameMode))")
                 .modifier(InfoText())
