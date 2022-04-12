@@ -70,11 +70,13 @@ final class EnemyFreezerSystem: System {
                            to: enemyEntity)
 
         // Add vibrating animation
-        let amplitude = CGVector(dx: Constants.enemyDiameter / 12, dy: 0)
+        let amplitude = CGVector(dx: Constants.enemyDiameter * Constants.frozenEnemyAmplitudeRatio,
+                                 dy: .zero)
+        let animation = OscillateAnimation(initialPosition: position,
+                                           amplitude: amplitude,
+                                           frequency: Constants.frozenEnemyOscillateFreq)
         nexus.addComponent(AnimationComponent(entity: enemyEntity,
-                                              animation: OscillateAnimation(initialPosition: position,
-                                                                            amplitude: amplitude,
-                                                                            frequency: 8)),
+                                              animation: animation),
                            to: enemyEntity)
     }
 }

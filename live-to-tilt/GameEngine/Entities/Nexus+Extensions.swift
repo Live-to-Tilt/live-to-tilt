@@ -39,7 +39,8 @@ extension Nexus {
         addComponent(RenderableComponent(entity: entity,
                                          image: .player,
                                          position: Constants.playerSpawnPosition,
-                                         size: Constants.playerSize),
+                                         size: Constants.playerSize,
+                                         layer: .player),
                      to: entity)
         addComponent(PhysicsComponent(entity: entity,
                                       physicsBody: PhysicsBody(isDynamic: true,

@@ -1,4 +1,5 @@
 import Foundation
+
 class EnemyFreezerComponent: Component {
     let entity: Entity
 

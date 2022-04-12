@@ -5,8 +5,8 @@ class SurvivalPowerupManager: PowerupManager {
 
     init() {
         let powerups: [Powerup] = [
-//            NukePowerup(),
-//            LightsaberPowerup(),
+            NukePowerup(),
+            LightsaberPowerup(),
             FreezePowerup()
         ]
         self.powerupIterator = powerups.makeRandomIterator()

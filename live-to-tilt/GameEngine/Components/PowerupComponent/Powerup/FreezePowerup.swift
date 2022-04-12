@@ -29,6 +29,7 @@ extension Nexus {
                                          image: .freezeEffect,
                                          position: position,
                                          size: size,
+                                         opacity: Constants.freezeBlastOpacity,
                                          layer: .powerup),
                      to: entity)
         addComponent(EnemyFreezerComponent(entity: entity), to: entity)
