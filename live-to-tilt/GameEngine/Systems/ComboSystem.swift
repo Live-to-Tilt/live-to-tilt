@@ -52,7 +52,7 @@ class ComboSystem: System {
     }
 
     private func reset(_ comboComponent: ComboComponent) {
-        let comboScore = comboComponent.base * comboComponent.multiplier
+        let comboScore = comboComponent.comboScore
         EventManager.shared.postEvent(ComboExpiredEvent(comboScore: comboScore))
 
         comboComponent.base = .zero

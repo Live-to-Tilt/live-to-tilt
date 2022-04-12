@@ -5,6 +5,9 @@ class ComboComponent: Component {
     var base: Int
     var multiplier: Int
     var elapsedTimeSincePreviousAccumulate: CGFloat
+    var comboScore: Int {
+        base * multiplier
+    }
 
     init(entity: Entity) {
         self.entity = entity
