@@ -24,6 +24,7 @@ struct GameArenaView: View {
             } else if viewModel.gameStateComponent?.state == .pause {
                 PauseMenuView(viewModel: viewModel)
             }
+            ToastsView()
         }
     }
 
@@ -34,12 +35,24 @@ struct GameArenaView: View {
             Text("👑 \(AllTimeStats.shared.getHighScore(for: viewModel.gameEngine.gameMode))")
                 .modifier(InfoText())
         }
-        .zIndex(10)
-        .toast(isPresenting: $viewModel.showAchievement, duration: 1.5, alert: {
-            AlertToast(type: .regular, title: "Achievement Unlocked: \(viewModel.achievement?.name ?? "empty")!")
-        }, completion: {
-            viewModel.nextAchievement()
-        })
+
+    }
+
+    private func ToastsView() -> some View {
+        VStack {
+            Rectangle()
+                .foregroundColor(Color.black.opacity(0.01))
+                .frame(maxWidth: .infinity, maxHeight: 75)
+                .toast(isPresenting: $viewModel.showAchievement, duration: 1.5, alert: {
+                    AlertToast(type: .regular,
+                               title: "Achievement Unlocked: " +
+                               "\(viewModel.achievement?.name ?? "empty")!")
+                }, completion: {
+                    viewModel.nextAchievement()
+                })
+            Spacer()
+        }
+
     }
 
     private func PlayAreaView() -> some View {
