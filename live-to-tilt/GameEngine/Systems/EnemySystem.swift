@@ -44,11 +44,25 @@ class EnemySystem: System {
             return
         }
 
+        if isFrozen(enemyComponent) {
+            killEnemy(enemyComponent)
+            return
+        }
+
         if isRecentlySpawned(enemyComponent) {
             return
         }
 
         endGame()
+    }
+
+    private func isFrozen(_ enemyComponent: EnemyComponent) -> Bool {
+        nexus.hasComponent(FreezeComponent.self, in: enemyComponent.entity)
+    }
+
+    private func killEnemy(_ enemyComponent: EnemyComponent) {
+        EventManager.shared.postEvent(EnemyKilledEvent())
+        nexus.removeEntity(enemyComponent.entity)
     }
 
     private func isRecentlySpawned(_ enemyComponent: EnemyComponent) -> Bool {

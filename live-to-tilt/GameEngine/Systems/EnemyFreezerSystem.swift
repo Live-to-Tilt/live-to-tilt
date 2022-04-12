@@ -38,15 +38,17 @@ final class EnemyFreezerSystem: System {
 
         let size = CGSize(width: Constants.enemyDiameter * 1.2, height: Constants.enemyDiameter * 1.2)
         let physicsBody = physicsComponent.physicsBody
-        nexus.addComponent(FreezeComponent(entity: collidedEntity), to: collidedEntity)
         let renderables = nexus.getComponents(of: RenderableComponent.self, for: collidedEntity)
+
+        nexus.addComponent(FreezeComponent(entity: collidedEntity), to: collidedEntity)
         nexus.addComponent(RenderableComponent(entity: collidedEntity,
                                                image: .enemyFrozen,
                                                position: physicsBody.position,
                                                size: size,
                                                layer: .enemyEffect),
                            to: collidedEntity)
-        let closure = {
+
+        let unfreezeEnemy = {
             self.nexus.removeComponents(of: FreezeComponent.self, for: collidedEntity)
             self.nexus.removeComponents(of: RenderableComponent.self, for: collidedEntity)
             renderables.forEach { renderable in
@@ -55,7 +57,7 @@ final class EnemyFreezerSystem: System {
         }
         nexus.addComponent(TimedClosureComponent(entity: collidedEntity,
                                                  timeLeft: 2,
-                                                 closure: closure),
+                                                 closure: unfreezeEnemy),
                            to: collidedEntity)
     }
 }
