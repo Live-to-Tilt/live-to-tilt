@@ -2,19 +2,19 @@ import CoreGraphics
 
 class FreezePowerup: Powerup {
     let orbImage: ImageAsset
-    let activationScore: Int = Constants.freezeActivationScoree
+    let activationScore: Int = Constants.freezeActivationScore
 
     init() {
         self.orbImage = .freezeOrb
     }
 
     func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
-        nexus.createFreezeEffect(position: powerupPosition)
+        nexus.createFreezeBlast(position: powerupPosition)
     }
 }
 
 extension Nexus {
-    func createFreezeEffect(position: CGPoint) {
+    func createFreezeBlast(position: CGPoint) {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
         let physicsBody = PhysicsBody(isDynamic: false,
@@ -32,12 +32,11 @@ extension Nexus {
                                          layer: .powerup),
                      to: entity)
         addComponent(EnemyFreezerComponent(entity: entity), to: entity)
-//        TODO: replace constants
-        addComponent(LifespanComponent(entity: entity, lifespan: Constants.nukeExplosionLifespan), to: entity)
+        addComponent(LifespanComponent(entity: entity, lifespan: Constants.freezeBlastLifespan), to: entity)
         addComponent(AnimationComponent(entity: entity,
                                         animation: ScaleAnimation(initialSize: size,
-                                                                  scale: Constants.nukeExplosionScale,
-                                                                  duration: Constants.nukeExplosionAnimationDuration)),
+                                                                  scale: Constants.freezeBlastScale,
+                                                                  duration: Constants.freezeBlastAnimationDuration)),
                      to: entity)
     }
 }

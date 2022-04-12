@@ -23,7 +23,7 @@ final class MovementSystem: System {
 
     private func updateMovement(_ movementComponent: MovementComponent, deltaTime: CGFloat) {
         let entity = movementComponent.entity
-        if nexus.hasComponent(FreezeComponent.self, in: entity) {
+        if nexus.hasComponent(FrozenComponent.self, in: entity) {
             return
         }
 

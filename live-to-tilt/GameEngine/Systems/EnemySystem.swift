@@ -57,7 +57,7 @@ class EnemySystem: System {
     }
 
     private func isFrozen(_ enemyComponent: EnemyComponent) -> Bool {
-        nexus.hasComponent(FreezeComponent.self, in: enemyComponent.entity)
+        nexus.hasComponent(FrozenComponent.self, in: enemyComponent.entity)
     }
 
     private func killEnemy(_ enemyComponent: EnemyComponent) {
