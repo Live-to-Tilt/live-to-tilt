@@ -60,7 +60,7 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
         }
 
         if player.isPlaying {
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 self.playUsingDuplicatePlayer(soundEffect)
             }
         }
@@ -150,12 +150,10 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
     }
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        DispatchQueue.main.async {
-            guard let index = self.duplicatePlayers.firstIndex(of: player) else {
-                return
-            }
-
-            self.duplicatePlayers.remove(at: index)
+        guard let index = self.duplicatePlayers.firstIndex(of: player) else {
+            return
         }
+
+        self.duplicatePlayers.remove(at: index)
     }
 }
