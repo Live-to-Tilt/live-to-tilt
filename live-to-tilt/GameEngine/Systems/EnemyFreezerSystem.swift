@@ -35,15 +35,21 @@ final class EnemyFreezerSystem: System {
 
         // If already frozen, check if collision is with a different enemyFreezer
         if let frozenComponent = nexus.getComponent(of: FrozenComponent.self, for: collidedEntity) {
-            // If new enemyFreezer, increment frozen duration
-            if !frozenComponent.frozenBy.contains(enemyFreezerId) {
-                frozenComponent.frozenBy.insert(enemyFreezerId)
-                frozenComponent.timeLeft += Constants.frozenEnemyDuration
-            }
+            incrementFrozenDuration(frozenComponent, enemyFreezerId)
             return
         }
 
         freezeEnemy(enemyEntity: collidedEntity, enemyFreezerId)
+    }
+
+    private func incrementFrozenDuration(_ frozenComponent: FrozenComponent, _ enemyFreezerId: ObjectIdentifier) {
+        let frozenBy = frozenComponent.frozenBy
+
+        // If new enemyFreezer, increment frozen duration
+        if !frozenBy.contains(enemyFreezerId) {
+            frozenComponent.frozenBy.insert(enemyFreezerId)
+            frozenComponent.timeLeft += Constants.frozenEnemyDuration
+        }
     }
 
     private func freezeEnemy(enemyEntity: Entity, _ enemyFreezerId: ObjectIdentifier) {

@@ -23,7 +23,7 @@ final class FrozenSystem: System {
     }
 
     private func unfreeze(_ frozenComponent: FrozenComponent) {
-        if frozenComponent.timeLeft <= 0 {
+        if frozenComponent.timeLeft <= .zero {
             let entity = frozenComponent.entity
             nexus.removeComponents(of: FrozenComponent.self, for: entity)
             nexus.removeComponents(of: AnimationComponent.self, for: entity)
