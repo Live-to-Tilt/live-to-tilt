@@ -6,6 +6,9 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
     var soundtrackVolume: Float {
         defaults.float(forKey: .soundtrackVolume)
     }
+    var soundEffectVolume: Float {
+        defaults.float(forKey: .soundEffectVolume)
+    }
     private let defaults: UserDefaults
 
     private var soundtrackData: [Soundtrack: Data]
@@ -25,8 +28,8 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
         super.init()
 
         defaults.register(defaults: [
-            .soundtrackVolume: Constants.defaultSoundtrackVolume,
-            .soundEffectVolume: Constants.defaultSoundEffectVolume
+            .soundtrackVolume: Constants.defaultVolume,
+            .soundEffectVolume: Constants.defaultVolume
         ])
 
         for soundtrack in Soundtrack.allCases {
@@ -62,12 +65,18 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
             }
         }
 
+        let volume = soundEffectVolume
+        player.volume = volume
         player.play()
     }
 
-    func setSountrackVolume(to volume: Float) {
+    func setSoundtrackVolume(to volume: Float) {
         soundtrackPlayer?.logarithmicVolume = volume
         defaults.setValue(volume, forKey: .soundtrackVolume)
+    }
+
+    func setSoundEffectVolume(to volume: Float) {
+        defaults.setValue(volume, forKey: .soundEffectVolume)
     }
 
     private func load(_ soundtrack: Soundtrack) {
@@ -90,7 +99,7 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
         }
 
         do {
-            let volume = UserDefaults.standard.float(forKey: .soundtrackVolume)
+            let volume = soundtrackVolume
             let newPlayer = try AVAudioPlayer(data: data)
             newPlayer.numberOfLoops = -1
             newPlayer.logarithmicVolume = volume
@@ -107,7 +116,7 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
         }
 
         do {
-            let volume = UserDefaults.standard.float(forKey: .soundEffectVolume)
+            let volume = soundEffectVolume
             let newPlayer = try AVAudioPlayer(data: data)
             newPlayer.logarithmicVolume = volume
             return newPlayer

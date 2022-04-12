@@ -8,7 +8,9 @@ struct SettingsView: View {
         VStack {
             SubViewHeader(title: "Settings", closeButtonAction: { self.presentationMode.wrappedValue.dismiss() })
 
-            VolumeSettingHStack()
+            SoundtrackVolumeSettingHStack()
+
+            SoundEffectVolumeSettingHStack()
 
             SensitivitySettingHStack()
 
@@ -18,12 +20,22 @@ struct SettingsView: View {
         .modifier(RootView())
     }
 
-    private func VolumeSettingHStack() -> some View {
+    private func SoundtrackVolumeSettingHStack() -> some View {
         HStack {
-            Text("Volume").modifier(HeadingOneText())
+            Text("BGM").modifier(HeadingOneText())
 
             Slider(value: $viewModel.soundtrackVolume,
-                   in: CGFloat(Constants.minSoundtrackVolume)...CGFloat(Constants.maxSoundtrackVolume))
+                   in: CGFloat(Constants.minVolume)...CGFloat(Constants.maxVolume))
+                .padding()
+        }
+    }
+
+    private func SoundEffectVolumeSettingHStack() -> some View {
+        HStack {
+            Text("SFX").modifier(HeadingOneText())
+
+            Slider(value: $viewModel.soundEffectVolume,
+                   in: CGFloat(Constants.minVolume)...CGFloat(Constants.maxVolume))
                 .padding()
         }
     }

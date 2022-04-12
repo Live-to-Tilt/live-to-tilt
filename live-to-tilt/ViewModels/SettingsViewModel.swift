@@ -5,7 +5,13 @@ import Foundation
 class SettingsViewModel: ObservableObject {
     @Published var soundtrackVolume: CGFloat {
         didSet {
-            AudioController.shared.setSountrackVolume(to: Float(soundtrackVolume))
+            AudioController.shared.setSoundtrackVolume(to: Float(soundtrackVolume))
+        }
+    }
+
+    @Published var soundEffectVolume: CGFloat {
+        didSet {
+            AudioController.shared.setSoundEffectVolume(to: Float(soundEffectVolume))
         }
     }
 
@@ -23,6 +29,7 @@ class SettingsViewModel: ObservableObject {
 
     init() {
         soundtrackVolume = CGFloat(AudioController.shared.soundtrackVolume)
+        soundEffectVolume = CGFloat(AudioController.shared.soundEffectVolume)
         sensitivity = CGFloat(GameControlManager.shared.sensitivity)
         gameControlType = GameControlManager.shared.gameControlType
     }
