@@ -65,7 +65,8 @@ extension AllTimeStatsGroup {
         func checkIfCompleted(gameStats: GameStats?) -> Bool {
             if !isCompleted
                 && AllTimeStats.shared.totalNukePowerupsUsed >= criterion
-                && AllTimeStats.shared.totalLightsaberPowerupsUsed >= criterion {
+                && AllTimeStats.shared.totalLightsaberPowerupsUsed >= criterion
+                && AllTimeStats.shared.totalFreezePowerupUsed >= criterion {
                 isCompleted = true
                 return true
             }

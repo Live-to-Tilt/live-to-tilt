@@ -24,6 +24,9 @@ class AllTimeStats {
     var totalLightsaberPowerupsUsed: Int {
         defaults.integer(forKey: .totalLightsaberPowerupsUsed)
     }
+    var totalFreezePowerupUsed: Int {
+        defaults.integer(forKey: .totalFreezePowerupsUsed)
+    }
     var totalEnemiesKilled: Int {
         defaults.integer(forKey: .totalEnemiesKilled)
     }
@@ -50,6 +53,7 @@ class AllTimeStats {
                                      .totalPowerupsUsed: 0,
                                      .totalNukePowerupsUsed: 0,
                                      .totalLightsaberPowerupsUsed: 0,
+                                     .totalFreezePowerupsUsed: 0,
                                      .totalEnemiesKilled: 0,
                                      .totalDistanceTravelled: 0,
                                      .survivalHighScore: 0,
@@ -77,6 +81,8 @@ class AllTimeStats {
                           forKey: .totalNukePowerupsUsed)
         defaults.setValue(totalLightsaberPowerupsUsed + gameStats.lightsaberPowerupsUsed,
                           forKey: .totalLightsaberPowerupsUsed)
+        defaults.setValue(totalFreezePowerupUsed + gameStats.freezePowerupsUsed,
+                          forKey: .totalFreezePowerupsUsed)
         defaults.setValue(totalEnemiesKilled + gameStats.enemiesKilled,
                           forKey: .totalEnemiesKilled)
         defaults.setValue(totalDistanceTravelled + gameStats.distanceTravelled,

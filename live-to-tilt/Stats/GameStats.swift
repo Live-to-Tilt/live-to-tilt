@@ -10,6 +10,7 @@ class GameStats {
     private(set) var powerupsUsed: Int = .zero
     private(set) var nukePowerupsUsed: Int = .zero
     private(set) var lightsaberPowerupsUsed: Int = .zero
+    private(set) var freezePowerupsUsed: Int = .zero
     private(set) var enemiesKilled: Int = .zero {
         didSet {
             EventManager.shared.postEvent(EnemiesKilledStatUpdateEvent(gameStats: self))
@@ -60,6 +61,8 @@ class GameStats {
                 self.nukePowerupsUsed += 1
             } else if powerupUsedEvent.powerup is LightsaberPowerup {
                 self.lightsaberPowerupsUsed += 1
+            } else if powerupUsedEvent.powerup is FreezePowerup {
+                self.freezePowerupsUsed += 1
             }
             self.powerupsUsed += 1
 
