@@ -150,10 +150,10 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
     }
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        guard let index = self.duplicatePlayers.firstIndex(of: player) else {
+        guard let index = duplicatePlayers.firstIndex(of: player) else {
             return
         }
 
-        self.duplicatePlayers.remove(at: index)
+        duplicatePlayers.remove(at: index)
     }
 }
