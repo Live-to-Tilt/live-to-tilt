@@ -32,6 +32,7 @@
 		3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480727D8BDDF00D46B84 /* AudioController.swift */; };
 		3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13480C27D8C87400D46B84 /* UserDefaultsKey.swift */; };
 		3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D13481227D8D89100D46B84 /* SettingsViewModel.swift */; };
+		3D1E7947280566F7000D6C41 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E7946280566F7000D6C41 /* SoundEffect.swift */; };
 		3D26556328008EA100AB9F9F /* TimePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26556228008EA100AB9F9F /* TimePowerup.swift */; };
 		3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */; };
 		3D2B39E327F7EDF400693B3B /* GauntletStraightWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GauntletStraightWave.swift */; };
@@ -191,6 +192,7 @@
 		3D13480E27D8CB7900D46B84 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		3D13481027D8D86000D46B84 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3D13481227D8D89100D46B84 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3D1E7946280566F7000D6C41 /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		3D26556228008EA100AB9F9F /* TimePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePowerup.swift; sourceTree = "<group>"; };
 		3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionView.swift; sourceTree = "<group>"; };
 		3D2B39E227F7EDF400693B3B /* GauntletStraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletStraightWave.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 		3D12D9D927D61F1C00D01489 /* AudioEngine */ = {
 			isa = PBXGroup;
 			children = (
+				3D1E7946280566F7000D6C41 /* SoundEffect.swift */,
 				3D13480527D8BDA900D46B84 /* Soundtrack.swift */,
 				3D13480727D8BDDF00D46B84 /* AudioController.swift */,
 			);
@@ -971,6 +974,7 @@
 				3DEA51B627FC9249001D6CB5 /* EnemyKillerSystem.swift in Sources */,
 				3DB3742227F4B1200053F400 /* CopyMovementDecorator.swift in Sources */,
 				3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */,
+				3D1E7947280566F7000D6C41 /* SoundEffect.swift in Sources */,
 				729FA8DD27FFECAC008F55BB /* CloseButton.swift in Sources */,
 				72EC6AAD27E2EC3200FCCB7E /* PhysicsSystem.swift in Sources */,
 				2106AA4427F5B021005EBB62 /* EnemySystem.swift in Sources */,

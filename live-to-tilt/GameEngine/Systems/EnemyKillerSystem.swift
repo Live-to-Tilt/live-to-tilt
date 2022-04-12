@@ -33,6 +33,9 @@ final class EnemyKillerSystem: System {
         }
 
         EventManager.shared.postEvent(EnemyKilledEvent())
+        if let soundEffect = enemyKillerComponent.soundEffect {
+            AudioController.shared.play(soundEffect)
+        }
         nexus.removeEntity(collidedEntity)
     }
 }

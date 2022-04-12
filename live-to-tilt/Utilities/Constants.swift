@@ -9,6 +9,7 @@ struct Constants {
     // Audio
     static let audioFadeDuration: Double = 1
     static let defaultSoundtrackVolume: Float = 1
+    static let defaultSoundEffectVolume: Float = 1
     static let minSoundtrackVolume: Float = 0
     static let maxSoundtrackVolume: Float = 2
 

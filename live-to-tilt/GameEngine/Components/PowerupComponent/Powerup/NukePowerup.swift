@@ -32,7 +32,7 @@ extension Nexus {
                                          size: size,
                                          layer: .powerup),
                      to: entity)
-        addComponent(EnemyKillerComponent(entity: entity), to: entity)
+        addComponent(EnemyKillerComponent(entity: entity, soundEffect: .nukeEnemyDeath), to: entity)
         addComponent(LifespanComponent(entity: entity, lifespan: Constants.nukeExplosionLifespan), to: entity)
         addComponent(AnimationComponent(entity: entity,
                                         animation: ScaleAnimation(initialSize: size,
