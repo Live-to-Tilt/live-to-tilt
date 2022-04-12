@@ -73,7 +73,20 @@ class EnemySystem: System {
     }
 
     private func endGame() {
+        endComboEarly()
+
         let gameStateComponent = nexus.getComponent(of: GameStateComponent.self)
         gameStateComponent?.state = .gameOver
+    }
+
+    private func endComboEarly() {
+        guard let comboComponent = nexus.getComponent(of: ComboComponent.self) else {
+            return
+        }
+
+        let comboScore = comboComponent.comboScore
+        if comboScore > 0 {
+            EventManager.shared.postEvent(ComboExpiredEvent(comboScore: comboScore))
+        }
     }
 }
