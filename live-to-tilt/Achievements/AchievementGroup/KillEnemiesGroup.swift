@@ -1,18 +1,17 @@
 class KillEnemiesGroup: AchievementGroup {
-    var achievementManagerDelegate: AchievementManagerDelegate
+    weak var achievementManagerDelegate: AchievementManagerDelegate?
     var achievementTiers: [Achievement]
 
-    init(achievementManagerDelegate: AchievementManagerDelegate) {
-        self.achievementManagerDelegate = achievementManagerDelegate
+    init() {
+        self.achievementManagerDelegate = nil
         self.achievementTiers = [
             KillEnemiesTier(criterion: 10),
             KillEnemiesTier(criterion: 25),
             KillEnemiesTier(criterion: 50),
             KillEnemiesTier(criterion: 100),
             KillEnemiesTier(criterion: 250),
-            KillEnemiesTier(criterion: 1000),
+            KillEnemiesTier(criterion: 1_000)
         ]
-        subscribeToEvents()
     }
 
     func subscribeToEvents() {
@@ -41,7 +40,10 @@ extension KillEnemiesGroup {
             self.criterion = criterion
         }
 
-        func checkIfCompleted(gameStats: GameStats) -> Bool {
+        func checkIfCompleted(gameStats: GameStats?) -> Bool {
+            guard let gameStats = gameStats else {
+                return false
+            }
             if !isCompleted && gameStats.enemiesKilled >= criterion {
                 isCompleted = true
                 return true

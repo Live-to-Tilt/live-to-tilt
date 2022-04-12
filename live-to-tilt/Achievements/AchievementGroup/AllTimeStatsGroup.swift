@@ -1,14 +1,17 @@
 class AllTimeStatsGroup: AchievementGroup {
     var achievementTiers: [Achievement]
-    var achievementManagerDelegate: AchievementManagerDelegate
+    weak var achievementManagerDelegate: AchievementManagerDelegate?
 
-    init(achievementManagerDelegate: AchievementManagerDelegate) {
-        self.achievementManagerDelegate = achievementManagerDelegate
+    init() {
+        self.achievementManagerDelegate = nil
         self.achievementTiers = [
-            TotalScore(criterion: 500),
-            TotalScore(criterion: 1000)
+            TotalScore(criterion: 100),
+            TotalScore(criterion: 1000),
+            TotalScore(criterion: 5000),
+            TotalScore(criterion: 10000),
+            UseAllPowerups(criterion: 5),
+            UseAllPowerups(criterion: 10)
         ]
-        subscribeToEvents()
     }
 
     func subscribeToEvents() {
@@ -18,10 +21,10 @@ class AllTimeStatsGroup: AchievementGroup {
 
     private lazy var onAllTimeStatsUpdated = { [weak self] (_ event: Event) -> Void in
         guard let self = self,
-              let statUpdateEvent = event as? EnemiesKilledStatUpdateEvent else {
+              let statUpdateEvent = event as? AllTimeStatsUpdatedEvent else {
                   return
               }
-        self.checkIfCompleted(gameStats: statUpdateEvent.gameStats)
+        self.checkIfCompleted(gameStats: nil)
     }
 }
 
@@ -37,8 +40,31 @@ extension AllTimeStatsGroup {
             self.criterion = criterion
         }
 
-        func checkIfCompleted(gameStats: GameStats) -> Bool {
+        func checkIfCompleted(gameStats: GameStats?) -> Bool {
             if !isCompleted && AllTimeStats.shared.totalScore >= criterion {
+                isCompleted = true
+                return true
+            }
+            return false
+        }
+    }
+
+    class UseAllPowerups: Achievement {
+        var name: String {
+            "Use all powerups at least \(criterion) times"
+        }
+        var isCompleted = false
+        var criterion: Int
+
+        init(criterion: Int) {
+            self.criterion = criterion
+        }
+
+        func checkIfCompleted(gameStats: GameStats?) -> Bool {
+            if !isCompleted
+                && AllTimeStats.shared.totalNukePowerupsUsed >= criterion
+                && AllTimeStats.shared.totalLightsaberPowerupsUsed >= criterion
+            {
                 isCompleted = true
                 return true
             }

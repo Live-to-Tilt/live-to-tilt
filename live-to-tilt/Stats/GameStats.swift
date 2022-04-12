@@ -5,22 +5,13 @@ import CoreGraphics
  */
 class GameStats {
     private let gameMode: GameMode
-    private(set) var score: Int = .zero {
-        didSet {
-            onStatUpdated()
-        }
-    }
+    private(set) var score: Int = .zero
     private(set) var powerupsDespawned: Int = .zero
     private(set) var powerupsUsed: Int = .zero
-    private(set) var nukePowerupsUsed: Int = .zero {
-        didSet {
-            onStatUpdated()
-        }
-    }
+    private(set) var nukePowerupsUsed: Int = .zero
     private(set) var lightsaberPowerupsUsed: Int = .zero
     private(set) var enemiesKilled: Int = .zero {
         didSet {
-            // onStatUpdated() TODO: Make more extensible somehow
             EventManager.shared.postEvent(EnemiesKilledStatUpdateEvent(gameStats: self))
         }
     }
@@ -35,10 +26,6 @@ class GameStats {
 
     func incrementPlayTime(deltaTime: CGFloat) {
         playTime += Float(deltaTime)
-    }
-
-    func onStatUpdated() {
-        EventManager.shared.postEvent(GameStatsUpdatedEvent(gameStats: self))
     }
 
     private func observePublishers() {

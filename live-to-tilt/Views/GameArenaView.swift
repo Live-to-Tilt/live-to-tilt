@@ -35,9 +35,11 @@ struct GameArenaView: View {
                 .modifier(InfoText())
         }
         .zIndex(10)
-        .toast(isPresenting: $viewModel.showAchievement, duration: 1.5) {
+        .toast(isPresenting: $viewModel.showAchievement, duration: 1.5, alert: {
             AlertToast(type: .regular, title: "Achievement Unlocked: \(viewModel.achievement?.name ?? "empty")!")
-        }
+        }, completion: {
+            viewModel.nextAchievement()
+        })
     }
 
     private func PlayAreaView() -> some View {
