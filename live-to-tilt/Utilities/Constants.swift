@@ -76,6 +76,7 @@ struct Constants {
     static let enemyKilledScore: Int = 10
     static let nukeActivationScore: Int = 3
     static let lightsaberActivationScore: Int = 8
+    static let freezeActivationScoree: Int = 4
 
     // Countdown
     static let gauntletMaxTime: CGFloat = 20

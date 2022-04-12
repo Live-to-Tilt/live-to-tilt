@@ -48,6 +48,7 @@ class GameEngine {
             ScoreSystem(nexus: nexus),
             CountdownSystem(nexus: nexus),
             EnemyKillerSystem(nexus: nexus),
+            EnemyFreezerSystem(nexus: nexus),
             LifespanSystem(nexus: nexus),
             AnimationSystem(nexus: nexus)
         ]
