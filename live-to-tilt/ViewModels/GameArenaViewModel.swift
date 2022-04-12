@@ -5,8 +5,9 @@ class GameArenaViewModel: ObservableObject {
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
     @Published var countdownComponent: CountdownComponent?
-    @Published var achievement: Achievement?
     @Published var showAchievement = false
+    @Published var achievement: Achievement?
+    var achievements: [Achievement]
 
     var gameEngine: GameEngine
     var gameControl: GameControl
@@ -21,6 +22,7 @@ class GameArenaViewModel: ObservableObject {
         gameControl = GameControlManager.shared.gameControl
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         achievementManager = AchievementManager()
+        achievements = []
         gameRenderer.start()
         attachPublishers()
     }
@@ -65,12 +67,12 @@ class GameArenaViewModel: ObservableObject {
             self?.countdownComponent = countdownComponent
         }.store(in: &cancellables)
 
-        achievementManager.$newAchievement.sink { [weak self] newAchievement in
-            guard let achievement = newAchievement else {
-                return
+        achievementManager.$newAchievements.sink { [weak self] newAchievements in
+            self?.achievements = newAchievements // TODO: Should be append
+            if self?.achievements.count ?? 0 > 0 {
+                self?.achievement = self?.achievements.removeFirst()
+                self?.showAchievement = true
             }
-            self?.achievement = achievement
-            self?.showAchievement = true
         }.store(in: &cancellables)
     }
 

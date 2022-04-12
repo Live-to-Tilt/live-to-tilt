@@ -20,7 +20,8 @@ class GameStats {
     private(set) var lightsaberPowerupsUsed: Int = .zero
     private(set) var enemiesKilled: Int = .zero {
         didSet {
-            onStatUpdated()
+            // onStatUpdated() TODO: Make more extensible somehow
+            EventManager.shared.postEvent(EnemiesKilledStatUpdateEvent(gameStats: self))
         }
     }
     private(set) var distanceTravelled: Float = .zero
