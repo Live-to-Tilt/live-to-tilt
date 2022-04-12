@@ -18,13 +18,13 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
         ]
         registerAchievementManagerDelegate()
         registerAchievements()
-        subscribeToEvents()
+        setUpAchievementGroups()
     }
 
     func reinit() {
         self.newAchievement = nil
         resetAchievementGroups()
-        subscribeToEvents()
+        setUpAchievementGroups()
     }
 
     func achievementIsCompleted(_ achievement: Achievement) {
@@ -38,9 +38,10 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
         }
     }
 
-    private func subscribeToEvents() {
+    private func setUpAchievementGroups() {
         achievementGroups.forEach { achievementGroup in
             achievementGroup.subscribeToEvents()
+            achievementGroup.markCompletedNonRepeatableEvents(storage: storage)
         }
     }
 

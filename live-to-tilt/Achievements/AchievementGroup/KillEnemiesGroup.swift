@@ -32,6 +32,7 @@ extension KillEnemiesGroup {
     class KillEnemiesTier: Achievement {
         var criterion: Int
         var isCompleted = false
+        var isRepeatable = true
         var name: String {
             "Kill \(criterion) enemies"
         }

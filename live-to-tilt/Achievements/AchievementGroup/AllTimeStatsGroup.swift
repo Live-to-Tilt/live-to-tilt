@@ -6,9 +6,9 @@ class AllTimeStatsGroup: AchievementGroup {
         self.achievementManagerDelegate = nil
         self.achievementTiers = [
             TotalScore(criterion: 100),
-            TotalScore(criterion: 1000),
-            TotalScore(criterion: 5000),
-            TotalScore(criterion: 10000),
+            TotalScore(criterion: 1_000),
+            TotalScore(criterion: 5_000),
+            TotalScore(criterion: 10_000),
             UseAllPowerups(criterion: 5),
             UseAllPowerups(criterion: 10)
         ]
@@ -34,6 +34,7 @@ extension AllTimeStatsGroup {
             "Earn \(criterion) points across all games"
         }
         var isCompleted = false
+        var isRepeatable = false
         var criterion: Int
 
         init(criterion: Int) {
@@ -54,6 +55,7 @@ extension AllTimeStatsGroup {
             "Use all powerups at least \(criterion) times"
         }
         var isCompleted = false
+        var isRepeatable = false
         var criterion: Int
 
         init(criterion: Int) {
@@ -63,8 +65,7 @@ extension AllTimeStatsGroup {
         func checkIfCompleted(gameStats: GameStats?) -> Bool {
             if !isCompleted
                 && AllTimeStats.shared.totalNukePowerupsUsed >= criterion
-                && AllTimeStats.shared.totalLightsaberPowerupsUsed >= criterion
-            {
+                && AllTimeStats.shared.totalLightsaberPowerupsUsed >= criterion {
                 isCompleted = true
                 return true
             }
