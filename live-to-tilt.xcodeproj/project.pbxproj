@@ -135,6 +135,8 @@
 		72F1391B280530F8000951A7 /* EnemyFreezerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1391A280530F8000951A7 /* EnemyFreezerComponent.swift */; };
 		72F1391D28053177000951A7 /* EnemyFreezerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1391C28053177000951A7 /* EnemyFreezerSystem.swift */; };
 		72F1391F28053291000951A7 /* FreezeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1391E28053291000951A7 /* FreezeComponent.swift */; };
+		72F1392128053C1A000951A7 /* TimedClosureComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1392028053C1A000951A7 /* TimedClosureComponent.swift */; };
+		72F1392328053F15000951A7 /* TimedClosureSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1392228053F15000951A7 /* TimedClosureSystem.swift */; };
 		DB0A621527EDA4730033E23B /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0A621427EDA4730033E23B /* EventManager.swift */; };
 		DB77AF3927F7722E00F8DE4C /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */; };
 		DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */; };
@@ -295,6 +297,8 @@
 		72F1391A280530F8000951A7 /* EnemyFreezerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyFreezerComponent.swift; sourceTree = "<group>"; };
 		72F1391C28053177000951A7 /* EnemyFreezerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyFreezerSystem.swift; sourceTree = "<group>"; };
 		72F1391E28053291000951A7 /* FreezeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreezeComponent.swift; sourceTree = "<group>"; };
+		72F1392028053C1A000951A7 /* TimedClosureComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedClosureComponent.swift; sourceTree = "<group>"; };
+		72F1392228053F15000951A7 /* TimedClosureSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedClosureSystem.swift; sourceTree = "<group>"; };
 		DB0A621427EDA4730033E23B /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		DB77AF3827F7722E00F8DE4C /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		DB88975D27DC360E00F72B9C /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
@@ -617,6 +621,7 @@
 				72F1391A280530F8000951A7 /* EnemyFreezerComponent.swift */,
 				3DEA51B727FC93A4001D6CB5 /* LifespanComponent.swift */,
 				72F1391E28053291000951A7 /* FreezeComponent.swift */,
+				72F1392028053C1A000951A7 /* TimedClosureComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 				72F1391C28053177000951A7 /* EnemyFreezerSystem.swift */,
 				3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */,
 				3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */,
+				72F1392228053F15000951A7 /* TimedClosureSystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -876,6 +882,7 @@
 				3DEA51B227FC8C0E001D6CB5 /* LightsaberPowerup.swift in Sources */,
 				72E48B1B27FD9E1400FFB66F /* EnemyKilledEvent.swift in Sources */,
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
+				72F1392328053F15000951A7 /* TimedClosureSystem.swift in Sources */,
 				72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */,
 				3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */,
 				729FA8E127FFF861008F55BB /* PickerOption.swift in Sources */,
@@ -976,6 +983,7 @@
 				72478EA827D73B0500B9140A /* Constants.swift in Sources */,
 				DBEC91EB27D7B8A300B0E750 /* CGSize+Extensions.swift in Sources */,
 				DBEC91EC27D7B8A300B0E750 /* Shape.swift in Sources */,
+				72F1392128053C1A000951A7 /* TimedClosureComponent.swift in Sources */,
 				72B5144927FC23F500131A83 /* GameOverStat.swift in Sources */,
 				72E48B2527FE9F2400FFB66F /* Achievement.swift in Sources */,
 				3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */,
