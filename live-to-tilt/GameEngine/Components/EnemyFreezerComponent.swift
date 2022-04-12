@@ -1,3 +1,4 @@
+import Foundation
 class EnemyFreezerComponent: Component {
     let entity: Entity
 
@@ -5,3 +6,5 @@ class EnemyFreezerComponent: Component {
         self.entity = entity
     }
 }
+
+extension EnemyFreezerComponent: Identifiable {}

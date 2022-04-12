@@ -28,37 +28,53 @@ final class EnemyFreezerSystem: System {
     private func handleEnemyCollision(_ enemyFreezerComponent: EnemyFreezerComponent,
                                       _ collisionComponent: CollisionComponent) {
         let collidedEntity = collisionComponent.collidedEntity
-        guard
-            nexus.hasComponent(EnemyComponent.self, in: collidedEntity),
-            !nexus.hasComponent(FrozenComponent.self, in: collidedEntity),
-            let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: collidedEntity)
-        else {
+        let enemyFreezerId = enemyFreezerComponent.id
+        guard nexus.hasComponent(EnemyComponent.self, in: collidedEntity) else {
             return
         }
 
-        // Add FreezeComponent
-        let renderables = nexus.getComponents(of: RenderableComponent.self, for: collidedEntity)
-        nexus.addComponent(FrozenComponent(entity: collidedEntity,
+        // If already frozen, check if collision is with a different enemyFreezer
+        if let frozenComponent = nexus.getComponent(of: FrozenComponent.self, for: collidedEntity) {
+            // If new enemyFreezer, increment frozen duration
+            if !frozenComponent.frozenBy.contains(enemyFreezerId) {
+                frozenComponent.frozenBy.insert(enemyFreezerId)
+                frozenComponent.timeLeft += Constants.frozenEnemyDuration
+            }
+            return
+        }
+
+        freezeEnemy(enemyEntity: collidedEntity, enemyFreezerId)
+    }
+
+    private func freezeEnemy(enemyEntity: Entity, _ enemyFreezerId: ObjectIdentifier) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: enemyEntity) else {
+            return
+        }
+
+        // Add FrozenComponent
+        let renderables = nexus.getComponents(of: RenderableComponent.self, for: enemyEntity)
+        nexus.addComponent(FrozenComponent(entity: enemyEntity,
                                            timeLeft: Constants.frozenEnemyDuration,
-                                           initialRenderables: renderables),
-                           to: collidedEntity)
+                                           initialRenderables: renderables,
+                                           frozenBy: enemyFreezerId),
+                           to: enemyEntity)
 
         // Add frozen overlay
         let position = physicsComponent.physicsBody.position
         let size = CGSize(width: Constants.frozenEnemyDiameter, height: Constants.frozenEnemyDiameter)
-        nexus.addComponent(RenderableComponent(entity: collidedEntity,
+        nexus.addComponent(RenderableComponent(entity: enemyEntity,
                                                image: .enemyFrozen,
                                                position: position,
                                                size: size,
                                                layer: .enemyEffect),
-                           to: collidedEntity)
+                           to: enemyEntity)
 
         // Add vibrating animation
         let amplitude = CGVector(dx: Constants.enemyDiameter / 12, dy: 0)
-        nexus.addComponent(AnimationComponent(entity: collidedEntity,
+        nexus.addComponent(AnimationComponent(entity: enemyEntity,
                                               animation: OscillateAnimation(initialPosition: position,
                                                                             amplitude: amplitude,
                                                                             frequency: 8)),
-                           to: collidedEntity)
+                           to: enemyEntity)
     }
 }
