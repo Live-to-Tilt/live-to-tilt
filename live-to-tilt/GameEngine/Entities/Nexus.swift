@@ -80,10 +80,6 @@ final class Nexus {
 
     /// Removes the given entity from the nexus
     func removeEntity(_ entity: Entity) {
-        if hasComponent(EnemyComponent.self, in: entity) {
-            EventManager.shared.postEvent(EnemyKilledEvent())
-        }
-
         entities.removeValue(forKey: entity)
         for identifier in entitiesByComponent.keys {
             entitiesByComponent[identifier]?.remove(entity)

@@ -32,6 +32,7 @@ final class EnemyKillerSystem: System {
             return
         }
 
+        EventManager.shared.postEvent(EnemyKilledEvent())
         nexus.removeEntity(collidedEntity)
     }
 }

@@ -10,9 +10,7 @@ final class MovementSystem: System {
     func update(deltaTime: CGFloat) {
         let movementComponents = nexus.getComponents(of: MovementComponent.self)
         movementComponents.forEach { movementComponent in
-            let entity = movementComponent.entity
-            let movement = movementComponent.movement
-            movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
+            updateMovement(movementComponent, deltaTime: deltaTime)
         }
     }
 
@@ -21,6 +19,16 @@ final class MovementSystem: System {
         movementEntities.forEach { entity in
             resetVelocity(for: entity)
         }
+    }
+
+    private func updateMovement(_ movementComponent: MovementComponent, deltaTime: CGFloat) {
+        let entity = movementComponent.entity
+        if nexus.hasComponent(FrozenComponent.self, in: entity) {
+            return
+        }
+
+        let movement = movementComponent.movement
+        movement.update(nexus: nexus, entity: entity, deltaTime: deltaTime)
     }
 
     private func resetVelocity(for entity: Entity) {

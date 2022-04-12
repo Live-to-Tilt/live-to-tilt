@@ -48,11 +48,22 @@ struct Constants {
     static let powerupRestitution: CGFloat = 1
     static let maxPowerupSpeed: CGFloat = 0.02
     static let survivalPowerupCount: Int = 3
+
     static let nukeExplosionScale: CGFloat = 8
     static let nukeExplosionAnimationDuration: Double = 0.3
     static let nukeExplosionLifespan: Double = 2
+
     static let lightsaberLifespan: Double = 4
     static let lightsaberSize = CGSize(width: 0.7, height: 0.02)
+
+    static let freezeBlastOpacity: CGFloat = 0.7
+    static let freezeBlastScale: CGFloat = 14
+    static let freezeBlastAnimationDuration: Double = 0.2
+    static let freezeBlastLifespan: Double = 2
+    static let frozenEnemyDiameter: CGFloat = 0.036
+    static let frozenEnemyDuration: CGFloat = 6
+    static let frozenEnemyAmplitudeRatio: CGFloat = 1 / 12
+    static let frozenEnemyOscillateFreq: CGFloat = 8
 
     // Enemy Movement
     static let enemyMovementSpeed: CGFloat = 0.1
@@ -76,6 +87,7 @@ struct Constants {
     static let enemyKilledScore: Int = 10
     static let nukeActivationScore: Int = 3
     static let lightsaberActivationScore: Int = 8
+    static let freezeActivationScore: Int = 8
 
     // Countdown
     static let gauntletMaxTime: CGFloat = 20
