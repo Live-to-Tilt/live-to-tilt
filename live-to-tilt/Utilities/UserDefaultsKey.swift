@@ -1,5 +1,6 @@
 enum UserDefaultsKey: String {
     case soundtrackVolume
+    case soundEffectVolume
     case sensitivity
     case gameControlType
 
