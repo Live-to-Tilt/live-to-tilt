@@ -49,6 +49,7 @@
 		3D69D245280714FA00E1D45E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D69D244280714FA00E1D45E /* GoogleService-Info.plist */; };
 		3D69D2492807186C00E1D45E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2482807186C00E1D45E /* Player.swift */; };
 		3D69D24E28072CA600E1D45E /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24D28072CA600E1D45E /* PlayerManager.swift */; };
+		3D69D25028073D0800E1D45E /* MultiplayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24F28073D0800E1D45E /* MultiplayerService.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */; };
 		3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */; };
@@ -220,6 +221,7 @@
 		3D69D244280714FA00E1D45E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D69D2482807186C00E1D45E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3D69D24D28072CA600E1D45E /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		3D69D24F28073D0800E1D45E /* MultiplayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerService.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerComponent.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				3D69D24A28072B6200E1D45E /* Firebase */,
 				3D69D2342806F1C600E1D45E /* Model */,
 				3D69D24D28072CA600E1D45E /* PlayerManager.swift */,
+				3D69D24F28073D0800E1D45E /* MultiplayerService.swift */,
 			);
 			path = Multiplayer;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
 				72E48B2C27FEAB9A00FFB66F /* TotalScore.swift in Sources */,
 				3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */,
+				3D69D25028073D0800E1D45E /* MultiplayerService.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
 				72F1391B280530F8000951A7 /* EnemyFreezerComponent.swift in Sources */,
 				3DB3742027F457CB0053F400 /* ConnectedMovement.swift in Sources */,

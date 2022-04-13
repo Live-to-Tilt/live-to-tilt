@@ -1,11 +1,14 @@
 import Combine
 import FirebaseFirestoreSwift
 
-final class FService: ObservableObject {
+final class FService: ObservableObject, MultiplayerService {
     @Published var game: Game?
-    static let shared = FService()
-
-    private init() { }
+    var gamePublished: Published<Game?> {
+        _game
+    }
+    var gamePublisher: Published<Game?>.Publisher {
+        $game
+    }
 
     func createGame(with playerId: String) {
         do {
