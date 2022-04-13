@@ -9,6 +9,7 @@ class LightsaberPowerup: Powerup {
     }
 
     func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+        AudioController.shared.play(.lightsaberIgnition)
         nexus.createLightsaberAura()
     }
 }

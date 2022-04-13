@@ -40,11 +40,13 @@ class EnemySystem: System {
 
     private func handlePlayerCollision(_ enemyComponent: EnemyComponent, _ collisionComponent: CollisionComponent) {
         let collidedEntity = collisionComponent.collidedEntity
+
         if !nexus.hasComponent(PlayerComponent.self, in: collidedEntity) {
             return
         }
 
         if isFrozen(enemyComponent) {
+            AudioController.shared.play(.freezeEnemyDeath)
             killEnemy(enemyComponent)
             return
         }

@@ -9,6 +9,7 @@ class FreezePowerup: Powerup {
     }
 
     func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+        AudioController.shared.play(.freeze)
         nexus.createFreezeBlast(position: powerupPosition)
     }
 }

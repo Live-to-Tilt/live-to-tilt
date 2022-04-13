@@ -11,6 +11,7 @@ struct Constants {
     static let defaultVolume: Float = 1
     static let minVolume: Float = 0
     static let maxVolume: Float = 2
+    static let maxDuplicatePlayers: Int = 3
 
     // Game Control
     static let defaultSensitivity: Float = 1

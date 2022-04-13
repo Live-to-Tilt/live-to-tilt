@@ -18,10 +18,12 @@ struct GameOverMenuView: View {
             Button(action: { viewModel.restart() }) {
                 Text("Restart").modifier(MenuButton())
             }
+            .modifier(TapSoundEffect())
 
             Button(action: { self.rootPresentationMode.wrappedValue.dismiss() }) {
                 Text("Main Menu").modifier(MenuButton())
             }
+            .modifier(TapSoundEffect())
         }.modifier(MenuLayout())
     }
 
