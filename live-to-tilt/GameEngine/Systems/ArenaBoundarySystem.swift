@@ -1,6 +1,6 @@
 import CoreGraphics
 
-final class ArenaRestrictionSystem: System {
+final class ArenaBoundarySystem: System {
     var nexus: Nexus
 
     init(nexus: Nexus) {
@@ -8,7 +8,7 @@ final class ArenaRestrictionSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        let arenaRestrictionComponents = nexus.getComponents(of: ArenaRestrictionComponent.self)
+        let arenaRestrictionComponents = nexus.getComponents(of: ArenaBoundaryComponent.self)
         arenaRestrictionComponents.forEach { arenaRestrictionComponent in
             despawnIfOutsideArena(arenaRestrictionComponent)
         }
@@ -18,7 +18,7 @@ final class ArenaRestrictionSystem: System {
 
     }
 
-    private func despawnIfOutsideArena(_ arenaRestrictionComponent: ArenaRestrictionComponent) {
+    private func despawnIfOutsideArena(_ arenaRestrictionComponent: ArenaBoundaryComponent) {
         let entity = arenaRestrictionComponent.entity
 
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self,

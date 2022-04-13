@@ -1,4 +1,4 @@
-class ArenaRestrictionComponent: Component {
+class ArenaBoundaryComponent: Component {
     let entity: Entity
 
     init(entity: Entity) {

@@ -98,7 +98,7 @@ extension Nexus {
         addComponent(LifespanComponent(entity: entity, lifespan: Constants.enemyLifespan), to: entity)
 
         if despawnOutsideArena {
-            addComponent(ArenaRestrictionComponent(entity: entity), to: entity)
+            addComponent(ArenaBoundaryComponent(entity: entity), to: entity)
         }
     }
 
@@ -134,7 +134,7 @@ extension Nexus {
         }
 
         if despawnOutsideArena {
-            addComponent(ArenaRestrictionComponent(entity: entity), to: entity)
+            addComponent(ArenaBoundaryComponent(entity: entity), to: entity)
         }
     }
 

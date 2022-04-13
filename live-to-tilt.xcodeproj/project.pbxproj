@@ -77,8 +77,8 @@
 		3DEA51C627FC9BE6001D6CB5 /* ScaleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */; };
 		3DEA51C827FC9D17001D6CB5 /* AnimationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */; };
 		3DFBA516280662C700CD9273 /* TapSoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA515280662C700CD9273 /* TapSoundEffect.swift */; };
-		3DFBA51B2806792D00CD9273 /* ArenaRestrictionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51A2806792D00CD9273 /* ArenaRestrictionComponent.swift */; };
-		3DFBA51D2806795500CD9273 /* ArenaRestrictionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51C2806795500CD9273 /* ArenaRestrictionSystem.swift */; };
+		3DFBA51B2806792D00CD9273 /* ArenaBoundaryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */; };
+		3DFBA51D2806795500CD9273 /* ArenaBoundarySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */; };
 		7230521027F2C64C00AD753D /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230520F27F2C64C00AD753D /* PauseMenuView.swift */; };
 		7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521127F2D52700AD753D /* GameOverMenuView.swift */; };
 		7230521427F2D80500AD753D /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521327F2D80500AD753D /* MenuButton.swift */; };
@@ -240,8 +240,8 @@
 		3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAnimation.swift; sourceTree = "<group>"; };
 		3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSystem.swift; sourceTree = "<group>"; };
 		3DFBA515280662C700CD9273 /* TapSoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSoundEffect.swift; sourceTree = "<group>"; };
-		3DFBA51A2806792D00CD9273 /* ArenaRestrictionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaRestrictionComponent.swift; sourceTree = "<group>"; };
-		3DFBA51C2806795500CD9273 /* ArenaRestrictionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaRestrictionSystem.swift; sourceTree = "<group>"; };
+		3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundaryComponent.swift; sourceTree = "<group>"; };
+		3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundarySystem.swift; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
@@ -632,7 +632,7 @@
 				72F1391A280530F8000951A7 /* EnemyFreezerComponent.swift */,
 				3DEA51B727FC93A4001D6CB5 /* LifespanComponent.swift */,
 				72F1391E28053291000951A7 /* FrozenComponent.swift */,
-				3DFBA51A2806792D00CD9273 /* ArenaRestrictionComponent.swift */,
+				3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -657,7 +657,7 @@
 				3DEA51B927FC94F5001D6CB5 /* LifespanSystem.swift */,
 				3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */,
 				72503DB028056DE900966D6F /* FrozenSystem.swift */,
-				3DFBA51C2806795500CD9273 /* ArenaRestrictionSystem.swift */,
+				3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */,
 			);
 			path = Systems;
 			sourceTree = "<group>";
@@ -898,7 +898,7 @@
 				3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */,
 				729FA8E127FFF861008F55BB /* PickerOption.swift in Sources */,
 				3DEA51AA27FC82E3001D6CB5 /* PowerupManager.swift in Sources */,
-				3DFBA51B2806792D00CD9273 /* ArenaRestrictionComponent.swift in Sources */,
+				3DFBA51B2806792D00CD9273 /* ArenaBoundaryComponent.swift in Sources */,
 				3DEA51BA27FC94F5001D6CB5 /* LifespanSystem.swift in Sources */,
 				DB88976227DC3A4000F72B9C /* AccelerometerControl.swift in Sources */,
 				DB88976127DC3A1E00F72B9C /* SettingsView.swift in Sources */,
@@ -946,7 +946,7 @@
 				2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */,
 				723DEFD627E1E27700592922 /* PlayerComponent.swift in Sources */,
 				2106F84427DF50A100FA25D2 /* RootView.swift in Sources */,
-				3DFBA51D2806795500CD9273 /* ArenaRestrictionSystem.swift in Sources */,
+				3DFBA51D2806795500CD9273 /* ArenaBoundarySystem.swift in Sources */,
 				3DA4B1FB27F029F200FE19B2 /* Array+Extensions.swift in Sources */,
 				72E48B1327FD8F5400FFB66F /* GameEndedEvent.swift in Sources */,
 				3D05CF8B27E5B0FD00494286 /* MainMenuViewModel.swift in Sources */,

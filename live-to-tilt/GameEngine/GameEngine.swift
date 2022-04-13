@@ -52,7 +52,7 @@ class GameEngine {
             LifespanSystem(nexus: nexus),
             AnimationSystem(nexus: nexus),
             FrozenSystem(nexus: nexus),
-            ArenaRestrictionSystem(nexus: nexus)
+            ArenaBoundarySystem(nexus: nexus)
         ]
         self.gameMode = gameMode
         self.gameStats = GameStats(gameMode: gameMode)
