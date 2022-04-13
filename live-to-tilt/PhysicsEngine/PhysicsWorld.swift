@@ -82,7 +82,8 @@ final class PhysicsWorld {
     }
 
     private func canCollide(_ bodyA: PhysicsBody, _ bodyB: PhysicsBody) -> Bool {
-        bodyA.collisionBitMask & bodyB.collisionBitMask == 0
+        (bodyA.collisionBitmask & bodyB.categoryBitmask != .zero)
+        || (bodyA.categoryBitmask & bodyB.collisionBitmask != .zero)
     }
 
     private func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat) {

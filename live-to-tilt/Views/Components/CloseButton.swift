@@ -9,6 +9,7 @@ struct CloseButton: View {
                 .font(.system(size: 50, weight: .bold))
                 .foregroundColor(.white)
         }
+        .modifier(TapSoundEffect())
     }
 }
 

@@ -26,6 +26,7 @@ struct GameModeSelectionView: View {
             )) {
                 Text("Start").modifier(MenuButton())
             }
+            .modifier(TapSoundEffect())
         }
         .frame(width: 700)
     }

@@ -11,24 +11,11 @@ class EnemySystem: System {
         let enemyComponents = nexus.getComponents(of: EnemyComponent.self)
 
         enemyComponents.forEach { enemyComponent in
-            despawnIfOutsideArena(enemyComponent)
             handleCollisions(enemyComponent)
         }
     }
 
     func lateUpdate(deltaTime: CGFloat) {}
-
-    private func despawnIfOutsideArena(_ enemyComponent: EnemyComponent) {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: enemyComponent.entity) else {
-            return
-        }
-
-        let enemyPosition = physicsComponent.physicsBody.position
-
-        if GameUtils.isOutsideArena(position: enemyPosition) {
-            nexus.removeEntity(enemyComponent.entity)
-        }
-    }
 
     private func handleCollisions(_ enemyComponent: EnemyComponent) {
         let collisionComponents = nexus.getComponents(of: CollisionComponent.self, for: enemyComponent.entity)
@@ -40,11 +27,13 @@ class EnemySystem: System {
 
     private func handlePlayerCollision(_ enemyComponent: EnemyComponent, _ collisionComponent: CollisionComponent) {
         let collidedEntity = collisionComponent.collidedEntity
+
         if !nexus.hasComponent(PlayerComponent.self, in: collidedEntity) {
             return
         }
 
         if isFrozen(enemyComponent) {
+            AudioController.shared.play(.freezeEnemyDeath)
             killEnemy(enemyComponent)
             return
         }

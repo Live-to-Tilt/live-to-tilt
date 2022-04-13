@@ -16,7 +16,8 @@ extension Nexus {
                                                                shape: .rectangle,
                                                                position: position,
                                                                size: size,
-                                                               collisionBitMask: Constants.wallCollisionBitMask)),
+                                                               categoryBitmask: Constants.wallCategoryBitmask,
+                                                               collisionBitmask: Constants.wallCollisionBitmask)),
                      to: entity)
     }
 
@@ -47,7 +48,8 @@ extension Nexus {
                                                                shape: .circle,
                                                                position: Constants.playerSpawnPosition,
                                                                size: Constants.playerColliderSize,
-                                                               collisionBitMask: Constants.playerCollisionBitMask,
+                                                               categoryBitmask: Constants.playerCategoryBitmask,
+                                                               collisionBitmask: Constants.playerCollisionBitmask,
                                                                restitution: .zero)),
                      to: entity)
     }
@@ -66,7 +68,7 @@ extension Nexus {
                      to: entity)
     }
 
-    func createEnemy(position: CGPoint, movement: Movement) {
+    func createEnemy(position: CGPoint, movement: Movement, despawnOutsideArena: Bool = false) {
         let entity = Entity()
         let transform = CGAffineTransform(scaleX: Constants.enemyFrontToBackRatio, y: Constants.enemyFrontToBackRatio)
         let enemyBackSize = CGSize(width: Constants.enemyDiameter, height: Constants.enemyDiameter)
@@ -90,19 +92,26 @@ extension Nexus {
                                                                shape: .circle,
                                                                position: position,
                                                                size: enemyFrontSize,
-                                                               collisionBitMask: Constants.enemyCollisionBitMask,
+                                                               categoryBitmask: Constants.enemyCategoryBitmask,
+                                                               collisionBitmask: Constants.enemyCollisionBitmask,
                                                                isTrigger: true)),
                      to: entity)
         addComponent(MovementComponent(entity: entity, movement: movement),
                      to: entity)
         addComponent(LifespanComponent(entity: entity, lifespan: Constants.enemyLifespan), to: entity)
+
+        if despawnOutsideArena {
+            addComponent(ArenaBoundaryComponent(entity: entity), to: entity)
+        }
     }
 
     func createPowerup(position: CGPoint,
                        powerup: Powerup,
                        velocity: CGVector = .zero,
-                       bitmask: UInt32 = Constants.powerupCollisionBitMask,
-                       movement: Movement? = nil) {
+                       categoryBitmask: UInt32 = .zero,
+                       collisionBitmask: UInt32 = .zero,
+                       movement: Movement? = nil,
+                       despawnOutsideArena: Bool = false) {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
 
@@ -118,7 +127,8 @@ extension Nexus {
                                                                shape: Shape.circle,
                                                                position: position,
                                                                size: size,
-                                                               collisionBitMask: bitmask,
+                                                               categoryBitmask: categoryBitmask,
+                                                               collisionBitmask: collisionBitmask,
                                                                velocity: velocity,
                                                                restitution: Constants.powerupRestitution)),
                      to: entity)
@@ -126,6 +136,10 @@ extension Nexus {
 
         if let powerupMovement = movement {
             addComponent(MovementComponent(entity: entity, movement: powerupMovement), to: entity)
+        }
+
+        if despawnOutsideArena {
+            addComponent(ArenaBoundaryComponent(entity: entity), to: entity)
         }
     }
 

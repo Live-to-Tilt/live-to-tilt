@@ -9,6 +9,7 @@ class FreezePowerup: Powerup {
     }
 
     func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+        AudioController.shared.play(.freeze)
         nexus.createFreezeBlast(position: powerupPosition)
     }
 }
@@ -21,7 +22,7 @@ extension Nexus {
                                       shape: .circle,
                                       position: position,
                                       size: size,
-                                      collisionBitMask: Constants.enemyAffectorCollisionBitMask)
+                                      collisionBitmask: Constants.enemyAffectorCollisionBitmask)
         addComponent(PhysicsComponent(entity: entity,
                                       physicsBody: physicsBody),
                      to: entity)

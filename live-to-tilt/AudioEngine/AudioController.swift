@@ -140,6 +140,10 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
     }
 
     private func playUsingDuplicatePlayer(_ soundEffect: SoundEffect) {
+        if duplicatePlayers.count > Constants.maxDuplicatePlayers {
+            return
+        }
+
         guard let duplicatePlayer = createSoundEffectPlayer(with: soundEffect) else {
             return
         }

@@ -16,14 +16,17 @@ struct PauseMenuView: View {
             Button(action: { viewModel.resume() }) {
                 Text("Resume").modifier(MenuButton())
             }
+            .modifier(TapSoundEffect())
 
             Button(action: { viewModel.restart() }) {
                 Text("Restart").modifier(MenuButton())
             }
+            .modifier(TapSoundEffect())
 
             Button(action: { self.rootPresentationMode.wrappedValue.dismiss() }) {
                 Text("Main Menu").modifier(MenuButton())
             }
+            .modifier(TapSoundEffect())
         }.modifier(MenuLayout())
     }
 }

@@ -9,6 +9,7 @@ class LightsaberPowerup: Powerup {
     }
 
     func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+        AudioController.shared.play(.lightsaberIgnition)
         nexus.createLightsaberAura()
     }
 }
@@ -32,7 +33,7 @@ extension Nexus {
                                       shape: .rectangle,
                                       position: playerPosition,
                                       size: Constants.lightsaberSize,
-                                      collisionBitMask: Constants.enemyAffectorCollisionBitMask,
+                                      collisionBitmask: Constants.enemyAffectorCollisionBitmask,
                                       rotation: playerRotation)
         addComponent(PhysicsComponent(entity: entity,
                                       physicsBody: physicsBody),

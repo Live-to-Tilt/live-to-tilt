@@ -40,14 +40,17 @@ struct MainMenuView: View {
                                isActive: self.$isActive) {
                     Text("start").modifier(MenuItemText())
                 }
+                .modifier(TapSoundEffect())
 
                 NavigationLink(destination: LazyView(HowToPlayView())) {
                     Text("how to play").modifier(MenuItemText())
                 }
+                .modifier(TapSoundEffect())
 
                 NavigationLink(destination: LazyView(SettingsView())) {
                     Text("settings").modifier(MenuItemText())
                 }
+                .modifier(TapSoundEffect())
             }
 
             Spacer()
