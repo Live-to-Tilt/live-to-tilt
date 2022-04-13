@@ -20,7 +20,7 @@ final class FirebaseGameManager: ObservableObject, GameManager {
             let newGame = Game(hostId: playerId)
             game = newGame
             try FirebaseReference(.Game).document(newGame.id).setData(from: newGame)
-            initialiseMessanger(playerId: playerId, gameId: newGame.id)
+            initialiseMessanger(playerId: playerId, gameId: newGame.id, isHost: true)
             listenForGameChanges()
         } catch {
             print(error.localizedDescription)
@@ -48,7 +48,7 @@ final class FirebaseGameManager: ObservableObject, GameManager {
                     }
 
                     availableGame.guestId = playerId
-                    self.initialiseMessanger(playerId: playerId, gameId: availableGame.id)
+                    self.initialiseMessanger(playerId: playerId, gameId: availableGame.id, isHost: false)
                     self.game = availableGame
                     self.updateGame(availableGame)
                     self.listenForGameChanges()
@@ -90,7 +90,15 @@ final class FirebaseGameManager: ObservableObject, GameManager {
         FirebaseReference(.Game).document(currentGame.id).delete()
     }
 
-    private func initialiseMessanger(playerId: String, gameId: String) {
-        messageManager.initialise(playerId: playerId, channelId: gameId)
+    private func initialiseMessanger(playerId: String, gameId: String, isHost: Bool) {
+        if isHost {
+            messageManager.initialise(playerId: playerId,
+                                      channelId: gameId,
+                                      messageHandlerDelegate: HostMessageHandlerDelegate())
+        } else {
+            messageManager.initialise(playerId: playerId,
+                                      channelId: gameId,
+                                      messageHandlerDelegate: GuestMessageHandlerDelegate())
+        }
     }
 }

@@ -53,6 +53,9 @@
 		3D69D2532807417000E1D45E /* PubNub in Frameworks */ = {isa = PBXBuildFile; productRef = 3D69D2522807417000E1D45E /* PubNub */; };
 		3D69D2552807434600E1D45E /* PubNubMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2542807434600E1D45E /* PubNubMessageManager.swift */; };
 		3D69D2572807465700E1D45E /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2562807465600E1D45E /* MessageManager.swift */; };
+		3D69D259280752D700E1D45E /* MessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */; };
+		3D69D2602807541A00E1D45E /* HostMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */; };
+		3D69D2622807543000E1D45E /* GuestMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */; };
 		3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */; };
@@ -227,6 +230,9 @@
 		3D69D24F28073D0800E1D45E /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		3D69D2542807434600E1D45E /* PubNubMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNubMessageManager.swift; sourceTree = "<group>"; };
 		3D69D2562807465600E1D45E /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandlerDelegate.swift; sourceTree = "<group>"; };
+		3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessageHandlerDelegate.swift; sourceTree = "<group>"; };
+		3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessageHandlerDelegate.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerComponent.swift; sourceTree = "<group>"; };
@@ -508,6 +514,7 @@
 		3D69D2332806F1BE00E1D45E /* Multiplayer */ = {
 			isa = PBXGroup;
 			children = (
+				3D69D25A280753D500E1D45E /* MessageHandlerDelegate */,
 				3D69D24B28072C2300E1D45E /* PubNub */,
 				3D69D24A28072B6200E1D45E /* Firebase */,
 				3D69D2342806F1C600E1D45E /* Model */,
@@ -542,6 +549,16 @@
 				3D69D2542807434600E1D45E /* PubNubMessageManager.swift */,
 			);
 			path = PubNub;
+			sourceTree = "<group>";
+		};
+		3D69D25A280753D500E1D45E /* MessageHandlerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */,
+				3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */,
+				3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */,
+			);
+			path = MessageHandlerDelegate;
 			sourceTree = "<group>";
 		};
 		3DA4B1E527F0092200FE19B2 /* Wave */ = {
@@ -991,6 +1008,7 @@
 				72E48B1D27FD9F2300FFB66F /* PlayerMovedEvent.swift in Sources */,
 				DBB8933727EC7AD600D61D72 /* Event.swift in Sources */,
 				3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */,
+				3D69D259280752D700E1D45E /* MessageHandlerDelegate.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
 				3DEA51A727FC829A001D6CB5 /* PowerupManagerComponent.swift in Sources */,
 				3D55387827E22FD800DF45C2 /* WaveManagerSystem.swift in Sources */,
@@ -1097,6 +1115,7 @@
 				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,
 				727DD52A2804175C002B75CC /* PowerupDespawnedEvent.swift in Sources */,
 				3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupManager.swift in Sources */,
+				3D69D2622807543000E1D45E /* GuestMessageHandlerDelegate.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72503DAF2805643E00966D6F /* OscillateAnimation.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
@@ -1117,6 +1136,7 @@
 				723EE8B127E8C13D001BD0D4 /* MenuItemText.swift in Sources */,
 				3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */,
 				3D69D2572807465700E1D45E /* MessageManager.swift in Sources */,
+				3D69D2602807541A00E1D45E /* HostMessageHandlerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
