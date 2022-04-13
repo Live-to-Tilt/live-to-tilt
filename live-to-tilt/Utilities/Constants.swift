@@ -70,14 +70,19 @@ struct Constants {
     static let enemyMovementSpeed: CGFloat = 0.1
     static let enemySpawnDelay: CGFloat = 1
     static let enemyLifespan: CGFloat = 30
+    
+    // Category Bitmasks
+    static let playerCategoryBitmask: UInt32 = 1 << 0
+    static let enemyCategoryBitmask: UInt32 = 1 << 1
+    static let wallCategoryBitmask: UInt32 = 1 << 2
 
     // Collision Bitmasks
-    static let playerCollisionBitMask: UInt32 = 1 << 0
-    static let enemyCollisionBitMask: UInt32 = 1 << 1
-    static let wallCollisionBitMask: UInt32 = 1 << 2 | enemyCollisionBitMask
-    static let powerupCollisionBitMask: UInt32 = 1 << 3 | enemyCollisionBitMask
-    static let playerAffectorCollisionBitMask: UInt32 = 0xFFFFFFFF ^ playerCollisionBitMask
-    static let enemyAffectorCollisionBitMask: UInt32 = 0xFFFFFFFF ^ enemyCollisionBitMask
+    static let playerCollisionBitmask: UInt32 = enemyCategoryBitmask | wallCategoryBitmask
+    static let enemyCollisionBitmask: UInt32 = playerCategoryBitmask
+    static let wallCollisionBitmask: UInt32 = playerCategoryBitmask
+    static let survivalOrbCollisionBitmask: UInt32 = playerCategoryBitmask | wallCategoryBitmask
+    static let gauntletOrbCollisionBitmask: UInt32 = playerCategoryBitmask
+    static let enemyAffectorCollisionBitmask: UInt32 = enemyCategoryBitmask
 
     // Combo
     static let comboTimeWindow: CGFloat = 2

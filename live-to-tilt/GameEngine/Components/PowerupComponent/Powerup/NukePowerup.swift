@@ -21,7 +21,7 @@ extension Nexus {
                                       shape: .circle,
                                       position: position,
                                       size: size,
-                                      collisionBitMask: Constants.enemyAffectorCollisionBitMask)
+                                      collisionBitmask: Constants.enemyAffectorCollisionBitmask)
 
         addComponent(PhysicsComponent(entity: entity,
                                       physicsBody: physicsBody),
