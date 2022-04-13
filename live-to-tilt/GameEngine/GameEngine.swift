@@ -51,7 +51,8 @@ class GameEngine {
             EnemyFreezerSystem(nexus: nexus),
             LifespanSystem(nexus: nexus),
             AnimationSystem(nexus: nexus),
-            FrozenSystem(nexus: nexus)
+            FrozenSystem(nexus: nexus),
+            ArenaRestrictionSystem(nexus: nexus)
         ]
         self.gameMode = gameMode
         self.gameStats = GameStats(gameMode: gameMode)

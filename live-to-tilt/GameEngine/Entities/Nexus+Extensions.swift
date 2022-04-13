@@ -66,7 +66,7 @@ extension Nexus {
                      to: entity)
     }
 
-    func createEnemy(position: CGPoint, movement: Movement) {
+    func createEnemy(position: CGPoint, movement: Movement, despawnOutsideArena: Bool = false) {
         let entity = Entity()
         let transform = CGAffineTransform(scaleX: Constants.enemyFrontToBackRatio, y: Constants.enemyFrontToBackRatio)
         let enemyBackSize = CGSize(width: Constants.enemyDiameter, height: Constants.enemyDiameter)
@@ -96,13 +96,18 @@ extension Nexus {
         addComponent(MovementComponent(entity: entity, movement: movement),
                      to: entity)
         addComponent(LifespanComponent(entity: entity, lifespan: Constants.enemyLifespan), to: entity)
+
+        if despawnOutsideArena {
+            addComponent(ArenaRestrictionComponent(entity: entity), to: entity)
+        }
     }
 
     func createPowerup(position: CGPoint,
                        powerup: Powerup,
                        velocity: CGVector = .zero,
                        bitmask: UInt32 = Constants.powerupCollisionBitMask,
-                       movement: Movement? = nil) {
+                       movement: Movement? = nil,
+                       despawnOutsideArena: Bool = false) {
         let entity = Entity()
         let size = CGSize(width: Constants.powerupDiameter, height: Constants.powerupDiameter)
 
@@ -126,6 +131,10 @@ extension Nexus {
 
         if let powerupMovement = movement {
             addComponent(MovementComponent(entity: entity, movement: powerupMovement), to: entity)
+        }
+
+        if despawnOutsideArena {
+            addComponent(ArenaRestrictionComponent(entity: entity), to: entity)
         }
     }
 

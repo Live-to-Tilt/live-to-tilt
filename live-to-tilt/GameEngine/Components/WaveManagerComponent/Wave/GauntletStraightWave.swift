@@ -29,12 +29,13 @@ class GauntletStraightWave: Wave {
         nexus.createPowerup(position: position,
                             powerup: TimePowerup(),
                             bitmask: Constants.playerAffectorCollisionBitMask,
-                            movement: movement)
+                            movement: movement,
+                            despawnOutsideArena: true)
     }
 
     private func spawnEnemy(at position: CGPoint, nexus: Nexus) {
         var movement: Movement = BaseMovement()
         movement = DirectionalMovementDecorator(movement: movement, direction: .left)
-        nexus.createEnemy(position: position, movement: movement)
+        nexus.createEnemy(position: position, movement: movement, despawnOutsideArena: true)
     }
 }
