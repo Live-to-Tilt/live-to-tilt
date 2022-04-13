@@ -98,4 +98,7 @@ struct Constants {
     // Countdown
     static let gauntletMaxTime: CGFloat = 20
     static let gauntletTimeIncrement: CGFloat = 5
+
+    static let pubNubPublishKey: String = "pub-c-af8e8424-5678-4472-a14f-d93e2782e05c"
+    static let pubNubSubscribeKey: String = "sub-c-bdf08b30-bb41-11ec-9364-7ec486788b75"
 }

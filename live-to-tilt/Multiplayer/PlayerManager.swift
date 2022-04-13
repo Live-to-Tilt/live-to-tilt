@@ -1,10 +1,12 @@
 import Foundation
 
 class PlayerManager {
+    static let shared = PlayerManager()
+
     private let defaults: UserDefaults
     private let playerData: Data?
 
-    init() {
+    private init() {
         self.defaults = UserDefaults.standard
         self.playerData = defaults.data(forKey: .player)
     }

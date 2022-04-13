@@ -1,7 +1,7 @@
 import Combine
 import FirebaseFirestoreSwift
 
-final class FService: ObservableObject, MultiplayerService {
+final class FirebaseGameManager: ObservableObject, GameManager {
     @Published var game: Game?
     var gamePublished: Published<Game?> {
         _game
@@ -9,12 +9,18 @@ final class FService: ObservableObject, MultiplayerService {
     var gamePublisher: Published<Game?>.Publisher {
         $game
     }
+    private var messageManager: MessageManager
+
+    init() {
+        self.messageManager = PubNubMessageManager()
+    }
 
     func createGame(with playerId: String) {
         do {
             let newGame = Game(hostId: playerId)
             game = newGame
             try FirebaseReference(.Game).document(newGame.id).setData(from: newGame)
+            initialiseMessanger(playerId: playerId, gameId: newGame.id)
             listenForGameChanges()
         } catch {
             print(error.localizedDescription)
@@ -42,6 +48,7 @@ final class FService: ObservableObject, MultiplayerService {
                     }
 
                     availableGame.guestId = playerId
+                    self.initialiseMessanger(playerId: playerId, gameId: availableGame.id)
                     self.game = availableGame
                     self.updateGame(availableGame)
                     self.listenForGameChanges()
@@ -81,5 +88,9 @@ final class FService: ObservableObject, MultiplayerService {
         }
 
         FirebaseReference(.Game).document(currentGame.id).delete()
+    }
+
+    private func initialiseMessanger(playerId: String, gameId: String) {
+        messageManager.initialise(playerId: playerId, channelId: gameId)
     }
 }

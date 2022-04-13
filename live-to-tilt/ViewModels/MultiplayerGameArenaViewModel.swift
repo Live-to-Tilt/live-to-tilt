@@ -5,25 +5,23 @@ class MultiplayerGameArenaViewModel: ObservableObject {
     @Published var game: Game?
 
     private var cancellables: Set<AnyCancellable>
-    private let playerManager: PlayerManager
-    private let multiplayerService: MultiplayerService
+    private let gameManager: GameManager
 
     init() {
         self.cancellables = []
-        self.playerManager = PlayerManager()
-        self.multiplayerService = FService() // TODO: create factory
+        self.gameManager = FirebaseGameManager() // TODO: create factory
     }
 
     func onAppear() {
-        let player = playerManager.getPlayer()
-        multiplayerService.startGame(with: player.id)
-        multiplayerService.gamePublisher
+        let player = PlayerManager.shared.getPlayer()
+        gameManager.startGame(with: player.id)
+        gameManager.gamePublisher
             .assign(to: \.game, on: self)
             .store(in: &cancellables)
     }
 
     func onDisappear() {
-        multiplayerService.quitGame()
+        gameManager.quitGame()
         // TODO: remove cancellables
     }
 }
