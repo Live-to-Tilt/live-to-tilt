@@ -3,7 +3,6 @@ class AllTimeStatsGroup: AchievementGroup {
     weak var achievementManagerDelegate: AchievementManagerDelegate?
 
     init() {
-        self.achievementManagerDelegate = nil
         self.achievementTiers = [
             TotalScore(criterion: 100),
             TotalScore(criterion: 1_000),
@@ -20,8 +19,7 @@ class AllTimeStatsGroup: AchievementGroup {
     }
 
     private lazy var onAllTimeStatsUpdated = { [weak self] (_ event: Event) -> Void in
-        guard let self = self,
-              let statUpdateEvent = event as? AllTimeStatsUpdatedEvent else {
+        guard let self = self, event is AllTimeStatsUpdatedEvent else {
                   return
               }
         self.checkIfCompleted(gameStats: nil)
@@ -31,11 +29,11 @@ class AllTimeStatsGroup: AchievementGroup {
 extension AllTimeStatsGroup {
     class TotalScore: Achievement {
         var name: String {
-            "Earn \(criterion) points across all games"
+            "Earn \(criterion.withCommas()) points across all games"
         }
         var isCompleted = false
-        var isRepeatable = false
-        var criterion: Int
+        let isRepeatable = false
+        let criterion: Int
 
         init(criterion: Int) {
             self.criterion = criterion
@@ -55,8 +53,8 @@ extension AllTimeStatsGroup {
             "Use all powerups at least \(criterion) times"
         }
         var isCompleted = false
-        var isRepeatable = false
-        var criterion: Int
+        let isRepeatable = false
+        let criterion: Int
 
         init(criterion: Int) {
             self.criterion = criterion

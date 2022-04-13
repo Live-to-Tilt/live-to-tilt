@@ -43,7 +43,7 @@ struct GameArenaView: View {
             Rectangle()
                 .foregroundColor(Color.black.opacity(0.01))
                 .frame(maxWidth: .infinity, maxHeight: 75)
-                .toast(isPresenting: $viewModel.showAchievement, duration: 1.5, alert: {
+                .toast(isPresenting: $viewModel.showAchievement, duration: 2, alert: {
                     AlertToast(type: .regular,
                                title: "Achievement Unlocked: " +
                                "\(viewModel.achievement?.name ?? "empty")!")
@@ -52,7 +52,6 @@ struct GameArenaView: View {
                 })
             Spacer()
         }
-
     }
 
     private func PlayAreaView() -> some View {

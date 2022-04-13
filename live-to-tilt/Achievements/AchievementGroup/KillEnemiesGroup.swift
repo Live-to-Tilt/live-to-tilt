@@ -3,14 +3,13 @@ class KillEnemiesGroup: AchievementGroup {
     var achievementTiers: [Achievement]
 
     init() {
-        self.achievementManagerDelegate = nil
         self.achievementTiers = [
-            KillEnemiesTier(criterion: 10),
-            KillEnemiesTier(criterion: 25),
-            KillEnemiesTier(criterion: 50),
-            KillEnemiesTier(criterion: 100),
-            KillEnemiesTier(criterion: 250),
-            KillEnemiesTier(criterion: 1_000)
+            KillEnemies(criterion: 10),
+            KillEnemies(criterion: 25),
+            KillEnemies(criterion: 50),
+            KillEnemies(criterion: 100),
+            KillEnemies(criterion: 250),
+            KillEnemies(criterion: 1_000)
         ]
     }
 
@@ -29,12 +28,12 @@ class KillEnemiesGroup: AchievementGroup {
 }
 
 extension KillEnemiesGroup {
-    class KillEnemiesTier: Achievement {
-        var criterion: Int
+    class KillEnemies: Achievement {
+        let criterion: Int
         var isCompleted = false
-        var isRepeatable = true
+        let isRepeatable = true
         var name: String {
-            "Kill \(criterion) enemies"
+            "Kill \(criterion.withCommas()) enemies"
         }
 
         init(criterion: Int) {

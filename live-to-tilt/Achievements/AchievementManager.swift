@@ -1,5 +1,4 @@
 import SwiftUI
-import Combine
 
 /// AchievementsManager manages achievements that are dependent on game statistics.
 /// This can be extended in future to support more event types.
@@ -27,7 +26,7 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
         setUpAchievementGroups()
     }
 
-    func achievementIsCompleted(_ achievement: Achievement) {
+    func markAsCompleted(_ achievement: Achievement) {
         storage.set(true, forKey: achievement.name)
         newAchievement = achievement
     }
@@ -46,7 +45,7 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
     }
 
     private func registerAchievementManagerDelegate() {
-        for var achievementGroup in achievementGroups {
+        achievementGroups.forEach { achievementGroup in 
             achievementGroup.achievementManagerDelegate = self
         }
     }

@@ -1,3 +1,3 @@
 protocol AchievementManagerDelegate: AnyObject {
-    func achievementIsCompleted(_ achievement: Achievement)
+    func markAsCompleted(_ achievement: Achievement)
 }

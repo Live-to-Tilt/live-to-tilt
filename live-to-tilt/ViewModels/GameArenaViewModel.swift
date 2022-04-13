@@ -8,7 +8,6 @@ class GameArenaViewModel: ObservableObject {
     @Published var showAchievement = false
     @Published var achievement: Achievement?
     var achievements: [Achievement]
-    var receivedAchievement: Achievement?
 
     var gameEngine: GameEngine
     var gameControl: GameControl
@@ -82,8 +81,8 @@ class GameArenaViewModel: ObservableObject {
             guard let self = self else {
                 return
             }
-            self.receivedAchievement = newAchievement
-            if let rawAchievement = self.receivedAchievement {
+            let receivedAchievement: Achievement? = newAchievement
+            if let rawAchievement = receivedAchievement {
                 self.achievements.append(rawAchievement)
             }
 
@@ -116,7 +115,6 @@ class GameArenaViewModel: ObservableObject {
         achievementManager.reinit()
         achievements = []
         achievement = nil
-        receivedAchievement = nil
         showAchievement = false
     }
 }
