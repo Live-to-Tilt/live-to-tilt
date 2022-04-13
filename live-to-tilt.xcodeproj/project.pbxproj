@@ -56,6 +56,8 @@
 		3D69D259280752D700E1D45E /* MessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */; };
 		3D69D2602807541A00E1D45E /* HostMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */; };
 		3D69D2622807543000E1D45E /* GuestMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */; };
+		3D69D26428075AE600E1D45E /* GuestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D26328075AE600E1D45E /* GuestMessage.swift */; };
+		3D69D26628075AF900E1D45E /* HostMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D26528075AF900E1D45E /* HostMessage.swift */; };
 		3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AABB227DA4BD6007DAE9E /* Layer.swift */; };
 		3DA4B1D527EF6E3000FE19B2 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */; };
 		3DA4B1E827F00B6600FE19B2 /* WaveManagerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */; };
@@ -233,6 +235,8 @@
 		3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandlerDelegate.swift; sourceTree = "<group>"; };
 		3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessageHandlerDelegate.swift; sourceTree = "<group>"; };
 		3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessageHandlerDelegate.swift; sourceTree = "<group>"; };
+		3D69D26328075AE600E1D45E /* GuestMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessage.swift; sourceTree = "<group>"; };
+		3D69D26528075AF900E1D45E /* HostMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessage.swift; sourceTree = "<group>"; };
 		3D7AABB227DA4BD6007DAE9E /* Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layer.swift; sourceTree = "<group>"; };
 		3DA4B1D427EF6E3000FE19B2 /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
 		3DA4B1E727F00B6600FE19B2 /* WaveManagerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerComponent.swift; sourceTree = "<group>"; };
@@ -557,6 +561,8 @@
 				3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */,
 				3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */,
 				3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */,
+				3D69D26328075AE600E1D45E /* GuestMessage.swift */,
+				3D69D26528075AF900E1D45E /* HostMessage.swift */,
 			);
 			path = MessageHandlerDelegate;
 			sourceTree = "<group>";
@@ -1002,6 +1008,7 @@
 				DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */,
 				3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */,
 				21DB9E4327F8B67E008AF29A /* ScoreSystem.swift in Sources */,
+				3D69D26628075AF900E1D45E /* HostMessage.swift in Sources */,
 				DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */,
 				72E48B1927FD9C6500FFB66F /* ScoreChangedEvent.swift in Sources */,
 				2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */,
@@ -1045,6 +1052,7 @@
 				3DA4B1FB27F029F200FE19B2 /* Array+Extensions.swift in Sources */,
 				72E48B1327FD8F5400FFB66F /* GameEndedEvent.swift in Sources */,
 				3D05CF8B27E5B0FD00494286 /* MainMenuViewModel.swift in Sources */,
+				3D69D26428075AE600E1D45E /* GuestMessage.swift in Sources */,
 				3DEA51B827FC93A4001D6CB5 /* LifespanComponent.swift in Sources */,
 				726EBD0727DDA8AB00FAF2C0 /* GameControlManager.swift in Sources */,
 				726EBD0527DD9C7700FAF2C0 /* CMAcceleration+Extensions.swift in Sources */,
