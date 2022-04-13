@@ -28,7 +28,7 @@ class GauntletStraightWave: Wave {
         movement = DirectionalMovementDecorator(movement: movement, direction: .left)
         nexus.createPowerup(position: position,
                             powerup: TimePowerup(),
-                            bitmask: Constants.timePowerupCollisionBitMask,
+                            bitmask: Constants.playerAffectorCollisionBitMask,
                             movement: movement)
     }
 
