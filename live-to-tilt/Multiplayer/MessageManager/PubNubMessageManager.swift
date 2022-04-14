@@ -17,7 +17,7 @@ final class PubNubMessageManager: MessageManager {
         pubNub != nil
     }
 
-    func initialise(playerId: String, channelId: String) {
+    func initialise(userId: String, channelId: String) {
         PubNub.log.levels = [.all]
         PubNub.log.writers = [ConsoleLogWriter(), FileLogWriter()]
 
@@ -29,7 +29,7 @@ final class PubNubMessageManager: MessageManager {
 
         let config = PubNubConfiguration(publishKey: publishKey,
                                          subscribeKey: subscribeKey,
-                                         uuid: playerId)
+                                         uuid: userId)
         pubNub = PubNub(configuration: config)
         channels.append(channelId)
 

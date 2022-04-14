@@ -1,5 +1,5 @@
 protocol MessageManager {
-    func initialise(playerId: String, channelId: String)
+    func initialise(userId: String, channelId: String)
 
     func send(message: Message)
 

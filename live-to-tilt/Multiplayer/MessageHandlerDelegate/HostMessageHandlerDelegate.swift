@@ -4,7 +4,6 @@ import Foundation
 class HostMessageHandlerDelegate: MessageHandlerDelegate, ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
 
-    // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
         renderableSubject.eraseToAnyPublisher()

@@ -105,6 +105,6 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
     }
 
     private func initialiseMessanger(playerId: String, roomId: String) {
-        messageManager.initialise(playerId: playerId, channelId: roomId)
+        messageManager.initialise(userId: playerId, channelId: roomId)
     }
 }
