@@ -28,8 +28,6 @@ struct MainMenuView: View {
     private func Content() -> some View {
         HStack {
             Spacer()
-            Spacer()
-            Spacer()
 
             VStack(alignment: .trailing) {
                 Text("live to tilt")
@@ -38,7 +36,12 @@ struct MainMenuView: View {
 
                 NavigationLink(destination: LazyView(GameModeSelectionView()),
                                isActive: self.$isActive) {
-                    Text("start").modifier(MenuItemText())
+                    Text("single player").modifier(MenuItemText())
+                }
+                .modifier(TapSoundEffect())
+
+                NavigationLink(destination: LazyView(MultiplayerGameArenaView())) {
+                    Text("multiplayer").modifier(MenuItemText())
                 }
                 .modifier(TapSoundEffect())
 
