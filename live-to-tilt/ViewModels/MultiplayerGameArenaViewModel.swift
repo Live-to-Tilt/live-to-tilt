@@ -33,15 +33,15 @@ class MultiplayerGameArenaViewModel: ObservableObject {
 
     private func attachPublishers() {
         if gameManager.isHost {
+            let messageHandlerDelegate = GuestMessageHandlerDelegate()
+            gameManager.subscribe(messageHandler: messageHandlerDelegate)
+
             gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
                 self?.renderableComponents = renderableComponents
 
                 let message = HostMessage(renderableComponents: renderableComponents)
                 self?.gameManager.send(message: message)
             }.store(in: &cancellables)
-
-            let messageHandlerDelegate = GuestMessageHandlerDelegate()
-            gameManager.subscribe(messageHandler: messageHandlerDelegate)
         } else {
             let messageHandlerDelegate = HostMessageHandlerDelegate()
             gameManager.subscribe(messageHandler: messageHandlerDelegate)
