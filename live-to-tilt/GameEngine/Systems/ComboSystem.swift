@@ -20,7 +20,7 @@ class ComboSystem: System {
     func lateUpdate(deltaTime: CGFloat) {}
 
     private func subscribeToEvents() {
-        EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onEnemyKilled)
+        EventManager.shared.registerClosure(for: EnemyKilledEvent.self, closure: onEnemyKilled)
     }
 
     private lazy var onEnemyKilled = { [weak self] (_: Event) -> Void in

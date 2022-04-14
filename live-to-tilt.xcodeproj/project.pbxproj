@@ -396,7 +396,7 @@
 				DB77AF3727F7721500F8DE4C /* Achievements */,
 				3D12D9C627D61D8500D01489 /* Main.swift */,
 				3D12D9D927D61F1C00D01489 /* AudioEngine */,
-				DBB8933527EC78DC00D61D72 /* EventLogger */,
+				DBB8933527EC78DC00D61D72 /* EventSystem */,
 				DB77AF3427EECBAA00F8DE4C /* Stats */,
 				3D12D9D827D61F1600D01489 /* PhysicsEngine */,
 				3D12D9D727D61F0800D01489 /* GameEngine */,
@@ -771,13 +771,13 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		DBB8933527EC78DC00D61D72 /* EventLogger */ = {
+		DBB8933527EC78DC00D61D72 /* EventSystem */ = {
 			isa = PBXGroup;
 			children = (
 				72E48B0F27FD8E5300FFB66F /* Events */,
 				DB0A621427EDA4730033E23B /* EventManager.swift */,
 			);
-			path = EventLogger;
+			path = EventSystem;
 			sourceTree = "<group>";
 		};
 		DBEC91FA27D9150300B0E750 /* CollisionUtils */ = {

@@ -14,8 +14,8 @@ class AllTimeStatsGroup: AchievementGroup {
     }
 
     func subscribeToEvents() {
-        EventManager.shared.registerClosureForEvent(of: AllTimeStatsUpdatedEvent.self,
-                                                    closure: onAllTimeStatsUpdated)
+        EventManager.shared.registerClosure(for: AllTimeStatsUpdatedEvent.self,
+                                            closure: onAllTimeStatsUpdated)
     }
 
     private lazy var onAllTimeStatsUpdated = { [weak self] (_ event: Event) -> Void in
