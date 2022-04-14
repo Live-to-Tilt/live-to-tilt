@@ -14,9 +14,7 @@ final class ArenaBoundarySystem: System {
         }
     }
 
-    func lateUpdate(deltaTime: CGFloat) {
-
-    }
+    func lateUpdate(deltaTime: CGFloat) {}
 
     private func despawnIfOutsideArena(_ arenaBoundaryComponent: ArenaBoundaryComponent) {
         let entity = arenaBoundaryComponent.entity

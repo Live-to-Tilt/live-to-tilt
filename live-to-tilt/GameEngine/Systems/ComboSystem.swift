@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class ComboSystem: System {
+final class ComboSystem: System {
     let nexus: Nexus
 
     init(nexus: Nexus) {

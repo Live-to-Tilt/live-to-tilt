@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class PhysicsSystem: System {
+final class PhysicsSystem: System {
     let nexus: Nexus
     let physicsWorld: PhysicsWorld
 

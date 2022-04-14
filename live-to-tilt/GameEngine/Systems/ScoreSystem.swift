@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class ScoreSystem: System {
+final class ScoreSystem: System {
     let nexus: Nexus
 
     init(nexus: Nexus) {
