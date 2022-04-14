@@ -105,7 +105,7 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
             newPlayer.logarithmicVolume = volume
             return newPlayer
         } catch {
-            print(error)
+            print(error.localizedDescription)
             return nil
         }
     }
@@ -121,7 +121,7 @@ final class AudioController: NSObject, AVAudioPlayerDelegate {
             newPlayer.logarithmicVolume = volume
             return newPlayer
         } catch {
-            print(error)
+            print(error.localizedDescription)
             return nil
         }
     }

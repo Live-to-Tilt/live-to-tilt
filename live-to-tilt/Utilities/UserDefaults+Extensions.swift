@@ -22,4 +22,8 @@ extension UserDefaults {
     func string(forKey defaultName: UserDefaultsKey) -> String? {
         string(forKey: defaultName.rawValue)
     }
+
+    func data(forKey defaultName: UserDefaultsKey) -> Data? {
+        data(forKey: defaultName.rawValue)
+    }
 }
