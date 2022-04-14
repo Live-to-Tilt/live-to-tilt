@@ -2,17 +2,17 @@ import Combine
 import Foundation
 
 class MultiplayerLobbyViewModel: ObservableObject {
-    @Published var game: Game?
+    @Published var room: Room?
     @Published var displayArena: Bool
     @Published var gameStarted: Bool
 
     var hostId: String {
-        game?.hostId ?? ""
+        room?.hostId ?? ""
     }
     var guestId: String {
-        game?.guestId ?? ""
+        room?.guestId ?? ""
     }
-    let gameManager: GameManager
+    let roomManager: RoomManager
     private var isMatch: Bool {
         !hostId.isEmpty && !guestId.isEmpty
     }
@@ -20,23 +20,23 @@ class MultiplayerLobbyViewModel: ObservableObject {
 
     init() {
         self.cancellables = []
-        self.gameManager = FirebaseGameManager() // TODO: create factory
+        self.roomManager = FirebaseRoomManager() // TODO: create factory
         self.displayArena = false
         self.gameStarted = false
     }
 
     func onAppear() {
         let player = PlayerManager.shared.getPlayer()
-        gameManager.startGame(with: player.id)
-        gameManager.gamePublisher
-            .sink { [weak self] game in
-                self?.game = game
+        roomManager.joinRoom(with: player.id)
+        roomManager.roomPublisher
+            .sink { [weak self] room in
+                self?.room = room
                 self?.updateArenaDisplay()
             }.store(in: &cancellables)
     }
 
     private func updateArenaDisplay() {
-        if game == nil {
+        if room == nil {
             displayArena = false
             return
         }
@@ -47,7 +47,7 @@ class MultiplayerLobbyViewModel: ObservableObject {
         }
 
         if isMatch {
-            // New game
+            // Start game
             gameStarted = true
             DispatchQueue.main.asyncAfter(deadline: .now() + Constants.displayArenaDelay) {
                 self.displayArena = true
@@ -60,6 +60,6 @@ class MultiplayerLobbyViewModel: ObservableObject {
     }
 
     deinit {
-        gameManager.quitGame()
+        roomManager.leaveRoom()
     }
 }

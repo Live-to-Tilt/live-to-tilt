@@ -96,7 +96,7 @@ struct MultiplayerGameArenaView: View {
 
 struct MultiplayerGameArenaView_Previews: PreviewProvider {
     static var previews: some View {
-        MultiplayerGameArenaView(viewModel: MultiplayerGameArenaViewModel(gameManager: FirebaseGameManager()))
+        MultiplayerGameArenaView(viewModel: MultiplayerGameArenaViewModel(roomManager: FirebaseRoomManager()))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -2,18 +2,18 @@ import Combine
 import FirebaseFirestoreSwift
 import Foundation
 
-final class FirebaseGameManager: ObservableObject, GameManager {
-    @Published var game: Game?
-    var gamePublished: Published<Game?> {
-        _game
+final class FirebaseRoomManager: ObservableObject, RoomManager {
+    @Published var room: Room?
+    var roomPublished: Published<Room?> {
+        _room
     }
-    var gamePublisher: Published<Game?>.Publisher {
-        $game
+    var roomPublisher: Published<Room?>.Publisher {
+        $room
     }
     var isHost: Bool {
         let player = PlayerManager.shared.getPlayer()
         let playerId = player.id
-        return playerId == game?.hostId
+        return playerId == room?.hostId
     }
     private var messageManager: MessageManager
 
@@ -21,13 +21,13 @@ final class FirebaseGameManager: ObservableObject, GameManager {
         self.messageManager = PubNubMessageManager()
     }
 
-    func startGame(with playerId: String) {
-        // if there is an available game, join the game
-        // else, create new game
+    func joinRoom(with playerId: String) {
+        // if there is an available room, join the room
+        // else, create new room
 
         // TODO: remove magic strings
 
-        FirebaseReference(.Game)
+        FirebaseReference(.Room)
             .whereField("guestId", isEqualTo: "")
             .whereField("hostId", isNotEqualTo: playerId)
             .getDocuments { querySnapshot, error in
@@ -37,14 +37,14 @@ final class FirebaseGameManager: ObservableObject, GameManager {
                 }
 
                 if let document = querySnapshot?.documents.first {
-                    guard var availableGame = try? document.data(as: Game.self) else {
+                    guard var availableRoom = try? document.data(as: Room.self) else {
                         return
                     }
 
-                    availableGame.guestId = playerId
-                    self.initialiseMessanger(playerId: playerId, gameId: availableGame.id)
-                    self.game = availableGame
-                    self.updateGame(availableGame)
+                    availableRoom.guestId = playerId
+                    self.initialiseMessanger(playerId: playerId, roomId: availableRoom.id)
+                    self.room = availableRoom
+                    self.updateRoom(availableRoom)
                     self.listenForGameChanges()
                 } else {
                     self.createGame(with: playerId)
@@ -52,12 +52,12 @@ final class FirebaseGameManager: ObservableObject, GameManager {
             }
     }
 
-    func quitGame() {
-        guard let currentGame = game else {
+    func leaveRoom() {
+        guard let room = room else {
             return
         }
 
-        FirebaseReference(.Game).document(currentGame.id).delete()
+        FirebaseReference(.Room).document(room.id).delete()
     }
 
     func subscribe(messageHandler: MessageHandlerDelegate) {
@@ -70,41 +70,41 @@ final class FirebaseGameManager: ObservableObject, GameManager {
 
     private func createGame(with playerId: String) {
         do {
-            let newGame = Game(hostId: playerId)
-            game = newGame
-            try FirebaseReference(.Game).document(newGame.id).setData(from: newGame)
-            initialiseMessanger(playerId: playerId, gameId: newGame.id)
+            let newRoom = Room(hostId: playerId)
+            room = newRoom
+            try FirebaseReference(.Room).document(newRoom.id).setData(from: newRoom)
+            initialiseMessanger(playerId: playerId, roomId: newRoom.id)
             listenForGameChanges()
         } catch {
             print(error.localizedDescription)
         }
     }
 
-    private func updateGame(_ game: Game) {
+    private func updateRoom(_ room: Room) {
         do {
-            try FirebaseReference(.Game).document(game.id).setData(from: game)
+            try FirebaseReference(.Room).document(room.id).setData(from: room)
         } catch {
             print(error.localizedDescription)
         }
     }
 
     private func listenForGameChanges() {
-        guard let currentGame = game else {
+        guard let room = room else {
             return
         }
 
-        FirebaseReference(.Game).document(currentGame.id).addSnapshotListener { documentSnapshot, error in
+        FirebaseReference(.Room).document(room.id).addSnapshotListener { documentSnapshot, error in
             if error != nil {
                 return
             }
 
             if let snapshot = documentSnapshot {
-                self.game = try? snapshot.data(as: Game.self)
+                self.room = try? snapshot.data(as: Room.self)
             }
         }
     }
 
-    private func initialiseMessanger(playerId: String, gameId: String) {
-        messageManager.initialise(playerId: playerId, channelId: gameId)
+    private func initialiseMessanger(playerId: String, roomId: String) {
+        messageManager.initialise(playerId: playerId, channelId: roomId)
     }
 }

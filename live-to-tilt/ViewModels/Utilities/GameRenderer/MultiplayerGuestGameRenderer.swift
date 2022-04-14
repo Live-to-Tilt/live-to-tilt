@@ -1,5 +1,5 @@
 class MultiplayerGuestGameRenderer: GameRenderer {
-    init(gameManager: GameManager, gameControl: GameControl) {
+    init(roomManager: RoomManager, gameControl: GameControl) {
 
     }
 

@@ -41,15 +41,15 @@
 		3D55387827E22FD800DF45C2 /* WaveManagerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* MovementSystem.swift */; };
 		3D69D2372806F70F00E1D45E /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3D69D2362806F70F00E1D45E /* FirebaseFirestoreSwift-Beta */; };
-		3D69D2392806F76500E1D45E /* FirebaseGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2382806F76500E1D45E /* FirebaseGameManager.swift */; };
-		3D69D23B2806F82300E1D45E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D23A2806F82300E1D45E /* Game.swift */; };
+		3D69D2392806F76500E1D45E /* FirebaseRoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2382806F76500E1D45E /* FirebaseRoomManager.swift */; };
+		3D69D23B2806F82300E1D45E /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D23A2806F82300E1D45E /* Room.swift */; };
 		3D69D23D2806F8F400E1D45E /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D23C2806F8F400E1D45E /* FirebaseCollectionReference.swift */; };
 		3D69D24128070F0E00E1D45E /* MultiplayerLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24028070F0E00E1D45E /* MultiplayerLobbyView.swift */; };
 		3D69D24328070FE100E1D45E /* MultiplayerLobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24228070FE100E1D45E /* MultiplayerLobbyViewModel.swift */; };
 		3D69D245280714FA00E1D45E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D69D244280714FA00E1D45E /* GoogleService-Info.plist */; };
 		3D69D2492807186C00E1D45E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2482807186C00E1D45E /* Player.swift */; };
 		3D69D24E28072CA600E1D45E /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24D28072CA600E1D45E /* PlayerManager.swift */; };
-		3D69D25028073D0800E1D45E /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24F28073D0800E1D45E /* GameManager.swift */; };
+		3D69D25028073D0800E1D45E /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24F28073D0800E1D45E /* RoomManager.swift */; };
 		3D69D2532807417000E1D45E /* PubNub in Frameworks */ = {isa = PBXBuildFile; productRef = 3D69D2522807417000E1D45E /* PubNub */; };
 		3D69D2552807434600E1D45E /* PubNubMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2542807434600E1D45E /* PubNubMessageManager.swift */; };
 		3D69D2572807465700E1D45E /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2562807465600E1D45E /* MessageManager.swift */; };
@@ -231,15 +231,15 @@
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
 		3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
-		3D69D2382806F76500E1D45E /* FirebaseGameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseGameManager.swift; sourceTree = "<group>"; };
-		3D69D23A2806F82300E1D45E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		3D69D2382806F76500E1D45E /* FirebaseRoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRoomManager.swift; sourceTree = "<group>"; };
+		3D69D23A2806F82300E1D45E /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		3D69D23C2806F8F400E1D45E /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
 		3D69D24028070F0E00E1D45E /* MultiplayerLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyView.swift; sourceTree = "<group>"; };
 		3D69D24228070FE100E1D45E /* MultiplayerLobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyViewModel.swift; sourceTree = "<group>"; };
 		3D69D244280714FA00E1D45E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D69D2482807186C00E1D45E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3D69D24D28072CA600E1D45E /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
-		3D69D24F28073D0800E1D45E /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		3D69D24F28073D0800E1D45E /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		3D69D2542807434600E1D45E /* PubNubMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNubMessageManager.swift; sourceTree = "<group>"; };
 		3D69D2562807465600E1D45E /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 		3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandlerDelegate.swift; sourceTree = "<group>"; };
@@ -543,7 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				3D69D2692807C85900E1D45E /* MessageManager */,
-				3D69D2682807C84F00E1D45E /* GameManager */,
+				3D69D2682807C84F00E1D45E /* RoomManager */,
 				3D69D25A280753D500E1D45E /* MessageHandlerDelegate */,
 				3D69D2342806F1C600E1D45E /* Model */,
 				3D69D24D28072CA600E1D45E /* PlayerManager.swift */,
@@ -555,7 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				3D69D27D2808567300E1D45E /* Message */,
-				3D69D23A2806F82300E1D45E /* Game.swift */,
+				3D69D23A2806F82300E1D45E /* Room.swift */,
 				3D69D2482807186C00E1D45E /* Player.swift */,
 			);
 			path = Model;
@@ -564,7 +564,7 @@
 		3D69D24A28072B6200E1D45E /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				3D69D2382806F76500E1D45E /* FirebaseGameManager.swift */,
+				3D69D2382806F76500E1D45E /* FirebaseRoomManager.swift */,
 				3D69D23C2806F8F400E1D45E /* FirebaseCollectionReference.swift */,
 			);
 			path = Firebase;
@@ -580,13 +580,13 @@
 			path = MessageHandlerDelegate;
 			sourceTree = "<group>";
 		};
-		3D69D2682807C84F00E1D45E /* GameManager */ = {
+		3D69D2682807C84F00E1D45E /* RoomManager */ = {
 			isa = PBXGroup;
 			children = (
 				3D69D24A28072B6200E1D45E /* Firebase */,
-				3D69D24F28073D0800E1D45E /* GameManager.swift */,
+				3D69D24F28073D0800E1D45E /* RoomManager.swift */,
 			);
-			path = GameManager;
+			path = RoomManager;
 			sourceTree = "<group>";
 		};
 		3D69D2692807C85900E1D45E /* MessageManager */ = {
@@ -1086,7 +1086,7 @@
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
 				3D69D2492807186C00E1D45E /* Player.swift in Sources */,
-				3D69D2392806F76500E1D45E /* FirebaseGameManager.swift in Sources */,
+				3D69D2392806F76500E1D45E /* FirebaseRoomManager.swift in Sources */,
 				21DB9E3927F8342C008AF29A /* AttachMovementDecorator.swift in Sources */,
 				3DEA51A227FC7BBF001D6CB5 /* Powerup.swift in Sources */,
 				3DEA51A427FC7DD6001D6CB5 /* NukePowerup.swift in Sources */,
@@ -1118,7 +1118,7 @@
 				72478E9F27D736F200B9140A /* RenderableComponent.swift in Sources */,
 				72E48B2C27FEAB9A00FFB66F /* AllTimeStatsGroup.swift in Sources */,
 				3DA4B1EC27F00D7000FE19B2 /* WaveManager.swift in Sources */,
-				3D69D25028073D0800E1D45E /* GameManager.swift in Sources */,
+				3D69D25028073D0800E1D45E /* RoomManager.swift in Sources */,
 				3D69D26D2807D37600E1D45E /* SecretsKey.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
 				72F1391B280530F8000951A7 /* EnemyFreezerComponent.swift in Sources */,
@@ -1199,7 +1199,7 @@
 				723EE8B327E8C217001BD0D4 /* HeroText.swift in Sources */,
 				7230521427F2D80500AD753D /* MenuButton.swift in Sources */,
 				3D69D24E28072CA600E1D45E /* PlayerManager.swift in Sources */,
-				3D69D23B2806F82300E1D45E /* Game.swift in Sources */,
+				3D69D23B2806F82300E1D45E /* Room.swift in Sources */,
 				7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,
 				3D69D2732808242900E1D45E /* MultiplayerGameArenaViewModel.swift in Sources */,

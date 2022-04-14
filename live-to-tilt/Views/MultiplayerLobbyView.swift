@@ -12,7 +12,7 @@ struct MultiplayerLobbyView: View {
             Text("Guest: \(viewModel.guestId)")
 
             NavigationLink(destination: LazyView(
-                MultiplayerGameArenaView(viewModel: MultiplayerGameArenaViewModel(gameManager: viewModel.gameManager))),
+                MultiplayerGameArenaView(viewModel: MultiplayerGameArenaViewModel(roomManager: viewModel.roomManager))),
                            isActive: $viewModel.displayArena) {
                 EmptyView()
             }
