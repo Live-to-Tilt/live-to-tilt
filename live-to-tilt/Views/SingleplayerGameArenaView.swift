@@ -1,8 +1,8 @@
 import SwiftUI
 import AlertToast
 
-struct GameArenaView: View {
-    @ObservedObject var viewModel: GameArenaViewModel
+struct SingleplayerGameArenaView: View {
+    @ObservedObject var viewModel: SingleplayerGameArenaViewModel
 
     var body: some View {
         ZStack {
@@ -143,7 +143,7 @@ struct GameArenaView: View {
 
 struct GameArenaView_Previews: PreviewProvider {
     static var previews: some View {
-        GameArenaView(viewModel: GameArenaViewModel(gameMode: .survival))
+        SingleplayerGameArenaView(viewModel: SingleplayerGameArenaViewModel(gameMode: .survival))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -3,10 +3,6 @@ import SwiftUI
 struct MultiplayerGameArenaView: View {
     @ObservedObject var viewModel: MultiplayerGameArenaViewModel
 
-    init(gameManager: GameManager) {
-        self.viewModel = MultiplayerGameArenaViewModel(gameManager: gameManager)
-    }
-
     var body: some View {
         ZStack {
 //            GameControlView(gameControl: $viewModel.gameControl)
@@ -100,7 +96,7 @@ struct MultiplayerGameArenaView: View {
 
 struct MultiplayerGameArenaView_Previews: PreviewProvider {
     static var previews: some View {
-        MultiplayerGameArenaView(gameManager: FirebaseGameManager())
+        MultiplayerGameArenaView(viewModel: MultiplayerGameArenaViewModel(gameManager: FirebaseGameManager()))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

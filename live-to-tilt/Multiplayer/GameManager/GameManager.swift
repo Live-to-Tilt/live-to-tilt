@@ -11,4 +11,8 @@ protocol GameManager {
     func startGame(with playerId: String)
 
     func quitGame()
+
+    func subscribe(messageHandler: MessageHandlerDelegate)
+
+    func send(message: Message)
 }

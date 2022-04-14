@@ -5,17 +5,19 @@ final class PubNubMessageManager: MessageManager {
     private var pubNub: PubNub?
     private var channels: [String]
     private let listener: SubscriptionListener
+    private var messageHandlerDelegates: [MessageHandlerDelegate]
 
     init() {
         self.channels = []
         self.listener = SubscriptionListener()
+        self.messageHandlerDelegates = []
     }
 
     var isInitialised: Bool {
         pubNub != nil
     }
 
-    func initialise(playerId: String, channelId: String, messageHandlerDelegate: MessageHandlerDelegate) {
+    func initialise(playerId: String, channelId: String) {
         PubNub.log.levels = [.all]
         PubNub.log.writers = [ConsoleLogWriter(), FileLogWriter()]
 
@@ -37,18 +39,29 @@ final class PubNubMessageManager: MessageManager {
                 let data = payload.dataOptional else {
                 return
             }
-            messageHandlerDelegate.onReceive(data: data)
+            self.messageHandlerDelegates.forEach { messageHandlerDelegate in
+                messageHandlerDelegate.onReceive(data: data)
+            }
         }
 
         pubNub?.add(listener)
         pubNub?.subscribe(to: channels, withPresence: true)
     }
 
-    func send(data: Data) {
-        let jsonString = data.base64EncodedString()
+    func send(message: Message) {
+        do {
+            let data = try JSONEncoder().encode(message)
+            let jsonString = data.base64EncodedString()
 
-        channels.forEach { channel in
-            pubNub?.publish(channel: channel, message: jsonString, completion: nil)
+            channels.forEach { channel in
+                pubNub?.publish(channel: channel, message: jsonString, completion: nil)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
+    }
+
+    func subscribe(messageHandlerDelegate: MessageHandlerDelegate) {
+        messageHandlerDelegates.append(messageHandlerDelegate)
     }
 }

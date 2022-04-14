@@ -2,8 +2,8 @@ import QuartzCore
 
 class SingleplayerGameRenderer: GameRenderer {
     private let gameEngine: GameEngine
-    private var displayLink: CADisplayLink!
     private var gameControl: GameControl
+    private var displayLink: CADisplayLink!
     private var hasStarted = false
 
     init(gameEngine: GameEngine, gameControl: GameControl) {

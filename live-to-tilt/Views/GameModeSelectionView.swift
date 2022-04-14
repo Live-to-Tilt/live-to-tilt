@@ -22,7 +22,7 @@ struct GameModeSelectionView: View {
             GameModeInfo()
 
             NavigationLink(destination: LazyView(
-                GameArenaView(viewModel: GameArenaViewModel(gameMode: selectedGameMode))
+                SingleplayerGameArenaView(viewModel: SingleplayerGameArenaViewModel(gameMode: selectedGameMode))
             )) {
                 Text("Start").modifier(MenuButton())
             }

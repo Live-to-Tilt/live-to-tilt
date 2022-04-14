@@ -1,14 +1,11 @@
 import CoreGraphics
 
-class RenderableComponent: Component, Identifiable {
+class RenderableComponent: Component, Identifiable, Codable {
     let entity: Entity
-
     var image: ImageAsset
-
     var position: CGPoint
     var size: CGSize
     var rotation: CGFloat
-
     var opacity: Double
     var layer: Layer
 
@@ -26,5 +23,35 @@ class RenderableComponent: Component, Identifiable {
         self.rotation = rotation
         self.opacity = opacity
         self.layer = layer
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case image
+        case position
+        case size
+        case rotation
+        case opacity
+        case layer
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.entity = Entity()
+        self.image = try container.decode(ImageAsset.self, forKey: .image)
+        self.position = try container.decode(CGPoint.self, forKey: .position)
+        self.size = try container.decode(CGSize.self, forKey: .size)
+        self.rotation = try container.decode(CGFloat.self, forKey: .rotation)
+        self.opacity = try container.decode(Double.self, forKey: .rotation)
+        self.layer = try container.decode(Layer.self, forKey: .layer)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(image, forKey: .image)
+        try container.encode(position, forKey: .position)
+        try container.encode(size, forKey: .size)
+        try container.encode(rotation, forKey: .rotation)
+        try container.encode(opacity, forKey: .opacity)
+        try container.encode(layer, forKey: .layer)
     }
 }

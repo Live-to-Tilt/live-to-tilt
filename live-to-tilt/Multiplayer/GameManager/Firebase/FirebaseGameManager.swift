@@ -13,24 +13,12 @@ final class FirebaseGameManager: ObservableObject, GameManager {
     var isHost: Bool {
         let player = PlayerManager.shared.getPlayer()
         let playerId = player.id
-        return playerId == game?.id
+        return playerId == game?.hostId
     }
     private var messageManager: MessageManager
 
     init() {
         self.messageManager = PubNubMessageManager()
-    }
-
-    func createGame(with playerId: String) {
-        do {
-            let newGame = Game(hostId: playerId)
-            game = newGame
-            try FirebaseReference(.Game).document(newGame.id).setData(from: newGame)
-            initialiseMessanger(playerId: playerId, gameId: newGame.id, isHost: true)
-            listenForGameChanges()
-        } catch {
-            print(error.localizedDescription)
-        }
     }
 
     func startGame(with playerId: String) {
@@ -54,7 +42,7 @@ final class FirebaseGameManager: ObservableObject, GameManager {
                     }
 
                     availableGame.guestId = playerId
-                    self.initialiseMessanger(playerId: playerId, gameId: availableGame.id, isHost: false)
+                    self.initialiseMessanger(playerId: playerId, gameId: availableGame.id)
                     self.game = availableGame
                     self.updateGame(availableGame)
                     self.listenForGameChanges()
@@ -64,7 +52,35 @@ final class FirebaseGameManager: ObservableObject, GameManager {
             }
     }
 
-    func updateGame(_ game: Game) {
+    func quitGame() {
+        guard let currentGame = game else {
+            return
+        }
+
+        FirebaseReference(.Game).document(currentGame.id).delete()
+    }
+
+    func subscribe(messageHandler: MessageHandlerDelegate) {
+        messageManager.subscribe(messageHandlerDelegate: messageHandler)
+    }
+
+    func send(message: Message) {
+        messageManager.send(message: message)
+    }
+
+    private func createGame(with playerId: String) {
+        do {
+            let newGame = Game(hostId: playerId)
+            game = newGame
+            try FirebaseReference(.Game).document(newGame.id).setData(from: newGame)
+            initialiseMessanger(playerId: playerId, gameId: newGame.id)
+            listenForGameChanges()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    private func updateGame(_ game: Game) {
         do {
             try FirebaseReference(.Game).document(game.id).setData(from: game)
         } catch {
@@ -72,7 +88,7 @@ final class FirebaseGameManager: ObservableObject, GameManager {
         }
     }
 
-    func listenForGameChanges() {
+    private func listenForGameChanges() {
         guard let currentGame = game else {
             return
         }
@@ -88,23 +104,7 @@ final class FirebaseGameManager: ObservableObject, GameManager {
         }
     }
 
-    func quitGame() {
-        guard let currentGame = game else {
-            return
-        }
-
-        FirebaseReference(.Game).document(currentGame.id).delete()
-    }
-
-    private func initialiseMessanger(playerId: String, gameId: String, isHost: Bool) {
-        if isHost {
-            messageManager.initialise(playerId: playerId,
-                                      channelId: gameId,
-                                      messageHandlerDelegate: GuestMessageHandlerDelegate())
-        } else {
-            messageManager.initialise(playerId: playerId,
-                                      channelId: gameId,
-                                      messageHandlerDelegate: HostMessageHandlerDelegate())
-        }
+    private func initialiseMessanger(playerId: String, gameId: String) {
+        messageManager.initialise(playerId: playerId, channelId: gameId)
     }
 }
