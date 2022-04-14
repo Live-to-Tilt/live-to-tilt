@@ -2,26 +2,17 @@ import Combine
 import Foundation
 
 class MultiplayerGameArenaViewModel: ObservableObject {
-    @Published var game: Game?
+    @Published var renderableComponents: [RenderableComponent]
+    @Published var gameStateComponent: GameStateComponent?
 
-    private var cancellables: Set<AnyCancellable>
-    private let gameManager: GameManager
+    var gameEngine: GameEngine
+    var gameControl: GameControl
+    var gameRenderer: GameRenderer
 
     init() {
-        self.cancellables = []
-        self.gameManager = FirebaseGameManager() // TODO: create factory
-    }
-
-    func onAppear() {
-        let player = PlayerManager.shared.getPlayer()
-        gameManager.startGame(with: player.id)
-        gameManager.gamePublisher
-            .sink { [weak self] value in
-                self?.game = value
-            }.store(in: &cancellables)
-    }
-
-    deinit {
-        gameManager.quitGame()
+        renderableComponents = []
+        gameEngine = GameEngine(gameMode: .survival)
+        gameControl = GameControlManager.shared.gameControl
+        gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
     }
 }

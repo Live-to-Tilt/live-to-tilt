@@ -50,15 +50,6 @@ final class FirebaseGameManager: ObservableObject, GameManager {
 
                     availableGame.guestId = playerId
                     self.initialiseMessanger(playerId: playerId, gameId: availableGame.id, isHost: false)
-
-                    do {
-                        let guestMessage = GuestMessageHandlerDelegate.GuestMessage(message: "Hi, this is a message from the guest!")
-                        let data = try JSONEncoder().encode(guestMessage)
-                        self.messageManager.send(data: data)
-                    } catch {
-                        print(error.localizedDescription)
-                    }
-
                     self.game = availableGame
                     self.updateGame(availableGame)
                     self.listenForGameChanges()

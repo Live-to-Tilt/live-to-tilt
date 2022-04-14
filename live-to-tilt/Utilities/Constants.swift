@@ -98,4 +98,7 @@ struct Constants {
     // Countdown
     static let gauntletMaxTime: CGFloat = 20
     static let gauntletTimeIncrement: CGFloat = 5
+
+    // Multiplayer
+    static let displayArenaDelay: CGFloat = 1
 }

@@ -40,7 +40,7 @@ struct MainMenuView: View {
                 }
                 .modifier(TapSoundEffect())
 
-                NavigationLink(destination: LazyView(MultiplayerGameArenaView())) {
+                NavigationLink(destination: LazyView(MultiplayerLobbyView())) {
                     Text("multiplayer").modifier(MenuItemText())
                 }
                 .modifier(TapSoundEffect())
