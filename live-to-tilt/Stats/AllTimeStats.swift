@@ -48,16 +48,16 @@ class AllTimeStats {
     }
 
     private func registerAllTimeStats() {
-        defaults.register(defaults: [.totalGamesPlayed: 0,
-                                     .totalScore: 0,
-                                     .totalPowerupsUsed: 0,
-                                     .totalNukePowerupsUsed: 0,
-                                     .totalLightsaberPowerupsUsed: 0,
-                                     .totalFreezePowerupsUsed: 0,
-                                     .totalEnemiesKilled: 0,
-                                     .totalDistanceTravelled: 0,
-                                     .survivalHighScore: 0,
-                                     .gauntletHighScore: 0])
+        defaults.register(defaults: [.totalGamesPlayed: Int.zero,
+                                     .totalScore: Int.zero,
+                                     .totalPowerupsUsed: Int.zero,
+                                     .totalNukePowerupsUsed: Int.zero,
+                                     .totalLightsaberPowerupsUsed: Int.zero,
+                                     .totalFreezePowerupsUsed: Int.zero,
+                                     .totalEnemiesKilled: Int.zero,
+                                     .totalDistanceTravelled: Float.zero,
+                                     .survivalHighScore: Int.zero,
+                                     .gauntletHighScore: Int.zero])
     }
 
     /// Update all-time stats once a game ends

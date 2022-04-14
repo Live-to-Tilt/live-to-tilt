@@ -8,7 +8,7 @@ protocol AchievementGroup: AnyObject {
 
 extension AchievementGroup {
     func checkIfCompleted(gameStats: GameStats?) {
-        for achievement in achievementTiers {
+        achievementTiers.forEach { achievement in
             if achievement.checkIfCompleted(gameStats: gameStats) {
                 achievementManagerDelegate?.markAsCompleted(achievement)
             }
@@ -16,7 +16,7 @@ extension AchievementGroup {
     }
 
     func markCompletedNonRepeatableEvents(storage: UserDefaults) {
-        for var achievement in achievementTiers {
+        achievementTiers.forEach { achievement in
             if !achievement.isRepeatable && storage.bool(forKey: achievement.name) {
                 achievement.isCompleted = true
             }
@@ -24,8 +24,16 @@ extension AchievementGroup {
     }
 
     func reset() {
-        for var achievement in achievementTiers {
+        achievementTiers.forEach { achievement in
             achievement.isCompleted = false
         }
+    }
+
+    func registerAchievements(storage: UserDefaults) {
+        var achievementsDict: [String: Bool] = [:]
+        achievementTiers.forEach { achievement in
+            achievementsDict[achievement.name] = false
+        }
+        storage.register(defaults: achievementsDict)
     }
 }

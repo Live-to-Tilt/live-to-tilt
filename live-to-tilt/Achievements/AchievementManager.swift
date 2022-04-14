@@ -45,19 +45,14 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
     }
 
     private func registerAchievementManagerDelegate() {
-        achievementGroups.forEach { achievementGroup in 
+        achievementGroups.forEach { achievementGroup in
             achievementGroup.achievementManagerDelegate = self
         }
     }
 
     private func registerAchievements() {
-        var achievementsDict: [String: Bool] = [:]
         achievementGroups.forEach { achievementGroup in
-            achievementGroup.achievementTiers.forEach { achievement in
-                achievementsDict[achievement.name] = false
-            }
+            achievementGroup.registerAchievements(storage: storage)
         }
-
-        storage.register(defaults: achievementsDict)
     }
  }
