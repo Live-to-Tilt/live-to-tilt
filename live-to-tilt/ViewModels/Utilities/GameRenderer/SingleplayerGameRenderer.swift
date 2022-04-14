@@ -1,6 +1,6 @@
 import QuartzCore
 
-class GameRenderer {
+class SingleplayerGameRenderer: GameRenderer {
     private let gameEngine: GameEngine
     private var displayLink: CADisplayLink!
     private var gameControl: GameControl

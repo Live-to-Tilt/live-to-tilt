@@ -12,12 +12,11 @@ class MultiplayerLobbyViewModel: ObservableObject {
     var guestId: String {
         game?.guestId ?? ""
     }
+    let gameManager: GameManager
     private var isMatch: Bool {
         !hostId.isEmpty && !guestId.isEmpty
     }
-
     private var cancellables: Set<AnyCancellable>
-    private let gameManager: GameManager
 
     init() {
         self.cancellables = []

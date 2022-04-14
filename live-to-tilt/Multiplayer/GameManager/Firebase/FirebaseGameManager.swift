@@ -10,6 +10,11 @@ final class FirebaseGameManager: ObservableObject, GameManager {
     var gamePublisher: Published<Game?>.Publisher {
         $game
     }
+    var isHost: Bool {
+        let player = PlayerManager.shared.getPlayer()
+        let playerId = player.id
+        return playerId == game?.id
+    }
     private var messageManager: MessageManager
 
     init() {
