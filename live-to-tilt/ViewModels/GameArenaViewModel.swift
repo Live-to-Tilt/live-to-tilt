@@ -5,8 +5,9 @@ class GameArenaViewModel: ObservableObject {
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
     @Published var countdownComponent: CountdownComponent?
-    @Published var achievement: Achievement?
     @Published var showAchievement = false
+    @Published var achievement: Achievement?
+    var achievements: [Achievement]
 
     var gameEngine: GameEngine
     var gameControl: GameControl
@@ -21,6 +22,7 @@ class GameArenaViewModel: ObservableObject {
         gameControl = GameControlManager.shared.gameControl
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         achievementManager = AchievementManager()
+        achievements = []
         gameRenderer.start()
         attachPublishers()
     }
@@ -34,7 +36,7 @@ class GameArenaViewModel: ObservableObject {
         gameRenderer.stop()
         gameEngine = GameEngine(gameMode: gameEngine.gameMode)
         gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
-        achievementManager.reinit()
+        resetAchievements()
         gameRenderer.start()
         attachPublishers()
     }
@@ -45,6 +47,16 @@ class GameArenaViewModel: ObservableObject {
 
     func resume() {
         gameRenderer.unpause()
+    }
+
+    func nextAchievement() {
+        if !achievements.isEmpty {
+            self.achievement = achievements.removeFirst()
+            self.showAchievement = true
+        } else {
+            self.achievement = nil
+            self.showAchievement = false
+        }
     }
 
     private func attachPublishers() {
@@ -66,11 +78,20 @@ class GameArenaViewModel: ObservableObject {
         }.store(in: &cancellables)
 
         achievementManager.$newAchievement.sink { [weak self] newAchievement in
-            guard let achievement = newAchievement else {
+            guard let self = self else {
                 return
             }
-            self?.achievement = achievement
-            self?.showAchievement = true
+            let receivedAchievement: Achievement? = newAchievement
+            if let rawAchievement = receivedAchievement {
+                self.achievements.append(rawAchievement)
+            }
+
+            if !self.achievements.isEmpty {
+                if self.achievement == nil {
+                    self.achievement = self.achievements.removeFirst()
+                }
+                self.showAchievement = true
+            }
         }.store(in: &cancellables)
     }
 
@@ -88,5 +109,12 @@ class GameArenaViewModel: ObservableObject {
         default:
             break
         }
+    }
+
+    private func resetAchievements() {
+        achievementManager.reinit()
+        achievements = []
+        achievement = nil
+        showAchievement = false
     }
 }

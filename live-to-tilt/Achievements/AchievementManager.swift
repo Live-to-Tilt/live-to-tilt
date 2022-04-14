@@ -2,82 +2,57 @@ import SwiftUI
 
 /// AchievementsManager manages achievements that are dependent on game statistics.
 /// This can be extended in future to support more event types.
-class AchievementManager: ObservableObject {
+class AchievementManager: ObservableObject, AchievementManagerDelegate {
     @Published var newAchievement: Achievement?
 
     private let storage: UserDefaults
-    private let achievments: [Achievement] = [
-        KillEnemies(),
-        TotalScore()
-    ]
-
-    // TODO: Convert these into Achievements
-//    private let achievements: [EventIdentifier: [Int]] = [EnemiesKilledStatUpdatedEvent.identifier: [1, 10, 25, 50],
-//                                                .updateNukePowerUpsUsed: [1, 5, 10, 25, 50],
-//                                                .updateScore: [100, 250, 500, 1_000, 5_000, 10_000],
-//                                                .updateTotalScore: [10_000, 25_000, 50_000, 100_000, 250_000],
-//                                                .updateTotalGamesPlayed: [5, 10, 50, 100]
-//    ]
+    private let achievementGroups: [AchievementGroup]
 
     init() {
         self.newAchievement = nil
         self.storage = UserDefaults.standard
+        self.achievementGroups = [
+            KillEnemiesGroup(),
+            AllTimeStatsGroup()
+        ]
+        registerAchievementManagerDelegate()
         registerAchievements()
-        registerClosures()
+        setUpAchievementGroups()
     }
 
     func reinit() {
         self.newAchievement = nil
-        registerClosures()
+        resetAchievementGroups()
+        setUpAchievementGroups()
     }
 
-    func registerAchievements() {
-        var achievementsDict: [String: Bool] = [:]
-        achievments.forEach { achievement in
-            achievementsDict[achievement.name] = false
-        }
-
-        storage.register(defaults: achievementsDict)
+    func markAsCompleted(_ achievement: Achievement) {
+        storage.set(true, forKey: achievement.name)
+        newAchievement = achievement
     }
 
-    private func registerClosures() {
-        EventManager.shared.registerClosureForEvent(of: GameStatsUpdatedEvent.self,
-                                                    closure: onGameStatsUpdatedRef)
-        EventManager.shared.registerClosureForEvent(of: AllTimeStatsUpdatedEvent.self,
-                                                    closure: onAllTimeStatsUpdatedRef)
-    }
-
-    private lazy var onGameStatsUpdatedRef = { [weak self] (_ event: Event) -> Void in
-        self?.onGameStatsUpdated(event)
-    }
-
-    private func onGameStatsUpdated(_ event: Event) {
-        guard let gameStatsUpdatedEvent = event as? GameStatsUpdatedEvent else {
-            return
-        }
-
-        achievments.forEach { achievment in
-            if achievment.checkIfCompleted(gameStats: gameStatsUpdatedEvent.gameStats) {
-                storage.set(true, forKey: achievment.name)
-                newAchievement = achievment
-            }
+    private func resetAchievementGroups() {
+        achievementGroups.forEach { achievementGroup in
+            achievementGroup.reset()
         }
     }
 
-    private lazy var onAllTimeStatsUpdatedRef = { [weak self] (_ event: Event) -> Void in
-        self?.onAllTimeStatsUpdated(event)
+    private func setUpAchievementGroups() {
+        achievementGroups.forEach { achievementGroup in
+            achievementGroup.subscribeToEvents()
+            achievementGroup.markCompletedNonRepeatableEvents(storage: storage)
+        }
     }
 
-    private func onAllTimeStatsUpdated(_ event: Event) {
-        guard event is AllTimeStatsUpdatedEvent else {
-            return
+    private func registerAchievementManagerDelegate() {
+        achievementGroups.forEach { achievementGroup in
+            achievementGroup.achievementManagerDelegate = self
         }
+    }
 
-        achievments.forEach { achievment in
-            if achievment.checkIfCompleted(gameStats: nil) {
-                storage.set(true, forKey: achievment.name)
-                newAchievement = achievment
-            }
+    private func registerAchievements() {
+        achievementGroups.forEach { achievementGroup in
+            achievementGroup.registerAchievements(storage: storage)
         }
     }
  }

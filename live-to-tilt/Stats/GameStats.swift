@@ -5,22 +5,15 @@ import CoreGraphics
  */
 class GameStats {
     private let gameMode: GameMode
-    private(set) var score: Int = .zero {
-        didSet {
-            onStatUpdated()
-        }
-    }
+    private(set) var score: Int = .zero
     private(set) var powerupsDespawned: Int = .zero
     private(set) var powerupsUsed: Int = .zero
-    private(set) var nukePowerupsUsed: Int = .zero {
-        didSet {
-            onStatUpdated()
-        }
-    }
+    private(set) var nukePowerupsUsed: Int = .zero
     private(set) var lightsaberPowerupsUsed: Int = .zero
+    private(set) var freezePowerupsUsed: Int = .zero
     private(set) var enemiesKilled: Int = .zero {
         didSet {
-            onStatUpdated()
+            EventManager.shared.postEvent(EnemiesKilledStatUpdateEvent(gameStats: self))
         }
     }
     private(set) var distanceTravelled: Float = .zero
@@ -34,10 +27,6 @@ class GameStats {
 
     func incrementPlayTime(deltaTime: CGFloat) {
         playTime += Float(deltaTime)
-    }
-
-    func onStatUpdated() {
-        EventManager.shared.postEvent(GameStatsUpdatedEvent(gameStats: self))
     }
 
     private func observePublishers() {
@@ -72,6 +61,8 @@ class GameStats {
                 self.nukePowerupsUsed += 1
             } else if powerupUsedEvent.powerup is LightsaberPowerup {
                 self.lightsaberPowerupsUsed += 1
+            } else if powerupUsedEvent.powerup is FreezePowerup {
+                self.freezePowerupsUsed += 1
             }
             self.powerupsUsed += 1
 

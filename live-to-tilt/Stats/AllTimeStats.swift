@@ -24,6 +24,9 @@ class AllTimeStats {
     var totalLightsaberPowerupsUsed: Int {
         defaults.integer(forKey: .totalLightsaberPowerupsUsed)
     }
+    var totalFreezePowerupUsed: Int {
+        defaults.integer(forKey: .totalFreezePowerupsUsed)
+    }
     var totalEnemiesKilled: Int {
         defaults.integer(forKey: .totalEnemiesKilled)
     }
@@ -45,15 +48,16 @@ class AllTimeStats {
     }
 
     private func registerAllTimeStats() {
-        defaults.register(defaults: [.totalGamesPlayed: 0,
-                                     .totalScore: 0,
-                                     .totalPowerupsUsed: 0,
-                                     .totalNukePowerupsUsed: 0,
-                                     .totalLightsaberPowerupsUsed: 0,
-                                     .totalEnemiesKilled: 0,
-                                     .totalDistanceTravelled: 0,
-                                     .survivalHighScore: 0,
-                                     .gauntletHighScore: 0])
+        defaults.register(defaults: [.totalGamesPlayed: Int.zero,
+                                     .totalScore: Int.zero,
+                                     .totalPowerupsUsed: Int.zero,
+                                     .totalNukePowerupsUsed: Int.zero,
+                                     .totalLightsaberPowerupsUsed: Int.zero,
+                                     .totalFreezePowerupsUsed: Int.zero,
+                                     .totalEnemiesKilled: Int.zero,
+                                     .totalDistanceTravelled: Float.zero,
+                                     .survivalHighScore: Int.zero,
+                                     .gauntletHighScore: Int.zero])
     }
 
     /// Update all-time stats once a game ends
@@ -77,6 +81,8 @@ class AllTimeStats {
                           forKey: .totalNukePowerupsUsed)
         defaults.setValue(totalLightsaberPowerupsUsed + gameStats.lightsaberPowerupsUsed,
                           forKey: .totalLightsaberPowerupsUsed)
+        defaults.setValue(totalFreezePowerupUsed + gameStats.freezePowerupsUsed,
+                          forKey: .totalFreezePowerupsUsed)
         defaults.setValue(totalEnemiesKilled + gameStats.enemiesKilled,
                           forKey: .totalEnemiesKilled)
         defaults.setValue(totalDistanceTravelled + gameStats.distanceTravelled,
