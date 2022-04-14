@@ -18,8 +18,15 @@ final class PubNubMessageManager: MessageManager {
     func initialise(playerId: String, channelId: String, messageHandlerDelegate: MessageHandlerDelegate) {
         PubNub.log.levels = [.all]
         PubNub.log.writers = [ConsoleLogWriter(), FileLogWriter()]
-        let config = PubNubConfiguration(publishKey: Constants.pubNubPublishKey,
-                                         subscribeKey: Constants.pubNubSubscribeKey,
+
+        guard
+            let publishKey = Bundle.main.secret(secretsKey: .PN_PUBLISH_KEY),
+            let subscribeKey = Bundle.main.secret(secretsKey: .PN_SUBSCRIBE_KEY) else {
+                return
+            }
+
+        let config = PubNubConfiguration(publishKey: publishKey,
+                                         subscribeKey: subscribeKey,
                                          uuid: playerId)
         pubNub = PubNub(configuration: config)
         channels.append(channelId)

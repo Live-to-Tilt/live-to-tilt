@@ -52,7 +52,7 @@ final class FirebaseGameManager: ObservableObject, GameManager {
                     self.initialiseMessanger(playerId: playerId, gameId: availableGame.id, isHost: false)
 
                     do {
-                        let guestMessage = GuestMessage(message: "Hi, this is a message from the guest!")
+                        let guestMessage = GuestMessageHandlerDelegate.GuestMessage(message: "Hi, this is a message from the guest!")
                         let data = try JSONEncoder().encode(guestMessage)
                         self.messageManager.send(data: data)
                     } catch {

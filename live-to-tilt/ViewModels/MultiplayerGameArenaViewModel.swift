@@ -16,12 +16,12 @@ class MultiplayerGameArenaViewModel: ObservableObject {
         let player = PlayerManager.shared.getPlayer()
         gameManager.startGame(with: player.id)
         gameManager.gamePublisher
-            .assign(to: \.game, on: self)
-            .store(in: &cancellables)
+            .sink { [weak self] value in
+                self?.game = value
+            }.store(in: &cancellables)
     }
 
-    func onDisappear() {
+    deinit {
         gameManager.quitGame()
-        // TODO: remove cancellables
     }
 }

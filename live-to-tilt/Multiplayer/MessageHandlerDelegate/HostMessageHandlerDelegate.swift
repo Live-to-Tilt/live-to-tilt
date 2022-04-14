@@ -10,3 +10,9 @@ class HostMessageHandlerDelegate: MessageHandlerDelegate {
         }
     }
 }
+
+extension HostMessageHandlerDelegate {
+    struct HostMessage: Codable {
+        let message: String
+    }
+}

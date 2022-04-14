@@ -10,3 +10,9 @@ class GuestMessageHandlerDelegate: MessageHandlerDelegate {
         }
     }
 }
+
+extension GuestMessageHandlerDelegate {
+    struct GuestMessage: Codable {
+        let message: String
+    }
+}
