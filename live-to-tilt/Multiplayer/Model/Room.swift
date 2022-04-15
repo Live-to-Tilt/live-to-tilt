@@ -1,5 +1,6 @@
 import Foundation
-struct Game: Codable {
+
+struct Room: Codable {
     let id: String
     var hostId: String
     var guestId: String

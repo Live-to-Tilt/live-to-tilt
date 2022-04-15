@@ -1,4 +1,4 @@
-enum Layer: Double {
+enum Layer: Double, Codable {
     case player = 1
     case enemyEffect = 0.3
     case enemyFront = 0.2

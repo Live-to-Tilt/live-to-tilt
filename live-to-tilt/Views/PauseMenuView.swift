@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PauseMenuView: View {
-    @ObservedObject var viewModel: GameArenaViewModel
+    @ObservedObject var viewModel: SingleplayerGameArenaViewModel
     @Environment(\.rootPresentationMode) private var rootPresentationMode
 
     var body: some View {
@@ -33,7 +33,7 @@ struct PauseMenuView: View {
 
 struct PauseMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        PauseMenuView(viewModel: GameArenaViewModel(gameMode: .survival))
+        PauseMenuView(viewModel: SingleplayerGameArenaViewModel(gameMode: .survival))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

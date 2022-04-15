@@ -2,26 +2,53 @@ import Combine
 import Foundation
 
 class MultiplayerGameArenaViewModel: ObservableObject {
-    @Published var game: Game?
+    @Published var renderableComponents: [RenderableComponent]
+    @Published var gameStateComponent: GameStateComponent?
 
-    private var cancellables: Set<AnyCancellable>
-    private let gameManager: GameManager
+    var roomManager: RoomManager
+    var gameControl: GameControl
+    var gameRenderer: GameRenderer
+    var gameEngine: GameEngine?
 
-    init() {
-        self.cancellables = []
-        self.gameManager = FirebaseGameManager() // TODO: create factory
+    var cancellables = Set<AnyCancellable>()
+
+    init(roomManager: RoomManager) {
+        self.renderableComponents = []
+        self.roomManager = roomManager
+        self.gameControl = GameControlManager.shared.gameControl
+
+        if roomManager.isHost {
+            let gameEngine = GameEngine(gameMode: .survival)
+            self.gameEngine = gameEngine
+            self.gameRenderer = MultiplayerHostGameRenderer(gameEngine: gameEngine,
+                                                            gameControl: gameControl)
+        } else {
+            self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
+                                                             gameControl: gameControl)
+        }
+
+        attachPublishers()
+        gameRenderer.start()
     }
 
-    func onAppear() {
-        let player = PlayerManager.shared.getPlayer()
-        gameManager.startGame(with: player.id)
-        gameManager.gamePublisher
-            .sink { [weak self] value in
-                self?.game = value
+    private func attachPublishers() {
+        if roomManager.isHost {
+            let messageDelegate = GuestMessageDelegate()
+            roomManager.subscribe(messageDelegate: messageDelegate)
+
+            gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
+                self?.renderableComponents = renderableComponents
+
+                let message = HostMessage(renderableComponents: renderableComponents)
+                self?.roomManager.send(message: message)
             }.store(in: &cancellables)
-    }
+        } else {
+            let messageDelegate = HostMessageDelegate()
+            roomManager.subscribe(messageDelegate: messageDelegate)
 
-    deinit {
-        gameManager.quitGame()
+            messageDelegate.renderablePublisher.sink { [weak self] renderableComponents in
+                self?.renderableComponents = renderableComponents
+            }.store(in: &cancellables)
+        }
     }
 }

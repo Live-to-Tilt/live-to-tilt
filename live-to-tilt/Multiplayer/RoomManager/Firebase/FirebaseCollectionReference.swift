@@ -1,7 +1,7 @@
 import FirebaseFirestore
 
 enum FirebaseCollectionReference: String {
-    case Game
+    case Room
 }
 
 func FirebaseReference(_ collectionReference: FirebaseCollectionReference) -> CollectionReference {
