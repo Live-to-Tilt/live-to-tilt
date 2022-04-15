@@ -12,7 +12,6 @@ class MultiplayerGameArenaViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
 
     init(roomManager: RoomManager) {
-        print("INIT")
         self.renderableComponents = []
         self.roomManager = roomManager
         self.gameControl = GameControlManager.shared.gameControl
