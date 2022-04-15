@@ -1,5 +1,6 @@
 excluded:
   - Pods
+  - live-to-tilt/Utilities/Heap.swift
 
 opt_in_rules:
   - anyobject_protocol

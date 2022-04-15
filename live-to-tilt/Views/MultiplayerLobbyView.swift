@@ -1,12 +1,19 @@
 import SwiftUI
 
 struct MultiplayerLobbyView: View {
-    @ObservedObject var viewModel = MultiplayerLobbyViewModel()
+    @StateObject var viewModel = MultiplayerLobbyViewModel()
     @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {
         // TODO: dismiss view when opponent disconnects
         // TODO: remove game from firebase when process terminates abruptly
+        NavigationView {
+            Content()
+        }
+        .navigationViewStyle(.stack)
+    }
+
+    private func Content() -> some View {
         VStack {
             Text("Host: \(viewModel.hostId)")
             Text("Guest: \(viewModel.guestId)")
