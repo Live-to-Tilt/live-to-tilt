@@ -90,4 +90,3 @@ fastlane/test_output
 iOSInjectionProject/
 .DS_Store
 live-to-tilt/GoogleService-Info.plist
-live-to-tilt/Secrets.xcconfig

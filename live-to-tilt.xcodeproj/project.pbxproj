@@ -106,6 +106,7 @@
 		3DFBA516280662C700CD9273 /* TapSoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA515280662C700CD9273 /* TapSoundEffect.swift */; };
 		3DFBA51B2806792D00CD9273 /* ArenaBoundaryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */; };
 		3DFBA51D2806795500CD9273 /* ArenaBoundarySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */; };
+		720EEEEE2809659A008D3FBF /* Secrets.xcconfig in Sources */ = {isa = PBXBuildFile; fileRef = 720EEEED2809659A008D3FBF /* Secrets.xcconfig */; };
 		7230521027F2C64C00AD753D /* PauseMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230520F27F2C64C00AD753D /* PauseMenuView.swift */; };
 		7230521227F2D52700AD753D /* GameOverMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521127F2D52700AD753D /* GameOverMenuView.swift */; };
 		7230521427F2D80500AD753D /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230521327F2D80500AD753D /* MenuButton.swift */; };
@@ -297,7 +298,7 @@
 		3DFBA515280662C700CD9273 /* TapSoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSoundEffect.swift; sourceTree = "<group>"; };
 		3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundaryComponent.swift; sourceTree = "<group>"; };
 		3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundarySystem.swift; sourceTree = "<group>"; };
-		720EEEEC28095E7B008D3FBF /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		720EEEED2809659A008D3FBF /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
@@ -463,7 +464,7 @@
 				3D12D9CF27D61D8800D01489 /* Info.plist */,
 				3D69D244280714FA00E1D45E /* GoogleService-Info.plist */,
 				3D12D9CC27D61D8800D01489 /* Preview Content */,
-				720EEEEC28095E7B008D3FBF /* Secrets.xcconfig */,
+				720EEEED2809659A008D3FBF /* Secrets.xcconfig */,
 			);
 			path = "live-to-tilt";
 			sourceTree = "<group>";
@@ -1128,6 +1129,7 @@
 				3D69D25028073D0800E1D45E /* RoomManager.swift in Sources */,
 				3D69D26D2807D37600E1D45E /* SecretsKey.swift in Sources */,
 				72EC6AA927E2DBF700FCCB7E /* PhysicsComponent.swift in Sources */,
+				720EEEEE2809659A008D3FBF /* Secrets.xcconfig in Sources */,
 				72F1391B280530F8000951A7 /* EnemyFreezerComponent.swift in Sources */,
 				3DB3742027F457CB0053F400 /* ConnectedMovement.swift in Sources */,
 				3DEA51C627FC9BE6001D6CB5 /* ScaleAnimation.swift in Sources */,
