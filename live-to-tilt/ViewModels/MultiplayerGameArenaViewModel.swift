@@ -22,9 +22,22 @@ class MultiplayerGameArenaViewModel: ObservableObject {
             self.gameEngine = gameEngine
             self.gameRenderer = MultiplayerHostGameRenderer(gameEngine: gameEngine,
                                                             gameControl: gameControl)
+
+            let messageDelegate = GuestMessageDelegate()
+            roomManager.subscribe(messageDelegate: messageDelegate)
         } else {
-            self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
-                                                             gameControl: gameControl)
+            let messageBuffer = MessageBuffer()
+            let gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
+                                                            messageBuffer: messageBuffer,
+                                                            gameControl: gameControl)
+            self.gameRenderer = gameRenderer
+
+            gameRenderer.renderablePublisher.sink { [weak self] renderableComponents in
+                self?.renderableComponents = renderableComponents
+            }.store(in: &cancellables)
+
+            let messageDelegate = HostMessageDelegate(messageBuffer: messageBuffer)
+            roomManager.subscribe(messageDelegate: messageDelegate)
         }
 
         attachPublishers()
@@ -32,23 +45,11 @@ class MultiplayerGameArenaViewModel: ObservableObject {
     }
 
     private func attachPublishers() {
-        if roomManager.isHost {
-            let messageDelegate = GuestMessageDelegate()
-            roomManager.subscribe(messageDelegate: messageDelegate)
+        gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
+            self?.renderableComponents = renderableComponents
 
-            gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
-                self?.renderableComponents = renderableComponents
-
-                let message = HostMessage(renderableComponents: renderableComponents)
-                self?.roomManager.send(message: message)
-            }.store(in: &cancellables)
-        } else {
-            let messageDelegate = HostMessageDelegate()
-            roomManager.subscribe(messageDelegate: messageDelegate)
-
-            messageDelegate.renderablePublisher.sink { [weak self] renderableComponents in
-                self?.renderableComponents = renderableComponents
-            }.store(in: &cancellables)
-        }
+            let message = HostMessage(renderableComponents: renderableComponents)
+            self?.roomManager.send(message: message)
+        }.store(in: &cancellables)
     }
 }
