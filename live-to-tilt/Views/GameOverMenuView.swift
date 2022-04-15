@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameOverMenuView: View {
-    @ObservedObject var viewModel: GameArenaViewModel
+    @ObservedObject var viewModel: SingleplayerGameArenaViewModel
     @Environment(\.rootPresentationMode) private var rootPresentationMode
 
     var body: some View {
@@ -55,7 +55,7 @@ struct GameOverMenuView: View {
 
 struct GameOverMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        GameOverMenuView(viewModel: GameArenaViewModel(gameMode: .survival))
+        GameOverMenuView(viewModel: SingleplayerGameArenaViewModel(gameMode: .survival))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

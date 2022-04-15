@@ -1,7 +1,7 @@
-import Foundation
-
 protocol MessageManager {
-    func initialise(playerId: String, channelId: String, messageHandlerDelegate: MessageHandlerDelegate)
+    func initialise(userId: String, channelId: String)
 
-    func send(data: Data)
+    func send(message: Message)
+
+    func subscribe(messageDelegate: MessageDelegate)
 }

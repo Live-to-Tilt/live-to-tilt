@@ -1,6 +1,6 @@
 import Combine
 
-class GameArenaViewModel: ObservableObject {
+class SingleplayerGameArenaViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
@@ -20,11 +20,11 @@ class GameArenaViewModel: ObservableObject {
         renderableComponents = []
         gameEngine = GameEngine(gameMode: gameMode)
         gameControl = GameControlManager.shared.gameControl
-        gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
+        gameRenderer = SingleplayerGameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         achievementManager = AchievementManager()
         achievements = []
-        gameRenderer.start()
         attachPublishers()
+        gameRenderer.start()
     }
 
     deinit {
@@ -35,7 +35,7 @@ class GameArenaViewModel: ObservableObject {
         detachPublishers()
         gameRenderer.stop()
         gameEngine = GameEngine(gameMode: gameEngine.gameMode)
-        gameRenderer = GameRenderer(gameEngine: gameEngine, gameControl: gameControl)
+        gameRenderer = SingleplayerGameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         resetAchievements()
         gameRenderer.start()
         attachPublishers()

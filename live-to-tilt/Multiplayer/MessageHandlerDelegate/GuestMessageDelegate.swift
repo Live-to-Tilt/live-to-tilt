@@ -1,6 +1,6 @@
 import Foundation
 
-class GuestMessageHandlerDelegate: MessageHandlerDelegate {
+class GuestMessageDelegate: MessageDelegate {
     func onReceive(data: Data) {
         do {
             let guestMessage = try JSONDecoder().decode(GuestMessage.self, from: data)
@@ -11,7 +11,7 @@ class GuestMessageHandlerDelegate: MessageHandlerDelegate {
     }
 }
 
-extension GuestMessageHandlerDelegate {
+extension GuestMessageDelegate {
     struct GuestMessage: Codable {
         let message: String
     }

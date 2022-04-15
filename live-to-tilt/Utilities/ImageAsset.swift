@@ -1,4 +1,4 @@
-enum ImageAsset: String {
+enum ImageAsset: String, Codable {
     case enemyFront
     case enemyBack
     case player
