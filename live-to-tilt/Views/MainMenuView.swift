@@ -28,6 +28,8 @@ struct MainMenuView: View {
     private func Content() -> some View {
         HStack {
             Spacer()
+            Spacer()
+            Spacer()
 
             VStack(alignment: .trailing) {
                 Text("live to tilt")

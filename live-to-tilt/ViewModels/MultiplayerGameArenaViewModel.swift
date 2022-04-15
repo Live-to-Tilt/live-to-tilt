@@ -1,18 +1,18 @@
 import Combine
-import Foundation
 
 class MultiplayerGameArenaViewModel: ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
 
     var roomManager: RoomManager
+    var gameEngine: GameEngine?
     var gameControl: GameControl
     var gameRenderer: GameRenderer
-    var gameEngine: GameEngine?
 
     var cancellables = Set<AnyCancellable>()
 
     init(roomManager: RoomManager) {
+        print("INIT")
         self.renderableComponents = []
         self.roomManager = roomManager
         self.gameControl = GameControlManager.shared.gameControl
@@ -25,7 +25,6 @@ class MultiplayerGameArenaViewModel: ObservableObject {
         } else {
             self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
                                                              gameControl: gameControl)
-
         }
 
         attachSubscribers()

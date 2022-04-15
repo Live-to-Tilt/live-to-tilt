@@ -5,7 +5,7 @@ struct MultiplayerGameArenaView: View {
 
     var body: some View {
         ZStack {
-//            GameControlView(gameControl: $viewModel.gameControl)
+            GameControlView(gameControl: $viewModel.gameControl)
 
             VStack {
                 TopInfoBar()

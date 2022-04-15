@@ -23,6 +23,7 @@ class SingleplayerGameArenaViewModel: ObservableObject {
         gameRenderer = SingleplayerGameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         achievementManager = AchievementManager()
         achievements = []
+
         attachPublishers()
         gameRenderer.start()
     }
