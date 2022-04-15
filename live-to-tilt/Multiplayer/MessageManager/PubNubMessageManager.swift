@@ -5,12 +5,12 @@ final class PubNubMessageManager: MessageManager {
     private var pubNub: PubNub?
     private var channels: [String]
     private let listener: SubscriptionListener
-    private var messageHandlerDelegates: [MessageDelegate]
+    private var messageDelegates: [MessageDelegate]
 
     init() {
         self.channels = []
         self.listener = SubscriptionListener()
-        self.messageHandlerDelegates = []
+        self.messageDelegates = []
     }
 
     var isInitialised: Bool {
@@ -39,8 +39,8 @@ final class PubNubMessageManager: MessageManager {
                 let data = payload.dataOptional else {
                 return
             }
-            self.messageHandlerDelegates.forEach { messageHandlerDelegate in
-                messageHandlerDelegate.onReceive(data: data)
+            self.messageDelegates.forEach { messageDelegate in
+                messageDelegate.onReceive(data: data)
             }
         }
 
@@ -61,7 +61,7 @@ final class PubNubMessageManager: MessageManager {
         }
     }
 
-    func subscribe(messageHandlerDelegate: MessageDelegate) {
-        messageHandlerDelegates.append(messageHandlerDelegate)
+    func subscribe(messageDelegate: MessageDelegate) {
+        messageDelegates.append(messageDelegate)
     }
 }

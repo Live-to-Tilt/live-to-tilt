@@ -12,7 +12,7 @@ protocol RoomManager {
 
     func leaveRoom()
 
-    func subscribe(messageHandler: MessageDelegate)
+    func subscribe(messageDelegate: MessageDelegate)
 
     func send(message: Message)
 }

@@ -42,10 +42,10 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
                     }
 
                     availableRoom.guestId = playerId
-                    self.initialiseMessanger(playerId: playerId, roomId: availableRoom.id)
+                    self.initialiseMessageManager(playerId: playerId, roomId: availableRoom.id)
                     self.room = availableRoom
                     self.updateRoom(availableRoom)
-                    self.listenForGameChanges()
+                    self.listenForRoomChanges()
                 } else {
                     self.createGame(with: playerId)
                 }
@@ -60,8 +60,8 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
         FirebaseReference(.Room).document(room.id).delete()
     }
 
-    func subscribe(messageHandler: MessageDelegate) {
-        messageManager.subscribe(messageHandlerDelegate: messageHandler)
+    func subscribe(messageDelegate: MessageDelegate) {
+        messageManager.subscribe(messageDelegate: messageDelegate)
     }
 
     func send(message: Message) {
@@ -73,8 +73,8 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
             let newRoom = Room(hostId: playerId)
             room = newRoom
             try FirebaseReference(.Room).document(newRoom.id).setData(from: newRoom)
-            initialiseMessanger(playerId: playerId, roomId: newRoom.id)
-            listenForGameChanges()
+            initialiseMessageManager(playerId: playerId, roomId: newRoom.id)
+            listenForRoomChanges()
         } catch {
             print(error.localizedDescription)
         }
@@ -88,7 +88,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
         }
     }
 
-    private func listenForGameChanges() {
+    private func listenForRoomChanges() {
         guard let room = room else {
             return
         }
@@ -104,7 +104,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
         }
     }
 
-    private func initialiseMessanger(playerId: String, roomId: String) {
+    private func initialiseMessageManager(playerId: String, roomId: String) {
         messageManager.initialise(userId: playerId, channelId: roomId)
     }
 }
