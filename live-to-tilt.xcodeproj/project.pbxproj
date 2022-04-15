@@ -252,7 +252,6 @@
 		3D69D258280752D700E1D45E /* MessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDelegate.swift; sourceTree = "<group>"; };
 		3D69D25F2807541A00E1D45E /* HostMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessageDelegate.swift; sourceTree = "<group>"; };
 		3D69D2612807543000E1D45E /* GuestMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessageDelegate.swift; sourceTree = "<group>"; };
-		3D69D26B2807D15200E1D45E /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		3D69D26C2807D37600E1D45E /* SecretsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsKey.swift; sourceTree = "<group>"; };
 		3D69D26E2807D3BB00E1D45E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		3D69D27028081F3200E1D45E /* MultiplayerGameArenaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerGameArenaView.swift; sourceTree = "<group>"; };
@@ -336,6 +335,7 @@
 		727A389927FBF7400046E8F2 /* RootPresentationMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationMode.swift; sourceTree = "<group>"; };
 		727DD52528041255002B75CC /* WaveSpawnedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSpawnedEvent.swift; sourceTree = "<group>"; };
 		727DD5292804175C002B75CC /* PowerupDespawnedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupDespawnedEvent.swift; sourceTree = "<group>"; };
+		7299F39728097E220025273F /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		729FA8D727FFD95C008F55BB /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
 		729FA8DA27FFDB3C008F55BB /* GameModePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModePicker.swift; sourceTree = "<group>"; };
 		729FA8DC27FFECAC008F55BB /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
@@ -457,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				3D12D9C627D61D8500D01489 /* Main.swift */,
-				3D69D244280714FA00E1D45E /* GoogleService-Info.plist */,
 				3D69D2332806F1BE00E1D45E /* Multiplayer */,
 				DB77AF3727F7721500F8DE4C /* Achievements */,
 				3D12D9D927D61F1C00D01489 /* AudioEngine */,
@@ -470,8 +469,9 @@
 				72478EA627D73AFA00B9140A /* Utilities */,
 				3D12D9CA27D61D8800D01489 /* Assets.xcassets */,
 				3D12D9CF27D61D8800D01489 /* Info.plist */,
+				3D69D244280714FA00E1D45E /* GoogleService-Info.plist */,
 				3D12D9CC27D61D8800D01489 /* Preview Content */,
-				3D69D26B2807D15200E1D45E /* Secrets.xcconfig */,
+				7299F39728097E220025273F /* Secrets.xcconfig */,
 			);
 			path = "live-to-tilt";
 			sourceTree = "<group>";
@@ -1248,7 +1248,7 @@
 /* Begin XCBuildConfiguration section */
 		3D12D9D027D61D8800D01489 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D69D26B2807D15200E1D45E /* Secrets.xcconfig */;
+			baseConfigurationReference = 7299F39728097E220025273F /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1310,7 +1310,7 @@
 		};
 		3D12D9D127D61D8800D01489 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D69D26B2807D15200E1D45E /* Secrets.xcconfig */;
+			baseConfigurationReference = 7299F39728097E220025273F /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
