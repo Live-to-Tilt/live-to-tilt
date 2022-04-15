@@ -88,7 +88,7 @@ class GameStats {
 
     func getBackdropValue() -> String {
         switch gameMode {
-        case .survival:
+        case .survival, .coop:
             return score.withCommas()
         case .gauntlet:
             return playTime.toTimeString()
@@ -97,7 +97,7 @@ class GameStats {
 
     func getGameOverStats() -> [GameOverStat] {
         switch gameMode {
-        case .survival:
+        case .survival, .coop:
             return [
                 GameOverStat(label: "Score", value: score.withCommas()),
                 GameOverStat(label: "Time", value: playTime.toTimeString()),

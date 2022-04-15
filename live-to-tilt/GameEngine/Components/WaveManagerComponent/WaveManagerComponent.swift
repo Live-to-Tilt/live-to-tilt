@@ -7,7 +7,7 @@ class WaveManagerComponent: Component {
     init(entity: Entity, gameMode: GameMode) {
         self.entity = entity
         switch gameMode {
-        case .survival:
+        case .survival, .coop:
             self.waveManager = SurvivalWaveManager()
         case .gauntlet:
             self.waveManager = GauntletWaveManager()

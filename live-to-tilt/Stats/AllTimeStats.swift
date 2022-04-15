@@ -101,12 +101,14 @@ class AllTimeStats {
             if gameStats.playTime > gauntletHighScore {
                 defaults.setValue(gameStats.playTime, forKey: .gauntletHighScore)
             }
+        case .coop:
+            return
         }
     }
 
     func getHighScore(for gameMode: GameMode) -> String {
         switch gameMode {
-        case .survival:
+        case .survival, .coop:
             return survivalHighScore.withCommas()
         case .gauntlet:
             return gauntletHighScore.toTimeString()
