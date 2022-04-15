@@ -30,39 +30,41 @@ struct MainMenuView: View {
             Spacer()
             Spacer()
             Spacer()
-
-            VStack(alignment: .trailing) {
-                Text("live to tilt")
-                    .modifier(HeroText())
-                    .padding(.bottom, 40)
-
-                NavigationLink(destination: LazyView(GameModeSelectionView()),
-                               isActive: self.$isActive) {
-                    Text("single player").modifier(MenuItemText())
-                }
-                .modifier(TapSoundEffect())
-
-                NavigationLink(destination: LazyView(MultiplayerLobbyView())) {
-                    Text("multiplayer").modifier(MenuItemText())
-                }
-                .modifier(TapSoundEffect())
-
-                NavigationLink(destination: LazyView(HowToPlayView())) {
-                    Text("how to play").modifier(MenuItemText())
-                }
-                .modifier(TapSoundEffect())
-
-                NavigationLink(destination: LazyView(SettingsView())) {
-                    Text("settings").modifier(MenuItemText())
-                }
-                .modifier(TapSoundEffect())
-            }
-
+            Menu()
             Spacer()
         }
         .rotationEffect(.degrees(15))
         .onAppear {
             viewModel.onAppear()
+        }
+    }
+
+    private func Menu() -> some View {
+        VStack(alignment: .trailing) {
+            Text("live to tilt")
+                .modifier(HeroText())
+                .padding(.bottom, 40)
+
+            NavigationLink(destination: LazyView(GameModeSelectionView()),
+                           isActive: self.$isActive) {
+                Text("single player").modifier(MenuItemText())
+            }
+            .modifier(TapSoundEffect())
+
+            NavigationLink(destination: LazyView(MultiplayerLobbyView())) {
+                Text("multiplayer").modifier(MenuItemText())
+            }
+            .modifier(TapSoundEffect())
+
+            NavigationLink(destination: LazyView(HowToPlayView())) {
+                Text("how to play").modifier(MenuItemText())
+            }
+            .modifier(TapSoundEffect())
+
+            NavigationLink(destination: LazyView(SettingsView())) {
+                Text("settings").modifier(MenuItemText())
+            }
+            .modifier(TapSoundEffect())
         }
     }
 }
