@@ -247,7 +247,7 @@
 		3D69D258280752D700E1D45E /* MessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDelegate.swift; sourceTree = "<group>"; };
 		3D69D25F2807541A00E1D45E /* HostMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessageDelegate.swift; sourceTree = "<group>"; };
 		3D69D2612807543000E1D45E /* GuestMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessageDelegate.swift; sourceTree = "<group>"; };
-		3D69D26B2807D15200E1D45E /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		3D69D26B2807D15200E1D45E /* Secrets.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = Secrets.xcconfig.example; sourceTree = "<group>"; };
 		3D69D26C2807D37600E1D45E /* SecretsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsKey.swift; sourceTree = "<group>"; };
 		3D69D26E2807D3BB00E1D45E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		3D69D27028081F3200E1D45E /* MultiplayerGameArenaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerGameArenaView.swift; sourceTree = "<group>"; };
@@ -463,7 +463,7 @@
 				3D12D9CA27D61D8800D01489 /* Assets.xcassets */,
 				3D12D9CF27D61D8800D01489 /* Info.plist */,
 				3D12D9CC27D61D8800D01489 /* Preview Content */,
-				3D69D26B2807D15200E1D45E /* Secrets.xcconfig */,
+				3D69D26B2807D15200E1D45E /* Secrets.xcconfig.example */,
 			);
 			path = "live-to-tilt";
 			sourceTree = "<group>";
@@ -1227,7 +1227,7 @@
 /* Begin XCBuildConfiguration section */
 		3D12D9D027D61D8800D01489 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D69D26B2807D15200E1D45E /* Secrets.xcconfig */;
+			baseConfigurationReference = 3D69D26B2807D15200E1D45E /* Secrets.xcconfig.example */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1289,7 +1289,7 @@
 		};
 		3D12D9D127D61D8800D01489 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D69D26B2807D15200E1D45E /* Secrets.xcconfig */;
+			baseConfigurationReference = 3D69D26B2807D15200E1D45E /* Secrets.xcconfig.example */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
