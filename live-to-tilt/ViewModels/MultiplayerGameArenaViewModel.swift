@@ -22,26 +22,30 @@ class MultiplayerGameArenaViewModel: ObservableObject {
             self.gameEngine = gameEngine
             self.gameRenderer = MultiplayerHostGameRenderer(gameEngine: gameEngine,
                                                             gameControl: gameControl)
+        } else {
+            self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
+                                                             gameControl: gameControl)
 
+        }
+
+        attachSubscribers()
+        attachPublishers()
+        gameRenderer.start()
+    }
+
+    private func attachSubscribers() {
+        if roomManager.isHost {
             let messageDelegate = GuestMessageDelegate()
             roomManager.subscribe(messageDelegate: messageDelegate)
         } else {
-            let messageBuffer = MessageBuffer()
-            let gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
-                                                            messageBuffer: messageBuffer,
-                                                            gameControl: gameControl)
-            self.gameRenderer = gameRenderer
+            guard let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer else {
+                return
+            }
 
-            gameRenderer.renderablePublisher.sink { [weak self] renderableComponents in
-                self?.renderableComponents = renderableComponents
-            }.store(in: &cancellables)
-
+            let messageBuffer = guestGameRenderer.messageBuffer
             let messageDelegate = HostMessageDelegate(messageBuffer: messageBuffer)
             roomManager.subscribe(messageDelegate: messageDelegate)
         }
-
-        attachPublishers()
-        gameRenderer.start()
     }
 
     private func attachPublishers() {
@@ -51,5 +55,11 @@ class MultiplayerGameArenaViewModel: ObservableObject {
             let message = HostMessage(renderableComponents: renderableComponents)
             self?.roomManager.send(message: message)
         }.store(in: &cancellables)
+
+        if let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer {
+            guestGameRenderer.renderableSubject.sink { [weak self] renderableComponents in
+                self?.renderableComponents = renderableComponents
+            }.store(in: &cancellables)
+        }
     }
 }

@@ -2,7 +2,7 @@ import Combine
 import QuartzCore
 
 class MultiplayerGuestGameRenderer: GameRenderer {
-    private let messageBuffer: MessageBuffer
+    let messageBuffer: MessageBuffer
     private let gameControl: GameControl
     private var displayLink: CADisplayLink!
     private var hasStarted: Bool
@@ -13,8 +13,8 @@ class MultiplayerGuestGameRenderer: GameRenderer {
         renderableSubject.eraseToAnyPublisher()
     }
 
-    init(roomManager: RoomManager, messageBuffer: MessageBuffer, gameControl: GameControl) {
-        self.messageBuffer = messageBuffer
+    init(roomManager: RoomManager, gameControl: GameControl) {
+        self.messageBuffer = MessageBuffer()
         self.gameControl = gameControl
         self.hasStarted = false
         self.expectedMessageSequenceId = .zero
