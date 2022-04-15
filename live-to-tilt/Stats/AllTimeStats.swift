@@ -41,6 +41,9 @@ class AllTimeStats {
     var gauntletHighScore: Float {
         defaults.float(forKey: .gauntletHighScore)
     }
+    var coopHighScore: Int {
+        defaults.integer(forKey: .coopHighScore)
+    }
 
     private init() {
         defaults = UserDefaults.standard
@@ -57,7 +60,8 @@ class AllTimeStats {
                                      .totalEnemiesKilled: Int.zero,
                                      .totalDistanceTravelled: Float.zero,
                                      .survivalHighScore: Int.zero,
-                                     .gauntletHighScore: Int.zero])
+                                     .gauntletHighScore: Float.zero,
+                                     .coopHighScore: Int.zero])
     }
 
     /// Update all-time stats once a game ends
@@ -102,16 +106,20 @@ class AllTimeStats {
                 defaults.setValue(gameStats.playTime, forKey: .gauntletHighScore)
             }
         case .coop:
-            return
+            if gameStats.score > coopHighScore {
+                defaults.setValue(gameStats.score, forKey: .coopHighScore)
+            }
         }
     }
 
     func getHighScore(for gameMode: GameMode) -> String {
         switch gameMode {
-        case .survival, .coop:
+        case .survival:
             return survivalHighScore.withCommas()
         case .gauntlet:
             return gauntletHighScore.toTimeString()
+        case .coop:
+            return coopHighScore.withCommas()
         }
     }
 }
