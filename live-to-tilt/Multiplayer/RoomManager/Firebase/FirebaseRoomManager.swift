@@ -32,7 +32,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
             .whereField("hostId", isNotEqualTo: playerId)
             .getDocuments { querySnapshot, error in
                 if error != nil {
-                    self.createGame(with: playerId)
+                    self.createRoom(with: playerId)
                     return
                 }
 
@@ -47,7 +47,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
                     self.updateRoom(availableRoom)
                     self.listenForRoomChanges()
                 } else {
-                    self.createGame(with: playerId)
+                    self.createRoom(with: playerId)
                 }
             }
     }
@@ -68,7 +68,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
         messageManager.send(message: message)
     }
 
-    private func createGame(with playerId: String) {
+    private func createRoom(with playerId: String) {
         do {
             let newRoom = Room(hostId: playerId)
             room = newRoom
