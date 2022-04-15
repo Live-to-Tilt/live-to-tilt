@@ -59,7 +59,7 @@ final class PowerupSystem: System {
         let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
         let powerupPosition = powerupPhysicsBody.position
 
-        powerup.activate(nexus: nexus, at: powerupPosition)
+        powerup.activate(nexus: nexus, at: powerupPosition, by: collidedEntity)
         nexus.removeEntity(powerupEntity)
     }
 

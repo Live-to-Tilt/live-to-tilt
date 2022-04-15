@@ -8,19 +8,18 @@ class LightsaberPowerup: Powerup {
         self.orbImage = .lightsaberOrb
     }
 
-    func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+    func coroutine(nexus: Nexus, powerupPosition: CGPoint, playerEntity: Entity) {
         AudioController.shared.play(.lightsaberIgnition)
-        nexus.createLightsaberAura()
+        nexus.createLightsaberAura(for: playerEntity)
     }
 }
 
 extension Nexus {
-    func createLightsaberAura() {
-        guard
-            let playerEntity = getEntity(with: PlayerComponent.self),
-            let physicsComponent = getComponent(of: PhysicsComponent.self, for: playerEntity) else {
+    func createLightsaberAura(for playerEntity: Entity) {
+        guard let physicsComponent = getComponent(of: PhysicsComponent.self, for: playerEntity) else {
             return
         }
+
         let playerPhysicsBody = physicsComponent.physicsBody
         let playerPosition = playerPhysicsBody.position
         let playerRotation = playerPhysicsBody.rotation
