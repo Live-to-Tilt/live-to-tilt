@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class EnemySystem: System {
+final class EnemySystem: System {
     let nexus: Nexus
 
     init(nexus: Nexus) {

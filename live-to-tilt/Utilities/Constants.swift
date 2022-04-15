@@ -70,7 +70,7 @@ struct Constants {
     static let enemyMovementSpeed: CGFloat = 0.1
     static let enemySpawnDelay: CGFloat = 1
     static let enemyLifespan: CGFloat = 30
-    
+
     // Category Bitmasks
     static let playerCategoryBitmask: UInt32 = 1 << 0
     static let enemyCategoryBitmask: UInt32 = 1 << 1

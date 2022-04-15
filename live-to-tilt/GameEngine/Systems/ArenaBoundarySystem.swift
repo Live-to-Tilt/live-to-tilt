@@ -8,18 +8,16 @@ final class ArenaBoundarySystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        let arenaRestrictionComponents = nexus.getComponents(of: ArenaBoundaryComponent.self)
-        arenaRestrictionComponents.forEach { arenaRestrictionComponent in
-            despawnIfOutsideArena(arenaRestrictionComponent)
+        let arenaBoundaryComponents = nexus.getComponents(of: ArenaBoundaryComponent.self)
+        arenaBoundaryComponents.forEach { arenaBoundaryComponent in
+            despawnIfOutsideArena(arenaBoundaryComponent)
         }
     }
 
-    func lateUpdate(deltaTime: CGFloat) {
+    func lateUpdate(deltaTime: CGFloat) {}
 
-    }
-
-    private func despawnIfOutsideArena(_ arenaRestrictionComponent: ArenaBoundaryComponent) {
-        let entity = arenaRestrictionComponent.entity
+    private func despawnIfOutsideArena(_ arenaBoundaryComponent: ArenaBoundaryComponent) {
+        let entity = arenaBoundaryComponent.entity
 
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self,
                                                         for: entity) else {

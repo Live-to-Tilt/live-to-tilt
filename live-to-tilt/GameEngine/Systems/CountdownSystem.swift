@@ -1,7 +1,7 @@
 import CoreGraphics
 
-class CountdownSystem: System {
-    var nexus: Nexus
+final class CountdownSystem: System {
+    let nexus: Nexus
 
     init(nexus: Nexus) {
         self.nexus = nexus
@@ -15,9 +15,7 @@ class CountdownSystem: System {
         }
     }
 
-    func lateUpdate(deltaTime: CGFloat) {
-
-    }
+    func lateUpdate(deltaTime: CGFloat) {}
 
     private func updateTimeLeft(_ countdownComponent: CountdownComponent, deltaTime: CGFloat) {
         let timeLeft = countdownComponent.timeLeft - deltaTime

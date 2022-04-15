@@ -30,13 +30,13 @@ class GameStats {
     }
 
     private func observePublishers() {
-        EventManager.shared.registerClosureForEvent(of: GameEndedEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosureForEvent(of: PowerupDespawnedEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosureForEvent(of: PowerupUsedEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosureForEvent(of: ScoreChangedEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosureForEvent(of: PlayerMovedEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosureForEvent(of: WaveStartedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: GameEndedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: PowerupDespawnedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: PowerupUsedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: ScoreChangedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: EnemyKilledEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: PlayerMovedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: WaveStartedEvent.self, closure: onStatEventRef)
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
@@ -56,15 +56,7 @@ class GameStats {
             self.powerupsDespawned += 1
 
         case let powerupUsedEvent as PowerupUsedEvent:
-            // NOTE: Probably need to refactor this
-            if powerupUsedEvent.powerup is NukePowerup {
-                self.nukePowerupsUsed += 1
-            } else if powerupUsedEvent.powerup is LightsaberPowerup {
-                self.lightsaberPowerupsUsed += 1
-            } else if powerupUsedEvent.powerup is FreezePowerup {
-                self.freezePowerupsUsed += 1
-            }
-            self.powerupsUsed += 1
+            onPowerupUsedEvent(powerupUsedEvent)
 
         case let scoreChangedEvent as ScoreChangedEvent:
             self.score += scoreChangedEvent.deltaScore
@@ -81,6 +73,17 @@ class GameStats {
         default:
             return
         }
+    }
+
+    private func onPowerupUsedEvent(_ powerupUsedEvent: PowerupUsedEvent) {
+        if powerupUsedEvent.powerup is NukePowerup {
+            self.nukePowerupsUsed += 1
+        } else if powerupUsedEvent.powerup is LightsaberPowerup {
+            self.lightsaberPowerupsUsed += 1
+        } else if powerupUsedEvent.powerup is FreezePowerup {
+            self.freezePowerupsUsed += 1
+        }
+        self.powerupsUsed += 1
     }
 
     func getBackdropValue() -> String {

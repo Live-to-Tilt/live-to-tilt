@@ -27,14 +27,14 @@ class EventManager {
         observerClosures = [:]
     }
 
-    func registerClosureForEvent<T: Event>(of type: T.Type, closure: @escaping EventClosure) {
+    func registerClosure<T: Event>(for event: T.Type, closure: @escaping EventClosure) {
         if observerClosures[T.identifier] == nil {
-            createObserverForEvent(of: type, observer: self, selector: #selector(executeObserverClosures))
+            createObserver(for: event, observer: self, selector: #selector(executeObserverClosures))
         }
         observerClosures[T.identifier, default: []].append(closure)
     }
 
-    private func createObserverForEvent<T: Event>(of type: T.Type, observer: AnyObject, selector: Selector) {
+    private func createObserver<T: Event>(for event: T.Type, observer: AnyObject, selector: Selector) {
         let notificationName = T.identifier.notificationName
         NotificationCenter.default.addObserver(observer,
                                                selector: selector,

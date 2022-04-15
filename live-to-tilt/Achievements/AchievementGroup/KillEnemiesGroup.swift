@@ -14,8 +14,8 @@ class KillEnemiesGroup: AchievementGroup {
     }
 
     func subscribeToEvents() {
-        EventManager.shared.registerClosureForEvent(of: EnemiesKilledStatUpdateEvent.self,
-                                                    closure: onEnemiesKilledStatUpdated)
+        EventManager.shared.registerClosure(for: EnemiesKilledStatUpdateEvent.self,
+                                            closure: onEnemiesKilledStatUpdated)
     }
 
     private lazy var onEnemiesKilledStatUpdated = { [weak self] (_ event: Event) -> Void in

@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class ScoreSystem: System {
+final class ScoreSystem: System {
     let nexus: Nexus
 
     init(nexus: Nexus) {
@@ -13,9 +13,9 @@ class ScoreSystem: System {
     func lateUpdate(deltaTime: CGFloat) {}
 
     private func subscribeToEvents() {
-        EventManager.shared.registerClosureForEvent(of: PowerupUsedEvent.self, closure: onGameEvent)
-        EventManager.shared.registerClosureForEvent(of: EnemyKilledEvent.self, closure: onGameEvent)
-        EventManager.shared.registerClosureForEvent(of: ComboExpiredEvent.self, closure: onGameEvent)
+        EventManager.shared.registerClosure(for: PowerupUsedEvent.self, closure: onGameEvent)
+        EventManager.shared.registerClosure(for: EnemyKilledEvent.self, closure: onGameEvent)
+        EventManager.shared.registerClosure(for: ComboExpiredEvent.self, closure: onGameEvent)
     }
 
     private lazy var onGameEvent = { [weak self] (event: Event) -> Void in
