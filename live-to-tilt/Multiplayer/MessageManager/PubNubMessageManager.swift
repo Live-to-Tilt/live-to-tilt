@@ -5,7 +5,7 @@ final class PubNubMessageManager: MessageManager {
     private var pubNub: PubNub?
     private var channels: [String]
     private let listener: SubscriptionListener
-    private var messageHandlerDelegates: [MessageHandlerDelegate]
+    private var messageHandlerDelegates: [MessageDelegate]
 
     init() {
         self.channels = []
@@ -61,7 +61,7 @@ final class PubNubMessageManager: MessageManager {
         }
     }
 
-    func subscribe(messageHandlerDelegate: MessageHandlerDelegate) {
+    func subscribe(messageHandlerDelegate: MessageDelegate) {
         messageHandlerDelegates.append(messageHandlerDelegate)
     }
 }

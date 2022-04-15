@@ -1,5 +1,5 @@
 import Foundation
 
-protocol MessageHandlerDelegate: AnyObject {
+protocol MessageDelegate: AnyObject {
     func onReceive(data: Data)
 }

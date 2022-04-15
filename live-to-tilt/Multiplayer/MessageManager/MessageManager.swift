@@ -3,5 +3,5 @@ protocol MessageManager {
 
     func send(message: Message)
 
-    func subscribe(messageHandlerDelegate: MessageHandlerDelegate)
+    func subscribe(messageHandlerDelegate: MessageDelegate)
 }

@@ -1,9 +1,10 @@
 import Combine
 import Foundation
 
-class HostMessageHandlerDelegate: MessageHandlerDelegate, ObservableObject {
+class HostMessageDelegate: MessageDelegate, ObservableObject {
     @Published var renderableComponents: [RenderableComponent]
 
+    // TODO: publish host message instead
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
         renderableSubject.eraseToAnyPublisher()

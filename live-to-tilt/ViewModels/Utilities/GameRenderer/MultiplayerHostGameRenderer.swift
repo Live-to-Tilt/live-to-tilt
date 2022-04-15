@@ -22,15 +22,24 @@ class MultiplayerHostGameRenderer: GameRenderer {
     }
 
     func stop() {
+        guard hasStarted else {
+            return
+        }
+        hasStarted = false
 
+        gameControl.stop()
+
+        displayLink.remove(from: .main, forMode: .default)
+        displayLink.invalidate()
+        displayLink = nil
     }
 
     func pause() {
-
+        gameEngine.pause()
     }
 
     func unpause() {
-
+        gameEngine.unpause()
     }
 
     @objc

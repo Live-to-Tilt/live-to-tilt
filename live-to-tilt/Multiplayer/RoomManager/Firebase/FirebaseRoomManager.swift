@@ -60,7 +60,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
         FirebaseReference(.Room).document(room.id).delete()
     }
 
-    func subscribe(messageHandler: MessageHandlerDelegate) {
+    func subscribe(messageHandler: MessageDelegate) {
         messageManager.subscribe(messageHandlerDelegate: messageHandler)
     }
 

@@ -53,9 +53,9 @@
 		3D69D2532807417000E1D45E /* PubNub in Frameworks */ = {isa = PBXBuildFile; productRef = 3D69D2522807417000E1D45E /* PubNub */; };
 		3D69D2552807434600E1D45E /* PubNubMessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2542807434600E1D45E /* PubNubMessageManager.swift */; };
 		3D69D2572807465700E1D45E /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2562807465600E1D45E /* MessageManager.swift */; };
-		3D69D259280752D700E1D45E /* MessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */; };
-		3D69D2602807541A00E1D45E /* HostMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */; };
-		3D69D2622807543000E1D45E /* GuestMessageHandlerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */; };
+		3D69D259280752D700E1D45E /* MessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D258280752D700E1D45E /* MessageDelegate.swift */; };
+		3D69D2602807541A00E1D45E /* HostMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D25F2807541A00E1D45E /* HostMessageDelegate.swift */; };
+		3D69D2622807543000E1D45E /* GuestMessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2612807543000E1D45E /* GuestMessageDelegate.swift */; };
 		3D69D26D2807D37600E1D45E /* SecretsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D26C2807D37600E1D45E /* SecretsKey.swift */; };
 		3D69D26F2807D3BB00E1D45E /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D26E2807D3BB00E1D45E /* Bundle+Extensions.swift */; };
 		3D69D27128081F3200E1D45E /* MultiplayerGameArenaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D27028081F3200E1D45E /* MultiplayerGameArenaView.swift */; };
@@ -242,9 +242,9 @@
 		3D69D24F28073D0800E1D45E /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
 		3D69D2542807434600E1D45E /* PubNubMessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PubNubMessageManager.swift; sourceTree = "<group>"; };
 		3D69D2562807465600E1D45E /* MessageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
-		3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHandlerDelegate.swift; sourceTree = "<group>"; };
-		3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessageHandlerDelegate.swift; sourceTree = "<group>"; };
-		3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessageHandlerDelegate.swift; sourceTree = "<group>"; };
+		3D69D258280752D700E1D45E /* MessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDelegate.swift; sourceTree = "<group>"; };
+		3D69D25F2807541A00E1D45E /* HostMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostMessageDelegate.swift; sourceTree = "<group>"; };
+		3D69D2612807543000E1D45E /* GuestMessageDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestMessageDelegate.swift; sourceTree = "<group>"; };
 		3D69D26B2807D15200E1D45E /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		3D69D26C2807D37600E1D45E /* SecretsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsKey.swift; sourceTree = "<group>"; };
 		3D69D26E2807D3BB00E1D45E /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
@@ -573,9 +573,9 @@
 		3D69D25A280753D500E1D45E /* MessageHandlerDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				3D69D258280752D700E1D45E /* MessageHandlerDelegate.swift */,
-				3D69D25F2807541A00E1D45E /* HostMessageHandlerDelegate.swift */,
-				3D69D2612807543000E1D45E /* GuestMessageHandlerDelegate.swift */,
+				3D69D258280752D700E1D45E /* MessageDelegate.swift */,
+				3D69D25F2807541A00E1D45E /* HostMessageDelegate.swift */,
+				3D69D2612807543000E1D45E /* GuestMessageDelegate.swift */,
 			);
 			path = MessageHandlerDelegate;
 			sourceTree = "<group>";
@@ -1074,7 +1074,7 @@
 				3D69D2762808335E00E1D45E /* GameRenderer.swift in Sources */,
 				3D69D27C280853AC00E1D45E /* Message.swift in Sources */,
 				3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */,
-				3D69D259280752D700E1D45E /* MessageHandlerDelegate.swift in Sources */,
+				3D69D259280752D700E1D45E /* MessageDelegate.swift in Sources */,
 				3D13480D27D8C87400D46B84 /* UserDefaultsKey.swift in Sources */,
 				3DEA51A727FC829A001D6CB5 /* PowerupManagerComponent.swift in Sources */,
 				3D55387827E22FD800DF45C2 /* WaveManagerSystem.swift in Sources */,
@@ -1188,7 +1188,7 @@
 				3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */,
 				727DD52A2804175C002B75CC /* PowerupDespawnedEvent.swift in Sources */,
 				3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupManager.swift in Sources */,
-				3D69D2622807543000E1D45E /* GuestMessageHandlerDelegate.swift in Sources */,
+				3D69D2622807543000E1D45E /* GuestMessageDelegate.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
 				72503DAF2805643E00966D6F /* OscillateAnimation.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,
@@ -1210,7 +1210,7 @@
 				723EE8B127E8C13D001BD0D4 /* MenuItemText.swift in Sources */,
 				3D13481327D8D89100D46B84 /* SettingsViewModel.swift in Sources */,
 				3D69D2572807465700E1D45E /* MessageManager.swift in Sources */,
-				3D69D2602807541A00E1D45E /* HostMessageHandlerDelegate.swift in Sources */,
+				3D69D2602807541A00E1D45E /* HostMessageDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
