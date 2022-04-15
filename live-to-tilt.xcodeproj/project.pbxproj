@@ -298,6 +298,7 @@
 		3DFBA515280662C700CD9273 /* TapSoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSoundEffect.swift; sourceTree = "<group>"; };
 		3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundaryComponent.swift; sourceTree = "<group>"; };
 		3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundarySystem.swift; sourceTree = "<group>"; };
+		720EEEEC28095E7B008D3FBF /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		7215CD4627DB63D800A26752 /* GameControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControl.swift; sourceTree = "<group>"; };
 		7215CD4927DB661C00A26752 /* AccelerometerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerControl.swift; sourceTree = "<group>"; };
 		7230520F27F2C64C00AD753D /* PauseMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenuView.swift; sourceTree = "<group>"; };
@@ -464,6 +465,7 @@
 				3D12D9CF27D61D8800D01489 /* Info.plist */,
 				3D12D9CC27D61D8800D01489 /* Preview Content */,
 				3D69D26B2807D15200E1D45E /* Secrets.xcconfig.example */,
+				720EEEEC28095E7B008D3FBF /* Secrets.xcconfig */,
 			);
 			path = "live-to-tilt";
 			sourceTree = "<group>";
