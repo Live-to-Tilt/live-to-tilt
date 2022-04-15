@@ -2,23 +2,16 @@ import Combine
 import Foundation
 
 class HostMessageDelegate: MessageDelegate, ObservableObject {
-    @Published var renderableComponents: [RenderableComponent]
+    private let messageBuffer: MessageBuffer
 
-    // TODO: publish host message instead
-    let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
-    var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
-        renderableSubject.eraseToAnyPublisher()
-    }
-
-    init() {
-        self.renderableComponents = []
+    init(messageBuffer: MessageBuffer) {
+        self.messageBuffer = messageBuffer
     }
 
     func onReceive(data: Data) {
         do {
-            let hostMessage = try JSONDecoder().decode(HostMessage.self, from: data)
-            let renderableComponents = hostMessage.renderableComponents
-            renderableSubject.send(renderableComponents)
+            let message = try JSONDecoder().decode(HostMessage.self, from: data)
+            messageBuffer.insert(message: message)
         } catch {
             print(error.localizedDescription)
         }

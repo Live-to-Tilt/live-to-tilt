@@ -18,7 +18,7 @@ final class PubNubMessageManager: MessageManager {
     }
 
     func initialise(userId: String, channelId: String) {
-        PubNub.log.levels = [.all]
+        PubNub.log.levels = [.none]
         PubNub.log.writers = [ConsoleLogWriter(), FileLogWriter()]
 
         guard

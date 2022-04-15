@@ -102,6 +102,8 @@
 		3DEA51C227FC9B53001D6CB5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C127FC9B53001D6CB5 /* Animation.swift */; };
 		3DEA51C627FC9BE6001D6CB5 /* ScaleAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */; };
 		3DEA51C827FC9D17001D6CB5 /* AnimationSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */; };
+		3DF149442809204200215DAD /* Heap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF149432809204200215DAD /* Heap.swift */; };
+		3DF1494A2809297D00215DAD /* MessageBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF149492809297D00215DAD /* MessageBuffer.swift */; };
 		3DFBA516280662C700CD9273 /* TapSoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA515280662C700CD9273 /* TapSoundEffect.swift */; };
 		3DFBA51B2806792D00CD9273 /* ArenaBoundaryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */; };
 		3DFBA51D2806795500CD9273 /* ArenaBoundarySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */; };
@@ -296,6 +298,8 @@
 		3DEA51C127FC9B53001D6CB5 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		3DEA51C527FC9BE6001D6CB5 /* ScaleAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAnimation.swift; sourceTree = "<group>"; };
 		3DEA51C727FC9D17001D6CB5 /* AnimationSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationSystem.swift; sourceTree = "<group>"; };
+		3DF149432809204200215DAD /* Heap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heap.swift; sourceTree = "<group>"; };
+		3DF149492809297D00215DAD /* MessageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBuffer.swift; sourceTree = "<group>"; };
 		3DFBA515280662C700CD9273 /* TapSoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapSoundEffect.swift; sourceTree = "<group>"; };
 		3DFBA51A2806792D00CD9273 /* ArenaBoundaryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundaryComponent.swift; sourceTree = "<group>"; };
 		3DFBA51C2806795500CD9273 /* ArenaBoundarySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArenaBoundarySystem.swift; sourceTree = "<group>"; };
@@ -559,6 +563,7 @@
 				3D69D25A280753D500E1D45E /* MessageHandlerDelegate */,
 				3D69D2342806F1C600E1D45E /* Model */,
 				3D69D24D28072CA600E1D45E /* PlayerManager.swift */,
+				3DF149492809297D00215DAD /* MessageBuffer.swift */,
 			);
 			path = Multiplayer;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				3DEA51BB27FC97A0001D6CB5 /* GameUtils.swift */,
 				3D69D26C2807D37600E1D45E /* SecretsKey.swift */,
 				3D69D26E2807D3BB00E1D45E /* Bundle+Extensions.swift */,
+				3DF149432809204200215DAD /* Heap.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1061,6 +1067,7 @@
 				21BBC8F627E1C65B00C4B5D5 /* CGPoint+Extensions.swift in Sources */,
 				DB88976527DC3ADD00F72B9C /* AVAudioPlayer+Extensions.swift in Sources */,
 				DB5D66F9280577DC00B05105 /* AchievementManagerDelegate.swift in Sources */,
+				3DF1494A2809297D00215DAD /* MessageBuffer.swift in Sources */,
 				DB88976427DC3AD100F72B9C /* UserDefaults+Extensions.swift in Sources */,
 				3DEA51B227FC8C0E001D6CB5 /* LightsaberPowerup.swift in Sources */,
 				DBE68450280A7C7C00D18308 /* AchievementsViewModel.swift in Sources */,
@@ -1156,6 +1163,7 @@
 				DB0A621527EDA4730033E23B /* EventManager.swift in Sources */,
 				21DB9E3D27F85B02008AF29A /* ComboSystem.swift in Sources */,
 				72E48B1727FD977900FFB66F /* PowerupUsedEvent.swift in Sources */,
+				3DF149442809204200215DAD /* Heap.swift in Sources */,
 				72E48B1127FD8F1100FFB66F /* GameStartedEvent.swift in Sources */,
 				DBEC91EF27D7B8A300B0E750 /* CGVector+Extensions.swift in Sources */,
 				3DEA51B427FC91FE001D6CB5 /* EnemyKillerComponent.swift in Sources */,
