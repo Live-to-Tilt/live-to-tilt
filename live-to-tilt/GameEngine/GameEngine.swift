@@ -96,7 +96,7 @@ class GameEngine {
 
     private func setUpEntities() {
         nexus.createWalls()
-        nexus.createPlayer()
+        nexus.createPlayers(for: gameMode)
         nexus.createGameState()
         nexus.createCombo()
         nexus.createWaveManager(for: gameMode)
@@ -112,8 +112,9 @@ class GameEngine {
         guard getGameState()?.state == .play else {
             return
         }
-        let playerComponent = nexus.getComponent(of: PlayerComponent.self)
-        playerComponent?.inputForce = inputForce
+        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+        let playerOneComponent = playerComponents.first(where: { $0.isPlayerOne })
+        playerOneComponent?.inputForce = inputForce
     }
 
     private func publishRenderables() {

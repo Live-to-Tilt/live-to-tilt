@@ -33,7 +33,7 @@ extension Nexus {
         addComponent(ComboComponent(entity: entity), to: entity)
     }
 
-    func createPlayer() {
+    func createPlayers(for gameMode: GameMode) {
         let entity = Entity()
 
         addComponent(PlayerComponent(entity: entity), to: entity)
@@ -42,6 +42,30 @@ extension Nexus {
                                          position: Constants.playerSpawnPosition,
                                          size: Constants.playerSize,
                                          layer: .player),
+                     to: entity)
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: true,
+                                                               shape: .circle,
+                                                               position: Constants.playerSpawnPosition,
+                                                               size: Constants.playerColliderSize,
+                                                               categoryBitmask: Constants.playerCategoryBitmask,
+                                                               collisionBitmask: Constants.playerCollisionBitmask,
+                                                               restitution: .zero)),
+                     to: entity)
+
+        if gameMode == .coop {
+            createPlayerTwo()
+        }
+    }
+
+    private func createPlayerTwo() {
+        let entity = Entity()
+
+        addComponent(PlayerComponent(entity: entity, isPlayerOne: false), to: entity)
+        addComponent(RenderableComponent(entity: entity,
+                                         image: .playerTwo,
+                                         position: Constants.playerSpawnPosition,
+                                         size: Constants.playerSize),
                      to: entity)
         addComponent(PhysicsComponent(entity: entity,
                                       physicsBody: PhysicsBody(isDynamic: true,
