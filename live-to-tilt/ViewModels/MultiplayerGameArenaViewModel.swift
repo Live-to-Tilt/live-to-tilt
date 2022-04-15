@@ -25,28 +25,39 @@ class MultiplayerGameArenaViewModel: ObservableObject {
         } else {
             self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
                                                              gameControl: gameControl)
+
         }
 
+        attachSubscribers()
         attachPublishers()
         gameRenderer.start()
     }
 
-    private func attachPublishers() {
+    private func attachSubscribers() {
         if roomManager.isHost {
             let messageDelegate = GuestMessageDelegate()
             roomManager.subscribe(messageDelegate: messageDelegate)
-
-            gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
-                self?.renderableComponents = renderableComponents
-
-                let message = HostMessage(renderableComponents: renderableComponents)
-                self?.roomManager.send(message: message)
-            }.store(in: &cancellables)
         } else {
-            let messageDelegate = HostMessageDelegate()
-            roomManager.subscribe(messageDelegate: messageDelegate)
+            guard let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer else {
+                return
+            }
 
-            messageDelegate.renderablePublisher.sink { [weak self] renderableComponents in
+            let messageBuffer = guestGameRenderer.messageBuffer
+            let messageDelegate = HostMessageDelegate(messageBuffer: messageBuffer)
+            roomManager.subscribe(messageDelegate: messageDelegate)
+        }
+    }
+
+    private func attachPublishers() {
+        gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
+            self?.renderableComponents = renderableComponents
+
+            let message = HostMessage(renderableComponents: renderableComponents)
+            self?.roomManager.send(message: message)
+        }.store(in: &cancellables)
+
+        if let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer {
+            guestGameRenderer.renderableSubject.sink { [weak self] renderableComponents in
                 self?.renderableComponents = renderableComponents
             }.store(in: &cancellables)
         }
