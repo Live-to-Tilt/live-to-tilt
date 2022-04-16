@@ -1,6 +1,6 @@
 import CoreGraphics
 
-class GauntletWaveManager: WaveManager {
+class GauntletWaveSpawner: WaveSpawner {
     private let waveIterator: AnyIterator<Wave>
     private let intervalIterator: AnyIterator<CGFloat>
     private var currentInterval: CGFloat
@@ -8,7 +8,7 @@ class GauntletWaveManager: WaveManager {
 
     init() {
         let waves: [Wave] = [
-            GauntletStraightWave()
+            GauntletWave()
         ]
         let intervals: [CGFloat] = [
             Constants.gauntletWaveIntervalDuration
@@ -23,13 +23,13 @@ class GauntletWaveManager: WaveManager {
         elapsedTimeSinceLastWave += deltaTime
     }
 
-    func canStartNextWave(nexus: Nexus) -> Bool {
+    func canSpawnNextWave(nexus: Nexus) -> Bool {
         elapsedTimeSinceLastWave > currentInterval
     }
 
-    func startNextWave(nexus: Nexus) {
+    func spawnNextWave(nexus: Nexus) {
         let wave = waveIterator.next()
-        wave?.start(nexus: nexus)
+        wave?.spawn(nexus: nexus)
 
         resetElapsedTime()
     }

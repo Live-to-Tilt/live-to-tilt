@@ -54,17 +54,31 @@ extension Nexus {
                      to: entity)
     }
 
-    func createWaveManager(for gameMode: GameMode) {
+    func createWaveSpawner(for gameMode: GameMode) {
         let entity = Entity()
+        var waveSpawner: WaveSpawner
+        switch gameMode {
+        case .survival:
+            waveSpawner = SurvivalWaveSpawner()
+        case .gauntlet:
+            waveSpawner = GauntletWaveSpawner()
+        }
 
-        addComponent(WaveManagerComponent(entity: entity, gameMode: gameMode),
+        addComponent(WaveSpawnerComponent(entity: entity, waveSpawner: waveSpawner),
                      to: entity)
     }
 
-    func createPowerupManager(for gameMode: GameMode) {
+    func createPowerupSpawner(for gameMode: GameMode) {
         let entity = Entity()
+        var powerupSpawner: PowerupSpawner
+        switch gameMode {
+        case .survival:
+            powerupSpawner = SurvivalPowerupSpawner(nexus: self)
+        case .gauntlet:
+            powerupSpawner = GauntletPowerupSpawner(nexus: self)
+        }
 
-        addComponent(PowerupManagerComponent(entity: entity, gameMode: gameMode),
+        addComponent(PowerupSpawnerComponent(entity: entity, powerupSpawner: powerupSpawner),
                      to: entity)
     }
 

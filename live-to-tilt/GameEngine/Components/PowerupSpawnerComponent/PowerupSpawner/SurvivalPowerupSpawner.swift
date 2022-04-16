@@ -1,24 +1,26 @@
 import CoreGraphics
 
-class SurvivalPowerupManager: PowerupManager {
+class SurvivalPowerupSpawner: PowerupSpawner {
+    private let nexus: Nexus
     private let powerupIterator: AnyIterator<Powerup>
 
-    init() {
+    init(nexus: Nexus) {
         let powerups: [Powerup] = [
             NukePowerup(),
             LightsaberPowerup(),
             FreezePowerup()
         ]
         self.powerupIterator = powerups.makeRandomIterator()
+        self.nexus = nexus
     }
 
-    func update(nexus: Nexus, deltaTime: CGFloat) {
+    func update(deltaTime: CGFloat) {
         let powerupEntities = nexus.getEntities(with: PowerupComponent.self)
         let missingPowerupCount = Constants.survivalPowerupCount - powerupEntities.count
-        spawnPowerups(nexus: nexus, count: missingPowerupCount)
+        spawnPowerups(count: missingPowerupCount)
     }
 
-    private func spawnPowerups(nexus: Nexus, count: Int) {
+    private func spawnPowerups(count: Int) {
         for _ in 0..<count {
             guard let powerup = powerupIterator.next() else {
                 continue

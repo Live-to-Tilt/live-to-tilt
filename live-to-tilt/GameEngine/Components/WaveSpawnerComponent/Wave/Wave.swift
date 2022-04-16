@@ -5,9 +5,10 @@ protocol Wave {
 }
 
 extension Wave {
-    func start(nexus: Nexus) {
+    func spawn(nexus: Nexus) {
         DispatchQueue.main.async {
             coroutine(nexus: nexus)
+            EventManager.shared.postEvent(WaveSpawnedEvent(wave: self))
         }
     }
 }
