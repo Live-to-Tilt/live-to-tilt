@@ -36,7 +36,7 @@ class GameStats {
         EventManager.shared.registerClosure(for: ScoreChangedEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosure(for: EnemyKilledEvent.self, closure: onStatEventRef)
         EventManager.shared.registerClosure(for: PlayerMovedEvent.self, closure: onStatEventRef)
-        EventManager.shared.registerClosure(for: WaveStartedEvent.self, closure: onStatEventRef)
+        EventManager.shared.registerClosure(for: WaveSpawnedEvent.self, closure: onStatEventRef)
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
@@ -67,7 +67,7 @@ class GameStats {
         case let playerMovedEvent as PlayerMovedEvent:
             self.distanceTravelled += playerMovedEvent.deltaDistance
 
-        case _ as WaveStartedEvent:
+        case _ as WaveSpawnedEvent:
             self.wave += 1
 
         default:

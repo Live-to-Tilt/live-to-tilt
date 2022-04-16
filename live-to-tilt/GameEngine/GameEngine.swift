@@ -40,8 +40,8 @@ class GameEngine {
             PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
             CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
             PlayerSystem(nexus: nexus),
-            WaveManagerSystem(nexus: nexus),
-            PowerupManagerSystem(nexus: nexus),
+            WaveSpawnerSystem(nexus: nexus),
+            PowerupSpawnerSystem(nexus: nexus),
             PowerupSystem(nexus: nexus),
             EnemySystem(nexus: nexus),
             ComboSystem(nexus: nexus),
@@ -99,8 +99,8 @@ class GameEngine {
         nexus.createPlayer()
         nexus.createGameState()
         nexus.createCombo()
-        nexus.createWaveManager(for: gameMode)
-        nexus.createPowerupManager(for: gameMode)
+        nexus.createWaveSpawner(for: gameMode)
+        nexus.createPowerupSpawner(for: gameMode)
         nexus.createCountdown(for: gameMode)
     }
 
