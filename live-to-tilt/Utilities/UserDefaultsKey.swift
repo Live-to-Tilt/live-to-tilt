@@ -15,6 +15,7 @@ enum UserDefaultsKey: String {
     case totalDistanceTravelled
     case survivalHighScore
     case gauntletHighScore
+    case coopHighScore
 
     case player
 }

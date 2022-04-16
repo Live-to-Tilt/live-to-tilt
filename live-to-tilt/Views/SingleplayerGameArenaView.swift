@@ -84,6 +84,8 @@ struct SingleplayerGameArenaView: View {
                 Combo()
             case .gauntlet:
                 CountdownBar()
+            default:
+                EmptyView()
             }
         }
     }

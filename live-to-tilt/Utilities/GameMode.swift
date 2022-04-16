@@ -1,6 +1,7 @@
 enum GameMode: String, CaseIterable, Identifiable {
     case survival = "Survival"
     case gauntlet = "Gauntlet"
+    case coop = "Co-op"
 
     var id: Self { self }
 }
@@ -12,6 +13,8 @@ extension GameMode {
             return "☠️"
         case .gauntlet:
             return "⚔️"
+        case .coop:
+            return "👥"
         }
     }
 
@@ -26,6 +29,10 @@ extension GameMode {
             return """
                 Think Flappy Bird, but Live to Tilt. Put your fine control skills \
                 to the test as you weave through complex enemy formations!
+                """
+        case .coop:
+            return """
+                Survival mode, but with a friend!
                 """
         }
     }
@@ -54,6 +61,8 @@ extension GameMode {
                 Instruction(image: "lifebarInstruction",
                             text: "If your life bar runs out, it's game over.")
             ]
+        case .coop:
+            return []
         }
     }
 

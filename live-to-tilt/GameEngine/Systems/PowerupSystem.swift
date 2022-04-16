@@ -28,8 +28,7 @@ final class PowerupSystem: System {
     private func handlePlayerCollision(_ powerupComponent: PowerupComponent, _ collisionComponent: CollisionComponent) {
         let powerupEntity = powerupComponent.entity
         let collidedEntity = collisionComponent.collidedEntity
-
-        guard nexus.hasComponent(PlayerComponent.self, in: collidedEntity),
+        guard let playerComponent = nexus.getComponent(of: PlayerComponent.self, for: collidedEntity),
               !isRecentlySpawned(powerupComponent),
               let powerupPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self,
                                                                for: powerupEntity) else {
@@ -40,7 +39,7 @@ final class PowerupSystem: System {
         let powerupPhysicsBody = powerupPhysicsComponent.physicsBody
         let powerupPosition = powerupPhysicsBody.position
 
-        powerup.activate(nexus: nexus, at: powerupPosition)
+        powerup.activate(nexus: nexus, at: powerupPosition, by: playerComponent)
         nexus.removeEntity(powerupEntity)
     }
 
