@@ -19,7 +19,8 @@ class MultiplayerGameArenaViewModel: ObservableObject {
         if roomManager.isHost {
             let gameEngine = GameEngine(gameMode: .survival)
             self.gameEngine = gameEngine
-            self.gameRenderer = MultiplayerHostGameRenderer(gameEngine: gameEngine,
+            self.gameRenderer = MultiplayerHostGameRenderer(roomManager: roomManager,
+                                                            gameEngine: gameEngine,
                                                             gameControl: gameControl)
         } else {
             self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
@@ -33,7 +34,12 @@ class MultiplayerGameArenaViewModel: ObservableObject {
 
     private func attachSubscribers() {
         if roomManager.isHost {
-            let messageDelegate = GuestMessageDelegate()
+            guard let hostGameRenderer = gameRenderer as? MultiplayerHostGameRenderer else {
+                return
+            }
+
+            let messageBuffer = hostGameRenderer.messageBuffer
+            let messageDelegate = GuestMessageDelegate(messageBuffer: messageBuffer)
             roomManager.subscribe(messageDelegate: messageDelegate)
         } else {
             guard let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer else {

@@ -3,10 +3,11 @@ import QuartzCore
 
 class MultiplayerGuestGameRenderer: GameRenderer {
     let messageBuffer: MessageBuffer
+    private let messageRetriever: MessageRetriever
+    private let roomManager: RoomManager
     private let gameControl: GameControl
     private var displayLink: CADisplayLink!
     private var hasStarted: Bool
-    private var expectedMessageSequenceId: Int
 
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
@@ -14,10 +15,12 @@ class MultiplayerGuestGameRenderer: GameRenderer {
     }
 
     init(roomManager: RoomManager, gameControl: GameControl) {
-        self.messageBuffer = MessageBuffer()
+        let messageBuffer = MessageBuffer()
+        self.messageBuffer = messageBuffer
+        self.messageRetriever = SequentialMessageRetriever(messageBuffer: messageBuffer)
+        self.roomManager = roomManager
         self.gameControl = gameControl
         self.hasStarted = false
-        self.expectedMessageSequenceId = .zero
     }
 
     func start() {
@@ -46,47 +49,47 @@ class MultiplayerGuestGameRenderer: GameRenderer {
     }
 
     func pause() {
-
+        let guestMessage = GuestMessage(pauseSignal: true)
+        roomManager.send(message: guestMessage)
     }
 
     func unpause() {
-
+        let guestMessage = GuestMessage(unpauseSignal: true)
+        roomManager.send(message: guestMessage)
     }
 
     @objc
     func step() {
-        // TODO: Send input force to gameManager
+        sendInputForce()
+        processMessage()
+    }
 
+    private func processMessage() {
         while true {
             if CACurrentMediaTime() >= displayLink.targetTimestamp {
-                expectedMessageSequenceId += 1
+                messageRetriever.skipMessage()
                 break
             }
 
-            if messageBuffer.isEmpty() {
-                continue
-            }
-
             guard
-                let message = messageBuffer.peek(),
+                let message = messageRetriever.retrieveMessage(),
                 let hostMessage = message as? HostMessage else {
                 continue
             }
 
-            if hostMessage.sequenceId < expectedMessageSequenceId {
-                expectedMessageSequenceId = hostMessage.sequenceId
-                continue
-            }
-
-            if hostMessage.sequenceId > expectedMessageSequenceId {
-                continue
-            }
-
-            messageBuffer.remove()
-            expectedMessageSequenceId += 1
-            let renderableComponents = hostMessage.renderableComponents
-            renderableSubject.send(renderableComponents)
+            process(hostMessage)
             break
         }
+    }
+
+    private func process(_ hostMessage: HostMessage) {
+        let renderableComponents = hostMessage.renderableComponents
+        renderableSubject.send(renderableComponents)
+    }
+
+    private func sendInputForce() {
+        let inputForce = gameControl.getInputForce()
+        let guestMessage = GuestMessage(inputForce: inputForce)
+        roomManager.send(message: guestMessage)
     }
 }

@@ -1,18 +1,18 @@
 import Foundation
 
 class GuestMessageDelegate: MessageDelegate {
+    private let messageBuffer: MessageBuffer
+
+    init(messageBuffer: MessageBuffer) {
+        self.messageBuffer = messageBuffer
+    }
+
     func onReceive(data: Data) {
         do {
             let guestMessage = try JSONDecoder().decode(GuestMessage.self, from: data)
-            print(guestMessage.message)
+            messageBuffer.insert(message: guestMessage)
         } catch {
-            print(error.localizedDescription)
-        }
-    }
-}
 
-extension GuestMessageDelegate {
-    struct GuestMessage: Codable {
-        let message: String
+        }
     }
 }

@@ -10,10 +10,10 @@ class HostMessageDelegate: MessageDelegate, ObservableObject {
 
     func onReceive(data: Data) {
         do {
-            let message = try JSONDecoder().decode(HostMessage.self, from: data)
-            messageBuffer.insert(message: message)
+            let hostMessage = try JSONDecoder().decode(HostMessage.self, from: data)
+            messageBuffer.insert(message: hostMessage)
         } catch {
-            print(error.localizedDescription)
+
         }
     }
 }
