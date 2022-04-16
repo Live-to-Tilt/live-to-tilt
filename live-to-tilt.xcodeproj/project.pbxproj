@@ -38,6 +38,7 @@
 		3D2B39E327F7EDF400693B3B /* GauntletStraightWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GauntletStraightWave.swift */; };
 		3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */; };
 		3D4DBD98280A54AA0081194D /* RenderableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD97280A54AA0081194D /* RenderableInfo.swift */; };
+		3D4DBD96280A3EA20081194D /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD95280A3EA20081194D /* FirstAppear.swift */; };
 		3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387527E2115D00DF45C2 /* EnemyComponent.swift */; };
 		3D55387827E22FD800DF45C2 /* WaveManagerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* MovementSystem.swift */; };
@@ -232,6 +233,7 @@
 		3D2B39E227F7EDF400693B3B /* GauntletStraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletStraightWave.swift; sourceTree = "<group>"; };
 		3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDecorator.swift; sourceTree = "<group>"; };
 		3D4DBD97280A54AA0081194D /* RenderableInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableInfo.swift; sourceTree = "<group>"; };
+		3D4DBD95280A3EA20081194D /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
 		3D55387727E22FD800DF45C2 /* WaveManagerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveManagerSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				729FA8E027FFF861008F55BB /* PickerOption.swift */,
 				72AC63502801743300A7C8C6 /* CountdownInnerBar.swift */,
 				3DFBA515280662C700CD9273 /* TapSoundEffect.swift */,
+				3D4DBD95280A3EA20081194D /* FirstAppear.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -1213,6 +1216,7 @@
 				3D69D24E28072CA600E1D45E /* PlayerManager.swift in Sources */,
 				3D69D23B2806F82300E1D45E /* Room.swift in Sources */,
 				7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */,
+				3D4DBD96280A3EA20081194D /* FirstAppear.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,
 				3D69D2732808242900E1D45E /* MultiplayerGameArenaViewModel.swift in Sources */,
 				3DEA51AC27FC844D001D6CB5 /* SurvivalPowerupManager.swift in Sources */,
