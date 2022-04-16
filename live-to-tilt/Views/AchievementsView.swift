@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AchievementsView: View {
-    @StateObject var viewModel = AchievementsViewModel()
+    var viewModel = AchievementsViewModel()
     @Environment(\.presentationMode) private var presentationMode
 
     var body: some View {

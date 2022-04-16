@@ -1,8 +1,8 @@
 import Foundation
 
-class AchievementsViewModel: ObservableObject {
+class AchievementsViewModel {
     let achievementManager = AchievementManager()
-    @Published var achievements: [AchievementDisplay]
+    var achievements: [AchievementDisplay]
 
     init() {
         achievements = achievementManager.getAchievementDisplays()
