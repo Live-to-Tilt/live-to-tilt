@@ -24,7 +24,7 @@ struct MultiplayerLobbyView: View {
                 EmptyView()
             }
         }
-        .onAppear {
+        .onFirstAppear {
             viewModel.onAppear()
         }
         .navigationBarHidden(viewModel.gameStarted)
