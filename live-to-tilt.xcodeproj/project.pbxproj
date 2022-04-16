@@ -60,11 +60,11 @@
 		3DC7BC8127E4356900994C18 /* BaseMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC7BC8027E4356900994C18 /* BaseMovement.swift */; };
 		3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5727E3062F008ADF6D /* Wave.swift */; };
 		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
+		3DE6E3BC280B2AE10031CB43 /* SurvivalPowerupSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AB27FC844D001D6CB5 /* SurvivalPowerupSpawner.swift */; };
 		3DEA51A227FC7BBF001D6CB5 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A127FC7BBF001D6CB5 /* Powerup.swift */; };
 		3DEA51A427FC7DD6001D6CB5 /* NukePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A327FC7DD6001D6CB5 /* NukePowerup.swift */; };
 		3DEA51A727FC829A001D6CB5 /* PowerupSpawnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A627FC829A001D6CB5 /* PowerupSpawnerComponent.swift */; };
 		3DEA51AA27FC82E3001D6CB5 /* PowerupSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A927FC82E3001D6CB5 /* PowerupSpawner.swift */; };
-		3DEA51AC27FC844D001D6CB5 /* SurvivalPowerupSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AB27FC844D001D6CB5 /* SurvivalPowerupSpawner.swift */; };
 		3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AD27FC84BB001D6CB5 /* GauntletPowerupSpawner.swift */; };
 		3DEA51B027FC8957001D6CB5 /* PowerupSpawnerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AF27FC8957001D6CB5 /* PowerupSpawnerSystem.swift */; };
 		3DEA51B227FC8C0E001D6CB5 /* LightsaberPowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51B127FC8C0E001D6CB5 /* LightsaberPowerup.swift */; };
@@ -901,6 +901,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DE6E3BC280B2AE10031CB43 /* SurvivalPowerupSpawner.swift in Sources */,
 				214E15A027F9767F00815A35 /* ComboComponent.swift in Sources */,
 				3DB3741A27F4400F0053F400 /* HorizontalWave.swift in Sources */,
 				72D0E1C127FAF0C700F6D165 /* AllTimeStats.swift in Sources */,
@@ -1054,9 +1055,7 @@
 				7230521427F2D80500AD753D /* MenuButton.swift in Sources */,
 				7234865027E1DC210041265C /* Nexus+Extensions.swift in Sources */,
 				72478E9327D70C9800B9140A /* Entity.swift in Sources */,
-				3DEA51AC27FC844D001D6CB5 /* SurvivalPowerupManager.swift in Sources */,
 				DBE68452280A7FF400D18308 /* AchievementDisplay.swift in Sources */,
-				3DEA51AC27FC844D001D6CB5 /* SurvivalPowerupSpawner.swift in Sources */,
 				72E48B2727FEA0FA00FFB66F /* GameStatsUpdatedEvent.swift in Sources */,
 				72E48B1F27FDA23600FFB66F /* ComboExpiredEvent.swift in Sources */,
 				21AFD20C27DE382900250CF1 /* GameArenaView.swift in Sources */,
