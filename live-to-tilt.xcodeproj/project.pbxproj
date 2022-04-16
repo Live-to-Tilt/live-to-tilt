@@ -38,6 +38,7 @@
 		3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */; };
 		3D2B39E327F7EDF400693B3B /* GauntletWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GauntletWave.swift */; };
 		3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */; };
+		3D4DBD98280A54AA0081194D /* RenderableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD97280A54AA0081194D /* RenderableInfo.swift */; };
 		3D55387627E2115D00DF45C2 /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387527E2115D00DF45C2 /* EnemyComponent.swift */; };
 		3D55387827E22FD800DF45C2 /* WaveSpawnerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387727E22FD800DF45C2 /* WaveSpawnerSystem.swift */; };
 		3D55387A27E230B600DF45C2 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55387927E230B600DF45C2 /* MovementSystem.swift */; };
@@ -235,6 +236,7 @@
 		3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionView.swift; sourceTree = "<group>"; };
 		3D2B39E227F7EDF400693B3B /* GauntletWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletWave.swift; sourceTree = "<group>"; };
 		3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDecorator.swift; sourceTree = "<group>"; };
+		3D4DBD97280A54AA0081194D /* RenderableInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableInfo.swift; sourceTree = "<group>"; };
 		3D55387527E2115D00DF45C2 /* EnemyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyComponent.swift; sourceTree = "<group>"; };
 		3D55387727E22FD800DF45C2 /* WaveSpawnerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveSpawnerSystem.swift; sourceTree = "<group>"; };
 		3D55387927E230B600DF45C2 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 		3D69D27D2808567300E1D45E /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				3D4DBD97280A54AA0081194D /* RenderableInfo.swift */,
 				3D69D27B280853AC00E1D45E /* Message.swift */,
 				3D69D27E2808568100E1D45E /* HostMessage.swift */,
 			);
@@ -1075,6 +1078,7 @@
 				723DEFD427E1DF9F00592922 /* LazyView.swift in Sources */,
 				72B5144527FC060000131A83 /* Float+Extensions.swift in Sources */,
 				3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */,
+				3D4DBD98280A54AA0081194D /* RenderableInfo.swift in Sources */,
 				729FA8E127FFF861008F55BB /* PickerOption.swift in Sources */,
 				3DEA51AA27FC82E3001D6CB5 /* PowerupSpawner.swift in Sources */,
 				3DFBA51B2806792D00CD9273 /* ArenaBoundaryComponent.swift in Sources */,
