@@ -1,7 +1,6 @@
 import QuartzCore
 
 class MultiplayerHostGameRenderer: GameRenderer {
-    let messageBuffer: MessageBuffer
     private let messageRetriever: MessageRetriever
     private let roomManager: RoomManager
     private let gameEngine: GameEngine
@@ -10,9 +9,7 @@ class MultiplayerHostGameRenderer: GameRenderer {
     private var hasStarted: Bool
 
     init(roomManager: RoomManager, gameEngine: GameEngine, gameControl: GameControl) {
-        let messageBuffer = MessageBuffer()
-        self.messageBuffer = messageBuffer
-        self.messageRetriever = SequentialMessageRetriever(messageBuffer: messageBuffer)
+        self.messageRetriever = SequentialMessageRetriever()
         self.roomManager = roomManager
         self.gameEngine = gameEngine
         self.gameControl = gameControl
@@ -27,6 +24,8 @@ class MultiplayerHostGameRenderer: GameRenderer {
         gameControl.start()
 
         hasStarted = true
+
+        attachSubscribers()
     }
 
     func stop() {
@@ -94,5 +93,11 @@ class MultiplayerHostGameRenderer: GameRenderer {
         if guestMessage.unpauseSignal {
             unpause()
         }
+    }
+
+    private func attachSubscribers() {
+        let messageBuffer = messageRetriever.messageBuffer
+        let messageDelegate = GuestMessageDelegate(messageBuffer: messageBuffer)
+        roomManager.subscribe(messageDelegate: messageDelegate)
     }
 }

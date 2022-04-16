@@ -27,29 +27,8 @@ class MultiplayerGameArenaViewModel: ObservableObject {
                                                              gameControl: gameControl)
         }
 
-        attachSubscribers()
         attachPublishers()
         gameRenderer.start()
-    }
-
-    private func attachSubscribers() {
-        if roomManager.isHost {
-            guard let hostGameRenderer = gameRenderer as? MultiplayerHostGameRenderer else {
-                return
-            }
-
-            let messageBuffer = hostGameRenderer.messageBuffer
-            let messageDelegate = GuestMessageDelegate(messageBuffer: messageBuffer)
-            roomManager.subscribe(messageDelegate: messageDelegate)
-        } else {
-            guard let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer else {
-                return
-            }
-
-            let messageBuffer = guestGameRenderer.messageBuffer
-            let messageDelegate = HostMessageDelegate(messageBuffer: messageBuffer)
-            roomManager.subscribe(messageDelegate: messageDelegate)
-        }
     }
 
     private func attachPublishers() {

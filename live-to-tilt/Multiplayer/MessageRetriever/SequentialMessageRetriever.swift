@@ -1,10 +1,10 @@
 class SequentialMessageRetriever: MessageRetriever {
-    private let messageBuffer: MessageBuffer
+    let messageBuffer: MessageBuffer
     private var expectedMessageSequenceId: Int
 
-    init(messageBuffer: MessageBuffer) {
+    init() {
         self.expectedMessageSequenceId = .zero
-        self.messageBuffer = messageBuffer
+        self.messageBuffer = MessageBuffer()
     }
 
     func retrieveMessage() -> Message? {
