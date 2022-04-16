@@ -13,7 +13,7 @@ class HostMessageDelegate: MessageDelegate, ObservableObject {
             let hostMessage = try JSONDecoder().decode(HostMessage.self, from: data)
             messageBuffer.insert(message: hostMessage)
         } catch {
-
+            print(error.localizedDescription)
         }
     }
 }

@@ -12,7 +12,7 @@ class GuestMessageDelegate: MessageDelegate {
             let guestMessage = try JSONDecoder().decode(GuestMessage.self, from: data)
             messageBuffer.insert(message: guestMessage)
         } catch {
-
+            print(error.localizedDescription)
         }
     }
 }
