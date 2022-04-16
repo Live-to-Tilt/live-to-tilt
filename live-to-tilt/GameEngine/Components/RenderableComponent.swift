@@ -17,8 +17,9 @@ class RenderableComponent: Component, Identifiable {
          size: CGSize,
          rotation: CGFloat = 0.0,
          opacity: Double = 1.0,
-         layer: Layer = .base) {
-        self.id = UUID().uuidString
+         layer: Layer = .base,
+         id: String = UUID().uuidString) {
+        self.id = id
         self.entity = entity
         self.image = image
         self.position = position

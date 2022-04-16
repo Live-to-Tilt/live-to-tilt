@@ -33,16 +33,7 @@ final class PubNubMessageManager: MessageManager {
         pubNub = PubNub(configuration: config)
         channels.append(channelId)
 
-        listener.didReceiveMessage = { message in
-            let payload = message.payload
-            guard
-                let data = payload.dataOptional else {
-                return
-            }
-            self.messageDelegates.forEach { messageDelegate in
-                messageDelegate.onReceive(data: data)
-            }
-        }
+        listener.didReceiveMessage = publishMessage
 
         pubNub?.add(listener)
         pubNub?.subscribe(to: channels, withPresence: true)
@@ -63,5 +54,16 @@ final class PubNubMessageManager: MessageManager {
 
     func subscribe(messageDelegate: MessageDelegate) {
         messageDelegates.append(messageDelegate)
+    }
+
+    private func publishMessage(message: PubNubMessage) {
+        let payload = message.payload
+        guard
+            let data = payload.dataOptional else {
+            return
+        }
+        self.messageDelegates.forEach { messageDelegate in
+            messageDelegate.onReceive(data: data)
+        }
     }
 }
