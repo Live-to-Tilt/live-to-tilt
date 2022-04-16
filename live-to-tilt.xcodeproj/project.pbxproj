@@ -569,7 +569,7 @@
 				3D4DBD9D280A97F10081194D /* MessageRetriever */,
 				3D69D2692807C85900E1D45E /* MessageManager */,
 				3D69D2682807C84F00E1D45E /* RoomManager */,
-				3D69D25A280753D500E1D45E /* MessageHandlerDelegate */,
+				3D69D25A280753D500E1D45E /* MessagerDelegate */,
 				3D69D2342806F1C600E1D45E /* Model */,
 				3D69D24D28072CA600E1D45E /* PlayerManager.swift */,
 				3DF149492809297D00215DAD /* MessageBuffer.swift */,
@@ -596,14 +596,14 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
-		3D69D25A280753D500E1D45E /* MessageHandlerDelegate */ = {
+		3D69D25A280753D500E1D45E /* MessagerDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				3D4DBD9B280A7E500081194D /* GuestMessageDelegate.swift */,
 				3D69D258280752D700E1D45E /* MessageDelegate.swift */,
 				3D69D25F2807541A00E1D45E /* HostMessageDelegate.swift */,
 			);
-			path = MessageHandlerDelegate;
+			path = MessagerDelegate;
 			sourceTree = "<group>";
 		};
 		3D69D2682807C84F00E1D45E /* RoomManager */ = {
