@@ -47,12 +47,7 @@ struct MainMenuView: View {
 
             NavigationLink(destination: LazyView(GameModeSelectionView()),
                            isActive: self.$isActive) {
-                Text("single player").modifier(MenuItemText())
-            }
-            .modifier(TapSoundEffect())
-
-            NavigationLink(destination: LazyView(MultiplayerLobbyView())) {
-                Text("multiplayer").modifier(MenuItemText())
+                Text("start").modifier(MenuItemText())
             }
             .modifier(TapSoundEffect())
 

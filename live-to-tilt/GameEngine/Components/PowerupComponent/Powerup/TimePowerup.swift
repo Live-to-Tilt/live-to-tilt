@@ -9,7 +9,7 @@ class TimePowerup: Powerup {
         self.activationScore = .zero
     }
 
-    func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+    func coroutine(nexus: Nexus, powerupPosition: CGPoint, playerComponent: PlayerComponent) {
         guard let countdownComponent = nexus.getComponent(of: CountdownComponent.self) else {
             return
         }

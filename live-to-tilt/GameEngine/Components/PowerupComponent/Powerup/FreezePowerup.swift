@@ -8,7 +8,7 @@ class FreezePowerup: Powerup {
         self.orbImage = .freezeOrb
     }
 
-    func coroutine(nexus: Nexus, powerupPosition: CGPoint) {
+    func coroutine(nexus: Nexus, powerupPosition: CGPoint, playerComponent: PlayerComponent) {
         AudioController.shared.play(.freeze)
         nexus.createFreezeBlast(position: powerupPosition)
     }

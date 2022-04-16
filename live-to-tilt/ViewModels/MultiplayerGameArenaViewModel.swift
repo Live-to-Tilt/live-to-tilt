@@ -17,7 +17,7 @@ class MultiplayerGameArenaViewModel: ObservableObject {
         self.gameControl = GameControlManager.shared.gameControl
 
         if roomManager.isHost {
-            let gameEngine = GameEngine(gameMode: .survival)
+            let gameEngine = GameEngine(gameMode: .coop)
             self.gameEngine = gameEngine
             self.gameRenderer = MultiplayerHostGameRenderer(gameEngine: gameEngine,
                                                             gameControl: gameControl)
