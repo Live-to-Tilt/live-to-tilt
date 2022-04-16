@@ -2,19 +2,16 @@ import QuartzCore
 
 class MultiplayerHostGameRenderer: GameRenderer {
     private let messageRetriever: MessageRetriever
-    private let roomManager: RoomManager
     private let messageManager: MessageManager
     private let gameEngine: GameEngine
     private let gameControl: GameControl
     private var displayLink: CADisplayLink!
     private var hasStarted: Bool
 
-    init(roomManager: RoomManager,
-         messageManager: MessageManager,
+    init(messageManager: MessageManager,
          gameEngine: GameEngine,
          gameControl: GameControl) {
         self.messageRetriever = SequentialMessageRetriever()
-        self.roomManager = roomManager
         self.messageManager = messageManager
         self.gameEngine = gameEngine
         self.gameControl = gameControl

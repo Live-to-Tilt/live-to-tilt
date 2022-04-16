@@ -21,13 +21,11 @@ class MultiplayerGameArenaViewModel: ObservableObject {
         if roomManager.isHost {
             let gameEngine = GameEngine(gameMode: .coop)
             self.gameEngine = gameEngine
-            self.gameRenderer = MultiplayerHostGameRenderer(roomManager: roomManager,
-                                                            messageManager: messageManager,
+            self.gameRenderer = MultiplayerHostGameRenderer(messageManager: messageManager,
                                                             gameEngine: gameEngine,
                                                             gameControl: gameControl)
         } else {
-            self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
-                                                             messageManager: messageManager,
+            self.gameRenderer = MultiplayerGuestGameRenderer(messageManager: messageManager,
                                                              gameControl: gameControl)
         }
 
