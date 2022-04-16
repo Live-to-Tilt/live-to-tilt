@@ -31,6 +31,14 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
         newAchievement = achievement
     }
 
+    func getAchievementDisplays() -> [AchievementDisplay] {
+        var achievementDisplays: [AchievementDisplay] = []
+        achievementGroups.forEach { achievementGroup in
+            achievementDisplays.append(contentsOf: achievementGroup.getAchievementDisplays(storage: storage))
+        }
+        return achievementDisplays
+    }
+
     private func resetAchievementGroups() {
         achievementGroups.forEach { achievementGroup in
             achievementGroup.reset()

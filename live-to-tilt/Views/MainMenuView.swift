@@ -51,6 +51,10 @@ struct MainMenuView: View {
                     Text("settings").modifier(MenuItemText())
                 }
                 .modifier(TapSoundEffect())
+                NavigationLink(destination: LazyView(AchievementsView())) {
+                    Text("achievements").modifier(MenuItemText())
+                }
+                .modifier(TapSoundEffect())
             }
 
             Spacer()
