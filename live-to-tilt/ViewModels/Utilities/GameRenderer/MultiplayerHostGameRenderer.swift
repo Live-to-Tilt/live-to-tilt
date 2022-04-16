@@ -1,12 +1,21 @@
 import QuartzCore
 
 class MultiplayerHostGameRenderer: GameRenderer {
+    private let messageRetriever: MessageRetriever
+    private let roomManager: RoomManager
+    private let messageManager: MessageManager
     private let gameEngine: GameEngine
     private let gameControl: GameControl
     private var displayLink: CADisplayLink!
     private var hasStarted: Bool
 
-    init(gameEngine: GameEngine, gameControl: GameControl) {
+    init(roomManager: RoomManager,
+         messageManager: MessageManager,
+         gameEngine: GameEngine,
+         gameControl: GameControl) {
+        self.messageRetriever = SequentialMessageRetriever()
+        self.roomManager = roomManager
+        self.messageManager = messageManager
         self.gameEngine = gameEngine
         self.gameControl = gameControl
         self.hasStarted = false
@@ -20,6 +29,8 @@ class MultiplayerHostGameRenderer: GameRenderer {
         gameControl.start()
 
         hasStarted = true
+
+        attachSubscribers()
     }
 
     func stop() {
@@ -37,18 +48,61 @@ class MultiplayerHostGameRenderer: GameRenderer {
 
     func pause() {
         gameEngine.pause()
+        // TODO: send signal
     }
 
     func unpause() {
         gameEngine.unpause()
+        // TODO: send signal
     }
 
     @objc
     func step() {
+        // TODO: check for player two input before a given duration
+
         let elapsedTime = displayLink.targetTimestamp - displayLink.timestamp
         let inputForce = gameControl.getInputForce()
 
         gameEngine.update(deltaTime: CGFloat(elapsedTime), inputForce: inputForce)
         gameEngine.lateUpdate(deltaTime: CGFloat(elapsedTime))
+    }
+
+    func processMessage() {
+        while true {
+            if CACurrentMediaTime() >= displayLink.targetTimestamp {
+                messageRetriever.skipMessage()
+                break
+            }
+
+            guard
+                let message = messageRetriever.retrieveMessage(),
+                let guestMessage = message as? GuestMessage else {
+                continue
+            }
+
+            process(guestMessage)
+            break
+        }
+    }
+
+    private func process(_ guestMessage: GuestMessage) {
+        if let inputForce = guestMessage.inputForce {
+            print(inputForce)
+            // TODO: update player two input force
+        }
+
+        if guestMessage.pauseSignal {
+            pause()
+        }
+
+        if guestMessage.unpauseSignal {
+            unpause()
+        }
+    }
+
+    private func attachSubscribers() {
+        let messageBuffer = messageRetriever.messageBuffer
+        let messageDelegate = GuestMessageDelegate(messageBuffer: messageBuffer)
+        messageManager.subscribe(messageDelegate: messageDelegate)
     }
 }

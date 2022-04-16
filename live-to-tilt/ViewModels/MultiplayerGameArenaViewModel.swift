@@ -5,45 +5,34 @@ class MultiplayerGameArenaViewModel: ObservableObject {
     @Published var gameStateComponent: GameStateComponent?
 
     var roomManager: RoomManager
+    var messageManager: MessageManager
     var gameEngine: GameEngine?
     var gameControl: GameControl
     var gameRenderer: GameRenderer
 
     var cancellables = Set<AnyCancellable>()
 
-    init(roomManager: RoomManager) {
+    init(roomManager: RoomManager, messageManager: MessageManager) {
         self.renderableComponents = []
         self.roomManager = roomManager
+        self.messageManager = messageManager
         self.gameControl = GameControlManager.shared.gameControl
 
         if roomManager.isHost {
             let gameEngine = GameEngine(gameMode: .coop)
             self.gameEngine = gameEngine
-            self.gameRenderer = MultiplayerHostGameRenderer(gameEngine: gameEngine,
+            self.gameRenderer = MultiplayerHostGameRenderer(roomManager: roomManager,
+                                                            messageManager: messageManager,
+                                                            gameEngine: gameEngine,
                                                             gameControl: gameControl)
         } else {
             self.gameRenderer = MultiplayerGuestGameRenderer(roomManager: roomManager,
+                                                             messageManager: messageManager,
                                                              gameControl: gameControl)
         }
 
-        attachSubscribers()
         attachPublishers()
         gameRenderer.start()
-    }
-
-    private func attachSubscribers() {
-        if roomManager.isHost {
-            let messageDelegate = GuestMessageDelegate()
-            roomManager.subscribe(messageDelegate: messageDelegate)
-        } else {
-            guard let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer else {
-                return
-            }
-
-            let messageBuffer = guestGameRenderer.messageBuffer
-            let messageDelegate = HostMessageDelegate(messageBuffer: messageBuffer)
-            roomManager.subscribe(messageDelegate: messageDelegate)
-        }
     }
 
     private func attachPublishers() {
@@ -51,7 +40,7 @@ class MultiplayerGameArenaViewModel: ObservableObject {
             self?.renderableComponents = renderableComponents
 
             let message = HostMessage(renderableComponents: renderableComponents)
-            self?.roomManager.send(message: message)
+            self?.messageManager.send(message: message)
         }.store(in: &cancellables)
 
         if let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer {

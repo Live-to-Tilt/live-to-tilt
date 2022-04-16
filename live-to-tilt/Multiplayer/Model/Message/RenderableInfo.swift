@@ -26,7 +26,8 @@ struct RenderableInfo: Codable {
                                                       size: size,
                                                       rotation: rotation,
                                                       opacity: opacity,
-                                                      layer: layer)
+                                                      layer: layer,
+                                                      id: id)
         return renderableComponent
     }
 }

@@ -1,7 +1,6 @@
-import Combine
 import Foundation
 
-class HostMessageDelegate: MessageDelegate, ObservableObject {
+class GuestMessageDelegate: MessageDelegate {
     private let messageBuffer: MessageBuffer
 
     init(messageBuffer: MessageBuffer) {
@@ -10,8 +9,8 @@ class HostMessageDelegate: MessageDelegate, ObservableObject {
 
     func onReceive(data: Data) {
         do {
-            let message = try JSONDecoder().decode(HostMessage.self, from: data)
-            messageBuffer.insert(message: message)
+            let guestMessage = try JSONDecoder().decode(GuestMessage.self, from: data)
+            messageBuffer.insert(message: guestMessage)
         } catch {
             print(error.localizedDescription)
         }
