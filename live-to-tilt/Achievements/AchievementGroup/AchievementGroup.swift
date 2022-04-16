@@ -36,4 +36,13 @@ extension AchievementGroup {
         }
         storage.register(defaults: achievementsDict)
     }
+
+    func getAchievementDisplays(storage: UserDefaults) -> [AchievementDisplay] {
+        var achievementDisplays: [AchievementDisplay] = []
+        achievementTiers.forEach { achievement in
+            achievementDisplays.append(AchievementDisplay(name: achievement.name,
+                                                          isCompleted: storage.bool(forKey: achievement.name)))
+        }
+        return achievementDisplays
+    }
 }
