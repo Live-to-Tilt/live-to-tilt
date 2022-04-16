@@ -61,7 +61,7 @@ extension Nexus {
     private func createPlayerTwo() {
         let entity = Entity()
 
-        addComponent(PlayerComponent(entity: entity, isPlayerOne: false), to: entity)
+        addComponent(PlayerComponent(entity: entity, isHost: false), to: entity)
         addComponent(RenderableComponent(entity: entity,
                                          image: .playerTwo,
                                          position: Constants.playerSpawnPosition,

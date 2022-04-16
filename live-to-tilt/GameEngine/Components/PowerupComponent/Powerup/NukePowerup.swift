@@ -8,7 +8,7 @@ class NukePowerup: Powerup {
         self.orbImage = .nukeOrb
     }
 
-    func coroutine(nexus: Nexus, powerupPosition: CGPoint, playerEntity: Entity) {
+    func coroutine(nexus: Nexus, powerupPosition: CGPoint, playerComponent: PlayerComponent) {
         nexus.createNukeExplosion(position: powerupPosition)
     }
 }

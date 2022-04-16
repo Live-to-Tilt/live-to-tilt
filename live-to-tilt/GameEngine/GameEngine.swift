@@ -113,7 +113,7 @@ class GameEngine {
             return
         }
         let playerComponents = nexus.getComponents(of: PlayerComponent.self)
-        let playerOneComponent = playerComponents.first(where: { $0.isPlayerOne })
+        let playerOneComponent = playerComponents.first(where: { $0.isHost })
         playerOneComponent?.inputForce = inputForce
     }
 
