@@ -3,14 +3,19 @@ import QuartzCore
 class MultiplayerHostGameRenderer: GameRenderer {
     private let messageRetriever: MessageRetriever
     private let roomManager: RoomManager
+    private let messageManager: MessageManager
     private let gameEngine: GameEngine
     private let gameControl: GameControl
     private var displayLink: CADisplayLink!
     private var hasStarted: Bool
 
-    init(roomManager: RoomManager, gameEngine: GameEngine, gameControl: GameControl) {
+    init(roomManager: RoomManager,
+         messageManager: MessageManager,
+         gameEngine: GameEngine,
+         gameControl: GameControl) {
         self.messageRetriever = SequentialMessageRetriever()
         self.roomManager = roomManager
+        self.messageManager = messageManager
         self.gameEngine = gameEngine
         self.gameControl = gameControl
         self.hasStarted = false
@@ -98,6 +103,6 @@ class MultiplayerHostGameRenderer: GameRenderer {
     private func attachSubscribers() {
         let messageBuffer = messageRetriever.messageBuffer
         let messageDelegate = GuestMessageDelegate(messageBuffer: messageBuffer)
-        roomManager.subscribe(messageDelegate: messageDelegate)
+        messageManager.subscribe(messageDelegate: messageDelegate)
     }
 }

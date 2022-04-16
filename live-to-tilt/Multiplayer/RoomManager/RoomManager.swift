@@ -11,8 +11,4 @@ protocol RoomManager {
     func joinRoom(with playerId: String)
 
     func leaveRoom()
-
-    func subscribe(messageDelegate: MessageDelegate)
-
-    func send(message: Message)
 }

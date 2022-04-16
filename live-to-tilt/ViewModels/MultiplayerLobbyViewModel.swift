@@ -12,7 +12,11 @@ class MultiplayerLobbyViewModel: ObservableObject {
     var guestId: String {
         room?.guestId ?? ""
     }
+    var roomId: String {
+        room?.id ?? ""
+    }
     let roomManager: RoomManager
+    let messageManager: MessageManager
     private var isMatch: Bool {
         !hostId.isEmpty && !guestId.isEmpty
     }
@@ -21,6 +25,7 @@ class MultiplayerLobbyViewModel: ObservableObject {
     init() {
         self.cancellables = []
         self.roomManager = FirebaseRoomManager() // TODO: create factory
+        self.messageManager = PubNubMessageManager()
         self.displayArena = false
         self.gameStarted = false
     }
@@ -31,11 +36,11 @@ class MultiplayerLobbyViewModel: ObservableObject {
         roomManager.roomPublisher
             .sink { [weak self] room in
                 self?.room = room
-                self?.updateArenaDisplay()
+                self?.updateView()
             }.store(in: &cancellables)
     }
 
-    private func updateArenaDisplay() {
+    private func updateView() {
         if room == nil {
             displayArena = false
             return
@@ -49,14 +54,27 @@ class MultiplayerLobbyViewModel: ObservableObject {
         if isMatch {
             // Start game
             gameStarted = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + Constants.displayArenaDelay) {
-                self.displayArena = true
-            }
+            initialiseMessageManager()
+            changeToArenaViewAfterDelay()
             return
         }
 
         gameStarted = false
         displayArena = false
+    }
+
+    private func initialiseMessageManager() {
+        if roomManager.isHost {
+            messageManager.initialise(userId: hostId, channelId: roomId)
+        } else {
+            messageManager.initialise(userId: guestId, channelId: roomId)
+        }
+    }
+
+    private func changeToArenaViewAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.displayArenaDelay) {
+            self.displayArena = true
+        }
     }
 
     deinit {
