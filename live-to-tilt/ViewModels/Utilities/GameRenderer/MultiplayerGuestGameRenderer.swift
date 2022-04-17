@@ -8,6 +8,11 @@ class MultiplayerGuestGameRenderer: GameRenderer {
     private var displayLink: CADisplayLink!
     private var hasStarted: Bool
 
+    let gameStateSubject = PassthroughSubject<GameStateComponent?, Never>()
+    var gameStatePublisher: AnyPublisher<GameStateComponent?, Never> {
+        gameStateSubject.eraseToAnyPublisher()
+    }
+
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()
     var renderablePublisher: AnyPublisher<[RenderableComponent], Never> {
         renderableSubject.eraseToAnyPublisher()
@@ -82,6 +87,9 @@ class MultiplayerGuestGameRenderer: GameRenderer {
     }
 
     private func process(_ hostMessage: HostMessage) {
+        let gameStateComponent = hostMessage.gameStateComponent
+        gameStateSubject.send(gameStateComponent)
+
         let renderableComponents = hostMessage.renderableComponents
         renderableSubject.send(renderableComponents)
     }

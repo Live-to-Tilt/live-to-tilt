@@ -10,14 +10,14 @@ class GameStateComponent: Component {
         }
     }
 
-    enum GameState {
+    enum GameState: String, Codable {
         case play
         case pause
         case gameOver
     }
 
-    init(entity: Entity) {
+    init(entity: Entity, state: GameState = .play) {
         self.entity = entity
-        self.state = .play
+        self.state = state
     }
 }

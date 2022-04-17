@@ -86,7 +86,9 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
         gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
             self?.renderableComponents = renderableComponents
 
-            let message = HostMessage(renderableComponents: renderableComponents)
+            let gameStateComponent = self?.gameStateComponent
+            let message = HostMessage(gameStateComponent: gameStateComponent,
+                                      renderableComponents: renderableComponents)
             self?.messageManager.send(message: message)
         }.store(in: &cancellables)
 
@@ -100,6 +102,10 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
         }.store(in: &cancellables)
 
         if let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer {
+            guestGameRenderer.gameStateSubject.sink { [weak self] gameStateComponent in
+                self?.gameStateComponent = gameStateComponent
+            }.store(in: &cancellables)
+
             guestGameRenderer.renderableSubject.sink { [weak self] renderableComponents in
                 self?.renderableComponents = renderableComponents
             }.store(in: &cancellables)
