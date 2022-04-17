@@ -8,7 +8,7 @@ class GauntletWaveSpawner: WaveSpawner {
 
     init() {
         let waves: [Wave] = [
-            GapWave()
+            GapWave(gapWidths: [Constants.gauntletSmallGapWidth, Constants.gauntletLargeGapWidth])
         ]
         let intervals: [CGFloat] = [
             Constants.gauntletWaveIntervalDuration

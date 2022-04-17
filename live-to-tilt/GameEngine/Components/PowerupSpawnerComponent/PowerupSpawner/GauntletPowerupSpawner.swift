@@ -22,12 +22,13 @@ class GauntletPowerupSpawner: PowerupSpawner {
 
     private lazy var onWaveSpawn = { [weak self] (event: Event) -> Void in
         guard let waveSpawnedEvent = event as? WaveSpawnedEvent,
-              let gapWave = waveSpawnedEvent.wave as? GapWave else {
+              let gapWave = waveSpawnedEvent.wave as? GapWave,
+              let smallestGap = gapWave.gaps.min(by: { $0.height < $1.height }) else {
             return
         }
 
-        let gapCenter = gapWave.gapCenter
-        let spawnPosition = CGPoint(x: gapCenter.x + Constants.enemyDiameter / 2, y: gapCenter.y)
+        let smallestGapCenter = CGPoint(x: smallestGap.midX, y: smallestGap.midY)
+        let spawnPosition = CGPoint(x: smallestGapCenter.x + Constants.enemyDiameter / 2, y: smallestGapCenter.y)
         self?.spawnPowerup(at: spawnPosition)
     }
 

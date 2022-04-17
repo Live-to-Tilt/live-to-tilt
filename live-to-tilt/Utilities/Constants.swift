@@ -41,7 +41,8 @@ struct Constants {
     static let randomWaveEnemyCount: Int = 30
     static let horizontalWaveEnemyCount: Int = 20
     static let gauntletWaveIntervalDuration: CGFloat = 4
-    static let gapWaveGap: CGFloat = 0.12
+    static let gauntletSmallGapWidth: CGFloat = 0.06
+    static let gauntletLargeGapWidth: CGFloat = 0.12
 
     // Powerups
     static let delayBeforePowerupIsActivatable: Double = 0.5
