@@ -43,7 +43,7 @@ struct MainMenuView: View {
         VStack(alignment: .trailing) {
             Text("live to tilt")
                 .modifier(HeroText())
-                .padding(.bottom, 40)
+                .padding(.bottom, 20)
 
             NavigationLink(destination: LazyView(GameModeSelectionView()),
                            isActive: self.$isActive) {
@@ -56,12 +56,13 @@ struct MainMenuView: View {
             }
             .modifier(TapSoundEffect())
 
-            NavigationLink(destination: LazyView(SettingsView())) {
-                Text("settings").modifier(MenuItemText())
-            }
-            .modifier(TapSoundEffect())
             NavigationLink(destination: LazyView(AchievementsView())) {
                 Text("achievements").modifier(MenuItemText())
+            }
+            .modifier(TapSoundEffect())
+
+            NavigationLink(destination: LazyView(SettingsView())) {
+                Text("settings").modifier(MenuItemText())
             }
             .modifier(TapSoundEffect())
         }
