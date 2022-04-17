@@ -11,7 +11,6 @@
 		2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83D27DF497400FA25D2 /* TitleText.swift */; };
 		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
 		2106F84427DF50A100FA25D2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F84327DF50A100FA25D2 /* RootView.swift */; };
-		213B9867280C1D8A00BFFD23 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 213B9866280C1D8A00BFFD23 /* GoogleService-Info.plist */; };
 		214E15A027F9767F00815A35 /* ComboComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214E159F27F9767F00815A35 /* ComboComponent.swift */; };
 		2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D327E398C9007A4068 /* PowerupComponent.swift */; };
 		2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D527E39D14007A4068 /* PowerupSystem.swift */; };
@@ -25,6 +24,7 @@
 		21DB9E3D27F85B02008AF29A /* ComboSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E3C27F85B02008AF29A /* ComboSystem.swift */; };
 		21DB9E4327F8B67E008AF29A /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */; };
 		21E7B1BE280AE70500E11EA7 /* StraightWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7B1BD280AE70500E11EA7 /* StraightWave.swift */; };
+		21F587D7280C58CF00CB178B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21F587D6280C58CF00CB178B /* GoogleService-Info.plist */; };
 		3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B52F27FC109D005CB316 /* CountdownComponent.swift */; };
 		3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B53127FC1177005CB316 /* CountdownSystem.swift */; };
 		3D05CF8B27E5B0FD00494286 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05CF8A27E5B0FD00494286 /* MainMenuViewModel.swift */; };
@@ -211,7 +211,6 @@
 		2106F83D27DF497400FA25D2 /* TitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
 		2106F84327DF50A100FA25D2 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		213B9866280C1D8A00BFFD23 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		214E159F27F9767F00815A35 /* ComboComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboComponent.swift; sourceTree = "<group>"; };
 		2184B3D327E398C9007A4068 /* PowerupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupComponent.swift; sourceTree = "<group>"; };
 		2184B3D527E39D14007A4068 /* PowerupSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSystem.swift; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		21DB9E3C27F85B02008AF29A /* ComboSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboSystem.swift; sourceTree = "<group>"; };
 		21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		21E7B1BD280AE70500E11EA7 /* StraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightWave.swift; sourceTree = "<group>"; };
+		21F587D6280C58CF00CB178B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		3D05B52F27FC109D005CB316 /* CountdownComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownComponent.swift; sourceTree = "<group>"; };
 		3D05B53127FC1177005CB316 /* CountdownSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownSystem.swift; sourceTree = "<group>"; };
@@ -470,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				3D12D9C627D61D8500D01489 /* Main.swift */,
+				21F587D6280C58CF00CB178B /* GoogleService-Info.plist */,
 				3D69D2332806F1BE00E1D45E /* Multiplayer */,
 				DB77AF3727F7721500F8DE4C /* Achievements */,
 				3D12D9D927D61F1C00D01489 /* AudioEngine */,
@@ -482,7 +483,6 @@
 				72478EA627D73AFA00B9140A /* Utilities */,
 				3D12D9CA27D61D8800D01489 /* Assets.xcassets */,
 				3D12D9CF27D61D8800D01489 /* Info.plist */,
-				213B9866280C1D8A00BFFD23 /* GoogleService-Info.plist */,
 				3D12D9CC27D61D8800D01489 /* Preview Content */,
 				7299F39728097E220025273F /* Secrets.xcconfig */,
 			);
@@ -1052,7 +1052,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21B52E4627E48DBB00E61808 /* README.md in Resources */,
-				213B9867280C1D8A00BFFD23 /* GoogleService-Info.plist in Resources */,
+				21F587D7280C58CF00CB178B /* GoogleService-Info.plist in Resources */,
 				3D12D9CE27D61D8800D01489 /* Preview Assets.xcassets in Resources */,
 				3D12D9CB27D61D8800D01489 /* Assets.xcassets in Resources */,
 			);
