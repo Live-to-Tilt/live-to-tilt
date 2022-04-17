@@ -79,5 +79,6 @@ class MultiplayerLobbyViewModel: ObservableObject {
 
     deinit {
         roomManager.leaveRoom()
+        messageManager.disconnect()
     }
 }

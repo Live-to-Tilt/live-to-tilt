@@ -56,6 +56,14 @@ final class PubNubMessageManager: MessageManager {
         messageDelegates.append(messageDelegate)
     }
 
+    func disconnect() {
+        pubNub?.disconnect()
+        listener.cancel()
+        pubNub = nil
+        channels = []
+        messageDelegates = []
+    }
+
     private func publishMessage(message: PubNubMessage) {
         let payload = message.payload
         guard

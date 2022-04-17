@@ -4,4 +4,6 @@ protocol MessageManager {
     func send(message: Message)
 
     func subscribe(messageDelegate: MessageDelegate)
+
+    func disconnect()
 }
