@@ -2,14 +2,18 @@ import CoreGraphics
 
 class GauntletPowerupSpawner: PowerupSpawner {
     private let nexus: Nexus
+    private let powerupIterator: AnyIterator<Powerup>
 
     init(nexus: Nexus) {
+        let powerups: [Powerup] = [
+            TimePowerup()
+        ]
+        self.powerupIterator = powerups.makeRandomIterator()
         self.nexus = nexus
         subscribeToEvents()
     }
 
     func update(deltaTime: CGFloat) {
-
     }
 
     private func subscribeToEvents() {
@@ -28,10 +32,14 @@ class GauntletPowerupSpawner: PowerupSpawner {
     }
 
     private func spawnPowerup(at position: CGPoint) {
+        guard let powerup = powerupIterator.next() else {
+            return
+        }
+
         var movement: Movement = BaseMovement()
         movement = DirectionalMovementDecorator(movement: movement, direction: .left)
         nexus.createPowerup(position: position,
-                            powerup: TimePowerup(),
+                            powerup: powerup,
                             collisionBitmask: Constants.gauntletOrbCollisionBitmask,
                             movement: movement,
                             despawnOutsideArena: true)
