@@ -3,7 +3,6 @@ import QuartzCore
 
 class MultiplayerGuestGameRenderer: GameRenderer {
     private let messageRetriever: MessageRetriever
-    private let roomManager: RoomManager
     private let messageManager: MessageManager
     private let gameControl: GameControl
     private var displayLink: CADisplayLink!
@@ -14,9 +13,8 @@ class MultiplayerGuestGameRenderer: GameRenderer {
         renderableSubject.eraseToAnyPublisher()
     }
 
-    init(roomManager: RoomManager, messageManager: MessageManager, gameControl: GameControl) {
+    init(messageManager: MessageManager, gameControl: GameControl) {
         self.messageRetriever = SequentialMessageRetriever()
-        self.roomManager = roomManager
         self.messageManager = messageManager
         self.gameControl = gameControl
         self.hasStarted = false
