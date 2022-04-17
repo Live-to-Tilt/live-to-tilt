@@ -3,6 +3,7 @@ import Combine
 class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
+    @Published var comboComponent: ComboComponent?
 
     var roomManager: RoomManager
     var messageManager: MessageManager
@@ -73,6 +74,14 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
         }
     }
 
+    func getWaveNumber() -> Int {
+        gameEngine?.gameStats.wave ?? 0
+    }
+
+    func getScore() -> String {
+        gameEngine?.gameStats.getBackdropValue() ?? ""
+    }
+
     private func attachPublishers() {
         gameEngine?.renderablePublisher.sink { [weak self] renderableComponents in
             self?.renderableComponents = renderableComponents
@@ -84,6 +93,10 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
         gameEngine?.gameStatePublisher.sink { [weak self] gameStateComponent in
             self?.gameStateComponent = gameStateComponent
             self?.updateGameRenderer()
+        }.store(in: &cancellables)
+
+        gameEngine?.comboPublisher.sink { [weak self] comboComponent in
+            self?.comboComponent = comboComponent
         }.store(in: &cancellables)
 
         if let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer {

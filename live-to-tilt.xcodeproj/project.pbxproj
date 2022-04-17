@@ -505,7 +505,6 @@
 				2106F83627DF3F6300FA25D2 /* ViewModifiers */,
 				3D12D9C827D61D8500D01489 /* MainMenuView.swift */,
 				3D13481027D8D86000D46B84 /* SettingsView.swift */,
-				21AFD20B27DE382900250CF1 /* SingleplayerGameArenaView.swift */,
 				72742DC727DD954A0033F06B /* GameControlView.swift */,
 				7230520F27F2C64C00AD753D /* PauseMenuView.swift */,
 				7230521127F2D52700AD753D /* GameOverMenuView.swift */,
@@ -513,6 +512,7 @@
 				729FA8D727FFD95C008F55BB /* HowToPlayView.swift */,
 				DBE6844D280A7C6600D18308 /* AchievementsView.swift */,
 				3D69D24028070F0E00E1D45E /* MultiplayerLobbyView.swift */,
+				21AFD20B27DE382900250CF1 /* SingleplayerGameArenaView.swift */,
 				3D69D27028081F3200E1D45E /* MultiplayerGameArenaView.swift */,
 			);
 			path = Views;

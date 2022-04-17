@@ -26,6 +26,15 @@ struct MultiplayerGameArenaView: View {
         }
     }
 
+    private func TopInfoBar() -> some View {
+        HStack {
+            Text("wave #\(viewModel.getWaveNumber())").modifier(InfoText())
+            Spacer()
+            Text("👑 \(AllTimeStats.shared.getHighScore(for: .coop))")
+                .modifier(InfoText())
+        }
+    }
+
     private func PlayAreaView() -> some View {
         GeometryReader { geometry in
             let frame = geometry.frame(in: .local)
@@ -34,7 +43,7 @@ struct MultiplayerGameArenaView: View {
             let denormalization = normalization.inverted()
 
             ZStack {
-//                Score()
+                Score()
 
                 ForEach(viewModel.renderableComponents, id: \.id) { renderableComponent in
                     EntityView(from: renderableComponent, applying: denormalization)
@@ -47,6 +56,17 @@ struct MultiplayerGameArenaView: View {
             )
             .position(x: frame.midX, y: frame.midY)
         }
+    }
+
+    private func BottomInfoBar() -> some View {
+        Combo()
+    }
+
+    private func Score() -> some View {
+        Text("\(viewModel.getScore())")
+            .font(.system(size: 200, weight: .heavy))
+            .monospacedDigit()
+            .opacity(0.15)
     }
 
     private func EntityView(
@@ -65,32 +85,13 @@ struct MultiplayerGameArenaView: View {
             .transition(AnyTransition.opacity.animation(.easeOut(duration: 0.2)))
     }
 
-    private func TopInfoBar() -> some View {
-        HStack {
-            Text("wave #1").modifier(InfoText())
-            Spacer()
-            Text("👑 999")
-                .modifier(InfoText())
-        }
-        .zIndex(10)
-    }
-
     private func Combo() -> some View {
-        Text("combo 999 x 999")
+        let comboBase = viewModel.comboComponent?.base ?? 0
+        let comboMultiplier = viewModel.comboComponent?.multiplier ?? 0
+
+        return Text("combo \(comboBase) x \(comboMultiplier)")
             .modifier(InfoText())
             .multilineTextAlignment(.center)
-    }
-
-    private func BottomInfoBar() -> some View {
-//        Group {
-//            switch viewModel.gameEngine.gameMode {
-//            case .survival:
-//                Combo()
-//            case .gauntlet:
-//                CountdownBar()
-//            }
-//        }
-        Combo()
     }
 }
 
