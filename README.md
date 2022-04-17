@@ -41,6 +41,7 @@ This project uses Firebase, along with PubNub, to support real-time multiplayer 
 3. Download the Google plist, and add it to Live to Tilt.
     ```.../or an image```
     The Google plist should be placed into your directory like so:
+    
     ![Google Plist instructions](Documentation/google-plist.png)
 
 ## Documentation
@@ -53,25 +54,25 @@ For more details on our technical design, please refer [here](https://docs.googl
 
 ### 3 Awesome Powerups
 
-<div style="display: flex; flex-direction: column; align-items: center; margin: 3rem 0 1rem">
-<img style="height: 50px; width: 50px" src="Documentation/nuke.png">
-<h3 style="margin: 1rem 0 0">NUKE</h3>
-Kaboom! Obliterates all enemies within the vicinity.
-<img src="Documentation/nuke-demo.gif" alt="Nuke">
+<div align="center">
+   <img style="height: 50px; width: 50px" src="Documentation/nuke.png">
+   <h3>NUKE</h3>
+   <p>Kaboom! Obliterates all enemies within the vicinity.</p>
+   <img src="Documentation/nuke-demo.gif" alt="Nuke">
 </div>
 
-<div style="display: flex; flex-direction: column; align-items: center; margin: 3rem 0 1rem">
-<img style="height: 50px; width: 50px" src="Documentation/lightsaber.png">
-<h3 style="margin: 1rem 0 0">LIGHTSABER</h3>
-Wield 2 deadly lightsabers and blitz those dots to oblivion!
-<img src="Documentation/lightsaber-demo.gif" alt="Lightsaber">
+<div align="center">
+   <img style="height: 50px; width: 50px" src="Documentation/lightsaber.png">
+   <h3>LIGHTSABER</h3>
+   <p>Wield 2 deadly lightsabers and blitz those dots to oblivion!</p>
+   <img src="Documentation/lightsaber-demo.gif" alt="Lightsaber">
 </div>
 
-<div style="display: flex; flex-direction: column; align-items: center; margin: 3rem 0 1rem">
-<img style="height: 50px; width: 50px" src="Documentation/freeze.png">
-<h3 style="margin: 1rem 0 0">FREEZE</h3>
-Freeze your enemies and shatter them while they're frozen!
-<img src="Documentation/freeze-demo.gif" alt="Freeze">
+<div align="center">
+   <img style="height: 50px; width: 50px" src="Documentation/freeze.png">
+   <h3>FREEZE</h3>
+   <p>Freeze your enemies and shatter them while they're frozen!</p>
+   <img src="Documentation/freeze-demo.gif" alt="Freeze">
 </div>
 
 ## User Guide
