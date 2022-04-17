@@ -69,7 +69,6 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
         if roomManager.isHost {
             return gameEngine?.gameStats.getGameOverStats() ?? []
         } else {
-            // TODO: receive game over stats from host
             return []
         }
     }

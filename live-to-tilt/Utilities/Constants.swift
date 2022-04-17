@@ -102,5 +102,5 @@ struct Constants {
 
     // Multiplayer
     static let displayArenaDelay: CGFloat = 1
-    static let guestRenderDelay: CGFloat = 0.5
+    static let guestRenderDelay: CGFloat = 0
 }

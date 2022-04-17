@@ -24,7 +24,7 @@ class MultiplayerLobbyViewModel: ObservableObject {
 
     init() {
         self.cancellables = []
-        self.roomManager = FirebaseRoomManager() // TODO: create factory
+        self.roomManager = FirebaseRoomManager()
         self.messageManager = PubNubMessageManager()
         self.displayArena = false
         self.gameStarting = false

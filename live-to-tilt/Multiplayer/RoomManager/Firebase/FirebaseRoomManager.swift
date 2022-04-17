@@ -26,9 +26,6 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
     func joinRoom(with playerId: String) {
         // if there is an available room, join the room
         // else, create new room
-
-        // TODO: remove magic strings
-
         FirebaseReference(.Room)
             .whereField("guestId", isEqualTo: "")
             .whereField("hostId", isNotEqualTo: playerId)

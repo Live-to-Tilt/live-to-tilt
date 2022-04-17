@@ -45,18 +45,14 @@ class MultiplayerHostGameRenderer: GameRenderer {
 
     func pause() {
         gameEngine.pause()
-        // TODO: send signal
     }
 
     func unpause() {
         gameEngine.unpause()
-        // TODO: send signal
     }
 
     @objc
     func step() {
-        // TODO: check for player two input before a given duration
-
         let elapsedTime = displayLink.targetTimestamp - displayLink.timestamp
         let inputForce = gameControl.getInputForce()
 
@@ -85,7 +81,6 @@ class MultiplayerHostGameRenderer: GameRenderer {
     private func process(_ guestMessage: GuestMessage) {
         if let inputForce = guestMessage.inputForce {
             print(inputForce)
-            // TODO: update player two input force
         }
 
         if guestMessage.pauseSignal {
