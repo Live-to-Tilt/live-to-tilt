@@ -1,6 +1,6 @@
 import Combine
 
-class MultiplayerGameArenaViewModel: GameArenaViewModel {
+class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
 
@@ -29,7 +29,6 @@ class MultiplayerGameArenaViewModel: GameArenaViewModel {
             self.gameRenderer = MultiplayerGuestGameRenderer(messageManager: messageManager,
                                                              gameControl: gameControl)
         }
-        super.init()
 
         attachPublishers()
         gameRenderer.start()
@@ -39,7 +38,7 @@ class MultiplayerGameArenaViewModel: GameArenaViewModel {
         gameRenderer.stop()
     }
 
-    override func restart() {
+    func restart() {
         detachPublishers()
         gameRenderer.stop()
         if roomManager.isHost {
@@ -57,15 +56,15 @@ class MultiplayerGameArenaViewModel: GameArenaViewModel {
         gameRenderer.start()
     }
 
-    override func pause() {
+    func pause() {
         gameRenderer.pause()
     }
 
-    override func resume() {
+    func resume() {
         gameRenderer.unpause()
     }
 
-    override func getGameOverStats() -> [GameOverStat] {
+    func getGameOverStats() -> [GameOverStat] {
         if roomManager.isHost {
             return gameEngine?.gameStats.getGameOverStats() ?? []
         } else {
