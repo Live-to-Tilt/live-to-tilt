@@ -30,7 +30,7 @@ struct MainMenuView: View {
             Spacer()
             Spacer()
             Spacer()
-            MenuButtons()
+            Menu()
             Spacer()
         }
         .rotationEffect(.degrees(15))
@@ -39,7 +39,7 @@ struct MainMenuView: View {
         }
     }
 
-    private func MenuButtons() -> some View {
+    private func Menu() -> some View {
         VStack(alignment: .trailing) {
             Text("live to tilt")
                 .modifier(HeroText())

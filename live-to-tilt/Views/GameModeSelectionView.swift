@@ -21,12 +21,19 @@ struct GameModeSelectionView: View {
 
             GameModeInfo()
 
-            NavigationLink(destination: LazyView(
-                GameArenaView(viewModel: GameArenaViewModel(gameMode: selectedGameMode))
-            )) {
-                Text("Start").modifier(MenuButton())
+            if selectedGameMode == .coop {
+                NavigationLink(destination: LazyView(MultiplayerLobbyView())) {
+                    Text("Start").modifier(MenuButton())
+                }
+                .modifier(TapSoundEffect())
+            } else {
+                NavigationLink(destination: LazyView(
+                    SingleplayerGameArenaView(viewModel: SingleplayerGameArenaViewModel(gameMode: selectedGameMode))
+                )) {
+                    Text("Start").modifier(MenuButton())
+                }
+                .modifier(TapSoundEffect())
             }
-            .modifier(TapSoundEffect())
         }
         .frame(width: 700)
     }

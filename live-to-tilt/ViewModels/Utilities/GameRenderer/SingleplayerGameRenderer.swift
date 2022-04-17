@@ -1,14 +1,15 @@
 import QuartzCore
 
-class GameRenderer {
+class SingleplayerGameRenderer: GameRenderer {
     private let gameEngine: GameEngine
+    private let gameControl: GameControl
     private var displayLink: CADisplayLink!
-    private var gameControl: GameControl
-    private var hasStarted = false
+    private var hasStarted: Bool
 
     init(gameEngine: GameEngine, gameControl: GameControl) {
         self.gameEngine = gameEngine
         self.gameControl = gameControl
+        self.hasStarted = false
     }
 
     func start() {

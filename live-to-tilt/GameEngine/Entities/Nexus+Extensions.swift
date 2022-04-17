@@ -33,7 +33,7 @@ extension Nexus {
         addComponent(ComboComponent(entity: entity), to: entity)
     }
 
-    func createPlayer() {
+    func createPlayers(for gameMode: GameMode) {
         let entity = Entity()
 
         addComponent(PlayerComponent(entity: entity), to: entity)
@@ -52,13 +52,37 @@ extension Nexus {
                                                                collisionBitmask: Constants.playerCollisionBitmask,
                                                                restitution: .zero)),
                      to: entity)
+
+        if gameMode == .coop {
+            createPlayerTwo()
+        }
+    }
+
+    private func createPlayerTwo() {
+        let entity = Entity()
+
+        addComponent(PlayerComponent(entity: entity, isHost: false), to: entity)
+        addComponent(RenderableComponent(entity: entity,
+                                         image: .playerTwo,
+                                         position: Constants.playerSpawnPosition,
+                                         size: Constants.playerSize),
+                     to: entity)
+        addComponent(PhysicsComponent(entity: entity,
+                                      physicsBody: PhysicsBody(isDynamic: true,
+                                                               shape: .circle,
+                                                               position: Constants.playerSpawnPosition,
+                                                               size: Constants.playerColliderSize,
+                                                               categoryBitmask: Constants.playerCategoryBitmask,
+                                                               collisionBitmask: Constants.playerCollisionBitmask,
+                                                               restitution: .zero)),
+                     to: entity)
     }
 
     func createWaveSpawner(for gameMode: GameMode) {
         let entity = Entity()
         var waveSpawner: WaveSpawner
         switch gameMode {
-        case .survival:
+        case .survival, .coop:
             waveSpawner = SurvivalWaveSpawner()
         case .gauntlet:
             waveSpawner = GauntletWaveSpawner()
@@ -72,7 +96,7 @@ extension Nexus {
         let entity = Entity()
         var powerupSpawner: PowerupSpawner
         switch gameMode {
-        case .survival:
+        case .survival, .coop:
             powerupSpawner = SurvivalPowerupSpawner(nexus: self)
         case .gauntlet:
             powerupSpawner = GauntletPowerupSpawner(nexus: self)
