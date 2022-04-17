@@ -36,7 +36,7 @@
 		3D1E7947280566F7000D6C41 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E7946280566F7000D6C41 /* SoundEffect.swift */; };
 		3D26556328008EA100AB9F9F /* TimePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26556228008EA100AB9F9F /* TimePowerup.swift */; };
 		3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */; };
-		3D2B39E327F7EDF400693B3B /* GauntletWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GauntletWave.swift */; };
+		3D2B39E327F7EDF400693B3B /* GapWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GapWave.swift */; };
 		3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */; };
 		3D4DBD96280A3EA20081194D /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD95280A3EA20081194D /* FirstAppear.swift */; };
 		3D4DBD98280A54AA0081194D /* RenderableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD97280A54AA0081194D /* RenderableInfo.swift */; };
@@ -238,7 +238,7 @@
 		3D1E7946280566F7000D6C41 /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		3D26556228008EA100AB9F9F /* TimePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePowerup.swift; sourceTree = "<group>"; };
 		3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionView.swift; sourceTree = "<group>"; };
-		3D2B39E227F7EDF400693B3B /* GauntletWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletWave.swift; sourceTree = "<group>"; };
+		3D2B39E227F7EDF400693B3B /* GapWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapWave.swift; sourceTree = "<group>"; };
 		3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDecorator.swift; sourceTree = "<group>"; };
 		3D4DBD95280A3EA20081194D /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
 		3D4DBD97280A54AA0081194D /* RenderableInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableInfo.swift; sourceTree = "<group>"; };
@@ -510,7 +510,6 @@
 				3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */,
 				729FA8D727FFD95C008F55BB /* HowToPlayView.swift */,
 				DBE6844D280A7C6600D18308 /* AchievementsView.swift */,
-				3D69D24028070F0E00E1D45E /* MultiplayerGameArenaView.swift */,
 				3D69D24028070F0E00E1D45E /* MultiplayerLobbyView.swift */,
 				3D69D27028081F3200E1D45E /* MultiplayerGameArenaView.swift */,
 			);
@@ -525,7 +524,6 @@
 				3D13481227D8D89100D46B84 /* SettingsViewModel.swift */,
 				3D05CF8A27E5B0FD00494286 /* MainMenuViewModel.swift */,
 				DBE6844F280A7C7C00D18308 /* AchievementsViewModel.swift */,
-				3D69D24228070FE100E1D45E /* MultiplayerGameArenaViewModel.swift */,
 				3D69D24228070FE100E1D45E /* MultiplayerLobbyViewModel.swift */,
 				3D69D2722808242900E1D45E /* MultiplayerGameArenaViewModel.swift */,
 			);
@@ -664,7 +662,7 @@
 				3DCEAA5727E3062F008ADF6D /* Wave.swift */,
 				3DCEAA5927E306A3008ADF6D /* RandomWave.swift */,
 				3DB3741927F4400F0053F400 /* HorizontalWave.swift */,
-				3D2B39E227F7EDF400693B3B /* GauntletWave.swift */,
+				3D2B39E227F7EDF400693B3B /* GapWave.swift */,
 				21E7B1BD280AE70500E11EA7 /* StraightWave.swift */,
 			);
 			path = Wave;
@@ -1130,7 +1128,7 @@
 				3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */,
-				3D2B39E327F7EDF400693B3B /* GauntletWave.swift in Sources */,
+				3D2B39E327F7EDF400693B3B /* GapWave.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveSpawnerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,

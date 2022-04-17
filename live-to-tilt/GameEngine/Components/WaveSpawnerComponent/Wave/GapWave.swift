@@ -1,12 +1,12 @@
 import CoreGraphics
 
-class GauntletWave: Wave {
+class GapWave: Wave {
     private(set) var gapCenter: CGPoint = .zero
 
     func coroutine(nexus: Nexus) {
         let maxX = Constants.gameArenaHeight * Constants.gameArenaAspectRatio
 
-        let halfGap = Constants.gauntletStraightWaveGap / 2
+        let halfGap = Constants.gapWaveGap / 2
         let gapCenterY = CGFloat.random(in: halfGap...Constants.gameArenaHeight - halfGap)
         let gapCenter = CGPoint(x: maxX, y: gapCenterY)
         let gapStart = CGPoint(x: maxX, y: gapCenter.y - halfGap)
