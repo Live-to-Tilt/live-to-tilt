@@ -4,7 +4,7 @@ import Foundation
 class MultiplayerLobbyViewModel: ObservableObject {
     @Published var room: Room?
     @Published var displayArena: Bool
-    @Published var gameStarted: Bool
+    @Published var gameStarting: Bool
 
     var hostId: String {
         room?.hostId ?? ""
@@ -17,7 +17,7 @@ class MultiplayerLobbyViewModel: ObservableObject {
     }
     let roomManager: RoomManager
     let messageManager: MessageManager
-    private var isMatch: Bool {
+    private var matchFound: Bool {
         !hostId.isEmpty && !guestId.isEmpty
     }
     private var cancellables: Set<AnyCancellable>
@@ -27,7 +27,7 @@ class MultiplayerLobbyViewModel: ObservableObject {
         self.roomManager = FirebaseRoomManager() // TODO: create factory
         self.messageManager = PubNubMessageManager()
         self.displayArena = false
-        self.gameStarted = false
+        self.gameStarting = false
     }
 
     func onAppear() {
@@ -46,20 +46,20 @@ class MultiplayerLobbyViewModel: ObservableObject {
             return
         }
 
-        if isMatch && gameStarted {
+        if matchFound && gameStarting {
             // Game has already started
             return
         }
 
-        if isMatch {
+        if matchFound {
             // Start game
-            gameStarted = true
+            gameStarting = true
             initialiseMessageManager()
             changeToArenaViewAfterDelay()
             return
         }
 
-        gameStarted = false
+        gameStarting = false
         displayArena = false
     }
 

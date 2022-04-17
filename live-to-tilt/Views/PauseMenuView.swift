@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PauseMenuView: View {
-    @ObservedObject var viewModel: SingleplayerGameArenaViewModel
+    var viewModel: Pausable
     @Environment(\.rootPresentationMode) private var rootPresentationMode
 
     var body: some View {
