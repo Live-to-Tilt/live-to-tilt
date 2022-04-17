@@ -10,11 +10,19 @@ struct MultiplayerLobbyView: View {
         NavigationView {
             Content()
         }
+        .navigationBarHidden(true)
         .navigationViewStyle(.stack)
     }
 
     private func Content() -> some View {
         VStack {
+            if viewModel.gameStarting {
+                Text("Game starting...").modifier(TitleText())
+            } else {
+                SubViewHeader(title: "Waiting for players",
+                              closeButtonAction: { self.presentationMode.wrappedValue.dismiss() })
+            }
+
             Text("Host: \(viewModel.hostId)")
             Text("Guest: \(viewModel.guestId)")
 
@@ -29,7 +37,7 @@ struct MultiplayerLobbyView: View {
         .onFirstAppear {
             viewModel.onAppear()
         }
-        .navigationBarHidden(viewModel.gameStarted)
+        .frame(width: 700)
     }
 }
 
