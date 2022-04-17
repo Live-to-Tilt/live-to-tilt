@@ -24,25 +24,36 @@ This iPadOS app is a final project of CS3217, Software Engineering on Modern App
 
 Live to Tilt is written in Swift and developed in Xcode Version 13.2. Simply clone the repository to get started!
 
+### Installing Xcode
+
 1. Get Xcode from the [App Store](https://apps.apple.com/us/app/xcode/id497799835) or https://developer.apple.com/downloads.
+
 2. Install the Xcode Command Line Tools
    In Terminal, run the command: `xcode-select --install`
 
 ### Setting up Firebase
 
-This project uses Firebase, along with PubNub, to support real-time multiplayer gameplay.
+3. Follow the instructions [here](https://firebase.google.com/docs/ios/setup) to create a Firestore Database on Firebase.
 
-1. Create a firestore.
-    ```Code instructions```
+4. Download the Firebase configuration file and add it to the source directory. It should look something like this:
 
-2. Create a database.
-    ```...```
+<div align="center">
+   <img src="Documentation/google-plist.png">
+</div>
 
-3. Download the Google plist, and add it to Live to Tilt.
-    ```.../or an image```
-    The Google plist should be placed into your directory like so:
-    
-    ![Google Plist instructions](Documentation/google-plist.png)
+### Setting up PubNub
+
+5. Create a free PubNub account [here](https://www.pubnub.com/) to obtain a demo keyset.
+
+6. Copy the keyset into the `Secrets.xcconfig` file. It should look something like this:
+
+<div align="center">
+   <img src="Documentation/pubnub-secrets.png">
+</div>
+
+### You are done!
+
+7. Build and run the code with Xcode to play Live to Tilt now!
 
 ## Documentation
 
