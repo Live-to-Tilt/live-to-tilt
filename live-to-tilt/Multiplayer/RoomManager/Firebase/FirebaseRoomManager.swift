@@ -129,6 +129,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
                 let player = PlayerManager.shared.getPlayer()
                 let playerId = player.id
                 room.hostId = playerId
+                room.guestId = ""
             }
 
             self.room = room
