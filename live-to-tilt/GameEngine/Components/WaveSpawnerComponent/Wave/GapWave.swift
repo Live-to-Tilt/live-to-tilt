@@ -4,7 +4,7 @@ class GapWave: Wave {
     private(set) var gaps: [CGRect] = []
 
     init(gapWidths: [CGFloat]) {
-        let gaps = gapWidths.map({ CGRect(x: 0, y: 0, width: 0, height: $0) })
+        let gaps = gapWidths.map({ CGRect(x: .zero, y: .zero, width: .zero, height: $0) })
         self.gaps = gaps
     }
 
@@ -24,7 +24,7 @@ class GapWave: Wave {
             let partitionEnd = CGFloat(Constants.gameArenaHeight) / CGFloat(gapWidths.count) * CGFloat(i + 1)
             let gapCenterY = CGFloat.random(in: partitionStart + halfGapWidth...partitionEnd - halfGapWidth)
             let gapMinY = gapCenterY - halfGapWidth
-            let gap = CGRect(x: maxX, y: gapMinY, width: 0, height: gapWidth)
+            let gap = CGRect(x: maxX, y: gapMinY, width: .zero, height: gapWidth)
             gaps.append(gap)
         }
         self.gaps = gaps
@@ -40,7 +40,7 @@ class GapWave: Wave {
             var topWaveStart: CGPoint
 
             if i == 0 {
-                topWaveStart = CGPoint(x: maxX, y: 0)
+                topWaveStart = CGPoint(x: maxX, y: .zero)
             } else {
                 let previousGap = gaps[i - 1]
                 topWaveStart = CGPoint(x: maxX, y: previousGap.maxY)
