@@ -24,6 +24,7 @@
 		21DB9E3D27F85B02008AF29A /* ComboSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E3C27F85B02008AF29A /* ComboSystem.swift */; };
 		21DB9E4327F8B67E008AF29A /* ScoreSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */; };
 		21E7B1BE280AE70500E11EA7 /* StraightWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7B1BD280AE70500E11EA7 /* StraightWave.swift */; };
+		21F587D7280C58CF00CB178B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 21F587D6280C58CF00CB178B /* GoogleService-Info.plist */; };
 		3D05B53027FC109D005CB316 /* CountdownComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B52F27FC109D005CB316 /* CountdownComponent.swift */; };
 		3D05B53227FC1177005CB316 /* CountdownSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05B53127FC1177005CB316 /* CountdownSystem.swift */; };
 		3D05CF8B27E5B0FD00494286 /* MainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05CF8A27E5B0FD00494286 /* MainMenuViewModel.swift */; };
@@ -36,7 +37,7 @@
 		3D1E7947280566F7000D6C41 /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E7946280566F7000D6C41 /* SoundEffect.swift */; };
 		3D26556328008EA100AB9F9F /* TimePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D26556228008EA100AB9F9F /* TimePowerup.swift */; };
 		3D2B39DD27F6E66600693B3B /* GameModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */; };
-		3D2B39E327F7EDF400693B3B /* GauntletWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GauntletWave.swift */; };
+		3D2B39E327F7EDF400693B3B /* GapWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39E227F7EDF400693B3B /* GapWave.swift */; };
 		3D2B39ED27F88C3B00693B3B /* MovementDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */; };
 		3D4DBD96280A3EA20081194D /* FirstAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD95280A3EA20081194D /* FirstAppear.swift */; };
 		3D4DBD98280A54AA0081194D /* RenderableInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4DBD97280A54AA0081194D /* RenderableInfo.swift */; };
@@ -53,7 +54,6 @@
 		3D69D23D2806F8F400E1D45E /* FirebaseCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D23C2806F8F400E1D45E /* FirebaseCollectionReference.swift */; };
 		3D69D24128070F0E00E1D45E /* MultiplayerLobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24028070F0E00E1D45E /* MultiplayerLobbyView.swift */; };
 		3D69D24328070FE100E1D45E /* MultiplayerLobbyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24228070FE100E1D45E /* MultiplayerLobbyViewModel.swift */; };
-		3D69D245280714FA00E1D45E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D69D244280714FA00E1D45E /* GoogleService-Info.plist */; };
 		3D69D2492807186C00E1D45E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D2482807186C00E1D45E /* Player.swift */; };
 		3D69D24E28072CA600E1D45E /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24D28072CA600E1D45E /* PlayerManager.swift */; };
 		3D69D25028073D0800E1D45E /* RoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D69D24F28073D0800E1D45E /* RoomManager.swift */; };
@@ -221,6 +221,7 @@
 		21DB9E3C27F85B02008AF29A /* ComboSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboSystem.swift; sourceTree = "<group>"; };
 		21DB9E4227F8B67E008AF29A /* ScoreSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreSystem.swift; sourceTree = "<group>"; };
 		21E7B1BD280AE70500E11EA7 /* StraightWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightWave.swift; sourceTree = "<group>"; };
+		21F587D6280C58CF00CB178B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D02FD4D27D8E83C0055ECF7 /* AVAudioPlayer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioPlayer+Extensions.swift"; sourceTree = "<group>"; };
 		3D05B52F27FC109D005CB316 /* CountdownComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownComponent.swift; sourceTree = "<group>"; };
 		3D05B53127FC1177005CB316 /* CountdownSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownSystem.swift; sourceTree = "<group>"; };
@@ -240,7 +241,7 @@
 		3D1E7946280566F7000D6C41 /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		3D26556228008EA100AB9F9F /* TimePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePowerup.swift; sourceTree = "<group>"; };
 		3D2B39DC27F6E66600693B3B /* GameModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeSelectionView.swift; sourceTree = "<group>"; };
-		3D2B39E227F7EDF400693B3B /* GauntletWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauntletWave.swift; sourceTree = "<group>"; };
+		3D2B39E227F7EDF400693B3B /* GapWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GapWave.swift; sourceTree = "<group>"; };
 		3D2B39EC27F88C3B00693B3B /* MovementDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementDecorator.swift; sourceTree = "<group>"; };
 		3D4DBD95280A3EA20081194D /* FirstAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstAppear.swift; sourceTree = "<group>"; };
 		3D4DBD97280A54AA0081194D /* RenderableInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableInfo.swift; sourceTree = "<group>"; };
@@ -256,7 +257,6 @@
 		3D69D23C2806F8F400E1D45E /* FirebaseCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollectionReference.swift; sourceTree = "<group>"; };
 		3D69D24028070F0E00E1D45E /* MultiplayerLobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyView.swift; sourceTree = "<group>"; };
 		3D69D24228070FE100E1D45E /* MultiplayerLobbyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerLobbyViewModel.swift; sourceTree = "<group>"; };
-		3D69D244280714FA00E1D45E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D69D2482807186C00E1D45E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3D69D24D28072CA600E1D45E /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
 		3D69D24F28073D0800E1D45E /* RoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomManager.swift; sourceTree = "<group>"; };
@@ -472,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				3D12D9C627D61D8500D01489 /* Main.swift */,
+				21F587D6280C58CF00CB178B /* GoogleService-Info.plist */,
 				3D69D2332806F1BE00E1D45E /* Multiplayer */,
 				DB77AF3727F7721500F8DE4C /* Achievements */,
 				3D12D9D927D61F1C00D01489 /* AudioEngine */,
@@ -484,7 +485,6 @@
 				72478EA627D73AFA00B9140A /* Utilities */,
 				3D12D9CA27D61D8800D01489 /* Assets.xcassets */,
 				3D12D9CF27D61D8800D01489 /* Info.plist */,
-				3D69D244280714FA00E1D45E /* GoogleService-Info.plist */,
 				3D12D9CC27D61D8800D01489 /* Preview Content */,
 				7299F39728097E220025273F /* Secrets.xcconfig */,
 			);
@@ -666,7 +666,7 @@
 				3DCEAA5727E3062F008ADF6D /* Wave.swift */,
 				3DCEAA5927E306A3008ADF6D /* RandomWave.swift */,
 				3DB3741927F4400F0053F400 /* HorizontalWave.swift */,
-				3D2B39E227F7EDF400693B3B /* GauntletWave.swift */,
+				3D2B39E227F7EDF400693B3B /* GapWave.swift */,
 				21E7B1BD280AE70500E11EA7 /* StraightWave.swift */,
 			);
 			path = Wave;
@@ -1055,7 +1055,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21B52E4627E48DBB00E61808 /* README.md in Resources */,
-				3D69D245280714FA00E1D45E /* GoogleService-Info.plist in Resources */,
+				21F587D7280C58CF00CB178B /* GoogleService-Info.plist in Resources */,
 				3D12D9CE27D61D8800D01489 /* Preview Assets.xcassets in Resources */,
 				3D12D9CB27D61D8800D01489 /* Assets.xcassets in Resources */,
 			);
@@ -1142,7 +1142,7 @@
 				3DAEBC8327EA33A0007862FF /* GameStateComponent.swift in Sources */,
 				3D13480827D8BDDF00D46B84 /* AudioController.swift in Sources */,
 				7230521827F2EE0600AD753D /* MenuIcon.swift in Sources */,
-				3D2B39E327F7EDF400693B3B /* GauntletWave.swift in Sources */,
+				3D2B39E327F7EDF400693B3B /* GapWave.swift in Sources */,
 				3DA4B1E827F00B6600FE19B2 /* WaveSpawnerComponent.swift in Sources */,
 				3D7AABB327DA4BD6007DAE9E /* Layer.swift in Sources */,
 				727A389A27FBF7400046E8F2 /* RootPresentationMode.swift in Sources */,
