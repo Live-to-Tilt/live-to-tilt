@@ -91,6 +91,7 @@
 		3DCEAA5827E3062F008ADF6D /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5727E3062F008ADF6D /* Wave.swift */; };
 		3DCEAA5A27E306A3008ADF6D /* RandomWave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEAA5927E306A3008ADF6D /* RandomWave.swift */; };
 		3DE6E3BC280B2AE10031CB43 /* SurvivalPowerupSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51AB27FC844D001D6CB5 /* SurvivalPowerupSpawner.swift */; };
+		3DE6E3BE280C50200031CB43 /* GameStateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6E3BD280C501F0031CB43 /* GameStateInfo.swift */; };
 		3DEA51A227FC7BBF001D6CB5 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A127FC7BBF001D6CB5 /* Powerup.swift */; };
 		3DEA51A427FC7DD6001D6CB5 /* NukePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A327FC7DD6001D6CB5 /* NukePowerup.swift */; };
 		3DEA51A727FC829A001D6CB5 /* PowerupSpawnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA51A627FC829A001D6CB5 /* PowerupSpawnerComponent.swift */; };
@@ -291,6 +292,7 @@
 		3DC7BC8027E4356900994C18 /* BaseMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMovement.swift; sourceTree = "<group>"; };
 		3DCEAA5727E3062F008ADF6D /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		3DCEAA5927E306A3008ADF6D /* RandomWave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWave.swift; sourceTree = "<group>"; };
+		3DE6E3BD280C501F0031CB43 /* GameStateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateInfo.swift; sourceTree = "<group>"; };
 		3DEA51A127FC7BBF001D6CB5 /* Powerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
 		3DEA51A327FC7DD6001D6CB5 /* NukePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NukePowerup.swift; sourceTree = "<group>"; };
 		3DEA51A627FC829A001D6CB5 /* PowerupSpawnerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSpawnerComponent.swift; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				3D69D27B280853AC00E1D45E /* Message.swift */,
 				3D69D27E2808568100E1D45E /* HostMessage.swift */,
 				3D4DBD99280A666F0081194D /* GuestMessage.swift */,
+				3DE6E3BD280C501F0031CB43 /* GameStateInfo.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1251,6 +1254,7 @@
 				727DD52A2804175C002B75CC /* PowerupDespawnedEvent.swift in Sources */,
 				3DEA51AE27FC84BB001D6CB5 /* GauntletPowerupSpawner.swift in Sources */,
 				DBEC91E927D7B8A300B0E750 /* PhysicsBody.swift in Sources */,
+				3DE6E3BE280C50200031CB43 /* GameStateInfo.swift in Sources */,
 				729359CE280BCB4100B61083 /* Pausable.swift in Sources */,
 				72503DAF2805643E00966D6F /* OscillateAnimation.swift in Sources */,
 				72742DC827DD954A0033F06B /* GameControlView.swift in Sources */,

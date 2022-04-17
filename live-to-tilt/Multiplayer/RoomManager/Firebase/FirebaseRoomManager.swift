@@ -1,5 +1,6 @@
 import Combine
 import FirebaseFirestoreSwift
+import Firebase
 import Foundation
 
 final class FirebaseRoomManager: ObservableObject, RoomManager {
@@ -16,6 +17,7 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
         return playerId == room?.hostId
     }
     private var messageManager: MessageManager
+    private var listener: ListenerRegistration?
 
     init() {
         self.messageManager = PubNubMessageManager()
@@ -53,11 +55,23 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
     }
 
     func leaveRoom() {
-        guard let room = room else {
+        guard var room = room else {
             return
         }
 
-        FirebaseReference(.Room).document(room.id).delete()
+        if room.guestId.isEmpty {
+            FirebaseReference(.Room).document(room.id).delete()
+            return
+        }
+
+        if isHost {
+            room.hostId = room.guestId
+        }
+
+        room.guestId = ""
+        updateRoom(room)
+        removeListener()
+        removeRoom()
     }
 
     func subscribe(messageDelegate: MessageDelegate) {
@@ -93,18 +107,41 @@ final class FirebaseRoomManager: ObservableObject, RoomManager {
             return
         }
 
-        FirebaseReference(.Room).document(room.id).addSnapshotListener { documentSnapshot, error in
-            if error != nil {
-                return
-            }
-
-            if let snapshot = documentSnapshot {
-                self.room = try? snapshot.data(as: Room.self)
-            }
-        }
+        listener = FirebaseReference(.Room).document(room.id).addSnapshotListener(onRoomUpdate)
     }
 
     private func initialiseMessageManager(playerId: String, roomId: String) {
         messageManager.initialise(userId: playerId, channelId: roomId)
+    }
+
+    private func onRoomUpdate(documentSnapshot: DocumentSnapshot?, error: Error?) {
+        if error != nil {
+            return
+        }
+
+        if let snapshot = documentSnapshot {
+            guard var room = try? snapshot.data(as: Room.self) else {
+                leaveRoom()
+                return
+            }
+
+            if room.hostId.isEmpty { // opponent leaves
+                let player = PlayerManager.shared.getPlayer()
+                let playerId = player.id
+                room.hostId = playerId
+                room.guestId = ""
+            }
+
+            self.room = room
+        }
+    }
+
+    private func removeListener() {
+        self.listener?.remove()
+        self.listener = nil
+    }
+
+    private func removeRoom() {
+        self.room = nil
     }
 }
