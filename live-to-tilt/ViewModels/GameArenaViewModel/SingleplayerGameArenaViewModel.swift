@@ -1,6 +1,6 @@
 import Combine
 
-class SingleplayerGameArenaViewModel: ObservableObject {
+class SingleplayerGameArenaViewModel: GameArenaViewModel {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
@@ -23,6 +23,7 @@ class SingleplayerGameArenaViewModel: ObservableObject {
         gameRenderer = SingleplayerGameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         achievementManager = AchievementManager()
         achievements = []
+        super.init()
 
         attachPublishers()
         gameRenderer.start()
@@ -32,22 +33,27 @@ class SingleplayerGameArenaViewModel: ObservableObject {
         gameRenderer.stop()
     }
 
-    func restart() {
+    override func restart() {
         detachPublishers()
         gameRenderer.stop()
         gameEngine = GameEngine(gameMode: gameEngine.gameMode)
         gameRenderer = SingleplayerGameRenderer(gameEngine: gameEngine, gameControl: gameControl)
         resetAchievements()
-        gameRenderer.start()
+
         attachPublishers()
+        gameRenderer.start()
     }
 
-    func pause() {
+    override func pause() {
         gameRenderer.pause()
     }
 
-    func resume() {
+    override func resume() {
         gameRenderer.unpause()
+    }
+
+    override func getGameOverStats() -> [GameOverStat] {
+        gameEngine.gameStats.getGameOverStats()
     }
 
     func nextAchievement() {

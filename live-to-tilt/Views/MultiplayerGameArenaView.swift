@@ -14,14 +14,14 @@ struct MultiplayerGameArenaView: View {
             }
             .padding()
             .modifier(RootView())
-//            .onTapGesture {
-//                viewModel.pause()
-//            }
+            .onTapGesture {
+                viewModel.pause()
+            }
 
             if viewModel.gameStateComponent?.state == .gameOver {
-//                GameOverMenuView(viewModel: viewModel)
+                GameOverMenuView(viewModel: viewModel)
             } else if viewModel.gameStateComponent?.state == .pause {
-//                PauseMenuView(viewModel: viewModel)
+                PauseMenuView(viewModel: viewModel)
             }
         }
     }

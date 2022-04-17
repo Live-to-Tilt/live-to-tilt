@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GameOverMenuView: View {
-    @ObservedObject var viewModel: SingleplayerGameArenaViewModel
+    @ObservedObject var viewModel: GameArenaViewModel
     @Environment(\.rootPresentationMode) private var rootPresentationMode
 
     var body: some View {
@@ -28,7 +28,7 @@ struct GameOverMenuView: View {
     }
 
     private func Stats() -> some View {
-        let stats = viewModel.gameEngine.gameStats.getGameOverStats()
+        let stats = viewModel.getGameOverStats()
         return VStack {
             ForEach(stats, id: \.self) { stat in
                 HStack {
