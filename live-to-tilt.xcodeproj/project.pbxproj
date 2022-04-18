@@ -11,6 +11,7 @@
 		2106F83E27DF497400FA25D2 /* TitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83D27DF497400FA25D2 /* TitleText.swift */; };
 		2106F84027DF4AA700FA25D2 /* HeadingOneText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */; };
 		2106F84427DF50A100FA25D2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2106F84327DF50A100FA25D2 /* RootView.swift */; };
+		212C5347280DCEB70020A58E /* ComboInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C5346280DCEB70020A58E /* ComboInfo.swift */; };
 		214E15A027F9767F00815A35 /* ComboComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214E159F27F9767F00815A35 /* ComboComponent.swift */; };
 		2184B3D427E398C9007A4068 /* PowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D327E398C9007A4068 /* PowerupComponent.swift */; };
 		2184B3D627E39D14007A4068 /* PowerupSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2184B3D527E39D14007A4068 /* PowerupSystem.swift */; };
@@ -212,6 +213,7 @@
 		2106F83D27DF497400FA25D2 /* TitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleText.swift; sourceTree = "<group>"; };
 		2106F83F27DF4AA700FA25D2 /* HeadingOneText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadingOneText.swift; sourceTree = "<group>"; };
 		2106F84327DF50A100FA25D2 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		212C5346280DCEB70020A58E /* ComboInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboInfo.swift; sourceTree = "<group>"; };
 		214E159F27F9767F00815A35 /* ComboComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboComponent.swift; sourceTree = "<group>"; };
 		2184B3D327E398C9007A4068 /* PowerupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupComponent.swift; sourceTree = "<group>"; };
 		2184B3D527E39D14007A4068 /* PowerupSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSystem.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 				3D69D27E2808568100E1D45E /* HostMessage.swift */,
 				3D4DBD99280A666F0081194D /* GuestMessage.swift */,
 				3DE6E3BD280C501F0031CB43 /* GameStateInfo.swift */,
+				212C5346280DCEB70020A58E /* ComboInfo.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1126,6 +1129,7 @@
 				DB88976027DC3A1700F72B9C /* GameControl.swift in Sources */,
 				DB88975F27DC39FF00F72B9C /* Soundtrack.swift in Sources */,
 				3DBBF53527DA25DC0039557D /* ImageAsset.swift in Sources */,
+				212C5347280DCEB70020A58E /* ComboInfo.swift in Sources */,
 				21DB9E4327F8B67E008AF29A /* ScoreSystem.swift in Sources */,
 				DB88975E27DC360E00F72B9C /* PhysicsConstants.swift in Sources */,
 				72E48B1927FD9C6500FFB66F /* ScoreChangedEvent.swift in Sources */,
