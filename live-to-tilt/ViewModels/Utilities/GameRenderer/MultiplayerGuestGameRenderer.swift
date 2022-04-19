@@ -18,6 +18,11 @@ class MultiplayerGuestGameRenderer: GameRenderer {
         renderableSubject.eraseToAnyPublisher()
     }
 
+    let comboSubject = PassthroughSubject<ComboComponent?, Never>()
+    var comboPublisher: AnyPublisher<ComboComponent?, Never> {
+        comboSubject.eraseToAnyPublisher()
+    }
+
     init(messageManager: MessageManager, gameControl: GameControl) {
         self.messageRetriever = SequentialMessageRetriever()
         self.messageManager = messageManager
@@ -92,6 +97,9 @@ class MultiplayerGuestGameRenderer: GameRenderer {
 
         let renderableComponents = hostMessage.renderableComponents
         renderableSubject.send(renderableComponents)
+
+        let comboComponent = hostMessage.comboComponent
+        comboSubject.send(comboComponent)
     }
 
     private func sendInputForce() {

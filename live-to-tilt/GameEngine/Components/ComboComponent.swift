@@ -9,10 +9,13 @@ class ComboComponent: Component {
         base * multiplier
     }
 
-    init(entity: Entity) {
+    init(entity: Entity,
+         base: Int = .zero,
+         multiplier: Int = .zero,
+         elapsedTimeSincePreviousAccumulate: CGFloat = .zero) {
         self.entity = entity
-        self.base = .zero
-        self.multiplier = .zero
-        self.elapsedTimeSincePreviousAccumulate = .zero
+        self.base = base
+        self.multiplier = multiplier
+        self.elapsedTimeSincePreviousAccumulate = elapsedTimeSincePreviousAccumulate
     }
 }

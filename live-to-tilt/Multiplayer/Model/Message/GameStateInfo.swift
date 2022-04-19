@@ -1,9 +1,13 @@
 import CoreGraphics
 
 struct GameStateInfo: Codable {
-    let state: GameStateComponent.GameState
+    private let state: GameStateComponent.GameState
 
-    init(gameStateComponent: GameStateComponent) {
+    init?(gameStateComponent: GameStateComponent?) {
+        guard let gameStateComponent = gameStateComponent else {
+            return nil
+        }
+
         self.state = gameStateComponent.state
     }
 
