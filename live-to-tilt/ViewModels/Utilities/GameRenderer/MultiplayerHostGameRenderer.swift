@@ -53,6 +53,7 @@ class MultiplayerHostGameRenderer: GameRenderer {
 
     @objc
     func step() {
+        processMessage()
         let elapsedTime = displayLink.targetTimestamp - displayLink.timestamp
         let inputForce = gameControl.getInputForce()
 
@@ -80,7 +81,7 @@ class MultiplayerHostGameRenderer: GameRenderer {
 
     private func process(_ guestMessage: GuestMessage) {
         if let inputForce = guestMessage.inputForce {
-            print(inputForce)
+            gameEngine.updatePlayerTwo(inputForce: inputForce)
         }
 
         if guestMessage.pauseSignal {

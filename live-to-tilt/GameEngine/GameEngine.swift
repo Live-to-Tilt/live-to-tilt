@@ -117,6 +117,15 @@ class GameEngine {
         playerOneComponent?.inputForce = inputForce
     }
 
+    func updatePlayerTwo(inputForce: CGVector) {
+        guard getGameState()?.state == .play else {
+            return
+        }
+        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+        let playerTwoComponent = playerComponents.first(where: { !$0.isHost })
+        playerTwoComponent?.inputForce = inputForce
+    }
+
     private func publishRenderables() {
         renderableSubject.send(nexus.getComponents(of: RenderableComponent.self))
     }
