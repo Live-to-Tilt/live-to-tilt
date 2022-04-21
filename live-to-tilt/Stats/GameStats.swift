@@ -4,7 +4,7 @@ import CoreGraphics
  Manages the statistics of the current game.
  */
 class GameStats {
-    private let gameMode: GameMode
+    let gameMode: GameMode
     private(set) var score: Int = .zero
     private(set) var powerupsDespawned: Int = .zero
     private(set) var powerupsUsed: Int = .zero
@@ -22,6 +22,31 @@ class GameStats {
 
     init(gameMode: GameMode) {
         self.gameMode = gameMode
+        observePublishers()
+    }
+
+    init(gameMode: GameMode,
+         score: Int,
+         powerupsDespawned: Int,
+         powerupsUsed: Int,
+         nukePowerupsUsed: Int,
+         lightsaberPowerupsUsed: Int,
+         freezePowerupsUsed: Int,
+         enemiesKilled: Int,
+         distanceTravelled: Float,
+         playTime: Float,
+         wave: Int) {
+        self.gameMode = gameMode
+        self.score = score
+        self.powerupsDespawned = powerupsDespawned
+        self.powerupsUsed = powerupsUsed
+        self.nukePowerupsUsed = nukePowerupsUsed
+        self.lightsaberPowerupsUsed = lightsaberPowerupsUsed
+        self.freezePowerupsUsed = freezePowerupsUsed
+        self.enemiesKilled = enemiesKilled
+        self.distanceTravelled = distanceTravelled
+        self.playTime = playTime
+        self.wave = wave
         observePublishers()
     }
 
