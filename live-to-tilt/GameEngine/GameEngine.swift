@@ -1,7 +1,7 @@
 import CoreGraphics
 import Combine
 
-class GameEngine: ObservableObject {
+class GameEngine {
     private var timeScale: CGFloat
     private var previousTimeScale: CGFloat
 
@@ -10,7 +10,7 @@ class GameEngine: ObservableObject {
     let systems: [System]
     let physicsWorld = PhysicsWorld()
     let gameMode: GameMode
-    @Published var gameStats: GameStats
+    let gameStats: GameStats
 
     // Publishers
     let renderableSubject = PassthroughSubject<[RenderableComponent], Never>()

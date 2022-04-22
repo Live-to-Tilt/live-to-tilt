@@ -67,15 +67,27 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
     }
 
     func getGameOverStats() -> [GameOverStat] {
-        gameStats?.getGameOverStats() ?? []
+        if roomManager.isHost {
+            return gameEngine?.gameStats.getGameOverStats() ?? []
+        } else {
+            return gameStats?.getGameOverStats() ?? []
+        }
     }
 
     func getWaveNumber() -> Int {
-        gameStats?.wave ?? 0
+        if roomManager.isHost {
+            return gameEngine?.gameStats.wave ?? 0
+        } else {
+            return gameStats?.wave ?? 0
+        }
     }
 
     func getScore() -> String {
-        gameStats?.getBackdropValue() ?? ""
+        if roomManager.isHost {
+            return gameEngine?.gameStats.getBackdropValue() ?? ""
+        } else {
+            return gameStats?.getBackdropValue() ?? ""
+        }
     }
 
     private func attachPublishers() {
@@ -84,7 +96,7 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
 
             let gameStateComponent = self?.gameStateComponent
             let comboComponent = self?.comboComponent
-            let gameStats = self?.gameStats
+            let gameStats = self?.gameEngine?.gameStats
             let message = HostMessage(gameStateComponent: gameStateComponent,
                                       renderableComponents: renderableComponents,
                                       comboComponent: comboComponent,
@@ -99,10 +111,6 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
 
         gameEngine?.comboPublisher.sink { [weak self] comboComponent in
             self?.comboComponent = comboComponent
-        }.store(in: &cancellables)
-
-        gameEngine?.$gameStats.sink { [weak self] gameStats in
-            self?.gameStats = gameStats
         }.store(in: &cancellables)
 
         if let guestGameRenderer = gameRenderer as? MultiplayerGuestGameRenderer {
