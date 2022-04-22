@@ -4,6 +4,7 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
     @Published var renderableComponents: [RenderableComponent]
     @Published var gameStateComponent: GameStateComponent?
     @Published var comboComponent: ComboComponent?
+    var gameStats: GameStats?
 
     var roomManager: RoomManager
     var messageManager: MessageManager
@@ -69,16 +70,24 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
         if roomManager.isHost {
             return gameEngine?.gameStats.getGameOverStats() ?? []
         } else {
-            return []
+            return gameStats?.getGameOverStats() ?? []
         }
     }
 
     func getWaveNumber() -> Int {
-        gameEngine?.gameStats.wave ?? 0
+        if roomManager.isHost {
+            return gameEngine?.gameStats.wave ?? 0
+        } else {
+            return gameStats?.wave ?? 0
+        }
     }
 
     func getScore() -> String {
-        gameEngine?.gameStats.getBackdropValue() ?? ""
+        if roomManager.isHost {
+            return gameEngine?.gameStats.getBackdropValue() ?? ""
+        } else {
+            return gameStats?.getBackdropValue() ?? ""
+        }
     }
 
     private func attachPublishers() {
@@ -87,9 +96,11 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
 
             let gameStateComponent = self?.gameStateComponent
             let comboComponent = self?.comboComponent
+            let gameStats = self?.gameEngine?.gameStats
             let message = HostMessage(gameStateComponent: gameStateComponent,
                                       renderableComponents: renderableComponents,
-                                      comboComponent: comboComponent)
+                                      comboComponent: comboComponent,
+                                      gameStats: gameStats)
             self?.messageManager.send(message: message)
         }.store(in: &cancellables)
 
@@ -113,6 +124,10 @@ class MultiplayerGameArenaViewModel: ObservableObject, Pausable {
 
             guestGameRenderer.comboSubject.sink { [weak self] comboComponent in
                 self?.comboComponent = comboComponent
+            }.store(in: &cancellables)
+
+            guestGameRenderer.gameStatsSubject.sink { [weak self] gameStats in
+                self?.gameStats = gameStats
             }.store(in: &cancellables)
         }
     }

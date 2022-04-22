@@ -3,6 +3,7 @@ class HostMessage: Message {
     private let gameStateInfo: GameStateInfo?
     private let renderablesInfo: [RenderableInfo]
     private let comboInfo: ComboInfo?
+    private let gameStatsInfo: GameStatsInfo?
 
     var gameStateComponent: GameStateComponent? {
         guard let gameStateInfo = gameStateInfo else {
@@ -24,12 +25,21 @@ class HostMessage: Message {
         return comboInfo.toComboComponent(entity: Entity())
     }
 
+    var gameStats: GameStats? {
+        guard let gameStatsInfo = gameStatsInfo else {
+            return nil
+        }
+        return gameStatsInfo.toGameStats()
+    }
+
     init(gameStateComponent: GameStateComponent?,
          renderableComponents: [RenderableComponent],
-         comboComponent: ComboComponent?) {
+         comboComponent: ComboComponent?,
+         gameStats: GameStats?) {
         self.gameStateInfo = GameStateInfo(gameStateComponent: gameStateComponent)
         self.renderablesInfo = renderableComponents.map { RenderableInfo($0) }
         self.comboInfo = ComboInfo(comboComponent: comboComponent)
+        self.gameStatsInfo = GameStatsInfo(gameStats: gameStats)
         super.init(sequenceId: Self.sequenceCount)
         Self.sequenceCount += 1
     }
@@ -38,6 +48,7 @@ class HostMessage: Message {
         case gameStateInfo
         case renderablesInfo
         case comboInfo
+        case gameStatsInfo
     }
 
     required init(from decoder: Decoder) throws {
@@ -48,6 +59,8 @@ class HostMessage: Message {
                                                     forKey: .renderablesInfo)
         self.comboInfo = try container.decodeIfPresent(ComboInfo.self,
                                                        forKey: .comboInfo)
+        self.gameStatsInfo = try container.decodeIfPresent(GameStatsInfo.self,
+                                                           forKey: .gameStatsInfo)
         try super.init(from: decoder)
     }
 
@@ -57,5 +70,6 @@ class HostMessage: Message {
         try container.encodeIfPresent(gameStateInfo, forKey: .gameStateInfo)
         try container.encode(renderablesInfo, forKey: .renderablesInfo)
         try container.encodeIfPresent(comboInfo, forKey: .comboInfo)
+        try container.encodeIfPresent(gameStatsInfo, forKey: .gameStatsInfo)
     }
 }
